@@ -12,5 +12,5 @@ export default defineConfig({
           assets: '/src/assets'
         },
       },
-      base: '/react_vite/',
+      base: '/frontend-drink-master/',
     });
