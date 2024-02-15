@@ -1,8 +1,11 @@
-
-const RecipePreparation = ({description}) => {
+const RecipePreparation = ({ description }) => {
   return (
-    <div>{description}</div>
-  )
-}
+    <>
+      <h2>Recipe Preparation</h2>
+      <p>{description && description.instructionsUK}</p>
+      <img src="" alt="" />
+    </>
+  );
+};
 
-export default RecipePreparation
+export default RecipePreparation;

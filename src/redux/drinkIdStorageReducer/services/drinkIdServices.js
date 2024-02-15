@@ -10,7 +10,7 @@ export const fetchCocktailsById = createAsyncThunk(
   async (id, thunkApi) => {
     try {
 
-      const { data } = await instance.get(`/api/drinks/${id}`);
+      const { data } = await instance.get(`/api/drink/${id}`);
       return data;
 
     } catch (err) {
@@ -20,3 +20,4 @@ export const fetchCocktailsById = createAsyncThunk(
     }
   }
 );
+  
