@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import {
   persistStore,
-  persistReducer,
+  // persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -10,23 +10,21 @@ import {
   REGISTER,
 } from 'redux-persist';
 // import { authReducer } from './auth/authSlice';
-import storage from 'redux-persist/lib/storage';
+// import storage from 'redux-persist/lib/storage';
+import { drinkIdStorageReducer } from './drinkIdStorageReducer/drinkIdStorageReducer';
 // import { contactsReducer } from './contacts/contactsSlice';
 // import { filterReducer } from './filter/filterSlice';
 // import { modalReducer } from './modal/modalSlice';
 
-const authConfig = {
-  key: 'auth',
-  storage,
-  withelist: ['token'],
-};
+// const authConfig = {
+//   key: 'auth',
+//   storage,
+//   withelist: ['token'],
+// };
 
 export const store = configureStore({
   reducer: {
-    // auth: persistReducer(authConfig, authReducer),
-    // phonebook: contactsReducer,
-    // filterStore: filterReducer,
-    // modal: modalReducer,
+    drinkIdStorage: drinkIdStorageReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
