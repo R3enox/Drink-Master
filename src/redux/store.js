@@ -11,24 +11,24 @@ import {
 } from 'redux-persist';
 // import { authReducer } from './auth/authSlice';
 import storage from 'redux-persist/lib/storage';
-// import { contactsReducer } from './contacts/contactsSlice';
+import { drinksReducer } from './drinks/drinksSlice';
 // import { filterReducer } from './filter/filterSlice';
 // import { modalReducer } from './modal/modalSlice';
 
-const authConfig = {
-  key: 'auth',
-  storage,
-  withelist: ['token'],
-};
+// const authConfig = {
+//   key: 'auth',
+//   storage,
+//   withelist: ['token'],
+// };
 
 export const store = configureStore({
   reducer: {
     // auth: persistReducer(authConfig, authReducer),
-    // phonebook: contactsReducer,
+    drinks: drinksReducer,
     // filterStore: filterReducer,
     // modal: modalReducer,
   },
-  middleware: getDefaultMiddleware =>
+  middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
