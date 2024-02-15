@@ -1,4 +1,10 @@
-@import 'node_modules/modern-normalize/modern-normalize.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('../dist/fonts.css');
+
+:root {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    background-color: #0A0A11;
+}
