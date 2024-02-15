@@ -9,6 +9,17 @@ function App() {
   console.log(test);
   return (
     <AppWrapper>
+      <ul className="flex gap-5">
+        <li>
+          <h1 className="text-2xl text-primary-text-color">Hello</h1>
+        </li>
+        <li>
+          <p className="text-2xl text-primary-text-color sm:text-8xl">
+            The quick brown fox...
+          </p>
+        </li>
+      </ul>
+
       <Routes></Routes>
     </AppWrapper>
   );
