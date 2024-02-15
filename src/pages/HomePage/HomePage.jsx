@@ -1,10 +1,10 @@
-import { PreviewDrinks } from './PreviewDrinks';
+import { PreviewDrinksInCategory } from '../../components/Drinks/PreviewDrinksInCategory';
 
-export const HomePage = () => {
+export default function HomePage() {
   return (
     <div>
       <h1>HeroSection</h1>
-      <PreviewDrinks />
+      <PreviewDrinksInCategory />
     </div>
   );
-};
+}

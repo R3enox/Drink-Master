@@ -8,7 +8,6 @@ export const getDrinks = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const data = await axios.get('/api/drinks');
-      console.log(data.length);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

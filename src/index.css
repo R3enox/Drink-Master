@@ -12,4 +12,14 @@
 .categoryListDrink {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.filter-search {
+  display: flex;
+  gap: 8px;
+}
+.drink-preview-thumb {
+  display: flex;
+  justify-content: space-between;
 }
