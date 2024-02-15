@@ -70,7 +70,7 @@ Error generating stack: `+i.message+`
   background-repeat: no-repeat;
   background-position: left top;
   background-size: 100% 100%;
-`,dv="";function pv(){return console.log(dv),Ue.jsxs(fv,{children:[Ue.jsxs("ul",{className:"flex gap-5",children:[Ue.jsx("li",{children:Ue.jsx("h1",{className:"text-2xl text-primary-text-color",children:"Hello"})}),Ue.jsx("li",{children:Ue.jsx("p",{className:"text-2xl text-primary-text-color sm:text-8xl",children:"The quick brown fox..."})})]}),Ue.jsx(dy,{})]})}var hv={};/**
+`,dv="";function pv(){return console.log(dv),Ue.jsxs(fv,{children:[Ue.jsxs("ul",{className:"flex gap-5 container",children:[Ue.jsx("li",{children:Ue.jsx("h1",{className:"text-2xl text-primary-text-color",children:"Hello"})}),Ue.jsx("li",{children:Ue.jsx("p",{className:"text-2xl text-primary-text-color sm:text-8xl",children:"The quick brown fox..."})})]}),Ue.jsx(dy,{})]})}var hv={};/**
  * @license React
  * use-sync-external-store-with-selector.production.min.js
  *
