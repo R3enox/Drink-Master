@@ -9,7 +9,7 @@ function App() {
   console.log(test);
   return (
     <AppWrapper>
-      <ul className="flex gap-5">
+      <ul className="flex gap-5 container">
         <li>
           <h1 className="text-2xl text-primary-text-color">Hello</h1>
         </li>
