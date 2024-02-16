@@ -13,6 +13,18 @@ function App() {
       <Routes>
         <Route path="/home" element={<HomePage />}></Route>
       </Routes>
+      <ul className="flex gap-5 container">
+        <li>
+          <h1 className="text-2xl text-primary-text-color">Hello</h1>
+        </li>
+        <li>
+          <p className="text-2xl text-primary-text-color sm:text-8xl">
+            The quick brown fox...
+          </p>
+        </li>
+      </ul>
+
+      <Routes></Routes>
     </AppWrapper>
   );
 }
