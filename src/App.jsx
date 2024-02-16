@@ -1,5 +1,6 @@
-import { Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { AppWrapper } from './App.styled';
+import HomePage from './pages/HomePage/HomePage';
 
 const test = import.meta.env.VITE_API_TEST;
 
@@ -9,7 +10,9 @@ function App() {
   console.log(test);
   return (
     <AppWrapper>
-      <Routes></Routes>
+      <Routes>
+        <Route path="/home" element={<HomePage />}></Route>
+      </Routes>
     </AppWrapper>
   );
 }

@@ -1,0 +1,122 @@
+.title {
+  position: relative;
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 119%;
+  color: #f3f3f3;
+  margin-left: 20px;
+  margin-top: 152px;
+  z-index: 2;
+}
+.text {
+  position: relative;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 143%;
+  color: #f3f3f3;
+  margin-left: 20px;
+  z-index: 2;
+}
+.link {
+  position: relative;
+  border-radius: 42px;
+  padding: 14px 40px;
+  width: 151px;
+  height: 46px;
+  background: #f3f3f3;
+  margin-left: 20px;
+  display: flex;
+  gap: 10px;
+  margin-top: 32px;
+  z-index: 2;
+}
+/* 
+.container {
+  position: relative;
+  overflow: hidden;
+  background-image: url('./img/Ellipse 222.png'), url('./img/Ellipse.png'); 
+  background-size: cover;
+  background-repeat: no-repeat;
+} */
+
+.image {
+  position: relative;
+  width: 252px;
+  height: 313px;
+  top: 47px;
+  bottom: 112px;
+  margin-top: 47px;
+  margin-left: 62px;
+  margin-right: 61px;
+  z-index: 2;
+}
+.image3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.image4 {
+  position: absolute;
+  top: 414px;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+
+}
+@media (min-width: 768px) {
+  .image4{
+    top: 214px;
+  }
+  .title {
+   font-weight: 600;
+   font-size: 56px;
+   line-height: 107%;
+   margin-left: 32px;
+   margin-right: 95px;
+
+  }
+  .text{
+    margin-left: 32px;
+    margin-right: 117px;
+    margin-top: 28px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 133%;
+  }
+  .link{
+     margin-left: 32px;
+  }
+  .image {
+    width: 359px;
+    height: 445px;
+    margin-left: 205px;
+    margin-top: 54px;
+  }
+}
+@media (min-width: 1440px) {
+  .container{
+    width: 715px;
+    height: 330px;
+    margin-top: 185px;
+    margin-left: 100px;
+  }
+    .title {
+font-weight: 600;
+font-size: 64px;
+line-height: 106%;
+
+  }
+  .text{
+    margin-top: 28px;
+font-weight: 400;
+font-size: 18px;
+line-height: 133%;
+
+  }
+  .image{
+    display: flex;
+  }
+}
