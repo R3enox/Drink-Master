@@ -1,6 +1,6 @@
 // import { lazy } from 'react';
 import {  Link, Route, Routes } from 'react-router-dom';
-// import { AppWrapper } from './App.styled';
+import { AppWrapper } from './App.styled';
 import DrinkPage from './pages/DrinkPage/DrinkPage';
 
 const test = import.meta.env.VITE_API_TEST;
@@ -12,7 +12,7 @@ const drinkId = "123" // временный айдишник коктейля
 function App() {
   console.log(test);
   return (
-    <>
+    <AppWrapper>
       <ul className="flex gap-5 container">
         <li>
           <h1 className="text-2xl text-primary-text-color">Hello</h1>
@@ -29,7 +29,7 @@ function App() {
       <Routes>
         <Route path="/drink/:drinkId" element={<DrinkPage />} />
       </Routes>
-    </>
+    </AppWrapper>
   );
 }
 export default App;
