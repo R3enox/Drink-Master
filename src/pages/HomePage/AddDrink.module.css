@@ -8,6 +8,7 @@
   margin-left: 20px;
   margin-top: 152px;
   z-index: 2;
+  margin-bottom: 0;
 }
 .text {
   position: relative;
@@ -17,29 +18,29 @@
   line-height: 143%;
   color: #f3f3f3;
   margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 16px;
   z-index: 2;
 }
 .link {
   position: relative;
   border-radius: 42px;
-  padding: 14px 40px;
   width: 151px;
   height: 46px;
   background: #f3f3f3;
   margin-left: 20px;
   display: flex;
-  gap: 10px;
   margin-top: 32px;
   z-index: 2;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 112%;
+  color: #161f37;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+
 }
-/* 
-.container {
-  position: relative;
-  overflow: hidden;
-  background-image: url('./img/Ellipse 222.png'), url('./img/Ellipse.png'); 
-  background-size: cover;
-  background-repeat: no-repeat;
-} */
 
 .image {
   position: relative;
@@ -47,7 +48,6 @@
   height: 313px;
   top: 47px;
   bottom: 112px;
-  margin-top: 47px;
   margin-left: 62px;
   margin-right: 61px;
   z-index: 2;
@@ -66,6 +66,9 @@
   z-index: 1;
 
 }
+.image5 {
+  display: none;
+}
 @media (min-width: 768px) {
   .image4{
     top: 214px;
@@ -76,6 +79,7 @@
    line-height: 107%;
    margin-left: 32px;
    margin-right: 95px;
+   margin-bottom: 0;
 
   }
   .text{
@@ -85,9 +89,11 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 133%;
+    margin-bottom: 0;
   }
   .link{
      margin-left: 32px;
+     margin-top: 48px;
   }
   .image {
     width: 359px;
@@ -104,19 +110,45 @@
     margin-left: 100px;
   }
     .title {
-font-weight: 600;
-font-size: 64px;
-line-height: 106%;
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 106%;
+    margin: 0;
 
   }
   .text{
-    margin-top: 28px;
-font-weight: 400;
-font-size: 18px;
-line-height: 133%;
+    font-family: var(--font-family);
+    padding-top: 28px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 133%;
+    margin: 0;
+    padding-right: 215px;
+    padding-bottom: 40px;
 
   }
-  .image{
-    display: flex;
-  }
+
+ .image {
+  position: absolute;
+  top: 128px; 
+  right: 136px;
+  margin: 0;
+}
+.link{
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 112%;
+  border-radius: 42px;
+  width: 160px;
+  height: 54px;
+  margin: 0;
+}
+.image5 {
+  display: block;
+    position: absolute;
+    top: 203px;
+    left: 660px;
+    right: 193px;
+    z-index: 1;
+}
 }

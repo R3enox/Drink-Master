@@ -5,9 +5,10 @@ import css from './AddDrink.module.css';
 import imageSrc from './img/asr_blue_iced_tea_4203516a_f9a0_4011_b97a_c7044eabc27f 1.png';
 import imageSrc1 from './img/Ellipse 222.png';
 import imageSrc2 from './img/Ellipse.png';
+import imageSrc3 from './img/Ellipse 224.png';
 function HomePage() {
   return (
-    <div >
+    <div>
       <div className={css.container}>
         <h1 className={css.title}>
           Craft Your Perfect Drink with Drink Master
@@ -24,6 +25,7 @@ function HomePage() {
       <img src={imageSrc} alt="" className={css.image} />
       <img src={imageSrc1} alt="" className={css.image3} />
       <img src={imageSrc2} alt="" className={css.image4} />
+      <img src={imageSrc3} alt="" className={css.image5} />
     </div>
   );
 }

@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/home" element={<HomePage />}></Route>
       </Routes>
-      <ul className="flex gap-5 container">
+      {/* <ul className="flex gap-5 container">
         <li>
           <h1 className="text-2xl text-primary-text-color">Hello</h1>
         </li>
@@ -22,7 +22,7 @@ function App() {
             The quick brown fox...
           </p>
         </li>
-      </ul>
+      </ul> */}1
 
       <Routes></Routes>
     </AppWrapper>
