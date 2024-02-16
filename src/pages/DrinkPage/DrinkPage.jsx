@@ -5,22 +5,20 @@ import DrinkIngredientsList from '../../components/DrinkIngredientsList/DrinkIng
 import RecipePreparation from '../../components/RecipePreparation/RecipePreparation';
 import { useEffect } from 'react';
 import { fetchCocktailsById } from '../../redux/drinkIdStorageReducer/services/drinkIdServices';
-// import { useParams } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 
 const DrinkPage = () => {
   const currentCocktail = useSelector(selectGetCurrentCocktail);
   const dispatch = useDispatch();
-  // const {drinkId} = useParams()
-
-  const id = '123'; // Временный айдишник
+  const { drinkId } = useParams();
 
   useEffect(() => {
-    dispatch(fetchCocktailsById(id));
-  }, [dispatch]);
+    dispatch(fetchCocktailsById(drinkId));
+  }, [drinkId, dispatch]);
 
   return (
     <>
-      <DrinkPageHero />
+      <DrinkPageHero cocktail={currentCocktail}/>
       <DrinkIngredientsList cocktail={currentCocktail} />
       <RecipePreparation description={currentCocktail} />
     </>
