@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getDrinks } from './operations';
+import { filterDrinks, getDrinks } from './operations';
 const drinksSlice = createSlice({
   name: 'drinks',
   initialState: {
@@ -12,6 +12,11 @@ const drinksSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.drinks = action.payload.data;
+      })
+      .addCase(filterDrinks.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.drinks = action.payload;
       })
 
       .addMatcher(

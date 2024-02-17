@@ -16,6 +16,7 @@
     "@reduxjs/toolkit": "^2.2.1",
     "@vitejs/plugin-react-swc": "^3.3.2",
     "axios": "^1.6.7",
+    "formik": "^2.4.5",
     "modern-normalize": "^2.0.0",
     "nanoid": "^5.0.5",
     "normalize.css": "^8.0.1",

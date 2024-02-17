@@ -10,7 +10,7 @@ import { DrinkCardPreview } from './DrinkCardPreview';
 import { Link } from 'react-router-dom';
 const categories = ['Ordinary Drink', 'Cocktail', 'Shake', 'Other/Unknown'];
 
-export const PreviewDrinksInCategory = () => {
+export const PreviewDrinks = () => {
   const drinks = useSelector(drinksSelector);
   const isLoading = useSelector(selectDrinksIsLoading);
   const dispatch = useDispatch();
