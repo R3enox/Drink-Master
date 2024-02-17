@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { AppWrapper } from './App.styled';
 import HomePage from './pages/HomePage/HomePage';
 import DrinksPage from './pages/DrinksPage/DrinksPage';
+import MyDrinksPage from './pages/MyDrinksPage/MyDrinksPage';
 
 const test = import.meta.env.VITE_API_TEST;
 
@@ -27,6 +28,7 @@ function App() {
       <Routes>
         <Route path="/home" element={<HomePage />} />
         <Route path="/drinks" element={<DrinksPage />} />
+        <Route path="/drinks/own" element={<MyDrinksPage />} />
       </Routes>
     </AppWrapper>
   );
