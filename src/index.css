@@ -23,3 +23,11 @@
   display: flex;
   justify-content: space-between;
 }
+
+.basic-single {
+  color: #0a0a11;
+}
+.form-search {
+  background-color: #f3f3f3;
+  color: #0a0a11;
+}
