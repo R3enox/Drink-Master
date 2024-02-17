@@ -2,8 +2,7 @@ import DrinksItem from '../DrinksItem/DrinksItem';
 
 const DrinksList = ({ data, onSeeMore, onDelete }) => {
   return (
-    <div>
-      {/* {isLoading && <Loader />} */}
+    <ul>
       {data.map((myDrink) => (
         <DrinksItem
           key={myDrink._id}
@@ -12,7 +11,7 @@ const DrinksList = ({ data, onSeeMore, onDelete }) => {
           onDelete={() => onDelete(myDrink._id)}
         />
       ))}
-    </div>
+    </ul>
   );
 };
 
