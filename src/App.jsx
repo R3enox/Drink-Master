@@ -17,7 +17,6 @@ function App() {
     <AppWrapper>
       <Routes>
         <Route path="/add" element={<AddDrinkPage />} />
-            <h1 className="text-2xl text-primary-text-color">Hello</h1>
         <Route
           path="/"
           element={
