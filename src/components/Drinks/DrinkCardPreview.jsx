@@ -8,7 +8,7 @@ export const DrinkCardPreview = ({ drink }) => {
       <img src={imageSrc} alt={drink.drink} width="400px" height="400px" />
       <div className="drink-preview-thumb">
         <p>{drink.drink}</p>
-        <Link to="../drink/:drinkId"> See more</Link>
+        <Link to={`../drink/${drink._id}`}> See more</Link>
       </div>
     </li>
   );
