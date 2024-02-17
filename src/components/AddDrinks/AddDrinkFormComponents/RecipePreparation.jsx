@@ -4,7 +4,7 @@ const RecipePreparation = () => {
   return (
     <AddDrinkTitle text="Recipe Preparation">
       <textarea
-        name=""
+        name="instructions"
         id=""
         cols="30"
         rows="10"

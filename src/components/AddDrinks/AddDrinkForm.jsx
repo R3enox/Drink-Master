@@ -3,8 +3,21 @@ import DrinkIngredientsFields from './AddDrinkFormComponents/DrinkIngredientsFie
 import RecipePreparation from './AddDrinkFormComponents/RecipePreparation';
 
 const AddDrinkForm = () => {
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+
+    console.log(formData);
+
+    formData.forEach((value, name) => {
+      console.log('name: ', name);
+      console.log('value: ', value);
+    });
+  };
+
   return (
-    <form>
+    <form onSubmit={onSubmit}>
       <DrinkPageHero />
       <DrinkIngredientsFields />
       <RecipePreparation />

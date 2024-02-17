@@ -1,41 +1,39 @@
-import { nanoid } from 'nanoid';
+import Select from 'react-select';
 
-const array = [
-  'Ordinary Drink',
-
-  'Cocktail',
-
-  'Shake',
-
-  'Other/Unknown',
-  'Cocoa',
-  'Shot',
-  'Coffee/Tea',
-  'Homemade Liqueur',
-  'Punch/Party Drink',
-  'Beer, Soft Drink',
+const optionsCategory = [
+  { value: 'Ordinary Drink', label: 'Ordinary Drink' },
+  { value: 'Cocktail', label: 'Cocktail' },
+  { value: 'Shake', label: 'Shake' },
+  { value: 'Other/Unknown', label: 'Other/Unknown' },
+  { value: 'Cocoa', label: 'Cocoa' },
+];
+const optionsGlass = [
+  { value: 'Ordinary Drink', label: 'Ordinary Drink' },
+  { value: 'Cocktail', label: 'Cocktail' },
+  { value: 'Shake', label: 'Shake' },
+  { value: 'Other/Unknown', label: 'Other/Unknown' },
+  { value: 'Cocoa', label: 'Cocoa' },
 ];
 
 const DrinkPageHero = () => {
   return (
     <>
-      <input type="file" />
-      <input type="text" placeholder="Enter item title" required />
-      <input type="text" placeholder="Enter about recipe" required />
-      <button type="button">Category</button>
-      <ul>
-        {array.map((elem) => {
-          return <li key={nanoid()}>{elem}</li>;
-        })}
-      </ul>
-      <button type="button">Glass</button>
-      <ul></ul>
+      <input type="file" name="drinkThumb" required />
+      <input type="text" name="drink" placeholder="Enter item title" required />
+      <input
+        type="text"
+        name="description"
+        placeholder="Enter about recipe"
+        required
+      />
+      <Select options={optionsCategory} name="category" />
+      <Select options={optionsGlass} name="glass" />
       <label>
-        <input type="radio" name="alcoholic" required />
+        <input type="radio" name="alcoholic" value="Alcoholic" required />
         Alcoholic
       </label>
       <label>
-        <input type="radio" name="alcoholic" required />
+        <input type="radio" name="alcoholic" value="Non-alcoholic" required />
         Non-alcoholic
       </label>
     </>
