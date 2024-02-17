@@ -1,7 +1,7 @@
-import { Title } from './SigninPage.styled';
+import SignInForm from '../../components/AuthForms/SignInForm';
 
-const SigninPage = () => {
-  return <Title>Signin Page</Title>;
+const SignInPage = () => {
+  return <SignInForm />;
 };
 
-export default SigninPage;
+export default SignInPage;

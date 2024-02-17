@@ -1,7 +1,7 @@
-import { Title } from './SignupPage.styled';
+import SignUpForm from '../../components/AuthForms/SignUpForm';
 
-const SignupPage = () => {
-  return <Title>Signup Page</Title>;
+const SignUpPage = () => {
+  return <SignUpForm />;
 };
 
-export default SignupPage;
+export default SignUpPage;
