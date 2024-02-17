@@ -1,11 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('../dist/fonts.css');
 
 :root {
   font-family: 'Manrope', sans-serif;
   font-weight: 400;
   background-color: #0a0a11;
-  color: #fff;
+
+  color: #f3f3f3;
+}
+
+.categoryListDrink {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.filter-search {
+  display: flex;
+  gap: 8px;
+}
+.drink-preview-thumb {
+  display: flex;
+  justify-content: space-between;
 }
