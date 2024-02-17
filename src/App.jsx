@@ -17,18 +17,22 @@ function App() {
     <AppWrapper>
       <Routes>
         <Route path="/add" element={<AddDrinkPage />} />
-
-        <ul className="flex gap-5 container">
-          <li>
             <h1 className="text-2xl text-primary-text-color">Hello</h1>
-          </li>
-          <li>
-            <p className="text-2xl text-primary-text-color sm:text-8xl">
-              The quick brown fox...
-            </p>
-          </li>
-        </ul>
-
+        <Route
+          path="/"
+          element={
+            <ul className="flex gap-5 container">
+              <li>
+                <h1 className="text-2xl text-primary-text-color">Hello</h1>
+              </li>
+              <li>
+                <p className="text-2xl text-primary-text-color sm:text-8xl">
+                  The quick brown fox...
+                </p>
+              </li>
+            </ul>
+          }
+        />
         <Route path="/home" element={<HomePage />} />
         <Route path="/drinks" element={<DrinksPage />} />
       </Routes>

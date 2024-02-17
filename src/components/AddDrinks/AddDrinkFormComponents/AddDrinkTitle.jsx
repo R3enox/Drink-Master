@@ -1,10 +1,3 @@
-const AddDrinkTitle = ({ text, children }) => {
-  return (
-    <>
-      <h2>{text}</h2>
-      {children}
-    </>
-  );
+export const AddDrinkTitle = ({ text }) => {
+  return <h2>{text}</h2>;
 };
-
-export default AddDrinkTitle;

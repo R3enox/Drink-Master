@@ -1,8 +1,9 @@
-import AddDrinkTitle from './AddDrinkTitle';
+import { AddDrinkTitle } from './AddDrinkTitle';
 
-const RecipePreparation = () => {
+export const RecipePreparation = () => {
   return (
-    <AddDrinkTitle text="Recipe Preparation">
+    <>
+      <AddDrinkTitle text="Recipe Preparation" />
       <textarea
         name="instructions"
         id=""
@@ -11,8 +12,6 @@ const RecipePreparation = () => {
         placeholder="Enter the recipe"
         required
       ></textarea>
-    </AddDrinkTitle>
+    </>
   );
 };
-
-export default RecipePreparation;

@@ -1,8 +1,8 @@
-import DrinkPageHero from './AddDrinkFormComponents/DrinkDescriptionFields';
-import DrinkIngredientsFields from './AddDrinkFormComponents/DrinkIngredientsFields';
-import RecipePreparation from './AddDrinkFormComponents/RecipePreparation';
+import { DrinkPageHero } from './AddDrinkFormComponents/DrinkDescriptionFields';
+import { DrinkIngredientsFields } from './AddDrinkFormComponents/DrinkIngredientsFields';
+import { RecipePreparation } from './AddDrinkFormComponents/RecipePreparation';
 
-const AddDrinkForm = () => {
+export const AddDrinkForm = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -17,13 +17,15 @@ const AddDrinkForm = () => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
-      <DrinkPageHero />
-      <DrinkIngredientsFields />
-      <RecipePreparation />
-      <button type="submit">Add</button>
-    </form>
+    <section className="container">
+      <form onSubmit={onSubmit}>
+        <DrinkPageHero />
+        <DrinkIngredientsFields />
+        <RecipePreparation />
+        <button type="submit" className="block">
+          Add
+        </button>
+      </form>
+    </section>
   );
 };
-
-export default AddDrinkForm;
