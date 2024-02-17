@@ -1,4 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
+
+import { avatarApi } from './auth/usersOperations';
+import storage from 'redux-persist/lib/storage';
+import { drinksReducer } from './drinks/drinksSlice';
+
 import {
   persistStore,
   persistReducer,
@@ -9,31 +14,25 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-// import { authReducer } from './auth/authSlice';
-import storage from 'redux-persist/lib/storage';
-import { drinksReducer } from './drinks/drinksSlice';
-// import { filterReducer } from './filter/filterSlice';
-// import { modalReducer } from './modal/modalSlice';
 
-// const authConfig = {
-//   key: 'auth',
-//   storage,
-//   withelist: ['token'],
-// };
 
 export const store = configureStore({
   reducer: {
-    // auth: persistReducer(authConfig, authReducer),
     drinks: drinksReducer,
-    // filterStore: filterReducer,
-    // modal: modalReducer,
+    [avatarApi.reducerPath]: avatarApi.reducer,
   },
-  middleware: (getDefaultMiddleware) =>
+
+
+
+    
+
+  middleware: (getDefaultMiddleware) =>{
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
+    getDefaultMiddleware().concat(avatarApi.middleware)},
 });
 
-export const persistor = persistStore(store);
+// export const persistor = persistStore(store);
