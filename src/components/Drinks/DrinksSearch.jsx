@@ -1,9 +1,10 @@
 // fetch categories+ingredients
 
-import { useFormik } from 'formik';
+// import { useFormik } from 'formik';
 import { useEffect, useState } from 'react';
 import Select from 'react-select';
-
+import sprite from '../../assets/sprite.svg';
+import { useForm } from 'react-hook-form';
 const categories = [
   'Ordinary Drink',
   'Cocktail',
@@ -41,26 +42,27 @@ const initialState = {
 };
 export const DrinksSearch = ({ onFilterChange }) => {
   const [selectedFilters, setSelectedFilters] = useState(initialState);
-  const formik = useFormik({
-    initialValues: {
-      keyName: '',
-    },
-    onSubmit: (values) => {
-      setSelectedFilters((prevFilters) => ({
-        ...prevFilters,
-        keyName: values.keyName,
-      }));
-    },
-    onReset: () =>
-      setSelectedFilters((prevFilters) => ({
-        ...prevFilters,
-        keyName: '',
-      })),
+  const { handleSubmit, setValue, watch } = useForm({
+    defaultValues: { keyName: '' },
   });
+
   const handleFilterChange = (filterType, selectedValue) => {
     setSelectedFilters((prevFilters) => ({
       ...prevFilters,
       [filterType]: selectedValue,
+    }));
+  };
+  const handleReset = () => {
+    setValue('keyName', '');
+    setSelectedFilters((prevFilters) => ({
+      ...prevFilters,
+      keyName: '',
+    }));
+  };
+  const onSubmit = (values) => {
+    setSelectedFilters((prevFilters) => ({
+      ...prevFilters,
+      keyName: values.keyName,
     }));
   };
   useEffect(() => {
@@ -68,32 +70,34 @@ export const DrinksSearch = ({ onFilterChange }) => {
   }, [selectedFilters]);
 
   return (
-    <div className="filter-search">
-      <form onSubmit={formik.handleSubmit} className="form-search">
+    <div className="flex sm:flex-col md:flex-row sm:gap-3.5 md:gap-2 sm:pt-40px md:pt-60px lg:pt-80px">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="bg-transparent border-input-border-color"
+      >
         <input
-          id="keyName"
-          name="keyName"
+          className="bg-transparent"
           type="text"
           placeholder="Enter the text"
-          onChange={formik.handleChange}
-          value={formik.values.keyName}
+          onChange={(e) => {
+            setValue('keyName', e.target.value);
+          }}
+          value={watch('keyName') || ''}
         />
-        <button type="submit">
-          <svg className="icon-search" width="20px" height="20px">
-            <use href="../../assets/sprite.svg#icon-search"></use>
-          </svg>
-        </button>
-        {formik.values.keyName && (
-          <button type="reset" onClick={formik.handleReset}>
-            {/* <svg className="icon-cross" width="20px" height="20px">
-            <use href="../../assets/sprite.svg#icon-cross"></use>
-          </svg> */}
-            X
+        {watch('keyName') && (
+          <button type="reset" onClick={handleReset}>
+            <svg className="fill-primary-text-color" width="20" height="20">
+              <use href={`${sprite}#icon-cross`}></use>
+            </svg>
           </button>
         )}
+        <button type="submit">
+          <svg className="fill-primary-text-color" width="20" height="20">
+            <use href={`${sprite}#icon-cross`}></use>
+          </svg>
+        </button>
       </form>
       <Select
-        className="basic-single"
         options={categoriesOptions}
         placeholder={'All Categories'}
         isClearable={true}
@@ -105,7 +109,7 @@ export const DrinksSearch = ({ onFilterChange }) => {
         }
       />
       <Select
-        className="basic-single"
+        className="bg-primary-text-button-color text-white"
         options={ingredientsOptions}
         placeholder={'Ingredients'}
         isClearable={true}

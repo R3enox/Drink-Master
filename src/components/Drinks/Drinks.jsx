@@ -21,7 +21,7 @@ export const Drinks = ({ filters }) => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="pt-40px">
       {drinks.length > 0 && (
         <ul className="categoryListDrink">
           {/* delete slice after paginator realization */}

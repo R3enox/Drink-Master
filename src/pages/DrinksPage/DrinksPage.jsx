@@ -15,9 +15,7 @@ export default function DrinksPage() {
   return (
     <div>
       <PageTitle title="Drinks" />
-      <br />
       <DrinksSearch onFilterChange={onFilterChange} />
-      <br />
       <Drinks filters={filters} />
     </div>
   );

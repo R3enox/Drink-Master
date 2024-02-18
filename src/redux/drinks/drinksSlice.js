@@ -1,3 +1,35 @@
+// import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+
+// export const drinksApi = createApi({
+//   reducerPath: 'drinks',
+//   baseQuery: fetchBaseQuery({
+//     baseUrl: 'http://localhost:3000/api',
+//   }),
+//   endpoints: (builder) => ({
+//     getDrinks: builder.query({
+//       query: () => `/drinks`,
+//     }),
+//     filterDrinks: builder.query({
+//       query: (filters) => {
+//         const queryParams = new URLSearchParams();
+//         if (filters.category) {
+//           queryParams.append('category', filters.category);
+//         }
+//         if (filters.ingredient) {
+//           queryParams.append('ingredient', filters.ingredient);
+//         }
+//         if (filters.keyName) {
+//           queryParams.append('keyName', filters.keyName);
+//         }
+//         const queryString = queryParams.toString();
+//         return `/drinks/search?${queryString}`;
+//       },
+//     }),
+//   }),
+// });
+
+// export const { useGetDrinksQuery, useFilterDrinksQuery } = drinksApi;
+
 import { createSlice } from '@reduxjs/toolkit';
 import { filterDrinks, getDrinks } from './operations';
 const drinksSlice = createSlice({

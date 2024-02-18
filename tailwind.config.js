@@ -2,7 +2,15 @@
 export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
-    extend: {},
+    extend: {
+      spacing: {
+        '160px': '160px',
+        '140px': '140px',
+        '80px': '80px',
+        '60px': '60px',
+        '40px': '40px',
+      },
+    },
     container: {
       padding: {
         sm: '1.25rem',
@@ -30,6 +38,18 @@ export default {
       'button-hover-color': '#0A0A11',
       'welcome-text-color': '#FAFAFA',
       'filter-scroll-text': '#434D67',
+      'input-border-color': 'rgba(243, 243, 243, 0.2)',
+    },
+
+    fontSize: {
+      xl: '32px',
+      '2xl': '56px',
+      '3xl': '64px',
+    },
+    fontWeight: {
+      normal: '400',
+      medium: '500',
+      semibold: '600',
     },
   },
 

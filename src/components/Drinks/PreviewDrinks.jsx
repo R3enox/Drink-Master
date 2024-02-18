@@ -28,7 +28,7 @@ export const PreviewDrinks = () => {
             <strong>{category}</strong>
             <ul className="categoryListDrink">
               {drinks
-                .filter((drink) => category === drink.category)
+                ?.filter((drink) => category === drink.category)
                 .slice(0, 4)
                 .map((drink) => (
                   <DrinkCardPreview key={drink._id} drink={drink} />
