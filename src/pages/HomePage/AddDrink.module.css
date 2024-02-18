@@ -27,7 +27,7 @@
   border-radius: 42px;
   width: 151px;
   height: 46px;
-  background: #f3f3f3;
+  background-color: #f3f3f3;
   margin-left: 20px;
   display: flex;
   margin-top: 32px;
@@ -51,6 +51,7 @@
   margin-left: 62px;
   margin-right: 61px;
   z-index: 2;
+  margin-bottom: 112px;
 }
 .image3 {
   position: absolute;
