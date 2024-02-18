@@ -9,21 +9,22 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-// import { authReducer } from './auth/authSlice';
+
 import storage from 'redux-persist/lib/storage';
 import { drinksReducer } from './drinks/drinksSlice';
+import { authReducer } from './auth/authReducer';
 // import { filterReducer } from './filter/filterSlice';
 // import { modalReducer } from './modal/modalSlice';
 
-// const authConfig = {
-//   key: 'auth',
-//   storage,
-//   withelist: ['token'],
-// };
+const authConfig = {
+  key: 'auth',
+  storage,
+  withelist: ['token'],
+};
 
 export const store = configureStore({
   reducer: {
-    // auth: persistReducer(authConfig, authReducer),
+    auth: persistReducer(authConfig, authReducer),
     drinks: drinksReducer,
     // filterStore: filterReducer,
     // modal: modalReducer,
