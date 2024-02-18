@@ -3,6 +3,8 @@ import styled from '@emotion/styled';
 import 'normalize.css';
 
 export const AppWrapper = styled.div`
+  display: flex;
+  justify-content: center;
   width: 100%;
   height: 100vh;
   background-repeat: no-repeat;
