@@ -3,8 +3,8 @@ import { Footer } from '../Footer/Footer';
 const Layout = ({ children }) => {
   return (
     <>
-      {children}
-      <Footer />
+      <main>{children}</main>
+      <Footer />;
     </>
   );
 };
