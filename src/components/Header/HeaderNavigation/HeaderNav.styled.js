@@ -6,7 +6,7 @@ export const Nav = styled.nav``;
 
 export const StyledLink = styled(NavLink)`
   text-decoration: none;
-  color: #a70101;
+ 
 `;
 
 export const List = styled.ul`
@@ -22,5 +22,5 @@ export const Item = styled.li`
   list-style: none;
   padding-top: 30px;
   font-weight: 500;
-  color: #a70101;
+  color: white;
 `;

@@ -1,20 +1,28 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const avatarApi = createApi({
+  // const setToken = (token) => {
+  //   instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+  // };
+
+
   reducerPath: 'avatar',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://drink-master-4fm6.onrender.com ',
+    // baseUrl: 'https://drink-master-4fm6.onrender.com ',
+    baseUrl: 'http://localhost:3000',
   }),
-  tagTypes: ['avatar'],
+  tagTypes: ['users'],
   endpoints: (builder) => ({
     uploadAvatar: builder.mutation({
+      //  const token = state.auth.token;
+      //    setToken(token);
+      //    const { data } = await instance.post('/auth/api/updateAvatar');
       query: () => ({
         url: `api/users/avatar`,
-        method: 'PATCH',
+        method: 'POST',
       }),
-      providesTags: ['avatar'],
+      providesTags: ['users'],
     }),
-
   }),
 });
 

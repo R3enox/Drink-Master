@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 
-// MOdal box
+
 
 export const ModalContentWrp = styled.div`
   position: absolute;

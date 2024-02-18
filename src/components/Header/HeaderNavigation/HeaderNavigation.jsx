@@ -8,9 +8,12 @@ export const HeaderNavigation = () => {
     <SC.Nav>
       <SC.List>
         {mainNav.map(({ id, href, title }) => (
-          <SC.Item key={id}>
+          <li
+            className="color: primary-text-color  pl-4 border-grey-text-color border-[1px] rounded-[200px]"
+            key={id}
+          >
             <SC.StyledLink to={href}>{title}</SC.StyledLink>
-          </SC.Item>
+          </li>
         ))}
       </SC.List>
     </SC.Nav>

@@ -7,11 +7,7 @@ export const HiddenInput = styled.input`
 `;
 
 export const ProfilePictureContainer = styled.div`
-  width: 300px;
+  /* width: 300px; */
 `;
 
-export const Label = styled.div`
-  padding-bottom: 8px;
-  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
-  color: rgba(0, 0, 0, 0.87);
-`;
+

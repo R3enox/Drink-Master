@@ -1,14 +1,11 @@
 import { useState } from 'react';
-import * as SC from '../UserInfo/UserInfo.styled';
 import PopUp from '../PopUp/PopUp';
 import LogOutModal from '../LogOutModal/LogOutModal';
 import HeaderModal from '../HeaderModal/HeaderModal';
 
 import { FaRegCircleUser } from 'react-icons/fa6';
 import UserProfileForm from '../UserProfileForm/UserProfileForm';
-// import { useSelector } from 'react-redux';
-// import { IMG } from '../../../../images';
-// import { selectUserAvatar} from '../../../redux/auth/authSelectors';
+
 
 const UserInfo = () => {
   const [openEl, setOpenEl] = useState(null);
@@ -16,8 +13,7 @@ const UserInfo = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [isOpenLogOutModal, setIsOpenLogOutModal] = useState(false);
 
-  //  const userName = useSelector(selectUserName);
-  //  const avatar = useSelector(selectUserAvatar);
+
 
   const openPopUp = (e) => {
     if (!popUpIsOpen) {
@@ -54,17 +50,17 @@ const UserInfo = () => {
   // }, []);
   return (
     <>
-      <SC.UserInform onClick={openPopUp}>
-        <FaRegCircleUser color="#ea1616" size={30} />
-        {/* <SC.UserAvatarWrp avatar={avatar}>
+      <button className='pl-16' onClick={openPopUp}>
+        <FaRegCircleUser color="f3f3f3" size={30} />
+        {/* <div avatar={avatar}>
           {avatar ? (
             ''
           ) : (
             <img src={IMG.noUser} width="22" height="22" alt="logo" />
           )}
-        </SC.UserAvatarWrp> */}
+        </div> */}
 
-        {/* <SC.UserName>{userName || 'User Name'}</SC.UserName> */}
+        {/* <p{userName || 'User Name'}</p> */}
 
         {popUpIsOpen && (
           <PopUp
@@ -74,7 +70,7 @@ const UserInfo = () => {
             openEl={openEl}
           />
         )}
-      </SC.UserInform>
+      </button>
       {isOpenLogOutModal && (
         <HeaderModal isOpen={isOpenLogOutModal} openFnc={toogleLogOutModal}>
           <LogOutModal closeFnc={toogleLogOutModal} />

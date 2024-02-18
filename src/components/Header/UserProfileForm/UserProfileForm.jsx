@@ -1,44 +1,59 @@
-import  { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
-// import { useUploadAvatarMutation } from '../../../redux/auth/usersOperations';
+import { useUploadAvatarMutation } from '../../../redux/auth/usersOperations';
 import { Avatar, Button } from '@mui/material';
-import { HiddenInput, ProfilePictureContainer, Label } from './styles';
-
-
+import { HiddenInput, ProfilePictureContainer } from './styles';
 
 const UserProfileForm = () => {
-  // const [uploadAvatar] = useUploadAvatarMutation();
-  const {
-    register,
-    handleSubmit,
+  // const [selectedFile, setselectedFile] = useState(null);
+  // const [ upLoaded, setUpLoaded] = useState()
+  const [uploadAvatar] = useUploadAvatarMutation();
 
-    formState: { errors },
-  } = useForm();
-   const hiddenInputRef = useRef();
-    const { ref: registerRef, ...rest } = register('profilePicture');
-     const [preview, setPreview] = useState();
-       const handleUploadedFile = (event) => {
-         const file = event.target.files[0];
+  const loadAvatar = uploadAvatar;
 
-         const urlImage = URL.createObjectURL(file);
+  const { register, handleSubmit } = useForm();
+  const hiddenInputRef = useRef();
+  const { ref: registerRef, ...rest } = register('profilePicture');
+  const [preview, setPreview] = useState();
+  const handleUploadedFile = (event) => {
+    const file = event.target.files[0];
 
-         setPreview(urlImage);
-       };
-        const onUpload = () => {
-          hiddenInputRef.current.click();
-        };
-         const uploadButtonLabel = preview ? 'Change image' : 'Upload image';
+    const urlImage = URL.createObjectURL(file);
 
-  const onSubmit = (data) => console.log(data);
+    setPreview(urlImage);
+  };
+  const onUpload = () => {
+    hiddenInputRef.current.click();
+  };
+  //  const uploadButtonLabel = preview ? 'Change image' : 'Upload image';
+
+  // const onSubmit = (data) => console.log(data);
+  const onSubmit = ({ avatar }) => {
+    
+    const formData = new FormData();
+    formData.append('file', avatar);
+
+    loadAvatar(formData);
+
+    return;
+
+    //     const formData = new FormData()
+    //     formData.append('file', avatar)
+
+    //     const res = await (uploadAvatar,{
+    //       method: 'POST',
+    //       body: formData
+    //     })
+    // const data = await res.json()
+    // handleUploadedFile(data);
+  };
 
   return (
     <>
       <ProfilePictureContainer>
-        <Label>Profile picture</Label>
-
         <HiddenInput
           type="file"
-          name="profilePicture"
+          name="avatar"
           {...rest}
           onChange={handleUploadedFile}
           ref={(e) => {
@@ -47,16 +62,13 @@ const UserProfileForm = () => {
           }}
         />
 
-        <Avatar src={preview} sx={{ width: 80, height: 80 }} />
-
         <Button variant="text" onClick={onUpload}>
-          {uploadButtonLabel}
+          <Avatar src={preview} sx={{ width: 80, height: 80 }} />
+          {/* {uploadButtonLabel} */}
         </Button>
       </ProfilePictureContainer>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input {...register('exampleRequired', { required: true })} />
-
-        {errors.exampleRequired && <span>This field is required</span>}
 
         <input type="submit" />
       </form>
