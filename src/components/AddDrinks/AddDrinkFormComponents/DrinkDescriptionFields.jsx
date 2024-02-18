@@ -1,7 +1,16 @@
 import Select from 'react-select';
-import styles from './DrinkDescriptionFields.module.css';
 
 const optionsCategory = [
+  { value: 'Ordinary Drink', label: 'Ordinary Drink' },
+  { value: 'Cocktail', label: 'Cocktail' },
+  { value: 'Shake', label: 'Shake' },
+  { value: 'Other/Unknown', label: 'Other/Unknown' },
+  { value: 'Cocoa', label: 'Cocoa' },
+  { value: 'Ordinary Drink', label: 'Ordinary Drink' },
+  { value: 'Cocktail', label: 'Cocktail' },
+  { value: 'Shake', label: 'Shake' },
+  { value: 'Other/Unknown', label: 'Other/Unknown' },
+  { value: 'Cocoa', label: 'Cocoa' },
   { value: 'Ordinary Drink', label: 'Ordinary Drink' },
   { value: 'Cocktail', label: 'Cocktail' },
   { value: 'Shake', label: 'Shake' },
@@ -35,13 +44,20 @@ export const DrinkPageHero = () => {
         required
       />
       <Select
-        className={styles.custom_select__control}
         classNamePrefix="custom_select"
+        className="mb-8"
         options={optionsCategory}
         name="category"
         placeholder="Category"
+        defaultValue={optionsCategory[0]}
       />
-      <Select options={optionsGlass} name="glass" placeholder="Glass" />
+      <Select
+        classNamePrefix="custom_select"
+        options={optionsGlass}
+        name="glass"
+        defaultValue={optionsCategory[0]}
+        placeholder="Glass"
+      />
       <label>
         <input type="radio" name="alcoholic" value="Alcoholic" required />
         Alcoholic

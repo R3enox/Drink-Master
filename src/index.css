@@ -31,3 +31,100 @@
   background-color: #f3f3f3;
   color: #0a0a11;
 }
+
+/* AddDrinks Select */
+.custom_select__control {
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  min-height: 34px !important;
+  width: 335px !important;
+  border-bottom: 1px solid rgba(243, 243, 243, 0.5) !important;
+  box-shadow: none !important;
+}
+
+.custom_select__menu {
+  position: absolute !important;
+  top: 100% !important;
+  right: 0 !important;
+  z-index: 999 !important;
+  background-color: #161f37 !important;
+  color: rgba(243, 243, 243, 0.4) !important;
+  border-radius: 12px !important;
+  width: 131px !important;
+  height: 286px !important;
+  overflow: hidden !important;
+}
+
+.custom_select__indicator-separator {
+  display: none !important;
+}
+
+.custom_select__indicator {
+  cursor: pointer;
+  color: #f3f3f3 !important;
+}
+
+.custom_select__indicator:hover {
+  color: #848080 !important;
+}
+
+.custom_select__option {
+  background-color: transparent !important;
+  cursor: pointer !important;
+}
+
+.custom_select__indicator .css-tj5bde-Svg {
+  transition: transform 0.5s ease-in-out !important;
+}
+
+.custom_select__control--menu-is-open .css-tj5bde-Svg {
+  transform: rotate(180deg) !important;
+}
+
+/* Ingredients Select */
+
+.ingredientsSelect__control {
+  background-color: transparent !important;
+  border: none !important;
+  border: 1px solid rgba(243, 243, 243, 0.5) !important;
+  border-radius: 200px !important;
+  width: 200px !important;
+  height: 50px !;
+  box-shadow: none !important;
+}
+
+.ingredientsSelect__menu {
+  background-color: #161f37 !important;
+  color: rgba(243, 243, 243, 0.4) !important;
+  border-radius: 12px !important;
+  width: 200px !important;
+  height: 286px !important;
+  overflow: hidden !important;
+}
+
+.ingredientsSelect__indicator-separator {
+  display: none !important;
+}
+
+.ingredientsSelect__option {
+  background-color: transparent !important;
+  cursor: pointer !important;
+}
+
+.ingredientsSelect__indicator .css-tj5bde-Svg {
+  transition: transform 0.5s ease-in-out !important;
+}
+
+.ingredientsSelect__control--menu-is-open .css-tj5bde-Svg {
+  transform: rotate(180deg) !important;
+}
+
+.ingredientsSelect__indicator {
+  cursor: pointer;
+  color: #f3f3f3 !important;
+}
+
+.ingredientsSelect__indicator:hover {
+  color: #848080 !important;
+}
