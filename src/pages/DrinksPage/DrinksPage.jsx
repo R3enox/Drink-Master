@@ -13,7 +13,7 @@ export default function DrinksPage() {
     }));
   };
   return (
-    <div>
+    <div className="container">
       <PageTitle title="Drinks" />
       <DrinksSearch onFilterChange={onFilterChange} />
       <Drinks filters={filters} />

@@ -38,6 +38,7 @@ export default {
       'button-hover-color': '#0A0A11',
       'welcome-text-color': '#FAFAFA',
       'filter-scroll-text': '#434D67',
+      transparent: 'rgba(243, 243, 243, 0)',
       'input-border-color': 'rgba(243, 243, 243, 0.2)',
     },
 

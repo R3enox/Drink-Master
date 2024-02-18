@@ -1,10 +1,8 @@
-// fetch categories+ingredients
-
-// import { useFormik } from 'formik';
 import { useEffect, useState } from 'react';
 import Select from 'react-select';
 import sprite from '../../assets/sprite.svg';
 import { useForm } from 'react-hook-form';
+// fetch categories+ingredients
 const categories = [
   'Ordinary Drink',
   'Cocktail',
@@ -70,11 +68,8 @@ export const DrinksSearch = ({ onFilterChange }) => {
   }, [selectedFilters]);
 
   return (
-    <div className="flex sm:flex-col md:flex-row sm:gap-3.5 md:gap-2 sm:pt-40px md:pt-60px lg:pt-80px">
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="bg-transparent border-input-border-color"
-      >
+    <div className="flex flex-col md:flex-row gap-3.5 md:gap-2 pt-[40px] md:pt-60px lg:pt-80px">
+      <form onSubmit={handleSubmit(onSubmit)} className="bg-transparent">
         <input
           className="bg-transparent"
           type="text"
@@ -86,14 +81,14 @@ export const DrinksSearch = ({ onFilterChange }) => {
         />
         {watch('keyName') && (
           <button type="reset" onClick={handleReset}>
-            <svg className="fill-primary-text-color" width="20" height="20">
-              <use href={`${sprite}#icon-cross`}></use>
+            <svg className="fill-primary-text-color sm:w-[22px] h-[22px] md:w-[28px] md:h-[28px]">
+              <use href={sprite + '#icon-cross'}></use>
             </svg>
           </button>
         )}
         <button type="submit">
-          <svg className="fill-primary-text-color" width="20" height="20">
-            <use href={`${sprite}#icon-cross`}></use>
+          <svg className="fill-primary-text-color sm:w-[22px] h-[22px] md:w-[28px] md:h-[28px]">
+            <use href={sprite + '#icon-search'}></use>
           </svg>
         </button>
       </form>
@@ -109,7 +104,11 @@ export const DrinksSearch = ({ onFilterChange }) => {
         }
       />
       <Select
-        className="bg-primary-text-button-color text-white"
+        /* styles={{
+          backgroundColor: 'primary-text-button-color',
+          color: 'white',
+        }} */
+        className="bg-primary-text-button-color text-primary-text-color"
         options={ingredientsOptions}
         placeholder={'Ingredients'}
         isClearable={true}
