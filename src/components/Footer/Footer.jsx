@@ -1,4 +1,4 @@
-import { FolowUs } from './FolowUs';
+import { FolowUs } from '../reUseComponents/FolowUs';
 import { Nav } from './Nav';
 import { SubscribeForm } from './SubscribeForm';
 import spite from '../../assets/sprite.svg';
