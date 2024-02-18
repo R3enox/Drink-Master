@@ -8,6 +8,7 @@ import HomePage from './pages/HomePage/HomePage';
 import DrinksPage from './pages/DrinksPage/DrinksPage';
 import SignInPage from './pages/SigninPage/SigninPage';
 import SignUpPage from './pages/SignupPage/SignupPage';
+import FavoriteDrinksPage from './pages/FavoriteDrinksPage/FavoriteDrinksPage';
 
 // const test = import.meta.env.VITE_API_TEST;
 
@@ -28,6 +29,7 @@ function App() {
             <Route path="/signin" element={<SignInPage />} />
             <Route path="/home" element={<HomePage />} />
             <Route path="/drinks" element={<DrinksPage />} />
+            <Route path="/favorite" element={<FavoriteDrinksPage />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </AppWrapper>
