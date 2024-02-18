@@ -1,4 +1,4 @@
-import spite from '../../assets/sprite.svg';
+import sprite from '../../assets/sprite.svg';
 import { FolowUs } from '../reUseComponents/FolowUs';
 import { Nav } from './Nav';
 import { SubscribeForm } from './SubscribeForm';
@@ -12,7 +12,7 @@ export const Footer = () => {
           <div className="flex gap-x-[14px] items-center">
             <Link to={'/'}>
               <svg className="fill-primary-text-color w-[22px] h-[22px] md:w-[28px] md:h-[28px]">
-                <use href={spite + '#icon-logo'}></use>
+                <use href={sprite + '#icon-logo'}></use>
               </svg>
             </Link>
             <Link
