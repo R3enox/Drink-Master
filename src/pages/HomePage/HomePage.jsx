@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { PreviewDrinks } from '../../components/Drinks/PreviewDrinks';
 
 import css from './AddDrink.module.css';
 import imageSrc from './img/asr_blue_iced_tea_4203516a_f9a0_4011_b97a_c7044eabc27f 1.png';
@@ -26,18 +27,10 @@ function HomePage() {
       <img src={imageSrc1} alt="" className={css.image3} />
       <img src={imageSrc2} alt="" className={css.image4} />
       <img src={imageSrc3} alt="" className={css.image5} />
+      <h1>HeroSection</h1>
+      <PreviewDrinks />
     </div>
   );
 }
 
-// export default HomePage;
-// import { PreviewDrinksInCategory } from '../../components/Drinks/PreviewDrinksInCategory';
-
-// export default function HomePage() {
-//   return (
-//     <div>
-//       <h1>HeroSection</h1>
-//       <PreviewDrinksInCategory />
-//     </div>
-//   );
-// }
+export default HomePage;
