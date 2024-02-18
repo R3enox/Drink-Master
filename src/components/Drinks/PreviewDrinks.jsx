@@ -5,7 +5,7 @@ import {
   selectDrinksIsLoading,
   drinksSelector,
 } from '../../redux/drinks/drinksSelector';
-import { getDrinks } from '../../redux/drinks/operations';
+import { getDrinks } from '../../redux/drinks/drinksAPI';
 import { DrinkCardPreview } from './DrinkCardPreview';
 import { Link } from 'react-router-dom';
 const categories = ['Ordinary Drink', 'Cocktail', 'Shake', 'Other/Unknown'];

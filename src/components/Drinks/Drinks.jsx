@@ -5,7 +5,7 @@ import {
   selectDrinksIsLoading,
 } from '../../redux/drinks/drinksSelector';
 import { useEffect } from 'react';
-import { filterDrinks, getDrinks } from '../../redux/drinks/operations';
+import { filterDrinks, getDrinks } from '../../redux/drinks/drinksAPI';
 import { Paginator } from './Paginator';
 
 export const Drinks = ({ filters }) => {

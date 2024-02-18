@@ -31,7 +31,7 @@
 // export const { useGetDrinksQuery, useFilterDrinksQuery } = drinksApi;
 
 import { createSlice } from '@reduxjs/toolkit';
-import { filterDrinks, getDrinks } from './operations';
+import { filterDrinks, getDrinks } from './drinksAPI';
 const drinksSlice = createSlice({
   name: 'drinks',
   initialState: {
