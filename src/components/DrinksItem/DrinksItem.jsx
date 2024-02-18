@@ -1,16 +1,16 @@
-const DrinksItem = ({ myDrink, onSeeMore, onDelete }) => {
-  const { drink, drinkThumb, alcoholic, description } = myDrink;
+import { Link } from 'react-router-dom';
+
+const DrinksItem = ({ myDrink }) => {
+  const { _id, drink, drinkThumb, alcoholic, description } = myDrink;
 
   return (
     <li>
-      <h2>{drink}</h2>
       <img src={drinkThumb || 'placeholderImage'} alt={drink} />
+      <h2>{drink}</h2>
       <p>{alcoholic ? 'Alcoholic' : 'Non-alcoholic'}</p>
       <p>{description}</p>
-      <a href="#" onClick={onSeeMore}>
-        See more
-      </a>
-      <button onClick={onDelete}>Видалити</button>
+      <Link to={`/drink/${_id}`}>See more</Link>
+      <button onClick={() => onDelete(_id)}>Видалити</button>
     </li>
   );
 };

@@ -1,15 +1,12 @@
+// import { useEffect, useState } from 'react';
 import DrinksItem from '../DrinksItem/DrinksItem';
+import axios from 'axios';
 
-const DrinksList = ({ data, onSeeMore, onDelete }) => {
+const DrinksList = ({ data }) => {
   return (
     <ul>
-      {data.map((myDrink) => (
-        <DrinksItem
-          key={myDrink._id}
-          myDrink={myDrink}
-          onSeeMore={() => onSeeMore(myDrink._id)}
-          onDelete={() => onDelete(myDrink._id)}
-        />
+      {data.map((drink) => (
+        <DrinksItem key={drink._id} myDrink={drink} />
       ))}
     </ul>
   );
