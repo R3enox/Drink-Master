@@ -1,4 +1,4 @@
-import spite from '../../assets/sprite.svg';
+import sprite from '../../assets/sprite.svg';
 
 export const FolowUs = () => {
   return (
@@ -10,7 +10,7 @@ export const FolowUs = () => {
           rel="noreferrer noopener"
         >
           <svg className="fill-primary-text-color sm:w-[22px] h-[22px] md:w-[28px] md:h-[28px]">
-            <use href={spite + '#icon-facebook'}></use>
+            <use href={sprite + '#icon-facebook'}></use>
           </svg>
         </a>
       </li>
@@ -21,7 +21,7 @@ export const FolowUs = () => {
           rel="noreferrer noopener"
         >
           <svg className="fill-primary-text-color sm:w-[22px] h-[22px] md:w-[28px] md:h-[28px]">
-            <use href={spite + '#icon-instagram'}></use>
+            <use href={sprite + '#icon-instagram'}></use>
           </svg>
         </a>
       </li>
@@ -32,7 +32,7 @@ export const FolowUs = () => {
           rel="noreferrer noopener"
         >
           <svg className="fill-primary-text-color sm:w-[22px] h-[22px] md:w-[28px] md:h-[28px]">
-            <use href={spite + '#icon-youtube'}></use>
+            <use href={sprite + '#icon-youtube'}></use>
           </svg>
         </a>
       </li>
