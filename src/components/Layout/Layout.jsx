@@ -1,18 +1,14 @@
-import { Outlet } from 'react-router-dom';
-
-import { Suspense } from 'react';
-
+import { Footer } from '../Footer/Footer';
 import { HeaderRender } from '../Header/HeaderReander/HeaderRender';
 
-export const Layout = () => {
+const Layout = ({ children }) => {
   return (
     <>
-      <HeaderRender />
-
-      <Outlet fallback={null} />
-      <Suspense fallback={null}>
-        <Outlet />
-      </Suspense>
+      <HeaderRender/>
+      {children}
+      <Footer />
     </>
   );
 };
+
+export default Layout;
