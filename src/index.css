@@ -43,6 +43,23 @@
   box-shadow: none !important;
 }
 
+::-webkit-scrollbar {
+  width: 8px !important;
+}
+::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+::-webkit-scrollbar-thumb {
+  background: #434d67 !important;
+  border-radius: 20px !important;
+  width: 8px !important;
+  height: 110px !important;
+  margin-left: 10px !important;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555 !important;
+}
+
 .custom_select__menu {
   position: absolute !important;
   top: 100% !important;
@@ -52,8 +69,13 @@
   color: rgba(243, 243, 243, 0.4) !important;
   border-radius: 12px !important;
   width: 131px !important;
-  height: 286px !important;
+  max-height: 286px !important;
   overflow: hidden !important;
+  padding: 10px !important;
+
+  font-weight: 400 !important;
+  font-size: 12px !important;
+  line-height: 133% !important;
 }
 
 .custom_select__indicator-separator {
@@ -72,6 +94,8 @@
 .custom_select__option {
   background-color: transparent !important;
   cursor: pointer !important;
+  padding: 0 !important;
+  margin-bottom: 6px !important;
 }
 
 .custom_select__indicator .css-tj5bde-Svg {
@@ -90,8 +114,13 @@
   border: 1px solid rgba(243, 243, 243, 0.5) !important;
   border-radius: 200px !important;
   width: 200px !important;
-  height: 50px !;
+  height: 50px !important;
   box-shadow: none !important;
+  color: #f3f3f3;
+}
+
+.ingredientsSelect__control:hover {
+  border: 1px solid #f3f3f3 !important;
 }
 
 .ingredientsSelect__menu {
@@ -101,6 +130,11 @@
   width: 200px !important;
   height: 286px !important;
   overflow: hidden !important;
+  padding: 10px !important;
+
+  font-weight: 400 !important;
+  font-size: 12px !important;
+  line-height: 133% !important;
 }
 
 .ingredientsSelect__indicator-separator {
@@ -110,6 +144,8 @@
 .ingredientsSelect__option {
   background-color: transparent !important;
   cursor: pointer !important;
+  padding: 0 !important;
+  margin-bottom: 6px !important;
 }
 
 .ingredientsSelect__indicator .css-tj5bde-Svg {

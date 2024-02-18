@@ -31,7 +31,7 @@ export const DrinkIngredientsFields = () => {
     for (let i = 0; i < ingredientsCount; i++) {
       const id = nanoid();
       newIngredientInputs.push(
-        <li key={id} className="flex mb-3.5">
+        <li key={id} className="flex items-center mb-3.5 gap-x-2">
           <Select
             className="flex-initial w-52"
             options={optionsCategory}
@@ -39,15 +39,14 @@ export const DrinkIngredientsFields = () => {
             defaultValue={optionsCategory[i]}
           />
           <label>
-            <input type="text" placeholder="1  cl" />
+            <input
+              type="text"
+              placeholder="1  cl"
+              className="text-primary-text-color placeholder-primary-text-color bg-transparent w-[100px] h-[50px] border-grey-text-color border-[1px] rounded-[200px] pl-[18px] "
+            />
           </label>
           <button type="button" id={id} onClick={() => handleDelete(id)}>
-            <svg
-              width="16"
-              height="16"
-              style={{ stroke: 'red' }}
-              className="pointer-events-none"
-            >
+            <svg className="pointer-events-none stroke-primary-text-color w-[18px] h-[18px] ">
               <use href={`${sprite}#icon-cross`} />
             </svg>
           </button>
@@ -83,10 +82,10 @@ export const DrinkIngredientsFields = () => {
   return (
     <>
       <div className="flex gap-20">
-        <AddDrinkTitle text="Ingredients" />
+        <AddDrinkTitle text="Ingredients" className="inline-block" />
         <div
           id="counter"
-          className="w-24 flex justify-around text-center border-solid border-grey-text-color border-2 rounded-3xl"
+          className="w-[104px] h-[38px]   flex justify-around items-center border-solid border-grey-text-color border-[1px] rounded-3xl"
         >
           <button type="button" data-action="decrement" onClick={handleDec}>
             <svg width="16" height="16" className="stroke-primary-text-color ">
@@ -103,7 +102,7 @@ export const DrinkIngredientsFields = () => {
           </button>
         </div>
       </div>
-      <ul>{ingredientInputs}</ul>
+      <ul className="mb-20">{ingredientInputs}</ul>
     </>
   );
 };

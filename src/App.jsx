@@ -22,18 +22,18 @@ function App() {
   return (
     <Layout>
       <Suspense fallback={null}>
-        <AppWrapper>
-          <Routes>
-            <Route path="/" element={<Navigate to="/welcome" />} />
-            <Route path="/welcome" element={<WelcomePage />} />
-            <Route path="/signup" element={<SignUpPage />} />
-            <Route path="/signin" element={<SignInPage />} />
-            <Route path="/add" element={<AddDrinkPage />} />
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/drinks" element={<DrinksPage />} />
-            <Route path="*" element={<ErrorPage />} />
-          </Routes>
-        </AppWrapper>
+        {/* <AppWrapper> */}
+        <Routes>
+          <Route path="/" element={<Navigate to="/welcome" />} />
+          <Route path="/welcome" element={<WelcomePage />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/signin" element={<SignInPage />} />
+          <Route path="/add" element={<AddDrinkPage />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/drinks" element={<DrinksPage />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+        {/* </AppWrapper> */}
       </Suspense>
     </Layout>
   );

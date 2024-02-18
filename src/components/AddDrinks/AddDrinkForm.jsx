@@ -17,12 +17,15 @@ export const AddDrinkForm = () => {
   };
 
   return (
-    <section className="container margin">
+    <section className="container margin pb-20">
       <form onSubmit={onSubmit}>
         <DrinkPageHero />
         <DrinkIngredientsFields />
         <RecipePreparation />
-        <button type="submit" className="block">
+        <button
+          type="submit"
+          className="block w-[108px] h-[46px] rounded-[42px] bg-primary-text-color text-primary-text-button-color"
+        >
           Add
         </button>
       </form>
