@@ -45,6 +45,7 @@ export default {
       'button-hover-color': '#0A0A11',
       'welcome-text-color': '#FAFAFA',
       'filter-scroll-text': '#434D67',
+      'hover-text-color': '#253d6f',
       'border-color': 'rgba(243, 243, 243, 0.2)',
       'grey-text-color': 'rgba(243, 243, 243, 0.5)',
       transparent: 'rgba(243, 243, 243, 0)',
