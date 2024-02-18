@@ -1,7 +1,7 @@
-import { FolowUs } from './FolowUs';
+import spite from '../../assets/sprite.svg';
+import { FolowUs } from '../reUseComponents/FolowUs';
 import { Nav } from './Nav';
 import { SubscribeForm } from './SubscribeForm';
-import spite from '../../assets/sprite.svg';
 import { Link } from 'react-router-dom';
 
 export const Footer = () => {

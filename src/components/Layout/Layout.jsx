@@ -1,7 +1,12 @@
 import { Footer } from '../Footer/Footer';
 
-const Layout = () => {
-  return <Footer />;
+const Layout = ({ children }) => {
+  return (
+    <>
+      {children}
+      <Footer />
+    </>
+  );
 };
 
 export default Layout;
