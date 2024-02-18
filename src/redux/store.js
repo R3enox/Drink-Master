@@ -9,10 +9,10 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-// import { authReducer } from './auth/authSlice';
-// import storage from 'redux-persist/lib/storage';
-import { drinkIdStorageReducer } from './drinkIdStorageReducer/drinkIdStorageReducer';
-// import { contactsReducer } from './contacts/contactsSlice';
+
+import storage from 'redux-persist/lib/storage';
+import { drinksReducer } from './drinks/drinksSlice';
+import { authReducer } from './auth/authReducer';
 // import { filterReducer } from './filter/filterSlice';
 // import { modalReducer } from './modal/modalSlice';
 
@@ -24,9 +24,12 @@ import { drinkIdStorageReducer } from './drinkIdStorageReducer/drinkIdStorageRed
 
 export const store = configureStore({
   reducer: {
-    drinkIdStorage: drinkIdStorageReducer,
+    auth: persistReducer(authConfig, authReducer),
+    drinks: drinksReducer,
+    // filterStore: filterReducer,
+    // modal: modalReducer,
   },
-  middleware: getDefaultMiddleware =>
+  middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],

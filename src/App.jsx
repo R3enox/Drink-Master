@@ -1,35 +1,39 @@
-// import { lazy } from 'react';
-import {  Link, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { AppWrapper } from './App.styled';
-import DrinkPage from './pages/DrinkPage/DrinkPage';
+import { Suspense } from 'react';
+import WelcomePage from './pages/WelcomePage/WelcomePage';
+import ErrorPage from 'pages/ErrorPage/ErrorPage';
+import Layout from './components/Layout/Layout';
+import HomePage from './pages/HomePage/HomePage';
+import DrinksPage from './pages/DrinksPage/DrinksPage';
+import SignInPage from './pages/SigninPage/SigninPage';
+import SignUpPage from './pages/SignupPage/SignupPage';
 
-const test = import.meta.env.VITE_API_TEST;
+// const test = import.meta.env.VITE_API_TEST;
 
 // const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
-// const DrinkPage = lazy(() => import('./pages/DrinkPage/DrinkPage'));
+// const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
+// const DrinksPage = lazy(() => import('./pages/DrinksPage/DrinksPage'));
 
 const drinkId = "123" // временный айдишник коктейля
 function App() {
-  console.log(test);
+  // console.log(test);
   return (
-    <AppWrapper>
-      <ul className="flex gap-5 container">
-        <li>
-          <h1 className="text-2xl text-primary-text-color">Hello</h1>
-        </li>
-        <li>
-          <p className="text-2xl text-primary-text-color sm:text-8xl">
-            The quick brown fox...
-          </p>
-        </li>
-      </ul>
-
-      <Link  to={`/drink/${drinkId}`} >Это будет карточка коктейля</Link>
-
-      <Routes>
-        <Route path="/drink/:drinkId" element={<DrinkPage />} />
-      </Routes>
-    </AppWrapper>
+    <Layout>
+      <Suspense fallback={null}>
+        <AppWrapper>
+          <Routes>
+            <Route path="/" element={<Navigate to="/welcome" />} />
+            <Route path="/welcome" element={<WelcomePage />} />
+            <Route path="/signup" element={<SignUpPage />} />
+            <Route path="/signin" element={<SignInPage />} />
+            <Route path="/home" element={<HomePage />} />
+            <Route path="/drinks" element={<DrinksPage />} />
+            <Route path="*" element={<ErrorPage />} />
+          </Routes>
+        </AppWrapper>
+      </Suspense>
+    </Layout>
   );
 }
 export default App;
