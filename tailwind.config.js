@@ -2,7 +2,14 @@
 export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'mobile-bg-welcome':
+          "url('./src/assets/img/welcomePage/mobile-bg-welcome-page.png')",
+        'mobile-bg-welcome@2x':
+          "url('./src/assets/img/welcomePage/mobile-bg-welcome-page@2x.png')",
+      },
+    },
     container: {
       padding: {
         sm: '1.25rem',
@@ -10,19 +17,15 @@ export default {
         lg: '6.25rem',
       },
     },
-
     lightMode: 'class',
     screens: {
       sm: '375px',
       // => @media (min-width: 375px) { ... }
-
       md: '768px',
       // => @media (min-width: 768px) { ... }
-
       lg: '1440px',
       // => @media (min-width: 1440px) { ... }
     },
-
     colors: {
       'primary-text-color': '#F3F3F3',
       'primary-text-button-color': '#161F37',
@@ -35,6 +38,5 @@ export default {
       transparent: 'rgba(243, 243, 243, 0)',
     },
   },
-
   plugins: [],
 };
