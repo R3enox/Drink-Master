@@ -11,10 +11,9 @@ import { Paginator } from './Paginator';
 export const Drinks = ({ filters }) => {
   const drinks = useSelector(drinksSelector);
   const isLoading = useSelector(selectDrinksIsLoading);
-
   const dispatch = useDispatch();
   useEffect(() => {
-    if (Object.keys(filters).length > 0) dispatch(filterDrinks(filters));
+    dispatch(filterDrinks(filters));
   }, [dispatch, filters]);
 
   return (

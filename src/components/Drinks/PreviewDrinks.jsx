@@ -43,7 +43,7 @@ export const PreviewDrinks = () => {
       </ul>
       <Link
         to="/drinks"
-        className="inline-block mx-auto px-[40px] py-[14px] md:px-[44px] md:py-[18px] font-semibold text-[14px] leading-[1.28] md:text-[16px] md:leading-[1.25] bg-primary-text-color text-primary-text-button-color text-center hover:text-primary-text-color hover:bg-transparent hover:border-[1px] border-border-color rounded-[42px]"
+        className="inline-block mx-auto px-[40px] py-[14px] md:px-[44px] md:py-[18px] font-semibold text-[14px] leading-[1.28] md:text-[16px] md:leading-[1.25] bg-primary-text-color text-primary-text-button-color text-center hover:text-primary-text-color hover:bg-transparent hover:border-[1px] border-border-color rounded-[42px] mb-[80px] md:mb-[140px]"
       >
         Other drinks
       </Link>

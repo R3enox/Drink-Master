@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react';
 import Select from 'react-select';
 import sprite from '../../assets/sprite.svg';
 import { useForm } from 'react-hook-form';
-import { selectAuthUser } from '../../redux/auth/authSelectors';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 // fetch categories+ingredients
 const categories = [
   'Ordinary Drink',
@@ -42,8 +41,6 @@ const initialState = {
 };
 export const DrinksSearch = ({ onFilterChange }) => {
   const [selectedFilters, setSelectedFilters] = useState(initialState);
-  const user = useSelector(selectAuthUser);
-  console.log(user);
   const { handleSubmit, setValue, watch } = useForm({
     defaultValues: { keyName: '' },
   });
