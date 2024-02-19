@@ -13,22 +13,20 @@ export default {
           "url('assets/img/welcomePage/tablet-bg-welcome-page.png')",
         'tablet-bg-welcome@2x':
           "url('assets/img/welcomePage/tablet-bg-welcome-page@2x.png')",
-        'desctop-bg-welcome': "url('/img/welcomePage/desctop-bg-welcome.png')",
+        'desctop-bg-welcome':
+          "url('assets/img/welcomePage/desctop-bg-welcome.png')",
         'desctop-bg-welcome@2x':
           "url('assets/img/welcomePage/desktop-bg-welcome@2x.png')",
         // Footer
-        'mobile-bg-footer':
-          "url('./src/assets/img/footer/mobile-bg-footer.png')",
+        'mobile-bg-footer': "url('assets/img/footer/mobile-bg-footer.png')",
         'mobile-bg-footer@2x':
-          "url('./src/assets/img/footer/mobile-bg-footer@2x.png')",
-        'tablet-bg-footer':
-          "url('./src/assets/img/footer/tablet-bg-footer.png')",
+          "url('assets/img/footer/mobile-bg-footer@2x.png')",
+        'tablet-bg-footer': "url('assets/img/footer/tablet-bg-footer.png')",
         'tablet-bg-footer@2x':
-          "url('./src/assets/img/footer/tablet-bg-footer@2x.png')",
-        'desktop-bg-footer':
-          "url('./src/assets/img/footer/desktop-bg-footer.png')",
+          "url('assets/img/footer/tablet-bg-footer@2x.png')",
+        'desktop-bg-footer': "url('assets/img/footer/desktop-bg-footer.png')",
         'desktop-bg-footer@2x':
-          "url('./src/assets/img/footer/desktop-bg-footer@2x.png')",
+          "url('assets/img/footer/desktop-bg-footer@2x.png')",
       },
     },
     container: {
