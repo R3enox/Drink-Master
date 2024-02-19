@@ -1,9 +1,8 @@
 export const getIdIngredients = (cocktail) => {
-    if (!cocktail || !cocktail.ingredients) return []; 
+  if (!cocktail || !cocktail.ingredients) return [];
 
-    return cocktail.ingredients.map(({ ingredientId }) => ingredientId);
+  return cocktail.ingredients.map(({ ingredientId, measure }) => ({
+    ingredientId,
+    measure,
+  }));
 };
-
-export const parseFromLocalStorage = () => JSON.parse(localStorage.getItem("ingredients"));
-
-

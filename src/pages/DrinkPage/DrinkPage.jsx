@@ -3,28 +3,26 @@ import DrinkPageHero from '../../components/DrinkPageHero/DrinkPageHero';
 import { selectGetCurrentCocktail } from '../../redux/drinkIdStorageReducer/drinkIdStorageReducer.selectors';
 import DrinkIngredientsList from '../../components/DrinkIngredientsList/DrinkIngredientsList';
 import RecipePreparation from '../../components/RecipePreparation/RecipePreparation';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { fetchCocktailsById } from '../../redux/drinkIdStorageReducer/services/drinkIdServices';
 import { useParams } from 'react-router-dom';
-import { getIdIngredients, parseFromLocalStorage } from './services.js';
+import { getIdIngredients } from './services.js';
+import { useFilters } from '../../hooks/useFilters.js';
 
 const DrinkPage = () => {
   const currentCocktail = useSelector(selectGetCurrentCocktail);
   const dispatch = useDispatch();
   const { drinkId } = useParams();
-
-  const [currentIngr, setCurrentIngr] = useState(null);
-  const ingredientsId = getIdIngredients(currentCocktail);
+  const { ingredients } = useFilters();
+  const ingIds = getIdIngredients(currentCocktail);
   const ingredByFilter =
-    currentIngr &&
-    currentIngr.filter((ingr) => ingredientsId.includes(ingr._id['$oid']));
+    ingredients &&
+    ingredients.filter((ingr) =>
+      ingIds.find(({ ingredientId }) => ingredientId === ingr._id)
+    );
 
   useEffect(() => {
-    const ingrId = parseFromLocalStorage();
-    setCurrentIngr(ingrId);
     dispatch(fetchCocktailsById(drinkId));
-
-    () => setCurrentIngr(null);
   }, [drinkId, dispatch]);
 
   return (
@@ -33,7 +31,6 @@ const DrinkPage = () => {
         <DrinkPageHero cocktail={currentCocktail} />
         <DrinkIngredientsList ingredients={ingredByFilter} />
         <RecipePreparation description={currentCocktail} />
-        
       </div>
     </section>
   );
