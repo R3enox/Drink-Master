@@ -26,17 +26,17 @@
   lg:pl-[0];
 }
 .welcome-container {
-  @apply container bg-mobile-bg-welcome m-auto py-[304px] 
+  @apply container min-h-[100vh] m-auto bg-mobile-bg-welcome  py-[304px] 
   md:bg-tablet-bg-welcome md:py-[400px] 
   lg:bg-desctop-bg-welcome lg:py-[273px] lg:bg-background-color;
 }
 .form-sign-up-container {
-  @apply container py-[191px] bg-mobile-bg-welcome m-auto
+  @apply container min-h-[100vh] py-[191px] bg-mobile-bg-welcome m-auto
   md:bg-tablet-bg-welcome md:py-[280px]
   lg:bg-desctop-bg-welcome lg:py-[153px];
 }
 .form-sign-in-container {
-  @apply container py-[259px] bg-mobile-bg-welcome m-auto
+  @apply container min-h-[100vh] py-[259px] bg-mobile-bg-welcome m-auto
   md:bg-tablet-bg-welcome md:py-[350px]
   lg:bg-desctop-bg-welcome lg:py-[223px];
 }
@@ -57,20 +57,17 @@
   @apply transition-shadow shadow-lg hover:shadow-primary-text-color/50 text-primary-text-color font-semibold py-[14px] px-[40px] rounded-[42px] border-[1px] border-border-color text-[14px] leading-[1.29] 
   md:py-[18px] md:px-[44px] md:text-[16px] md:leading-[1.12];
 }
-.sign-in-container {
-  @apply container pt-[259px] bg-mobile-bg-welcome h-full bg-contain bg-right bg-no-repeat;
-}
 .btn-container {
   @apply flex flex-col gap-[14px] mt-[28px] 
   md:mt-[40px] md:pl-[32px] md:w-[400px]
   lg:pl-[0];
 }
 .sign-btn {
-  @apply bg-primary-text-color text-primary-text-button-color font-semibold py-[14px] px-[40px] rounded-[42px] text-[14px] leading-[1.29]
+  @apply transition-shadow shadow-lg hover:shadow-primary-text-color/50 bg-primary-text-color text-primary-text-button-color font-semibold py-[14px] px-[40px] rounded-[42px] text-[14px] leading-[1.29]
   md:text-[16px] md:leading-[1.1] md:py-[18px];
 }
 .sign-link-btn {
-  @apply hover:decoration-primary-text-color outline-none underline decoration-grey-text-color font-semibold text-center text-primary-text-color text-[12px] leading-[1.29]
+  @apply transition hover:decoration-primary-text-color outline-none underline decoration-grey-text-color font-semibold text-center text-primary-text-color text-[12px] leading-[1.29]
   md:text-[14px] md:leading-[1.29];
 }
 /* /Welcome-SignIn-SignUp-Pages */
