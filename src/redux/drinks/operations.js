@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 const token =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Y2ZkMzk4NzQ2YWQ5N2NjNjlkODMwNSIsImlhdCI6MTcwODEzNDgzOSwiZXhwIjoxNzA4MTM4NDM5fQ.cdq2BwMmO9FybxT3b8zUb3wocIkXL-D7lkYMAnw529g';
-axios.defaults.baseURL = 'http://localhost:3000';
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZDIyZWVmOTBiODE5NTBhZDU3Nzc5NyIsImlhdCI6MTcwODMzMzA1MiwiZXhwIjoxNzA4Mzc2MjUyfQ.JxGtsMswyrxncpNTBRmEgLXbMOUUtjigxMFQ3OuwcgU';
+axios.defaults.baseURL = 'https://drink-master-4fm6.onrender.com';
 axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 
 export const getDrinks = createAsyncThunk(

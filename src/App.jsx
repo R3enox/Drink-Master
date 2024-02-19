@@ -8,6 +8,8 @@ import HomePage from './pages/HomePage/HomePage';
 import DrinksPage from './pages/DrinksPage/DrinksPage';
 import SignInPage from './pages/SigninPage/SigninPage';
 import SignUpPage from './pages/SignupPage/SignupPage';
+import DrinkPage from './pages/DrinkPage/DrinkPage';
+
 
 // const test = import.meta.env.VITE_API_TEST;
 
@@ -15,7 +17,6 @@ import SignUpPage from './pages/SignupPage/SignupPage';
 // const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 // const DrinksPage = lazy(() => import('./pages/DrinksPage/DrinksPage'));
 
-const drinkId = "123" // временный айдишник коктейля
 function App() {
   // console.log(test);
   return (
@@ -27,8 +28,9 @@ function App() {
             <Route path="/welcome" element={<WelcomePage />} />
             <Route path="/signup" element={<SignUpPage />} />
             <Route path="/signin" element={<SignInPage />} />
-            <Route path="/home" element={<HomePage />} />
+            <Route path="/home/*" element={<HomePage />} />
             <Route path="/drinks" element={<DrinksPage />} />
+            <Route path={`/drink/:drinkId`} element={<DrinkPage />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </AppWrapper>
