@@ -9,22 +9,25 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-// import { authReducer } from './auth/authSlice';
+
 import storage from 'redux-persist/lib/storage';
 import { drinksReducer } from './drinks/drinksSlice';
+import { authReducer } from './auth/authReducer';
+import { myDrinksApi } from './myDrinks/myDrinksSlice';
 // import { filterReducer } from './filter/filterSlice';
 // import { modalReducer } from './modal/modalSlice';
 
-// const authConfig = {
-//   key: 'auth',
-//   storage,
-//   withelist: ['token'],
-// };
+const authConfig = {
+  key: 'auth',
+  storage,
+  withelist: ['token'],
+};
 
 export const store = configureStore({
   reducer: {
-    // auth: persistReducer(authConfig, authReducer),
+    auth: persistReducer(authConfig, authReducer),
     drinks: drinksReducer,
+    [myDrinksApi.reducerPath]: myDrinksApi.reducer,
     // filterStore: filterReducer,
     // modal: modalReducer,
   },
@@ -33,7 +36,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }),
+    }).concat(myDrinksApi.middleware),
 });
 
 export const persistor = persistStore(store);

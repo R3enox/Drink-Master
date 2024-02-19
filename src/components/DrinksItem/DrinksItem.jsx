@@ -1,7 +1,19 @@
 import { Link } from 'react-router-dom';
+import { useDeleteMyDrinkMutation } from '../../redux/myDrinks/myDrinksSlice';
 
-const DrinksItem = ({ myDrink }) => {
+const DrinksItem = ({ myDrink, onDelete }) => {
   const { _id, drink, drinkThumb, alcoholic, description } = myDrink;
+  const [deleteMyDrink] = useDeleteMyDrinkMutation();
+
+  const handleDelete = async () => {
+    try {
+      await deleteMyDrink(_id);
+      console.log('Drink deleted successfully');
+      onDelete();
+    } catch (error) {
+      console.error('Error deleting drink', error);
+    }
+  };
 
   return (
     <li>
@@ -10,7 +22,10 @@ const DrinksItem = ({ myDrink }) => {
       <p>{alcoholic ? 'Alcoholic' : 'Non-alcoholic'}</p>
       <p>{description}</p>
       <Link to={`/drink/${_id}`}>See more</Link>
-      <button onClick={() => onDelete(_id)}>Видалити</button>
+      <br></br>
+      <button type="button" onClick={handleDelete}>
+        {'Видалити'}
+      </button>
     </li>
   );
 };
