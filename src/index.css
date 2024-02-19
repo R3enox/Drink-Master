@@ -6,7 +6,6 @@
   font-family: 'Manrope', sans-serif;
   font-weight: 400;
   background-color: #0a0a11;
-  /* background-color: #080811; */
   color: #f3f3f3;
 }
 .searchSelect__control {
@@ -22,7 +21,6 @@
   font-size: 17px !important;
   line-height: 156% !important;
 }
-
 .searchSelect__menu {
   background-color: #161f37 !important;
   color: rgba(243, 243, 243, 0.4) !important;
@@ -33,7 +31,7 @@
   font-weight: 400 !important;
   font-size: 17px !important;
   line-height: 156% !important;
-
+}
 /* Welcome-SignIn-SignUp-Pages */
 .input-form {
   @apply w-full bg-transparent h-[54px] rounded-[42px] bg-contain border-[1px] border-border-color  hover:border-grey-text-color transition-colors hover:placeholder-grey-text-color text-[14px] leading-[1.29] placeholder-border-color py-[18px] px-[24px] outline-none
