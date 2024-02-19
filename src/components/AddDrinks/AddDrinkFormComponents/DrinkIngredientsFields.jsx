@@ -44,11 +44,11 @@ export const DrinkIngredientsFields = () => {
             <input
               type="text"
               placeholder="1  cl"
-              className="text-primary-text-color placeholder-primary-text-color bg-transparent w-[100px] h-[50px] border-grey-text-color border-[1px] rounded-[200px] pl-[18px] hover:border-primary-text-color focus:border-primary-text-color "
+              className="text-primary-text-color placeholder-primary-text-color bg-transparent w-[100px] h-[50px] border-grey-text-color border-[1px] rounded-[200px] pl-[18px] hover:border-primary-text-color focus:border-primary-text-color ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms]  "
             />
           </label>
           <button type="button" id={id} onClick={() => handleDelete(id)}>
-            <svg className="pointer-events-none stroke-primary-text-color w-[18px] h-[18px] ">
+            <svg className=" stroke-primary-text-color w-[18px] h-[18px] hover:stroke-[#848080] focus:stroke-[#848080] ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms] ">
               <use href={`${sprite}#icon-cross`} />
             </svg>
           </button>

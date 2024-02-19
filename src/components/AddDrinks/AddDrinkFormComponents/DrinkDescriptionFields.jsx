@@ -94,19 +94,19 @@ export const DrinkPageHero = () => {
           name="drink"
           placeholder="Enter item title"
           required
-          className="block bg-transparent w-[335px]  h-[34px] border-b border-grey-text-color focus:outline-none focus:border-primary-text-color hover:border-primary-text-color placeholder-grey-text-color placeholder-font-normal placeholder-text-sm "
+          className="block pb-[14px]  bg-transparent w-[335px]  h-[34px] border-b border-grey-text-color focus:outline-none focus:border-primary-text-color hover:border-primary-text-color placeholder-grey-text-color placeholder-font-normal placeholder-text-sm "
         />
         <input
           type="text"
           name="description"
           placeholder="Enter about recipe"
-          className="block bg-transparent w-[335px] h-[34px] border-b border-grey-text-color  focus:outline-none  focus:border-primary-text-color hover:border-primary-text-color placeholder-grey-text-color placeholder-font-normal placeholder-text-sm "
+          className="block pb-[14px]  bg-transparent w-[335px] h-[34px] border-b border-grey-text-color  focus:outline-none  focus:border-primary-text-color hover:border-primary-text-color placeholder-grey-text-color placeholder-font-normal placeholder-text-sm "
           required
         />
         <div className="relative">
           <label
             htmlFor="selectCategory"
-            className="absolute top-0 left-0 text-grey-text-color font-normal text-base tracking-[-0.02em] leading-[1]"
+            className="absolute top-0 left-0 text-grey-text-color font-normal text-base tracking-[-0.02em] leading-[1.2]"
           >
             Category
           </label>
@@ -122,7 +122,7 @@ export const DrinkPageHero = () => {
         <div className="relative">
           <label
             htmlFor="selectGlass"
-            className="absolute top-0 left-0 text-grey-text-color font-normal text-base tracking-[-0.02em] leading-[1]"
+            className="absolute top-0 left-0 text-grey-text-color font-normal text-base tracking-[-0.02em] leading-[1.2]"
           >
             Glass
           </label>

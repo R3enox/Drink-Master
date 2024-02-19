@@ -209,6 +209,10 @@
   text-align: end !important;
 }
 
+.ingredientsSelect__indicators {
+  margin-right: 18px !important;
+}
+
 .ingredientsSelect__indicator-separator {
   display: none !important;
 }
@@ -231,6 +235,7 @@
 .ingredientsSelect__indicator {
   cursor: pointer;
   color: #f3f3f3 !important;
+  padding: 0 !important;
 }
 
 .ingredientsSelect__indicator:hover {
