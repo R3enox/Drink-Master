@@ -10,8 +10,8 @@ import { selectAuthIsRefreshing } from './redux/auth/authSelectors';
 import { refreshUserThunk } from './redux/auth/authOperations';
 
 const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
-const SignUpPage = lazy(() => import('./pages/SignUpPage1/SignUpPage1'));
-const SignInPage = lazy(() => import('./pages/SignInPage1/SignInPage1'));
+const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));
+const SignInPage = lazy(() => import('./pages/SignInPage/SignInPage'));
 
 function App() {
   const dispatch = useDispatch();
