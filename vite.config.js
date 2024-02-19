@@ -11,6 +11,7 @@ export default defineConfig({
       components: '/src/components',
       pages: '/src/pages',
       assets: '/src/assets',
+      services: '/src/services',
     },
   },
   base: '/frontend-drink-master/',

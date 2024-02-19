@@ -1,21 +1,14 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import toast from 'react-hot-toast';
-import axios from 'axios';
 
-export const instance = axios.create({
-  baseURL: 'https://drink-master-4fm6.onrender.com/api',
-});
-
-const setToken = (token) => {
-  instance.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
+import API, { setAuthToken } from 'services/axios';
 
 export const signUpThunk = createAsyncThunk(
   'auth/signup',
   async (formData, thunkApi) => {
     try {
-      const { data } = await instance.post('/auth/signup', formData);
-      setToken(data.token);
+      const { data } = await API.post('/auth/signup', formData);
+      setAuthToken(data.token);
       return data;
     } catch (error) {
       toast.error(`We're sorry, something went wrong`);
@@ -28,8 +21,8 @@ export const signInThunk = createAsyncThunk(
   'auth/signin',
   async (formData, thunkApi) => {
     try {
-      const { data } = await instance.post('/auth/signin', formData);
-      setToken(data.token);
+      const { data } = await API.post('/auth/signin', formData);
+      setAuthToken(data.token);
       return data;
     } catch (error) {
       toast.error(`You entered an incorrect login or password`);
