@@ -63,10 +63,11 @@ export const DrinkPageHero = () => {
           onChange={handleUploadedFile}
         />
         <label htmlFor="fileInput" className="cursor-pointer">
-          <div className="flex justify-center items-center w-[335px] h-[320px]  rounded-lg bg-primary-text-button-color bg-opacity-50  ">
+          <div className="flex justify-center items-center w-[335px] h-[320px]  rounded-lg bg-primary-text-button-color bg-opacity-50">
             {preview === undefined ? (
               <div className="flex flex-col pointer-events-none items-center w-20 h-[88px] ">
                 <button
+                  tabindex="-1"
                   type="button"
                   className="flex justify-center items-center  mb-[18px] w-[50px] h-[50px] bg-primary-text-color rounded-[6px]"
                 >
@@ -102,22 +103,38 @@ export const DrinkPageHero = () => {
           className="block bg-transparent w-[335px] h-[34px] border-b border-grey-text-color  focus:outline-none  focus:border-primary-text-color hover:border-primary-text-color placeholder-grey-text-color placeholder-font-normal placeholder-text-sm "
           required
         />
-        <Select
-          classNamePrefix="custom_select"
-          options={optionsCategory}
-          name="category"
-          placeholder="Category"
-          defaultValue={optionsCategory[0]}
-          isRequired={true}
-        />
-        <Select
-          classNamePrefix="custom_select"
-          options={optionsGlass}
-          name="glass"
-          defaultValue={optionsCategory[0]}
-          placeholder="Glass"
-          isRequired={true}
-        />
+        <div className="relative">
+          <label
+            htmlFor="selectCategory"
+            className="absolute top-0 left-0 text-grey-text-color font-normal text-base tracking-[-0.02em]"
+          >
+            Category
+          </label>
+          <Select
+            id="selectCategory"
+            classNamePrefix="custom_select"
+            options={optionsCategory}
+            name="category"
+            defaultValue={optionsCategory[0]}
+            isRequired={true}
+          />
+        </div>
+        <div className="relative">
+          <label
+            htmlFor="selectGlass"
+            className="absolute top-0 left-0 text-grey-text-color font-normal text-base tracking-[-0.02em]"
+          >
+            Glass
+          </label>
+          <Select
+            id="selectGlass"
+            classNamePrefix="custom_select"
+            options={optionsGlass}
+            name="glass"
+            defaultValue={optionsCategory[0]}
+            isRequired={true}
+          />
+        </div>
       </div>
       <div className="mb-20 flex gap-x-3.5">
         {age >= 18 ? (

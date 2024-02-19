@@ -59,6 +59,8 @@
   border-bottom: 1px solid rgba(243, 243, 243, 0.5) !important;
   box-shadow: none !important;
   cursor: pointer !important;
+  justify-content: end !important;
+  column-gap: 8px !important;
 }
 
 .custom_select__control:hover {
@@ -101,9 +103,37 @@
   animation: selectMenu 400ms ease-out !important;
 }
 
+.custom_select__value-container--has-value {
+  max-width: 230px !important;
+}
+
+.custom_select__value-container {
+  padding: 0 !important;
+  align-items: flex-start !important;
+}
+
+.custom_select__single-value {
+  margin: 0 !important;
+}
+.custom_select__input-container {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 .custom_select__input {
   color: #f3f3f3 !important;
 }
+
+.custom_select__single-value {
+  color: #f3f3f3 !important;
+  text-align: end !important;
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  line-height: 100% !important;
+  width: fit-content !important;
+  margin-left: auto !important;
+}
+
 .custom_select__input::placeholder {
   color: rgba(243, 243, 243, 0.5) !important;
 }
@@ -113,6 +143,7 @@
 }
 
 .custom_select__indicator {
+  padding: 0 !important;
   cursor: pointer;
   color: #f3f3f3 !important;
 }
@@ -130,6 +161,10 @@
 
 .custom_select__indicator .css-tj5bde-Svg {
   transition: transform 0.3s ease-in-out !important;
+}
+
+.custom_select__indicators {
+  align-items: flex-start !important;
 }
 
 .custom_select__control--menu-is-open .css-tj5bde-Svg {
@@ -171,6 +206,7 @@
 
 .ingredientsSelect__input {
   color: #f3f3f3 !important;
+  text-align: end !important;
 }
 
 .ingredientsSelect__indicator-separator {
@@ -199,4 +235,18 @@
 
 .ingredientsSelect__indicator:hover {
   color: #848080 !important;
+}
+
+.ingredientsSelect__value-container {
+  padding: 0 !important;
+  margin-left: 18px !important;
+}
+.ingredientsSelect__single-value {
+  margin: 0 !important;
+  color: rgba(243, 243, 243, 0.5) !important;
+}
+
+.ingredientsSelect__input-container {
+  padding: 0 !important;
+  margin: 0 !important;
 }
