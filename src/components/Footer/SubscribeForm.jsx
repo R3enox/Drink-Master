@@ -1,5 +1,4 @@
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
 
 export const SubscribeForm = () => {
   const {
@@ -43,22 +42,6 @@ export const SubscribeForm = () => {
           Subscribe
         </button>
       </form>
-
-      <p className="text-grey-text-color text-[12px] leading-[1.33] mb-[8px] md:absolute top-[443px] left-[32px] md:text-[14px] md:leading-[1.29] lg:top-[388px]">
-        ©2023 Drink Master. All rights reserved.
-      </p>
-      <ul className="flex gap-x-[14px] text-grey-text-color text-[12px] leading-[1.33] md:text-[14px] md:leading-[1.29]">
-        <li>
-          <Link to={'/'}>
-            <p>Privacy Policy</p>
-          </Link>
-        </li>
-        <li>
-          <Link to={'/'}>
-            <p>Terms of Service</p>
-          </Link>
-        </li>
-      </ul>
     </div>
   );
 };

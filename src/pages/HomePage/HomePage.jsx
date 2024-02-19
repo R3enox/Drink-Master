@@ -3,7 +3,7 @@ import { PreviewDrinks } from '../../components/Drinks/PreviewDrinks';
 
 function HomePage() {
   return (
-    <div className="container">
+    <div className="container pb-[80px] md:pb-[140px]">
       <Hero />
       <PreviewDrinks />
     </div>
