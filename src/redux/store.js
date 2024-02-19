@@ -13,6 +13,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { drinksReducer } from './drinks/drinksSlice';
 import { authReducer } from './auth/authReducer';
+import { filtersReducer } from './filters/slice';
 import { drinkIdStorageReducer } from './drinkIdStorageReducer/drinkIdStorageReducer';
 // import { filterReducer } from './filter/filterSlice';
 // import { modalReducer } from './modal/modalSlice';
@@ -27,7 +28,8 @@ export const store = configureStore({
   reducer: {
     auth: persistReducer(authConfig, authReducer),
     drinks: drinksReducer,
-    drinkIdStorage: drinkIdStorageReducer,
+    filters: filtersReducer,
+    drinkIdStorage: drinkIdStorageReducer
     // filterStore: filterReducer,
     // modal: modalReducer,
   },

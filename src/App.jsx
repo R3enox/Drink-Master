@@ -1,41 +1,49 @@
+import { useEffect, Suspense, lazy } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { AppWrapper } from './App.styled';
-import { Suspense } from 'react';
-import WelcomePage from './pages/WelcomePage/WelcomePage';
 import ErrorPage from 'pages/ErrorPage/ErrorPage';
-import Layout from './components/Layout/Layout';
 import HomePage from './pages/HomePage/HomePage';
 import DrinksPage from './pages/DrinksPage/DrinksPage';
-import SignInPage from './pages/SigninPage/SigninPage';
-import SignUpPage from './pages/SignupPage/SignupPage';
+import SharedLayout from './components/SharedLayout/SharedLayout';
+import { selectAuthIsRefreshing } from './redux/auth/authSelectors';
+import { refreshUserThunk } from './redux/auth/authOperations';
 import DrinkPage from './pages/DrinkPage/DrinkPage';
 
 
-// const test = import.meta.env.VITE_API_TEST;
-
-// const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
-// const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
-// const DrinksPage = lazy(() => import('./pages/DrinksPage/DrinksPage'));
+const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
+const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));
+const SignInPage = lazy(() => import('./pages/SignInPage/SignInPage'));
 
 function App() {
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectAuthIsRefreshing);
+
+  useEffect(() => {
+    dispatch(refreshUserThunk());
+  }, [dispatch]);
+
   // console.log(test);
+
   return (
-    <Layout>
-      <Suspense fallback={null}>
-        <AppWrapper>
+    !isRefreshing && (
+      <AppWrapper>
+        <Suspense fallback={<p>Loading...</p>}>
           <Routes>
-            <Route path="/" element={<Navigate to="/welcome" />} />
             <Route path="/welcome" element={<WelcomePage />} />
             <Route path="/signup" element={<SignUpPage />} />
             <Route path="/signin" element={<SignInPage />} />
-            <Route path="/home/*" element={<HomePage />} />
-            <Route path="/drinks" element={<DrinksPage />} />
-            <Route path={`/drink/:drinkId`} element={<DrinkPage />} />
-            <Route path="*" element={<ErrorPage />} />
+            <Route path="/" element={<SharedLayout />}>
+              <Route index element={<Navigate to="/welcome" />} />
+              <Route path="/home" element={<HomePage />} />
+              <Route path="/drinks" element={<DrinksPage />} />
+              <Route path={`/drink/:drinkId`} element={<DrinkPage />} />
+              <Route path="*" element={<ErrorPage />} />
+            </Route>
           </Routes>
-        </AppWrapper>
-      </Suspense>
-    </Layout>
+        </Suspense>
+      </AppWrapper>
+    )
   );
 }
 export default App;
