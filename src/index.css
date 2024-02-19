@@ -62,6 +62,7 @@
   justify-content: end !important;
   column-gap: 8px !important;
   align-items: flex-start !important;
+  transition: border-bottom 250ms cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 .custom_select__control:hover {
@@ -146,6 +147,7 @@
   padding: 0 !important;
   cursor: pointer;
   color: #f3f3f3 !important;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 .custom_select__indicator:hover {
@@ -183,6 +185,7 @@
   box-shadow: none !important;
   color: #f3f3f3 !important;
   cursor: pointer !important;
+  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 .ingredientsSelect__control:hover {
@@ -236,6 +239,7 @@
   cursor: pointer;
   color: #f3f3f3 !important;
   padding: 0 !important;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 .ingredientsSelect__indicator:hover {
