@@ -24,7 +24,7 @@ export const AddDrinkForm = () => {
         <RecipePreparation />
         <button
           type="submit"
-          className="block w-[108px] h-[46px] rounded-[42px] bg-primary-text-color text-primary-text-button-color"
+          className="block w-[108px] h-[46px] rounded-[42px] bg-primary-text-color text-primary-text-button-color hover:border-hover-button-border-color hover:border-2 focus:border-hover-button-border-color focus:border-2 focus:outline-none"
         >
           Add
         </button>

@@ -1,3 +1,5 @@
+import spite from '../../../assets/sprite.svg';
+import { useState } from 'react';
 import Select from 'react-select';
 
 const optionsCategory = [
@@ -26,22 +28,68 @@ const optionsGlass = [
 ];
 
 export const DrinkPageHero = () => {
+  const [preview, setPreview] = useState();
+  const [age] = useState(18);
+
+  // const handleAgeChange = (event) => {
+  //   const newAge = parseInt(event.target.value);
+  //   setAge(newAge);
+  // };
+
+  const handleUploadedFile = (event) => {
+    const file = event.target.files[0];
+
+    const urlImage = URL.createObjectURL(file);
+
+    setPreview(urlImage);
+  };
+
   return (
     <>
-      <input type="file" name="drinkThumb" required className="block" />
+      <div className="mb-10">
+        <input
+          id="fileInput"
+          type="file"
+          name="drinkThumb"
+          required
+          className="inputFile sr-only"
+          onChange={handleUploadedFile}
+        />
+        <label htmlFor="fileInput" className="cursor-pointer">
+          <div className="flex justify-center items-center w-[335px] h-[320px] border-1 outline-none   rounded-lg bg-primary-text-button-color bg-opacity-50  ">
+            {preview === undefined ? (
+              <div className="flex flex-col pointer-events-none items-center w-20 h-[88px] ">
+                <button
+                  type="button"
+                  className="flex justify-center items-center  mb-[18px] w-[50px] h-[50px] bg-primary-text-color rounded-[6px]"
+                >
+                  <svg className="stroke-primary-text-button-color w-[28px] h-[28px] ">
+                    <use href={spite + '#icon-plus'}></use>
+                  </svg>
+                </button>
+                <p className="font-medium text-base leading-[125%]">
+                  Add image
+                </p>
+              </div>
+            ) : (
+              <img src={preview} className="block  w-[335px] h-[320px]" />
+            )}
+          </div>
+        </label>
+      </div>
       <div className="flex flex-col gap-[31px] mb-10">
         <input
           type="text"
           name="drink"
           placeholder="Enter item title"
           required
-          className="block bg-transparent w-[335px]  border-b border-grey-text-color focus:outline-none focus:border-primary-text-color hover:border-primary-text-color placeholder-grey-text-color placeholder-font-normal placeholder-text-sm "
+          className="block bg-transparent w-[335px]  h-[34px] border-b border-grey-text-color focus:outline-none focus:border-primary-text-color hover:border-primary-text-color placeholder-grey-text-color placeholder-font-normal placeholder-text-sm "
         />
         <input
           type="text"
           name="description"
           placeholder="Enter about recipe"
-          className="block bg-transparent w-[335px]  border-b border-grey-text-color focus:outline-none  focus:border-primary-text-color hover:border-primary-text-color placeholder-grey-text-color placeholder-font-normal placeholder-text-sm "
+          className="block bg-transparent w-[335px] h-[34px] border-b border-grey-text-color  focus:outline-none  focus:border-primary-text-color hover:border-primary-text-color placeholder-grey-text-color placeholder-font-normal placeholder-text-sm "
           required
         />
         <Select
@@ -62,26 +110,81 @@ export const DrinkPageHero = () => {
         />
       </div>
       <div className="mb-20 flex gap-x-3.5">
-        <label className="text-grey-text-color checked:text-primary-text-color  flex items-center gap-x-1">
-          <input
-            type="radio"
-            name="alcoholic"
-            value="Alcoholic"
-            required
-            className="form-radio w-5 h-5 bg-transparent"
-          />
-          Alcoholic
-        </label>
-        <label className="text-grey-text-color checked:text-primary-text-color  flex items-center gap-x-1">
-          <input
-            type="radio"
-            name="alcoholic"
-            value="Non-alcoholic"
-            required
-            className="form-radio w-5 h-5 bg-transparent "
-          />
-          Non-alcoholic
-        </label>
+        {age >= 18 ? (
+          <>
+            <label className="relative flex items-center gap-x-1 cursor-pointer ">
+              <input
+                type="radio"
+                name="alcoholic"
+                value="Alcoholic"
+                required
+                className="peer sr-only"
+                defaultChecked
+              />
+              <div className=" w-4 h-4 p-0.5 border-grey-text-color cursor-pointer rounded-[50%] border-[1.30px] peer-checked:border-primary-text-color "></div>
+              <div className=" absolute  left-[3.5%] w-2.5 h-2.5 bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
+              <span className="text-grey-text-color  peer-checked:text-primary-text-color">
+                Alcoholic
+              </span>
+            </label>
+            <label className="relative text-grey-text-color  flex items-center gap-x-1 cursor-pointer">
+              <input
+                type="radio"
+                name="alcoholic"
+                value="Non-alcoholic"
+                required
+                className="peer sr-only"
+              />
+              <div className=" w-4 h-4 p-0.5 border-grey-text-color cursor-pointer rounded-[50%] border-[1.30px] peer-checked:border-primary-text-color "></div>
+              <div className=" absolute  left-[2.8%] w-2.5 h-2.5 bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
+              <span className="text-grey-text-color  peer-checked:text-primary-text-color">
+                Non-alcoholic
+              </span>
+            </label>
+          </>
+        ) : (
+          <>
+            <label
+              className={`relative flex items-center gap-x-1  ${
+                age >= 18 ? 'cursor-pointer' : ''
+              } `}
+            >
+              <input
+                type="radio"
+                name="alcoholic"
+                value="Alcoholic"
+                required
+                className="peer sr-only"
+                disabled={true}
+              />
+              <div
+                className={` w-4 h-4 p-0.5 border-grey-text-color 
+                ${
+                  age >= 18 ? 'cursor-pointer' : ''
+                }  rounded-[50%] border-[1.30px] peer-checked:border-primary-text-color `}
+              ></div>
+              <div className=" absolute  left-[3.5%] w-2.5 h-2.5 bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
+              <span className="text-grey-text-color  peer-checked:text-primary-text-color">
+                Alcoholic
+              </span>
+            </label>
+            <label className="relative text-grey-text-color  flex items-center gap-x-1 cursor-pointer">
+              <input
+                type="radio"
+                name="alcoholic"
+                value="Non-alcoholic"
+                required
+                className="peer sr-only"
+                defaultChecked
+              />
+              <div className=" w-4 h-4 p-0.5 border-grey-text-color cursor-pointer rounded-[50%] border-[1.30px] peer-checked:border-primary-text-color "></div>
+              <div className=" absolute  left-[2.8%] w-2.5 h-2.5 bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
+              <span className="text-grey-text-color  peer-checked:text-primary-text-color">
+                Non-alcoholic
+              </span>
+            </label>
+          </>
+        )}
       </div>
     </>
   );

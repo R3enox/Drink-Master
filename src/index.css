@@ -39,6 +39,7 @@
   border-radius: 0 !important;
   min-height: 34px !important;
   width: 335px !important;
+  height: 34px !important;
   border-bottom: 1px solid rgba(243, 243, 243, 0.5) !important;
   box-shadow: none !important;
 }

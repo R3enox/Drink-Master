@@ -36,6 +36,7 @@ export default {
       'filter-scroll-text': '#434D67',
       'border-color': 'rgba(243, 243, 243, 0.2)',
       'grey-text-color': 'rgba(243, 243, 243, 0.5)',
+      'hover-button-border-color': 'rgba(64, 112, 205, 0.5)',
       transparent: 'rgba(243, 243, 243, 0)',
     },
   },
