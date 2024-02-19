@@ -18,12 +18,11 @@ const SignInForm = () => {
   const onSubmit = (data) => {
     dispatch(signInThunk(data));
     navigate('/home');
-
     reset();
   };
 
   return (
-    <div className="container pt-[259px] bg-mobile-bg-welcome h-full bg-contain bg-right bg-no-repeat">
+    <div className="sign-in-container">
       <form
         className="flex flex-col w-[335px] gap-[14px]"
         onSubmit={handleSubmit(onSubmit)}
@@ -32,7 +31,7 @@ const SignInForm = () => {
           Sign In
         </h1>
         <input
-          className="w-full bg-transparent h-[54px] rounded-[42px] border-[1px] border-border-color  hover:border-grey-text-color hover:color-transparent text-[14px] leading-[1.29] placeholder-border-color py-[18px] px-[24px] outline-none"
+          className="input-form"
           onBlur={onBlur}
           type="email"
           placeholder="Email"
@@ -53,7 +52,7 @@ const SignInForm = () => {
       )} */}
 
         <input
-          className="w-full bg-transparent h-[54px] rounded-[42px] border-[1px] border-border-color hover:border-grey-text-color hover:color-transparent text-[14px] leading-[1.29] placeholder-border-color py-[18px] px-[24px] outline-none"
+          className="input-form"
           onBlur={onBlur}
           type="password"
           placeholder="Password"
@@ -72,17 +71,10 @@ const SignInForm = () => {
       ) : (
         <p>This is an CORRECT password</p>
       )} */}
-        <button
-          className="bg-primary-text-color text-primary-text-button-color font-semibold py-[14px] px-[40px] rounded-[42px] text-[14px] leading-[1.29] "
-          type="submit"
-        >
+        <button className="sign-btn" type="submit">
           Sign In
         </button>
-
-        <Link
-          className="underline decoration-grey-text-color font-semibold text-center text-primary-text-color text-[12px] leading-[1.29]"
-          to="/signup"
-        >
+        <Link className="sign-link-btn" to="/signup">
           Sign Up
         </Link>
       </form>

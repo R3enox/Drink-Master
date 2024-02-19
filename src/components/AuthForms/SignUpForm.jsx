@@ -25,7 +25,7 @@ const SignUpForm = () => {
   };
 
   return (
-    <div className="container pt-[191px] bg-mobile-bg-welcome h-full bg-contain bg-right bg-no-repeat">
+    <div className="sign-in-container">
       <form
         className="flex flex-col w-[335px] gap-[14px]"
         onSubmit={handleSubmit(onSubmit)}
@@ -34,7 +34,7 @@ const SignUpForm = () => {
           Sign Up
         </h1>
         <input
-          className="w-full bg-transparent h-[54px] rounded-[42px] border-[1px] border-border-color  hover:border-grey-text-color hover:color-transparent text-[14px] leading-[1.29] placeholder-border-color py-[18px] px-[24px] outline-none"
+          className="input-form"
           onBlur={onBlur}
           type="text"
           placeholder="Name"
@@ -49,7 +49,7 @@ const SignUpForm = () => {
         />
 
         <input
-          className=" hover:border-grey-text-color hover:color-transparent w-full bg-transparent h-[54px] rounded-[42px] border-[1px] border-border-color text-[14px] leading-[1.29] placeholder-border-color py-[18px] px-[24px] outline-none"
+          className="input-form"
           onBlur={onBlur}
           type="text"
           placeholder="dd/mm/yyyy"
@@ -65,7 +65,7 @@ const SignUpForm = () => {
           })}
         />
         <input
-          className=" hover:border-grey-text-color hover:color-transparent w-full bg-transparent h-[54px] rounded-[42px] border-[1px] border-border-color text-[14px] leading-[1.29] placeholder-border-color py-[18px] px-[24px] outline-none"
+          className="input-form"
           onBlur={onBlur}
           type="email"
           placeholder="Email"
@@ -86,7 +86,7 @@ const SignUpForm = () => {
         )} */}
 
         <input
-          className="hover:border-grey-text-color hover:color-transparent w-full bg-transparent h-[54px] rounded-[42px] border-[1px] border-border-color text-[14px] leading-[1.29] placeholder-border-color py-[18px] px-[24px] outline-none"
+          className="input-form"
           onBlur={onBlur}
           type="password"
           placeholder="Password"
@@ -105,17 +105,11 @@ const SignUpForm = () => {
     ) : (
       <p>This is an CORRECT password</p>
     )} */}
-        <button
-          className="bg-primary-text-color text-primary-text-button-color font-semibold py-[14px] px-[40px] rounded-[42px] text-[14px] leading-[1.29] "
-          type="submit"
-        >
+        <button className="sign-btn" type="submit">
           Sign Up
         </button>
 
-        <Link
-          className="underline decoration-grey-text-color font-semibold text-center text-primary-text-color text-[12px] leading-[1.29]"
-          to="/signin"
-        >
+        <Link className="sign-link-btn" to="/signin">
           Sign In
         </Link>
       </form>

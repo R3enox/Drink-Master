@@ -8,6 +8,14 @@ export default {
           "url('./src/assets/img/welcomePage/mobile-bg-welcome-page.png')",
         'mobile-bg-welcome@2x':
           "url('./src/assets/img/welcomePage/mobile-bg-welcome-page@2x.png')",
+        'tablet-bg-welcome':
+          "url('./src/assets/img/welcomePage/tablet-bg-welcome-page.png')",
+        'tablet-bg-welcome@2x':
+          "url('./src/assets/img/welcomePage/tablet-bg-welcome-page@2x.png')",
+        'desctop-bg-welcome':
+          "url('./src/assets/img/welcomePage/desctop-bg-welcome.png')",
+        'desctop-bg-welcome@2x':
+          "url('./src/assets/img/welcomePage/desctop-bg-welcome@2x.png')",
       },
     },
     container: {
