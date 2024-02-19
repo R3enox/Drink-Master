@@ -63,11 +63,11 @@ export const DrinkPageHero = () => {
           onChange={handleUploadedFile}
         />
         <label htmlFor="fileInput" className="cursor-pointer">
-          <div className="flex justify-center items-center w-[335px] h-[320px]  rounded-lg bg-primary-text-button-color bg-opacity-50">
+          <div className="flex justify-center items-center w-[335px] h-[320px]  rounded-lg bg-primary-text-button-color bg-opacity-50 hover:bg-filter-scroll-text">
             {preview === undefined ? (
               <div className="flex flex-col pointer-events-none items-center w-20 h-[88px] ">
                 <button
-                  tabindex="-1"
+                  tabIndex="-1"
                   type="button"
                   className="flex justify-center items-center  mb-[18px] w-[50px] h-[50px] bg-primary-text-color rounded-[6px]"
                 >
@@ -106,7 +106,7 @@ export const DrinkPageHero = () => {
         <div className="relative">
           <label
             htmlFor="selectCategory"
-            className="absolute top-0 left-0 text-grey-text-color font-normal text-base tracking-[-0.02em]"
+            className="absolute top-0 left-0 text-grey-text-color font-normal text-base tracking-[-0.02em] leading-[1]"
           >
             Category
           </label>
@@ -122,7 +122,7 @@ export const DrinkPageHero = () => {
         <div className="relative">
           <label
             htmlFor="selectGlass"
-            className="absolute top-0 left-0 text-grey-text-color font-normal text-base tracking-[-0.02em]"
+            className="absolute top-0 left-0 text-grey-text-color font-normal text-base tracking-[-0.02em] leading-[1]"
           >
             Glass
           </label>
@@ -149,7 +149,7 @@ export const DrinkPageHero = () => {
                 defaultChecked
               />
               <div className=" w-4 h-4 p-0.5 border-grey-text-color cursor-pointer rounded-[50%] border-[1.30px] peer-checked:border-primary-text-color "></div>
-              <div className=" absolute  left-[3.5%] top-[28%;] w-2.5 h-2.5 bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
+              <div className=" absolute  left-[3.6%] top-[28%;] w-2.5 h-2.5 bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
               <span className="text-grey-text-color  peer-checked:text-primary-text-color">
                 Alcoholic
               </span>

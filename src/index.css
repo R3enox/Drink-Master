@@ -61,6 +61,7 @@
   cursor: pointer !important;
   justify-content: end !important;
   column-gap: 8px !important;
+  align-items: flex-start !important;
 }
 
 .custom_select__control:hover {
@@ -109,7 +110,6 @@
 
 .custom_select__value-container {
   padding: 0 !important;
-  align-items: flex-start !important;
 }
 
 .custom_select__single-value {
