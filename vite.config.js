@@ -10,6 +10,8 @@ export default defineConfig({
       components: '/src/components',
       pages: '/src/pages',
       assets: '/src/assets',
+      hooks: '/src/hooks',
+      services: '/src/services',
     },
   },
   base: '/frontend-drink-master/',

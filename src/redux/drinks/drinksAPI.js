@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { selectAuthToken } from '../auth/authSelectors';
 
@@ -21,6 +21,7 @@ export const getDrinks = createAsyncThunk(
     }
   }
 );
+
 export const filterDrinks = createAsyncThunk(
   'drinks/filterDrinks',
   async (filters, thunkAPI) => {
