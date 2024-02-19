@@ -44,7 +44,7 @@ export const DrinkIngredientsFields = () => {
             <input
               type="text"
               placeholder="1  cl"
-              className="text-primary-text-color placeholder-primary-text-color bg-transparent w-[100px] h-[50px] border-grey-text-color border-[1px] rounded-[200px] pl-[18px] "
+              className="text-primary-text-color placeholder-primary-text-color bg-transparent w-[100px] h-[50px] border-grey-text-color border-[1px] rounded-[200px] pl-[18px] hover:border-primary-text-color focus:border-primary-text-color "
             />
           </label>
           <button type="button" id={id} onClick={() => handleDelete(id)}>

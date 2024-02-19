@@ -1,6 +1,9 @@
 import spite from '../../../assets/sprite.svg';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Select from 'react-select';
+import { selectAuthUser } from '../../../redux/auth/authSelectors';
+import { useSelector } from 'react-redux';
+import { userAge } from '../userAge';
 
 const optionsCategory = [
   { value: 'Ordinary Drink', label: 'Ordinary Drink' },
@@ -29,12 +32,16 @@ const optionsGlass = [
 
 export const DrinkPageHero = () => {
   const [preview, setPreview] = useState();
-  const [age] = useState(18);
+  const [age, setAge] = useState(0);
 
-  // const handleAgeChange = (event) => {
-  //   const newAge = parseInt(event.target.value);
-  //   setAge(newAge);
-  // };
+  const user = useSelector(selectAuthUser);
+
+  useEffect(() => {
+    if (user) {
+      const dateOfBirth = userAge(user.dateOfBirth);
+      setAge(dateOfBirth);
+    }
+  }, [user]);
 
   const handleUploadedFile = (event) => {
     const file = event.target.files[0];
@@ -52,7 +59,7 @@ export const DrinkPageHero = () => {
           type="file"
           name="drinkThumb"
           required
-          className="inputFile sr-only"
+          className="inputFile sr-only mt-[280px] ml-[170px]"
           onChange={handleUploadedFile}
         />
         <label htmlFor="fileInput" className="cursor-pointer">
@@ -125,7 +132,7 @@ export const DrinkPageHero = () => {
                 defaultChecked
               />
               <div className=" w-4 h-4 p-0.5 border-grey-text-color cursor-pointer rounded-[50%] border-[1.30px] peer-checked:border-primary-text-color "></div>
-              <div className=" absolute  left-[3.5%] w-2.5 h-2.5 bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
+              <div className=" absolute  left-[3.5%] top-[28%;] w-2.5 h-2.5 bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
               <span className="text-grey-text-color  peer-checked:text-primary-text-color">
                 Alcoholic
               </span>
@@ -139,7 +146,7 @@ export const DrinkPageHero = () => {
                 className="peer sr-only"
               />
               <div className=" w-4 h-4 p-0.5 border-grey-text-color cursor-pointer rounded-[50%] border-[1.30px] peer-checked:border-primary-text-color "></div>
-              <div className=" absolute  left-[2.8%] w-2.5 h-2.5 bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
+              <div className=" absolute  left-[2.8%]  top-[28%;] w-2.5 h-2.5 bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
               <span className="text-grey-text-color  peer-checked:text-primary-text-color">
                 Non-alcoholic
               </span>

@@ -1,4 +1,4 @@
-import { FolowUs } from '../Footer/FolowUs';
+import { FolowUs } from '../../components/reUseComponents/FolowUs';
 
 export const FollowUs = () => {
   return (

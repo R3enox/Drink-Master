@@ -32,6 +32,22 @@
   color: #0a0a11;
 }
 
+/* Animation */
+
+@keyframes selectMenu {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 /* AddDrinks Select */
 .custom_select__control {
   background-color: transparent !important;
@@ -42,6 +58,11 @@
   height: 34px !important;
   border-bottom: 1px solid rgba(243, 243, 243, 0.5) !important;
   box-shadow: none !important;
+  cursor: pointer !important;
+}
+
+.custom_select__control:hover {
+  border-bottom: 1px solid #f3f3f3 !important;
 }
 
 ::-webkit-scrollbar {
@@ -77,6 +98,14 @@
   font-weight: 400 !important;
   font-size: 12px !important;
   line-height: 133% !important;
+  animation: selectMenu 400ms ease-out !important;
+}
+
+.custom_select__input {
+  color: #f3f3f3 !important;
+}
+.custom_select__input::placeholder {
+  color: rgba(243, 243, 243, 0.5) !important;
 }
 
 .custom_select__indicator-separator {
@@ -100,7 +129,7 @@
 }
 
 .custom_select__indicator .css-tj5bde-Svg {
-  transition: transform 0.5s ease-in-out !important;
+  transition: transform 0.3s ease-in-out !important;
 }
 
 .custom_select__control--menu-is-open .css-tj5bde-Svg {
@@ -117,7 +146,8 @@
   width: 200px !important;
   height: 50px !important;
   box-shadow: none !important;
-  color: #f3f3f3;
+  color: #f3f3f3 !important;
+  cursor: pointer !important;
 }
 
 .ingredientsSelect__control:hover {
@@ -136,6 +166,11 @@
   font-weight: 400 !important;
   font-size: 12px !important;
   line-height: 133% !important;
+  animation: selectMenu 400ms ease-out !important;
+}
+
+.ingredientsSelect__input {
+  color: #f3f3f3 !important;
 }
 
 .ingredientsSelect__indicator-separator {
