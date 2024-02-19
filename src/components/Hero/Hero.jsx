@@ -19,7 +19,7 @@ export const Hero = () => {
 
         <Link
           className="rounded-[42px] bg-primary-text-color px-[40px] py-[14px] font-semibold text-primary-text-button-color text-[14px] leading-[1.29] hover:border-2 border-border-color-add md:px-[44px] md:py-[18px] md:text-[16px] md:leading-[1.12]"
-          to="/add-drink"
+          to="/add"
         >
           Add Drink
         </Link>
