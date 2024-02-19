@@ -31,21 +31,21 @@ const axiosBaseQuery =
 export const myDrinksApi = createApi({
   reducerPath: 'myDrinksApi',
   baseQuery: axiosBaseQuery({
-    baseUrl: 'https://drink-master-4fm6.onrender.com/api/',
+    baseUrl: 'http://localhost:3000/api',
+    // baseUrl: 'https://drink-master-4fm6.onrender.com/api/',
     token:
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Y2Y3MjQwOWJkZjYzNTUyMTE2MWVjMiIsImlhdCI6MTcwODM1NzM5NywiZXhwIjoxNzA4NDAwNTk3fQ.lQ4EOcOmtdEERCdgmxNfNMku2B9npOeCGgPHmOm5wP4',
   }),
   tagTypes: ['myDrinks'],
   endpoints: (build) => ({
     fetchMyDrinks: build.query({
-      query: () => ({ url: 'drinks/own', method: 'get' }),
+      query: () => ({ url: '/drinks/own', method: 'get' }),
       providesTags: ['myDrinks'],
     }),
     deleteMyDrink: build.mutation({
       query: (id) => ({
-        url: `drinks/own/remove/${id}`,
+        url: `/drinks/own/remove/${id}`,
         method: 'delete',
-        params: { id },
       }),
       invalidatesTags: ['myDrinks'],
     }),
