@@ -6,17 +6,16 @@ export default {
       backgroundImage: {
         // Welcome-Page
         'mobile-bg-welcome':
-          "url('./src/assets/img/welcomePage/mobile-bg-welcome-page.png')",
+          "url('/img/welcomePage/mobile-bg-welcome-page.png')",
         'mobile-bg-welcome@2x':
-          "url('./src/assets/img/welcomePage/mobile-bg-welcome-page@2x.png')",
+          "url('/img/welcomePage/mobile-bg-welcome-page@2x.png')",
         'tablet-bg-welcome':
-          "url('./src/assets/img/welcomePage/tablet-bg-welcome-page.png')",
+          "url('/img/welcomePage/tablet-bg-welcome-page.png')",
         'tablet-bg-welcome@2x':
-          "url('./src/assets/img/welcomePage/tablet-bg-welcome-page@2x.png')",
-        'desctop-bg-welcome':
-          "url('./src/assets/img/welcomePage/desctop-bg-welcome.png')",
+          "url('/img/welcomePage/tablet-bg-welcome-page@2x.png')",
+        'desctop-bg-welcome': "url('/img/welcomePage/desctop-bg-welcome.png')",
         'desctop-bg-welcome@2x':
-          "url('./src/assets/img/welcomePage/desktop-bg-welcome@2x.png')",
+          "url('/img/welcomePage/desktop-bg-welcome@2x.png')",
         // Footer
         'mobile-bg-footer':
           "url('./src/assets/img/footer/mobile-bg-footer.png')",
