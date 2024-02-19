@@ -3,6 +3,7 @@ import { signUpThunk } from '../../redux/auth/authOperations';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { selectAuthToken } from '../../redux/auth/authSelectors';
+import Calendar from '../DatePicker/Calendar';
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
@@ -47,23 +48,7 @@ const SignUpForm = () => {
               /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/i,
           })}
         />
-
-        <input
-          className=" hover:border-grey-text-color hover:color-transparent w-full bg-transparent h-[54px] rounded-[42px] border-[1px] border-border-color text-[14px] leading-[1.29] placeholder-border-color py-[18px] px-[24px] outline-none"
-          onBlur={onBlur}
-          type="text"
-          placeholder="dd/mm/yyyy"
-          autoComplete="off"
-          {...register('dateOfBirth', {
-            required: {
-              value: true,
-              message: 'This is an ERROR date of birth',
-            },
-            min: 0,
-            pattern:
-              '/^(0[1-9]|[1-2][0-9]|3[0-1])(\\/|-)(0[1-9]|1[0-2])(\\/|-)d{4}$/i',
-          })}
-        />
+        <Calendar />
         <input
           className=" hover:border-grey-text-color hover:color-transparent w-full bg-transparent h-[54px] rounded-[42px] border-[1px] border-border-color text-[14px] leading-[1.29] placeholder-border-color py-[18px] px-[24px] outline-none"
           onBlur={onBlur}
