@@ -21,8 +21,6 @@ const SharedLayout = () => {
     if (!categories) dispatch(getCategories());
     if (!ingredients) dispatch(getIngredients());
     if (!glasses) dispatch(getGlasses());
-
-    console.log('USE EFFECT');
   }, [isLoggedIn, categories, ingredients, glasses, dispatch]);
   return (
     <>
