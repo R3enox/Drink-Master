@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import Select from 'react-select';
 import sprite from '../../assets/sprite.svg';
 import { useForm } from 'react-hook-form';
+import { selectAuthUser } from '../../redux/auth/authSelectors';
+import { useSelector } from 'react-redux';
 // fetch categories+ingredients
 const categories = [
   'Ordinary Drink',
@@ -40,6 +42,8 @@ const initialState = {
 };
 export const DrinksSearch = ({ onFilterChange }) => {
   const [selectedFilters, setSelectedFilters] = useState(initialState);
+  const user = useSelector(selectAuthUser);
+  console.log(user);
   const { handleSubmit, setValue, watch } = useForm({
     defaultValues: { keyName: '' },
   });
@@ -68,33 +72,44 @@ export const DrinksSearch = ({ onFilterChange }) => {
   }, [selectedFilters]);
 
   return (
-    <div className="flex flex-col md:flex-row gap-3.5 md:gap-2 pt-[40px] md:pt-60px lg:pt-80px">
-      <form onSubmit={handleSubmit(onSubmit)} className="bg-transparent">
+    <div className="flex flex-col  items-center md:flex-row gap-[14px] md:gap-[8px] pt-[40px] md:pt-[60px] lg:pt-[80px]">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-row w-full justify-between items-center md:w-[264px] hover:border-grey-text-color hover:color-transparent bg-transparent h-[54px] rounded-[200px] border-[1px] border-border-color  placeholder-border-color py-[18px] md:py-[14px] px-[24px]"
+      >
         <input
-          className="bg-transparent"
+          className="bg-transparent w-full outline-none text-[14px] md:text-[17px] leading-[1.29] md:leading-[1.56]"
           type="text"
           placeholder="Enter the text"
           onChange={(e) => {
+            console.log(e);
             setValue('keyName', e.target.value);
           }}
           value={watch('keyName') || ''}
         />
-        {watch('keyName') && (
-          <button type="reset" onClick={handleReset}>
-            <svg className="fill-primary-text-color sm:w-[22px] h-[22px] md:w-[28px] md:h-[28px]">
-              <use href={sprite + '#icon-cross'}></use>
+        <div className="flex items-center">
+          <button
+            type="reset"
+            onClick={handleReset}
+            className="w-[10px] h-[10px] md:w-[15px] md:h-[15px]"
+          >
+            {watch('keyName') && (
+              <svg className=" stroke-primary-text-color w-[10px] h-[10px] md:w-[15px] md:h-[15px]">
+                <use href={sprite + '#icon-cross'}></use>
+              </svg>
+            )}
+          </button>
+          <button type="submit">
+            <svg className="stroke-primary-text-color ml-[10px] sm:w-[22px] h-[22px] md:w-[28px] md:h-[28px]">
+              <use href={sprite + '#icon-search'}></use>
             </svg>
           </button>
-        )}
-        <button type="submit">
-          <svg className="fill-primary-text-color sm:w-[22px] h-[22px] md:w-[28px] md:h-[28px]">
-            <use href={sprite + '#icon-search'}></use>
-          </svg>
-        </button>
+        </div>
       </form>
       <Select
         options={categoriesOptions}
-        placeholder={'All Categories'}
+        placeholder={'All categories'}
+        classNamePrefix="searchSelect"
         isClearable={true}
         onChange={(selectedValue) =>
           handleFilterChange(
@@ -104,13 +119,9 @@ export const DrinksSearch = ({ onFilterChange }) => {
         }
       />
       <Select
-        /* styles={{
-          backgroundColor: 'primary-text-button-color',
-          color: 'white',
-        }} */
-        className="bg-primary-text-button-color text-primary-text-color"
         options={ingredientsOptions}
         placeholder={'Ingredients'}
+        classNamePrefix="searchSelect"
         isClearable={true}
         onChange={(selectedValue) =>
           handleFilterChange(
