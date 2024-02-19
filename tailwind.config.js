@@ -54,6 +54,7 @@ export default {
       'filter-scroll-text': '#434D67',
       'hover-text-color': '#253d6f',
       'border-color': 'rgba(243, 243, 243, 0.2)',
+      'border-color-add': 'rgba(64, 112, 205, 0.5)',
       'grey-text-color': 'rgba(243, 243, 243, 0.5)',
       "ingredients-card-bg": " rgba(22, 31, 55, 0.5)",
       transparent: 'rgba(243, 243, 243, 0)',
