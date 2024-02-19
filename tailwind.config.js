@@ -4,6 +4,7 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
+        // Welcome-Page
         'mobile-bg-welcome':
           "url('./src/assets/img/welcomePage/mobile-bg-welcome-page.png')",
         'mobile-bg-welcome@2x':
@@ -15,7 +16,8 @@ export default {
         'desctop-bg-welcome':
           "url('./src/assets/img/welcomePage/desctop-bg-welcome.png')",
         'desctop-bg-welcome@2x':
-          "url('./src/assets/img/welcomePage/desctop-bg-welcome@2x.png')",
+          "url('./src/assets/img/welcomePage/desktop-bg-welcome@2x.png')",
+        // Footer
         'mobile-bg-footer':
           "url('./src/assets/img/footer/mobile-bg-footer.png')",
         'mobile-bg-footer@2x':
@@ -57,6 +59,7 @@ export default {
       'border-color': 'rgba(243, 243, 243, 0.2)',
       'grey-text-color': 'rgba(243, 243, 243, 0.5)',
       transparent: 'rgba(243, 243, 243, 0)',
+      'background-color': '#080811',
     },
   },
   plugins: [],

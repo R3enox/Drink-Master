@@ -3,7 +3,7 @@ import AuthNav from '../../components/AuthNav/AuthNav';
 const WelcomePage = () => {
   return (
     <section className="welcome-container">
-      <div className="flex flex-col md:px-[32px]">
+      <div className="flex flex-col md:px-[32px] lg:px-[0]">
         <div className="flex flex-col items-center md:items-start mb-[45px]">
           <h1 className="welcome-title">Welcome to the app!</h1>
           <p className="welcome-desc">

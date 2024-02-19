@@ -22,61 +22,63 @@ const SignInForm = () => {
   };
 
   return (
-    <div className="sign-in-container">
+    <div className="form-sign-in-container">
       <form
-        className="flex flex-col w-[335px] gap-[14px]"
+        className="flex flex-col w-[335px]"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <h1 className=" text-welcome-text-color text-[28px]  mb-[28px]">
-          Sign In
-        </h1>
-        <input
-          className="input-form"
-          onBlur={onBlur}
-          type="email"
-          placeholder="Email"
-          autoComplete="off"
-          {...register('email', {
-            required: 'Email is required.',
-            pattern: {
-              value: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/,
-              message: 'This is an ERROR email.',
-            },
-          })}
-        />
+        <h1 className="form-title">Sign In</h1>
+        <div className="input-container">
+          <input
+            className="input-form"
+            onBlur={onBlur}
+            type="email"
+            placeholder="Email"
+            autoComplete="off"
+            {...register('email', {
+              required: 'Email is required.',
+              pattern: {
+                value: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/,
+                message: 'This is an ERROR email.',
+              },
+            })}
+          />
 
-        {/* {errors.email && errors.email.type === 'pattern' ? (
+          {/* {errors.email && errors.email.type === 'pattern' ? (
         <p className="errorMsg">This is an ERROR email.</p>
       ) : (
         <p>This is an CORRECT email</p>
       )} */}
 
-        <input
-          className="input-form"
-          onBlur={onBlur}
-          type="password"
-          placeholder="Password"
-          autoComplete="off"
-          {...register('password', {
-            required: 'Password is required.',
-            minLength: 6,
-            pattern: {
-              value: '/^(?=.*[a-z])(?=.*[A-Z])(?=.*d)[a-zA-Zd]{8,}$/i',
-              message: 'This is an ERROR password.',
-            },
-          })}
-        />
-        {/* {errors.password && errors.password.type === 'minLength' ? (
+          <input
+            className="input-form"
+            onBlur={onBlur}
+            type="password"
+            placeholder="Password"
+            autoComplete="off"
+            {...register('password', {
+              required: 'Password is required.',
+              minLength: 6,
+              pattern: {
+                value: '/^(?=.*[a-z])(?=.*[A-Z])(?=.*d)[a-zA-Zd]{8,}$/i',
+                message: 'This is an ERROR password.',
+              },
+            })}
+          />
+          {/* {errors.password && errors.password.type === 'minLength' ? (
         <p>Password should be at-least 6 characters.</p>
       ) : (
         <p>This is an CORRECT password</p>
       )} */}
-        <button className="sign-btn" type="submit">
-          Sign In
-        </button>
-        <Link className="sign-link-btn" to="/signup">
-          Sign Up
-        </Link>
+        </div>
+        <div className="btn-container">
+          <button className="sign-btn" type="submit">
+            Sign In
+          </button>
+          <Link className="sign-link-btn" to="/signup">
+            Sign Up
+          </Link>
+        </div>
       </form>
     </div>
   );
