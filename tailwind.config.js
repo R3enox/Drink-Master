@@ -55,6 +55,7 @@ export default {
       'hover-text-color': '#253d6f',
       'border-color': 'rgba(243, 243, 243, 0.2)',
       'grey-text-color': 'rgba(243, 243, 243, 0.5)',
+      "ingredients-card-bg": " rgba(22, 31, 55, 0.5)",
       transparent: 'rgba(243, 243, 243, 0)',
       'background-color': '#080811',
     },

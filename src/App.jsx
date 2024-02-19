@@ -8,6 +8,8 @@ import DrinksPage from './pages/DrinksPage/DrinksPage';
 import SharedLayout from './components/SharedLayout/SharedLayout';
 import { selectAuthIsRefreshing } from './redux/auth/authSelectors';
 import { refreshUserThunk } from './redux/auth/authOperations';
+import DrinkPage from './pages/DrinkPage/DrinkPage';
+
 
 const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
 const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));
@@ -35,6 +37,7 @@ function App() {
               <Route index element={<Navigate to="/welcome" />} />
               <Route path="/home" element={<HomePage />} />
               <Route path="/drinks" element={<DrinksPage />} />
+              <Route path={`/drink/:drinkId`} element={<DrinkPage />} />
               <Route path="*" element={<ErrorPage />} />
             </Route>
           </Routes>
