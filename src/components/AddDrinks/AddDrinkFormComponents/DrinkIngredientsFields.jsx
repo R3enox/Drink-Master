@@ -34,9 +34,11 @@ export const DrinkIngredientsFields = () => {
         <li key={id} className="flex items-center mb-3.5 gap-x-2">
           <Select
             className="flex-initial w-52"
+            name="ingredients"
             options={optionsCategory}
             classNamePrefix="ingredientsSelect"
             defaultValue={optionsCategory[i]}
+            isRequired={true}
           />
           <label>
             <input

@@ -56,7 +56,7 @@ export const DrinkPageHero = () => {
           onChange={handleUploadedFile}
         />
         <label htmlFor="fileInput" className="cursor-pointer">
-          <div className="flex justify-center items-center w-[335px] h-[320px] border-1 outline-none   rounded-lg bg-primary-text-button-color bg-opacity-50  ">
+          <div className="flex justify-center items-center w-[335px] h-[320px]  rounded-lg bg-primary-text-button-color bg-opacity-50  ">
             {preview === undefined ? (
               <div className="flex flex-col pointer-events-none items-center w-20 h-[88px] ">
                 <button
@@ -72,7 +72,10 @@ export const DrinkPageHero = () => {
                 </p>
               </div>
             ) : (
-              <img src={preview} className="block  w-[335px] h-[320px]" />
+              <img
+                src={preview}
+                className="block  w-[335px] h-[320px] rounded-[8px] "
+              />
             )}
           </div>
         </label>
