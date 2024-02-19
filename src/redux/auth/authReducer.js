@@ -1,13 +1,16 @@
 import { initialState } from './authInitialState';
 import {
+  handleFulfilledRefreshUser,
   handleFulfilledSignIn,
   handleFulfilledSignUp,
   handlePending,
+  handlePendingRefreshUser,
   handleRejected,
+  handleRejectedRefreshUser,
 } from './authFunctionsReducer';
 
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { signInThunk, signUpThunk } from './authOperations';
+import { refreshUserThunk, signInThunk, signUpThunk } from './authOperations';
 
 const STATUS = { PENDING: 'pending', REJECTED: 'rejected' };
 
@@ -21,6 +24,9 @@ const authSlice = createSlice({
     builder
       .addCase(signUpThunk.fulfilled, handleFulfilledSignUp)
       .addCase(signInThunk.fulfilled, handleFulfilledSignIn)
+      .addCase(refreshUserThunk.pending, handlePendingRefreshUser)
+      .addCase(refreshUserThunk.fulfilled, handleFulfilledRefreshUser)
+      .addCase(refreshUserThunk.rejected, handleRejectedRefreshUser)
       .addMatcher(getActions(PENDING), handlePending)
       .addMatcher(getActions(REJECTED), handleRejected);
   },

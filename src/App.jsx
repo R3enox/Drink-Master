@@ -1,5 +1,9 @@
+import { Suspense, useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { AppWrapper } from './App.styled';
+import WelcomePage from './pages/WelcomePage/WelcomePage';
 import ErrorPage from 'pages/ErrorPage/ErrorPage';
 import HomePage from './pages/HomePage/HomePage';
 import DrinksPage from './pages/DrinksPage/DrinksPage';
@@ -11,7 +15,18 @@ const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));
 const SignInPage = lazy(() => import('./pages/SignInPage/SignInPage'));
 
 function App() {
+
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectAuthIsRefreshing);
+
+  useEffect(() => {
+    dispatch(refreshUserThunk());
+  }, [dispatch]);
+
+  // console.log(test);
+
   return (
+    !isRefreshing && (
     <AppWrapper>
       <Suspense fallback={<p>Loading...</p>}>
         <Routes>
@@ -27,6 +42,6 @@ function App() {
         </Routes>
       </Suspense>
     </AppWrapper>
-  );
+  ));
 }
 export default App;
