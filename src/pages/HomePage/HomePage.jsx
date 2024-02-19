@@ -3,8 +3,9 @@ import { PreviewDrinks } from '../../components/Drinks/PreviewDrinks';
 
 function HomePage() {
   return (
-    <div>
-      <Hero />
+      
+    <div className="container">
+    <Hero />
       <PreviewDrinks />
     </div>
   );
