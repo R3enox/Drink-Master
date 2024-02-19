@@ -7,7 +7,7 @@ export const CalendarGlobalStyles = createGlobalStyle`
   .react-datepicker {
     flex-direction: column;
     align-items: center;
-    width: 335px;
+    width: 368px;
     padding: 14px;
     background: #161f37;
     border-radius: 16px;

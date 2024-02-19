@@ -15,6 +15,7 @@ const Calendar = () => {
         selected={startDate}
         placeholderText="dd/mm/yyyy"
         showIcon
+        toggleCalendarOnIconClick
         icon={
           <svg className="w-[20px] h-[20px] top-[18px] right-[18px] stroke-primary-text-color">
             <use href={sprite + '#icon-calendar'}></use>

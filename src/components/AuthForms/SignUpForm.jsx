@@ -47,23 +47,7 @@ const SignUpForm = () => {
                 /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/i,
             })}
           />
-
-          <input
-            className="input-form"
-            onBlur={onBlur}
-            type="text"
-            placeholder="dd/mm/yyyy"
-            autoComplete="off"
-            {...register('dateOfBirth', {
-              required: {
-                value: true,
-                message: 'This is an ERROR date of birth',
-              },
-              min: 0,
-              pattern:
-                '/^(0[1-9]|[1-2][0-9]|3[0-1])(\\/|-)(0[1-9]|1[0-2])(\\/|-)d{4}$/i',
-            })}
-          />
+          <Calendar />
           <input
             className="input-form"
             onBlur={onBlur}
