@@ -1,40 +1,89 @@
+import { useEffect, Suspense, lazy } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import SharedLayout from 'components/SharedLayout/SharedLayout';
+import { RestrictedRoute } from './components/SharedLayout/RestrictedRoute';
+import { PrivateRoute } from './components/SharedLayout/PrivateRoute';
 import { AppWrapper } from './App.styled';
-import { Suspense } from 'react';
-import WelcomePage from './pages/WelcomePage/WelcomePage';
-import ErrorPage from 'pages/ErrorPage/ErrorPage';
-import Layout from './components/Layout/Layout';
-import HomePage from './pages/HomePage/HomePage';
-import DrinksPage from './pages/DrinksPage/DrinksPage';
-import SignInPage from './pages/SigninPage/SigninPage';
-import SignUpPage from './pages/SignupPage/SignupPage';
-import FavoriteDrinksPage from './pages/FavoriteDrinksPage/FavoriteDrinksPage';
 
-// const test = import.meta.env.VITE_API_TEST;
+import { refreshUserThunk } from './redux/auth/authOperations';
+import { useAuth } from './hooks/useAuth';
 
-// const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
-// const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
-// const DrinksPage = lazy(() => import('./pages/DrinksPage/DrinksPage'));
+const WelcomePage = lazy(() => import('pages/WelcomePage/WelcomePage'));
+const SignUpPage = lazy(() => import('pages/SignUpPage/SignUpPage'));
+const SignInPage = lazy(() => import('pages/SignInPage/SignInPage'));
+const HomePage = lazy(() => import('pages/HomePage/HomePage'));
+const DrinksPage = lazy(() => import('pages/DrinksPage/DrinksPage'));
+const FavoriteDrinksPage = lazy(() =>
+  import('pages/FavoriteDrinksPage/FavoriteDrinksPage')
+);
+const MyDrinksPage = lazy(() => import('pages/MyDrinksPage/MyDrinksPage'));
+const DrinkPage = lazy(() => import('pages/DrinkPage/DrinkPage'));
+const AddDrinkPage = lazy(() => import('pages/AddDrinkPage/AddDrinkPage'));
+const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
 
-function App() {
-  // console.log(test);
+export const App = () => {
+  const dispatch = useDispatch();
+  const { isRefreshing, isLoggedIn } = useAuth();
+
+  useEffect(() => {
+    dispatch(refreshUserThunk());
+  }, [dispatch]);
+
   return (
-    <Layout>
-      <Suspense fallback={null}>
-        <AppWrapper>
+    !isRefreshing && (
+      <AppWrapper>
+        <Suspense fallback={<p>Loading...</p>}>
           <Routes>
-            <Route path="/" element={<Navigate to="/welcome" />} />
-            <Route path="/welcome" element={<WelcomePage />} />
-            <Route path="/signup" element={<SignUpPage />} />
-            <Route path="/signin" element={<SignInPage />} />
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/drinks" element={<DrinksPage />} />
-            <Route path="/favorite" element={<FavoriteDrinksPage />} />
-            <Route path="*" element={<ErrorPage />} />
+            <Route
+              path="/welcome"
+              element={<RestrictedRoute component={<WelcomePage />} />}
+            />
+            <Route
+              path="/signup"
+              element={<RestrictedRoute component={<SignUpPage />} />}
+            />
+            <Route
+              path="/signin"
+              element={<RestrictedRoute component={<SignInPage />} />}
+            />
+            <Route path="/" element={<SharedLayout />}>
+              <Route index element={<Navigate to="/home" />} />
+              <Route
+                path="home"
+                element={<PrivateRoute component={<HomePage />} />}
+              />
+              <Route
+                path="drinks"
+                element={<PrivateRoute component={<DrinksPage />} />}
+              />
+              <Route
+                path="favorites"
+                element={<PrivateRoute component={<FavoriteDrinksPage />} />}
+              />
+              <Route
+                path="my"
+                element={<PrivateRoute component={<MyDrinksPage />} />}
+              />
+              <Route
+                path="drink/:drinkId"
+                element={<PrivateRoute component={<DrinkPage />} />}
+              />
+              <Route
+                path="add"
+                element={<PrivateRoute component={<AddDrinkPage />} />}
+              />
+            </Route>
+            <Route
+              path="*"
+              element={
+                isLoggedIn ? <NotFoundPage /> : <Navigate to="/welcome" />
+              }
+            />
           </Routes>
-        </AppWrapper>
-      </Suspense>
-    </Layout>
+        </Suspense>
+      </AppWrapper>
+    )
   );
-}
-export default App;
+};

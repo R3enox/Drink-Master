@@ -1,9 +1,7 @@
 export const PageTitle = ({ title }) => {
   return (
-    <div className="mt-[80px] mb-[40px] md:mt-[140px] md:mb-[60px]">
-      <h2 className="text-primary-text-color text-[32px] leading-[1.19] md:text-[56px] md:leading-[1.1]">
-        {title}
-      </h2>
-    </div>
+    <h2 className="font-semibold text-[32px] md:text-[56px] lg:text-[64px] leading-[1.19] md:leading-[1.07] lg:leading-[1.06] pt-[80px] md:pt-[140px] lg:pt-[160px]">
+      {title}
+    </h2>
   );
 };
