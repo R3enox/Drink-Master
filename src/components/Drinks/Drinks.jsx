@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { DrinkCardPreview } from '../reUseComponents/DrinkCardPreview';
-import { Paginator } from './Paginator';
+import { Paginator } from '../reUseComponents/Paginator/Paginator';
 import {
   selectDrinks,
   selectDrinksIsLoading,
