@@ -9,30 +9,97 @@
   /* background-color: #080811; */
   color: #f3f3f3;
 }
+
+/* Search Filters Select styles  */
+
 .searchSelect__control {
   background-color: #161f37 !important;
   border: none !important;
   border-radius: 200px !important;
-  width: 199px !important;
-  height: 50px !important;
+  width: 335px !important;
+  height: 54px !important;
   box-shadow: none !important;
   color: #f3f3f3;
-  padding: 14px 23px;
+  padding: 18px 24px;
   align-content: center;
-  font-size: 17px !important;
-  line-height: 156% !important;
+  font-size: 14px !important;
+  line-height: 129% !important;
 }
 
 .searchSelect__menu {
   background-color: #161f37 !important;
   color: rgba(243, 243, 243, 0.4) !important;
   border-radius: 20px !important;
-  width: 199px !important;
-  overflow: hidden !important;
-  padding: 14px 23px;
+  width: 335px !important;
+  padding: 18px 24px;
   font-weight: 400 !important;
+  font-size: 14px !important;
+  line-height: 129% !important;
+}
+@media screen and (min-width: 768px) {
+  .searchSelect__control {
+    width: 199px !important;
+    height: 56px !important;
+    padding: 14px 23px;
+    font-size: 15px !important;
+  }
+  .searchSelect__menu {
+    width: 199px !important;
+    padding: 14px 23px;
+    font-size: 17px !important;
+    line-height: 156% !important;
+  }
+}
+
+.searchSelect__placeholder {
+  color: rgba(243, 243, 243, 0.4) !important;
   font-size: 17px !important;
-  line-height: 156% !important;
+}
+.searchSelect__control:hover {
+  background-color: #050e24 !important;
+}
+.searchSelect__input {
+  color: #f3f3f3 !important;
+  padding: 0 !important;
+}
+.searchSelect__value-container {
+  padding: 0 !important;
+}
+.searchSelect__single-value {
+  color: #f3f3f3 !important;
+}
+
+.searchSelect__option {
+  background-color: transparent !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  margin-bottom: 8px !important;
+}
+.searchSelect__option:hover {
+  color: #f3f3f3 !important;
+}
+.searchSelect__indicator:hover {
+  color: #f3f3f3 !important;
+}
+
+.searchSelect__dropdown-indicator {
+  cursor: pointer;
+  width: 17px !important;
+  color: #f3f3f3 !important;
+  padding: 0px !important;
+}
+.searchSelect__control--menu-is-open .css-tj5bde-Svg {
+  transform: rotate(180deg) !important;
+}
+.searchSelect__indicator-separator {
+  display: none !important;
+}
+.searchSelect__clear-indicator {
+  cursor: pointer;
+  width: 17px !important;
+  color: #f3f3f3 !important;
+  padding: 0 !important;
+  margin-right: 5px;
 }
 
 /* Welcome-SignIn-SignUp-Pages */
@@ -99,65 +166,3 @@
   md:text-[14px] md:leading-[1.29];
 }
 /* /Welcome-SignIn-SignUp-Pages */
-
-.categoryListDrink {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-.filter-search {
-  display: flex;
-  gap: 8px;
-}
-@media screen and (max-width: 768px) {
-  .searchSelect__control {
-    width: 335px !important;
-  }
-  .searchSelect__menu {
-    width: 335px !important;
-  }
-}
-.searchSelect__placeholder {
-  color: rgba(243, 243, 243, 0.4) !important;
-}
-.searchSelect__control:hover {
-  background-color: #050e24 !important;
-}
-.searchSelect__input {
-  color: #f3f3f3 !important;
-}
-
-.searchSelect__single-value {
-  color: #f3f3f3 !important;
-}
-
-.searchSelect__indicator-separator {
-  display: none !important;
-}
-
-.searchSelect__option {
-  background-color: transparent !important;
-  cursor: pointer !important;
-  padding: 0 !important;
-  margin-bottom: 8px !important;
-}
-.searchSelect__option:hover {
-  color: #f3f3f3 !important;
-}
-
-.searchSelect__clear-indicator {
-  display: none !important;
-}
-.searchSelect__dropdown-indicator {
-  cursor: pointer;
-  width: 15px;
-  color: #f3f3f3 !important;
-  padding: 0px !important;
-}
-
-.searchSelect__indicator:hover {
-  color: #f3f3f3 !important;
-}
-.searchSelect__indicator--menu-is-open .css-tj5bde-Svg {
-  color: #f3f3f3 !important;
-}
