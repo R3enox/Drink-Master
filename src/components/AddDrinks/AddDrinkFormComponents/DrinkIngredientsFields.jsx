@@ -34,7 +34,7 @@ export const DrinkIngredientsFields = () => {
         <li key={id} className="flex items-center mb-3.5 gap-x-2">
           <Select
             className="flex-initial w-52"
-            name="ingredients"
+            name="title"
             options={optionsCategory}
             classNamePrefix="ingredientsSelect"
             defaultValue={optionsCategory[i]}
@@ -44,6 +44,8 @@ export const DrinkIngredientsFields = () => {
             <input
               type="text"
               placeholder="1  cl"
+              name="measure"
+              required
               className="text-primary-text-color placeholder-primary-text-color bg-transparent w-[100px] h-[50px] border-grey-text-color border-[1px] rounded-[200px] pl-[18px] hover:border-primary-text-color focus:border-primary-text-color outline-none ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms]  "
             />
           </label>
