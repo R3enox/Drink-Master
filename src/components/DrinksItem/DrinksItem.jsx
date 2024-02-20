@@ -22,7 +22,6 @@ const DrinksItem = ({ myDrink, onDelete }) => {
       <p>{alcoholic ? 'Alcoholic' : 'Non-alcoholic'}</p>
       <p>{description}</p>
       <Link to={`/drink/${_id}`}>See more</Link>
-      <br></br>
       <button type="button" onClick={handleDelete}>
         {'Видалити'}
       </button>

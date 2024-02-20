@@ -1,10 +1,14 @@
+import { Hero } from '../../components/Hero/Hero';
 import { PreviewDrinks } from '../../components/Drinks/PreviewDrinks';
 
-export default function HomePage() {
+function HomePage() {
   return (
-    <div>
-      <h1>HeroSection</h1>
+      
+    <div className="container">
+    <Hero />
       <PreviewDrinks />
     </div>
   );
 }
+
+export default HomePage;
