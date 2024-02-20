@@ -1,5 +1,5 @@
 const FavoriteDrinksPage = () => {
-  return <div>FavoriteDrinksPage</div>;
+  return <div style={{ textAlign: 'center' }}>FavoriteDrinksPage</div>;
 };
 
 export default FavoriteDrinksPage;
