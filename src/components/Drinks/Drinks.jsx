@@ -11,12 +11,15 @@ import { Paginator } from './Paginator';
 export const Drinks = ({ filters }) => {
   const drinks = useSelector(drinksSelector);
   const isLoading = useSelector(selectDrinksIsLoading);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(filterDrinks(filters));
   }, [dispatch, filters]);
 
-  return (
+  return isLoading ? (
+    <div>Loading</div>
+  ) : (
     <div className="pt-[40px]">
       {drinks.length > 0 && (
         <ul className="flex flex-wrap flex-col md:flex-row gap-[28px] md:gap-x-[20px] md:gap-y-[40px] lg:gap-y-[80px]">

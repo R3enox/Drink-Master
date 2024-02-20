@@ -9,24 +9,33 @@ import { getDrinks } from '../../redux/drinks/drinksAPI';
 import { DrinkCardPreview } from '../reUseComponents/DrinkCardPreview';
 import { Link } from 'react-router-dom';
 import { selectAuthToken } from '../../redux/auth/authSelectors';
-const categories = ['Ordinary Drink', 'Cocktail', 'Shake', 'Other/Unknown'];
+import { useFilters } from '../../hooks/useFilters';
+const popularCategories = [
+  'Ordinary Drink',
+  'Cocktail',
+  'Shake',
+  'Other/Unknown',
+];
 
 export const PreviewDrinks = () => {
   const token = useSelector(selectAuthToken);
   const drinks = useSelector(drinksSelector);
   const isLoading = useSelector(selectDrinksIsLoading);
+  const { categories } = useFilters();
+  const filteredCategories = popularCategories.filter((category) =>
+    categories.includes(category)
+  );
   const dispatch = useDispatch();
   useEffect(() => {
     if (!token) return;
     dispatch(getDrinks());
-    // диспатч категорий
   }, [dispatch, token]);
   return isLoading ? (
-    <div>Please wait</div>
+    <div>Loading</div>
   ) : (
     <div className="flex flex-col gap-[60px] md:gap-[80px] ">
       <ul className="flex flex-col gap-[40px] md:gap-[80px] ">
-        {categories.map((category) => (
+        {filteredCategories.map((category) => (
           <li key={category}>
             <p className="font-semibold text-[28px] md:text-[40px] leading-[1.14] md:leading-[1.1] pb-[24px] md:pb-[40px]">
               {category}
@@ -43,7 +52,7 @@ export const PreviewDrinks = () => {
       </ul>
       <Link
         to="/drinks"
-        className="inline-block mx-auto px-[40px] py-[14px] md:px-[44px] md:py-[18px] font-semibold text-[14px] leading-[1.28] md:text-[16px] md:leading-[1.25] bg-primary-text-color text-primary-text-button-color text-center hover:text-primary-text-color hover:bg-transparent hover:border-[1px] border-border-color rounded-[42px] mb-[80px] md:mb-[140px]"
+        className="inline-block mx-auto px-[40px] py-[14px] md:px-[44px] md:py-[18px] font-semibold text-[14px] leading-[1.28] md:text-[16px] md:leading-[1.25] bg-primary-text-color text-primary-text-button-color text-center hover:text-primary-text-color hover:bg-transparent hover:border-[1px] border-border-color rounded-[42px]"
       >
         Other drinks
       </Link>

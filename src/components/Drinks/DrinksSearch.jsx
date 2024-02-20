@@ -2,37 +2,14 @@ import { useEffect, useState } from 'react';
 import Select from 'react-select';
 import sprite from '../../assets/sprite.svg';
 import { useForm } from 'react-hook-form';
-// import { useSelector } from 'react-redux';
-// fetch categories+ingredients
-const categories = [
-  'Ordinary Drink',
-  'Cocktail',
-  'Shake',
-  'Other/Unknown',
-  'Cocoa',
-  'Shot',
-  'Coffee/Tea',
-  'Homemade Liqueur',
-  'Punch/Party Drink',
-  'Beer',
-  'Soft Drink',
-];
-const ingridients = [
-  'Light rum',
-  'Coffee liqueur',
-  'Juice',
-  'Whiskey',
-  'Cocoa',
-  'Lemon vodka',
-];
-const categoriesOptions = categories.map((item) => ({
+import { useFilters } from '../../hooks/useFilters';
+import { useSelector } from 'react-redux';
+import { selectAuthToken } from '../../redux/auth/authSelectors';
+
+const filterOptions = (item) => ({
   value: item.toLowerCase().replace(/ /g, '%20'),
   label: item,
-}));
-const ingredientsOptions = ingridients.map((item) => ({
-  value: item.toLowerCase().replace(/ /g, '%20'),
-  label: item,
-}));
+});
 
 const initialState = {
   category: '',
@@ -40,7 +17,10 @@ const initialState = {
   keyName: '',
 };
 export const DrinksSearch = ({ onFilterChange }) => {
+  const token = useSelector(selectAuthToken);
   const [selectedFilters, setSelectedFilters] = useState(initialState);
+  const { categories, ingredients } = useFilters();
+  const ingredientsList = ingredients.map((item) => item.title);
   const { handleSubmit, setValue, watch } = useForm({
     defaultValues: { keyName: '' },
   });
@@ -65,6 +45,7 @@ export const DrinksSearch = ({ onFilterChange }) => {
     }));
   };
   useEffect(() => {
+    if (!token) return;
     onFilterChange(selectedFilters);
   }, [selectedFilters]);
 
@@ -104,7 +85,7 @@ export const DrinksSearch = ({ onFilterChange }) => {
         </div>
       </form>
       <Select
-        options={categoriesOptions}
+        options={categories.map(filterOptions)}
         placeholder={'All categories'}
         classNamePrefix="searchSelect"
         isClearable={true}
@@ -116,7 +97,7 @@ export const DrinksSearch = ({ onFilterChange }) => {
         }
       />
       <Select
-        options={ingredientsOptions}
+        options={ingredientsList.map(filterOptions)}
         placeholder={'Ingredients'}
         classNamePrefix="searchSelect"
         isClearable={true}

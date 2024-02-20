@@ -28,7 +28,6 @@ export const filterDrinks = createAsyncThunk(
         queryParams.append('keyName', filters.keyName);
       }
       const queryString = queryParams.toString();
-      console.log(queryString);
       const { data } = await API.get(`/drinks/search?${queryString}`);
       return data;
     } catch (error) {
