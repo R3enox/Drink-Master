@@ -1,25 +1,35 @@
-import { DrinkCardPreview } from '../reUseComponents/DrinkCardPreview';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
+import { DrinkCardPreview } from '../reUseComponents/DrinkCardPreview';
+import { Paginator } from './Paginator';
 import {
-  drinksSelector,
+  selectDrinks,
   selectDrinksIsLoading,
 } from '../../redux/drinks/drinksSelector';
-import { useEffect } from 'react';
 import { filterDrinks } from '../../redux/drinks/drinksAPI';
-import { Paginator } from './Paginator';
+import { useDrinkFilters } from '../../hooks/useDrinkFilters';
 
-export const Drinks = ({ filters }) => {
-  const drinks = useSelector(drinksSelector);
+export const Drinks = () => {
+  const dispatch = useDispatch();
+  const { keyName, category, ingredient } = useDrinkFilters();
+  const drinks = useSelector(selectDrinks);
   const isLoading = useSelector(selectDrinksIsLoading);
 
-  const dispatch = useDispatch();
   useEffect(() => {
-    if (Object.keys(filters).length > 0) dispatch(filterDrinks(filters));
-  }, [dispatch, filters]);
+    const searchParams = new URLSearchParams();
+    if (keyName) searchParams.set('keyName', keyName);
+    if (category) searchParams.set('category', category);
+    if (ingredient) searchParams.set('ingredient', ingredient);
+
+    dispatch(filterDrinks(searchParams));
+  }, [keyName, category, ingredient, dispatch]);
+
+  const drinksAreNotFinded = !isLoading && drinks?.length === 0;
 
   return (
     <div className="pt-[40px]">
-      {drinks.length > 0 && (
+      {drinks?.length > 0 && (
         <ul className="flex flex-wrap flex-col md:flex-row gap-[28px] md:gap-x-[20px] md:gap-y-[40px] lg:gap-y-[80px]">
           {/* delete slice after paginator realization */}
           {drinks.slice(0, 9).map((drink) => (
@@ -27,9 +37,8 @@ export const Drinks = ({ filters }) => {
           ))}
         </ul>
       )}
-      {drinks.length === 0 && !isLoading && <p>Заглушка для пустого фильтра</p>}
+      {drinksAreNotFinded ? <p>Заглушка для пустого фильтра</p> : <Paginator />}
       <br />
-      <Paginator />
     </div>
   );
 };

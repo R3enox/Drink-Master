@@ -1,3 +1,3 @@
 export const Paginator = () => {
-  return <p>Pagination Section</p>;
+  return <p>PAGINATOR</p>;
 };
