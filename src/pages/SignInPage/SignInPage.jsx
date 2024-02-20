@@ -1,4 +1,4 @@
-import SignInForm from '../../components/AuthForms/SignInForm';
+import SignInForm from 'components/AuthForms/SignInForm';
 
 const SignInPage = () => {
   return <SignInForm />;

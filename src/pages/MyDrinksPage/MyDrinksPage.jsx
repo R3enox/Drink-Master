@@ -1,3 +1,4 @@
+
 import {
   useDeleteMyDrinkMutation,
   useFetchMyDrinksQuery,
@@ -24,6 +25,7 @@ const MyDrinksPage = () => {
       )}
     </div>
   );
+
 };
 
 export default MyDrinksPage;
