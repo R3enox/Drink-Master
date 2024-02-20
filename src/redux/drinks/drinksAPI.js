@@ -1,22 +1,12 @@
-// import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { selectAuthToken } from '../auth/authSelectors';
-import axios from 'axios';
-
-axios.defaults.baseURL = 'https://drink-master-4fm6.onrender.com/api';
+import API from '../../services/axios';
 
 export const getDrinks = createAsyncThunk(
   'drinks/getDrinks',
   async (_, thunkAPI) => {
-    const token = selectAuthToken(thunkAPI.getState());
-
     try {
-      const data = await axios.get('/drinks', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      return data.data;
+      const { data } = await API.get('/drinks');
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -26,8 +16,6 @@ export const getDrinks = createAsyncThunk(
 export const filterDrinks = createAsyncThunk(
   'drinks/filterDrinks',
   async (filters, thunkAPI) => {
-    const token = selectAuthToken(thunkAPI.getState());
-
     try {
       const queryParams = new URLSearchParams();
       if (filters.category) {
@@ -40,11 +28,8 @@ export const filterDrinks = createAsyncThunk(
         queryParams.append('keyName', filters.keyName);
       }
       const queryString = queryParams.toString();
-      const { data } = await axios.get(`/drinks/search?${queryString}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      console.log(queryString);
+      const { data } = await API.get(`/drinks/search?${queryString}`);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
