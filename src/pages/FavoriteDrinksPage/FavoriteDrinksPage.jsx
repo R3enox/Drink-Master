@@ -1,3 +1,4 @@
+
 import { DrinkImageComponent } from '../../components/reUseComponents/DrinkImageComponent';
 import { PageTitle } from '../../components/reUseComponents/PageTitle';
 
@@ -11,4 +12,5 @@ const FavoriteDrinksPage = () => {
     </section>
   );
 };
+
 export default FavoriteDrinksPage;
