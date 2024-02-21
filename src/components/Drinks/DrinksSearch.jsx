@@ -1,120 +1,108 @@
-// fetch categories+ingredients
-
-import { useFormik } from 'formik';
-import { useEffect, useState } from 'react';
+import { useMemo } from 'react';
+import { useForm } from 'react-hook-form';
 import Select from 'react-select';
 
-const categories = [
-  'Ordinary Drink',
-  'Cocktail',
-  'Shake',
-  'Other/Unknown',
-  'Cocoa',
-  'Shot',
-  'Coffee/Tea',
-  'Homemade Liqueur',
-  'Punch/Party Drink',
-  'Beer',
-  'Soft Drink',
-];
-const ingridients = [
-  'Light rum',
-  'Coffee liqueur',
-  'Juice',
-  'Whiskey',
-  'Cocoa',
-  'Lemon vodka',
-];
-const categoriesOptions = categories.map((item) => ({
-  value: item.toLowerCase().replace(/ /g, '%20'),
-  label: item,
-}));
-const ingredientsOptions = ingridients.map((item) => ({
-  value: item.toLowerCase().replace(/ /g, '%20'),
-  label: item,
-}));
+import { useFilters } from '../../hooks/useFilters';
+import { useDrinkFilters } from '../../hooks/useDrinkFilters';
+import sprite from '../../assets/sprite.svg';
 
-const initialState = {
-  category: '',
-  ingredient: '',
-  keyName: '',
-};
-export const DrinksSearch = ({ onFilterChange }) => {
-  const [selectedFilters, setSelectedFilters] = useState(initialState);
-  const formik = useFormik({
-    initialValues: {
-      keyName: '',
+const createCategoriesOptions = (collection) =>
+  collection.map((title) => ({
+    value: title,
+    label: title,
+  }));
+const createIngredientsOptions = (collection) =>
+  collection.map(({ title }) => ({
+    value: title,
+    label: title,
+  }));
+
+export const DrinksSearch = () => {
+  const { categories, ingredients } = useFilters();
+  const { keyName, category, ingredient, setDrinkFilter } = useDrinkFilters();
+
+  const categoriesOptions = useMemo(
+    () => createCategoriesOptions(categories ?? []),
+    [categories]
+  );
+
+  const ingredientsOptions = useMemo(
+    () => createIngredientsOptions(ingredients ?? []),
+    [ingredients]
+  );
+
+  const { handleSubmit, setValue, watch } = useForm({
+    defaultValues: {
+      keyName: keyName || '',
     },
-    onSubmit: (values) => {
-      setSelectedFilters((prevFilters) => ({
-        ...prevFilters,
-        keyName: values.keyName,
-      }));
-    },
-    onReset: () =>
-      setSelectedFilters((prevFilters) => ({
-        ...prevFilters,
-        keyName: '',
-      })),
   });
-  const handleFilterChange = (filterType, selectedValue) => {
-    setSelectedFilters((prevFilters) => ({
-      ...prevFilters,
-      [filterType]: selectedValue,
-    }));
+
+  const onSubmit = (values) => {
+    setDrinkFilter('keyName', values.keyName);
   };
-  useEffect(() => {
-    onFilterChange(selectedFilters);
-  }, [selectedFilters]);
 
   return (
-    <div className="filter-search">
-      <form onSubmit={formik.handleSubmit} className="form-search">
+    <div className="flex flex-col  items-center md:flex-row gap-[14px] md:gap-[8px] pt-[40px] md:pt-[60px] lg:pt-[80px]">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-row w-full justify-between items-center md:w-[264px] hover:border-grey-text-color hover:color-transparent bg-transparent h-[54px] rounded-[200px] border-[1px] border-border-color  placeholder-border-color py-[18px] md:py-[14px] px-[24px]"
+      >
         <input
-          id="keyName"
-          name="keyName"
+          className="bg-transparent w-full outline-none text-[14px] md:text-[17px] leading-[1.29] md:leading-[1.56]"
           type="text"
           placeholder="Enter the text"
-          onChange={formik.handleChange}
-          value={formik.values.keyName}
+          onChange={(e) => {
+            setValue('keyName', e.target.value);
+          }}
+          value={watch('keyName' || '')}
         />
-        <button type="submit">
-          <svg className="icon-search" width="20px" height="20px">
-            <use href="../../assets/sprite.svg#icon-search"></use>
-          </svg>
-        </button>
-        {formik.values.keyName && (
-          <button type="reset" onClick={formik.handleReset}>
-            {/* <svg className="icon-cross" width="20px" height="20px">
-            <use href="../../assets/sprite.svg#icon-cross"></use>
-          </svg> */}
-            X
+        <div className="flex items-center">
+          <button
+            type="reset"
+            onClick={() => {
+              setValue('keyName', '');
+              setDrinkFilter('keyName', '');
+            }}
+            className="w-[10px] h-[10px] md:w-[15px] md:h-[15px]"
+          >
+            {watch('keyName') && (
+              <svg className=" stroke-primary-text-color w-[10px] h-[10px] md:w-[15px] md:h-[15px]">
+                <use href={sprite + '#icon-cross'}></use>
+              </svg>
+            )}
           </button>
-        )}
+          <button type="submit">
+            <svg className="stroke-primary-text-color ml-[10px] sm:w-[22px] h-[22px] md:w-[28px] md:h-[28px]">
+              <use href={sprite + '#icon-search'}></use>
+            </svg>
+          </button>
+        </div>
       </form>
       <Select
-        className="basic-single"
         options={categoriesOptions}
-        placeholder={'All Categories'}
+        placeholder={'All categories'}
+        classNamePrefix="searchSelect"
         isClearable={true}
         onChange={(selectedValue) =>
-          handleFilterChange(
-            'category',
-            selectedValue ? selectedValue.value : ''
-          )
+          setDrinkFilter('category', selectedValue.value)
         }
+        defaultValue={{
+          value: category || '',
+          label: category || 'All categories',
+        }}
       />
       <Select
-        className="basic-single"
         options={ingredientsOptions}
         placeholder={'Ingredients'}
+        classNamePrefix="searchSelect"
         isClearable={true}
         onChange={(selectedValue) =>
-          handleFilterChange(
-            'ingredient',
-            selectedValue ? selectedValue.value : ''
-          )
+          setDrinkFilter('ingredient', selectedValue.value)
         }
+        defaultValue={{
+          value: ingredient || '',
+          label: ingredient || 'Ingredients',
+        }}
       />
     </div>
   );
