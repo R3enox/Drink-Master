@@ -35,7 +35,7 @@ export const signOutThunk = createAsyncThunk(
   'auth/signout',
   async (_, thunkApi) => {
     try {
-      const { data } = await instance.post('/auth/signout');
+      const { data } = await API.post('/auth/signout');
 
       return data;
     } catch (error) {

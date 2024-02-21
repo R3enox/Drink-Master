@@ -5,22 +5,24 @@ import { useUploadUserMutation } from '../../../redux/auth/usersOperations';
 import { useSelector } from 'react-redux';
 import { selectAuthUser } from '../../../redux/auth/authSelectors';
 
+
 const UserProfileForm = () => {
-  // const token = useSelector(selectAuthToken);
-  // const [selectedFile, setselectedFile] = useState(null);
-  // const [ upLoaded, setUpLoaded] = useState()
   const user = useSelector(selectAuthUser);
+  
   const [uploadUser] = useUploadUserMutation();
-
-  // const loadAvatar = uploadAvatar;
-
-  const { register, handleSubmit } = useForm();
+ 
   const hiddenInputRef = useRef();
-  const { ref: registerRef, ...rest } = register('profilePicture');
-  // console.log('register', register);
   const [preview, setPreview] = useState();
+  const [userName, setUserName] = useState({ name: user.name });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserName({ ...userName, [name]: value });
+  };
+
   const handleUploadedFile = (event) => {
     const file = event.target.files[0];
+    console.log(file);
 
     const urlImage = URL.createObjectURL(file);
 
@@ -31,28 +33,28 @@ const UserProfileForm = () => {
   };
   //  const uploadButtonLabel = preview ? 'Change image' : 'Upload image';
 
-  // const onSubmit = (data) => console.log(data);
   const onSubmit = (data) => {
     console.log(data);
-    
+    console.log(data.avatar);
+    console.log(data.name);
+    console.log(preview);
+
     const formData = new FormData();
-    formData.append('avatar', data.profilePicture);
-     formData.append('name', data.profilePicture);
+    formData.append('avatar', data.avatar[0]);
+    formData.append('name', data.name);
 
-    uploadUser(formData);
+  console.log(formData.entries('avatar'));
+     for (const pair of formData.entries()) {
+       console.log(pair[0] + ', ' + pair[1]);
+     }
 
-    return;
-
-    //     const formData = new FormData()
-    //     formData.append('file', avatar)
-
-    //     const res = await (uploadAvatar,{
-    //       method: 'POST',
-    //       body: formData
-    //     })
-    // const data = await res.json()
-    // handleUploadedFile(data);
+    return uploadUser(formData);
   };
+
+  const { register, handleSubmit } = useForm();
+
+  const { ref: registerRef, ...rest } = register('avatar');
+  // console.log('register', register);
 
   return (
     <>
@@ -64,7 +66,8 @@ const UserProfileForm = () => {
           <input
             className="hidden"
             type="file"
-            name="avatar"
+            // {...register('avatar', { required: true })}
+            // name="avatar"
             {...rest}
             onChange={handleUploadedFile}
             ref={(e) => {
@@ -83,8 +86,13 @@ const UserProfileForm = () => {
           </Button>
         </div>
         <input
-          className="md:py-[18px] w-full rounded-[200px] border-border-color text-primary-text-color text-[16px]"
-          {...register('exampleRequired', { required: true })}
+          className="pl-[24px] md:py-[18px] w-full rounded-[200px] bg-transparent border-border-color border-[1px] text-primary-text-color text-[16px] "
+          {...register('name', { required: true })}
+          type="text"
+          placeholder="name"
+          autoComplete="off"
+          onChange={handleChange}
+          value={userName.name}
         />
         <button
           className="w-[285px] md:w-[400px] mt-[18px] md:mt-[25px] w-full text-center py-[18px] rounded-[200px] bg-transparent border-[1px]  border-border-color text-primary-text-color text-[16px] leading-[1.12] font-semibold hover:bg-primary-text-color hover:text-primary-text-button-color transition-colors md:text-[17px] md:py-[18px] md:leading-[1.56]"

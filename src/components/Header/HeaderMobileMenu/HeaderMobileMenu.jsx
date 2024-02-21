@@ -1,6 +1,6 @@
 import { HeaderBtn } from '../HeaderBtn/HeaderBtn';
 import { HeaderLogo } from '../HeaderLogo/HeaderLogo';
-import { RoundedSwitch } from '../RoundedSwitch/RoundedSwitch';
+
 import UserInfo from '../UserInfo/UserInfo';
 
 const HeaderMobileMenu = () => {
@@ -11,7 +11,7 @@ const HeaderMobileMenu = () => {
       <div className=" flex ">
         <UserInfo />
 
-       <RoundedSwitch />
+    
         <HeaderBtn />
       </div>
     </>
