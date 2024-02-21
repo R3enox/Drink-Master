@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import API from '../../services/axios';
+
+import API from 'services/axios';
 
 export const getDrinks = createAsyncThunk(
   'drinks/getDrinks',
@@ -15,21 +16,9 @@ export const getDrinks = createAsyncThunk(
 
 export const filterDrinks = createAsyncThunk(
   'drinks/filterDrinks',
-  async (filters, thunkAPI) => {
+  async (queryParams, thunkAPI) => {
     try {
-      const queryParams = new URLSearchParams();
-      if (filters.category) {
-        queryParams.append('category', filters.category);
-      }
-      if (filters.ingredient) {
-        queryParams.append('ingredient', filters.ingredient);
-      }
-      if (filters.keyName) {
-        queryParams.append('keyName', filters.keyName);
-      }
-      const queryString = queryParams.toString();
-      console.log(queryString);
-      const { data } = await API.get(`/drinks/search?${queryString}`);
+      const { data } = await API.get(`/drinks/search?${queryParams}`);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

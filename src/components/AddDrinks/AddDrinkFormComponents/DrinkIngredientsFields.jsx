@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { AddDrinkTitle } from './AddDrinkTitle';
 import Select from 'react-select';
 import { nanoid } from 'nanoid';
+import { useFilters } from '../../../hooks/useFilters';
 
 const optionsCategory = [
   { value: 'Ordinary Drink', label: 'Ordinary Drink' },
@@ -23,6 +24,7 @@ const optionsCategory = [
 ];
 
 export const DrinkIngredientsFields = () => {
+  const { ingredients } = useFilters();
   const [ingredientsCount, setIngredientsCount] = useState(3);
   const [ingredientInputs, setIngredientInputs] = useState([]);
 
@@ -35,9 +37,9 @@ export const DrinkIngredientsFields = () => {
           <Select
             className="flex-initial w-52"
             name="title"
-            options={optionsCategory}
+            options={ingredients}
             classNamePrefix="ingredientsSelect"
-            defaultValue={optionsCategory[i]}
+            defaultValue={ingredients[i]}
             isRequired={true}
           />
           <label>

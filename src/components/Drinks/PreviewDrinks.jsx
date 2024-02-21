@@ -1,26 +1,25 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { DrinkCardPreview } from '../reUseComponents/DrinkCardPreview';
 import {
   selectDrinksIsLoading,
-  drinksSelector,
+  selectDrinks,
 } from '../../redux/drinks/drinksSelector';
 import { getDrinks } from '../../redux/drinks/drinksAPI';
-import { DrinkCardPreview } from '../reUseComponents/DrinkCardPreview';
-import { Link } from 'react-router-dom';
-import { selectAuthToken } from '../../redux/auth/authSelectors';
+
 const categories = ['Ordinary Drink', 'Cocktail', 'Shake', 'Other/Unknown'];
 
 export const PreviewDrinks = () => {
-  const token = useSelector(selectAuthToken);
-  const drinks = useSelector(drinksSelector);
+  const drinks = useSelector(selectDrinks);
   const isLoading = useSelector(selectDrinksIsLoading);
   const dispatch = useDispatch();
+
   useEffect(() => {
-    if (!token) return;
     dispatch(getDrinks());
-    // диспатч категорий
-  }, [dispatch, token]);
+  }, [dispatch]);
+
   return isLoading ? (
     <div>Please wait</div>
   ) : (

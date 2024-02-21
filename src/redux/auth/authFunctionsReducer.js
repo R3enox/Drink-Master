@@ -1,3 +1,5 @@
+import { initialState } from './authInitialState';
+
 export const handlePending = (state) => {
   state.isLoading = true;
   state.error = null;
@@ -46,4 +48,7 @@ export const handleRejectedRefreshUser = (state) => {
   // state.isLoading = false;
   // state.error = payload;
   state.isRefreshing = false;
+  state.isLoggedIn = false;
+  state.user = initialState.user;
+  state.token = initialState.token;
 };
