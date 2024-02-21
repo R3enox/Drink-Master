@@ -1,28 +1,21 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-// import { selectAuthToken } from '../auth/authSelectors';
 import instance from '../../services/axios';
 const baseURL = instance.defaults.baseURL;
-// const token = selectAuthToken;
-const tokenAxios = instance.defaults.headers.common['Authorization'];
-// setAuthToken(tokenAxios);
 
 export const drinksApi = createApi({
   reducerPath: 'drinks',
   baseQuery: fetchBaseQuery({
     baseUrl: `${baseURL}`,
-    token: `${tokenAxios}`,
   }),
+
+  prepareHeaders: (headers, { getState }) => {
+    const token = getState().auth.token;
+    if (token) {
+      headers.set('authorization', `Bearer ${token}`);
+    }
+    return headers;
+  },
   tagTypes: ['drinks'],
-
-  // prepareHeaders: (headers, { getState }) => {
-  //   console.log('prepareHeaders is called');
-
-  //   const token = selectAuthToken(getState()).token;
-  //   if (token) {
-  //     headers.set('Authorization', `${token}`);
-  //   }
-  //   return headers;
-  // },
 
   endpoints: (builder) => ({
     getDrinks: builder.query({

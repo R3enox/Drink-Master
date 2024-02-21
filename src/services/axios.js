@@ -1,14 +1,11 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'http://localhost:3000/api',
+  baseURL: 'https://drink-master-4fm6.onrender.com/api',
 });
 
 export const setAuthToken = (token) => {
-  console.log(token);
-  if (token) {
-    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
-  }
+  instance.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
 export const clearAuthToken = () => {

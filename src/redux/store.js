@@ -33,7 +33,6 @@ export const store = configureStore({
     drinkIdStorage: drinkIdStorageReducer,
   },
   middleware: (getDefaultMiddleware) =>
-    //   getDefaultMiddleware().concat(drinksApi.middleware),
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
