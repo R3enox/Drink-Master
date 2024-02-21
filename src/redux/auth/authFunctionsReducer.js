@@ -25,7 +25,6 @@ export const handleFulfilledSignIn = (state, { payload }) => {
   // state.isRefreshing = false;
   state.token = payload.token;
   state.user = payload.user;
-  state.id = payload.id;
   state.error = null;
 };
 
