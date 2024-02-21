@@ -4,14 +4,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { selectAuthToken } from '../../redux/auth/authSelectors';
 import { DevTool } from '@hookform/devtools';
+import Calendar from '../DatePicker/Calendar';
+import { useState } from 'react';
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
   const token = useSelector(selectAuthToken);
   const navigate = useNavigate();
+  const [dateOfBirth, setDateOfBirth] = useState(null);
 
   const {
-    onBlur,
     register,
     handleSubmit,
     formState: { errors, dirtyFields },
@@ -21,7 +23,12 @@ const SignUpForm = () => {
     mode: 'onChange',
   });
 
+  const getDateOfBirth = (date) => {
+    setDateOfBirth(date);
+  };
+
   const onSubmit = (data) => {
+    data.dateOfBirth = dateOfBirth;
     dispatch(signUpThunk(data));
 
     if (token) navigate('/home');
@@ -64,22 +71,7 @@ const SignUpForm = () => {
                 <p className="correctMsg">This is a CORRECT name</p>
               )}
             </div>
-            <input
-              className="input-form"
-              onBlur={onBlur}
-              type="text"
-              placeholder="dd/mm/yyyy"
-              autoComplete="off"
-              {...register('dateOfBirth', {
-                required: {
-                  value: true,
-                  message: 'This is an ERROR date of birth',
-                },
-                min: 0,
-                pattern:
-                  '/^(0[1-9]|[1-2][0-9]|3[0-1])(\\/|-)(0[1-9]|1[0-2])(\\/|-)d{4}$/i',
-              })}
-            />
+            <Calendar getDateOfBirth={getDateOfBirth} />
             <div>
               <input
                 className={`input-form ${errors?.email && 'error'} ${

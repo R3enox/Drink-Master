@@ -8,10 +8,10 @@ export const SubscribeForm = () => {
     reset,
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
     reset();
   };
-  console.log(errors);
+  // console.log(errors);
 
   return (
     <div className="md:flex flex-col lg:w-[309px]">
