@@ -4,30 +4,23 @@ import Select from 'react-select';
 
 import { useFilters } from '../../hooks/useFilters';
 import { useDrinkFilters } from '../../hooks/useDrinkFilters';
+import {
+  createOptionsFromArrOfObj,
+  createOptionsFromArrOfStr,
+} from '../../helpers/createCollectionOptions';
 import sprite from '../../assets/sprite.svg';
-
-const createCategoriesOptions = (collection) =>
-  collection.map((title) => ({
-    value: title,
-    label: title,
-  }));
-const createIngredientsOptions = (collection) =>
-  collection.map(({ title }) => ({
-    value: title,
-    label: title,
-  }));
 
 export const DrinksSearch = () => {
   const { categories, ingredients } = useFilters();
   const { keyName, category, ingredient, setDrinkFilter } = useDrinkFilters();
 
   const categoriesOptions = useMemo(
-    () => createCategoriesOptions(categories ?? []),
+    () => createOptionsFromArrOfStr(categories ?? []),
     [categories]
   );
 
   const ingredientsOptions = useMemo(
-    () => createIngredientsOptions(ingredients ?? []),
+    () => createOptionsFromArrOfObj(ingredients ?? []),
     [ingredients]
   );
 
