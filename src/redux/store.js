@@ -16,6 +16,7 @@ import { drinksReducer } from './drinks/drinksSlice';
 import { authReducer } from './auth/authReducer';
 import { filtersReducer } from './filters/slice';
 import { drinkIdStorageReducer } from './drinkIdStorageReducer/drinkIdStorageReducer';
+import { myDrinksApi } from './myDrinks/myDrinksSlice';
 
 const authConfig = {
   key: 'auth',
@@ -28,7 +29,8 @@ export const store = configureStore({
     auth: persistReducer(authConfig, authReducer),
     drinks: drinksReducer,
     filters: filtersReducer,
-    drinkIdStorage: drinkIdStorageReducer
+    drinkIdStorage: drinkIdStorageReducer,
+    [myDrinksApi.reducerPath]: myDrinksApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     //   getDefaultMiddleware().concat(drinksApi.middleware),
@@ -36,7 +38,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }),
+    }).concat(myDrinksApi.middleware),
 });
 
 export const persistor = persistStore(store);

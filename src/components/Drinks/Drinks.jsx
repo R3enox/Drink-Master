@@ -1,35 +1,60 @@
-import { DrinkCardPreview } from '../reUseComponents/DrinkCardPreview';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  drinksSelector,
-  selectDrinksIsLoading,
-} from '../../redux/drinks/drinksSelector';
 import { useEffect } from 'react';
-import { filterDrinks } from '../../redux/drinks/drinksAPI';
-import { Paginator } from './Paginator';
+import { useDispatch, useSelector } from 'react-redux';
 
-export const Drinks = ({ filters }) => {
-  const drinks = useSelector(drinksSelector);
+import { DrinkCardPreview } from '../reUseComponents/DrinkCardPreview';
+import { Paginator } from '../reUseComponents/Paginator/Paginator';
+import {
+  selectDrinks,
+  selectDrinksIsLoading,
+  selectTotalCount,
+} from '../../redux/drinks/drinksSelector';
+import { filterDrinks } from '../../redux/drinks/drinksAPI';
+import { useDrinkFilters } from 'hooks/useDrinkFilters';
+import { usePagination } from 'hooks/usePagination';
+import { DrinksLimit } from 'constants/paginationLimits';
+
+export const Drinks = () => {
+  const dispatch = useDispatch();
+  const { page, limit, countPagesOfPagination, setPage } =
+    usePagination(DrinksLimit);
+  const { keyName, category, ingredient } = useDrinkFilters();
+  const drinks = useSelector(selectDrinks);
+  const totalCount = useSelector(selectTotalCount);
+
   const isLoading = useSelector(selectDrinksIsLoading);
 
-  const dispatch = useDispatch();
   useEffect(() => {
-    if (Object.keys(filters).length > 0) dispatch(filterDrinks(filters));
-  }, [dispatch, filters]);
+    const searchParams = new URLSearchParams({ page, limit });
+    if (keyName) searchParams.set('keyName', keyName);
+    if (category) searchParams.set('category', category);
+    if (ingredient) searchParams.set('ingredient', ingredient);
+
+    dispatch(filterDrinks(searchParams));
+  }, [page, limit, keyName, category, ingredient, dispatch]);
+
+  const drinksAreNotFinded = !isLoading && totalCount === 0;
 
   return (
     <div className="pt-[40px]">
-      {drinks.length > 0 && (
+      {drinks?.length > 0 && (
         <ul className="flex flex-wrap flex-col md:flex-row gap-[28px] md:gap-x-[20px] md:gap-y-[40px] lg:gap-y-[80px]">
-          {/* delete slice after paginator realization */}
-          {drinks.slice(0, 9).map((drink) => (
+          {drinks.map((drink) => (
             <DrinkCardPreview key={drink._id} drink={drink} />
           ))}
         </ul>
       )}
-      {drinks.length === 0 && !isLoading && <p>Заглушка для пустого фильтра</p>}
+      {drinksAreNotFinded ? (
+        <p>Заглушка для пустого фильтра</p>
+      ) : (
+        <Paginator
+          totalCount={totalCount}
+          itemsPerPage={limit}
+          setPage={setPage}
+          initialPage={page}
+          countPagesOfPagination={countPagesOfPagination}
+        />
+      )}
       <br />
-      <Paginator />
     </div>
   );
 };

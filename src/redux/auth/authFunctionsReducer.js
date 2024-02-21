@@ -1,3 +1,5 @@
+import { initialState } from './authInitialState';
+
 export const handlePending = (state) => {
   state.isLoading = true;
   state.error = null;
@@ -7,7 +9,6 @@ export const handleRejected = (state, { payload }) => {
   state.isLoading = false;
   state.error = payload;
   // state.isRefreshing = false;
-  console.log(state);
 };
 export const handleFulfilledSignUp = (state, { payload }) => {
   state.isLoading = false;
@@ -16,7 +17,6 @@ export const handleFulfilledSignUp = (state, { payload }) => {
   state.token = payload.token;
   state.user = payload.user;
   state.error = null;
-  console.log(state);
 };
 
 export const handleFulfilledSignIn = (state, { payload }) => {
@@ -25,6 +25,7 @@ export const handleFulfilledSignIn = (state, { payload }) => {
   // state.isRefreshing = false;
   state.token = payload.token;
   state.user = payload.user;
+  state.id = payload.id;
   state.error = null;
 };
 
@@ -46,4 +47,7 @@ export const handleRejectedRefreshUser = (state) => {
   // state.isLoading = false;
   // state.error = payload;
   state.isRefreshing = false;
+  state.isLoggedIn = false;
+  state.user = initialState.user;
+  state.token = initialState.token;
 };

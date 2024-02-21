@@ -2,6 +2,7 @@ import { DrinkImageComponent } from '../../components/reUseComponents/DrinkImage
 import { PageTitle } from '../../components/reUseComponents/PageTitle';
 
 const FavoriteDrinksPage = () => {
+
   return (
     <section className="container">
       <PageTitle title={'Favorites'} />

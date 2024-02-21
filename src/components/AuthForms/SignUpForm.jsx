@@ -3,11 +3,14 @@ import { signUpThunk } from '../../redux/auth/authOperations';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { selectAuthToken } from '../../redux/auth/authSelectors';
+import Calendar from '../DatePicker/Calendar';
+import { useState } from 'react';
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
   const token = useSelector(selectAuthToken);
   const navigate = useNavigate();
+  const [dateOfBirth, setDateOfBirth] = useState(null);
 
   const {
     onBlur,
@@ -17,7 +20,12 @@ const SignUpForm = () => {
     reset,
   } = useForm();
 
+  const getDateOfBirth = (date) => {
+    setDateOfBirth(date);
+  };
+
   const onSubmit = (data) => {
+    data.dateOfBirth = dateOfBirth;
     dispatch(signUpThunk(data));
 
     if (token) navigate('/home');
@@ -46,23 +54,7 @@ const SignUpForm = () => {
                 /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/i,
             })}
           />
-
-          <input
-            className="input-form"
-            onBlur={onBlur}
-            type="text"
-            placeholder="dd/mm/yyyy"
-            autoComplete="off"
-            {...register('dateOfBirth', {
-              required: {
-                value: true,
-                message: 'This is an ERROR date of birth',
-              },
-              min: 0,
-              pattern:
-                '/^(0[1-9]|[1-2][0-9]|3[0-1])(\\/|-)(0[1-9]|1[0-2])(\\/|-)d{4}$/i',
-            })}
-          />
+          <Calendar getDateOfBirth={getDateOfBirth} />
           <input
             className="input-form"
             onBlur={onBlur}
@@ -91,19 +83,27 @@ const SignUpForm = () => {
             placeholder="Password"
             autoComplete="off"
             {...register('password', {
-              required: 'Password is required.',
-              minLength: 6,
-              pattern: {
-                value: '/^(?=.*[a-z])(?=.*[A-Z])(?=.*d)[a-zA-Zd]{8,}$/i',
-                message: 'This is an ERROR password.',
+              required: true,
+              minLength: {
+                value: 6,
               },
             })}
           />
-          {/* {errors.password && errors.password.type === 'minLength' ? (
-      <p>Password should be at-least 6 characters.</p>
-    ) : (
-      <p>This is an CORRECT password</p>
-    )} */}
+
+          {/* {errors.password && (
+            <>
+              {errors.password.type === 'required' && (
+                <span className=" text-error-color ml-[24px] text-sm">
+                  Password is required.
+                </span>
+              )}
+              {errors.password.type === 'minLength' && (
+                <span className=" ml-[24px] text-sm">
+                  Password must be at least 6 characters long.
+                </span>
+              )}
+            </>
+          )} */}
         </div>
         <div className="btn-container">
           <button className="sign-btn" type="submit">
