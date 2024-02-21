@@ -77,11 +77,11 @@ body {
 }
 
 .input-form.error {
-  @apply border-error;
+  @apply border-error-color;
 }
 
 .input-form.correct {
-  @apply border-correct;
+  @apply border-correct-color;
 }
 
 .input-container {
@@ -93,11 +93,11 @@ body {
 }
 
 .errorMsg {
-  @apply text-error text-[12px] ml-[24px] mt-[8px];
+  @apply text-error-color text-[12px] ml-[24px] mt-[8px];
 }
 
 .correctMsg {
-  @apply text-correct text-[12px] ml-[24px] mt-[8px];
+  @apply text-correct-color text-[12px] ml-[24px] mt-[8px];
 }
 
 .welcome-container {
