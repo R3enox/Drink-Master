@@ -33,9 +33,53 @@
   line-height: 156% !important;
 }
 /* Welcome-SignIn-SignUp-Pages */
+@layer base {
+  .bg-image-set {
+    background-image: image-set(
+      url('assets/img/welcomePage/mobile-bg-welcome-page.png') 1x,
+      url('assets/img/welcomePage/mobile-bg-welcome-page@2x.png') 2x
+    );
+  }
+  .bg-image-set-tablet {
+    background-image: image-set(
+      url('assets/img/welcomePage/tablet-bg-welcome-page.png') 1x,
+      url('assets/img/welcomePage/tablet-bg-welcome-page@2x.png') 2x
+    );
+  }
+  .bg-image-set-desktop {
+    background-image: image-set(
+      url('assets/img/welcomePage/desktop-bg-welcome.png') 1x,
+      url('assets/img/welcomePage/desktop-bg-welcome@2x.png') 2x
+    );
+  }
+}
+.welcome-container {
+  @apply bg-image-set
+   container min-h-[100vh] bg-no-repeat m-auto py-[304px] 
+   md:bg-image-set-tablet md:py-[400px] 
+   lg:bg-image-set-desktop lg:py-[273px] lg:bg-background-color;
+}
+.form-sign-up-container {
+  @apply bg-image-set  
+  container min-h-[100vh] bg-no-repeat py-[191px] m-auto
+  md:bg-image-set-tablet md:py-[280px]
+  lg:bg-image-set-desktop lg:py-[153px] lg:bg-background-color;
+}
+.form-sign-in-container {
+  @apply bg-image-set  
+  container min-h-[100vh] bg-no-repeat py-[259px] m-auto
+  md:bg-image-set-tablet md:py-[350px]
+  lg:bg-image-set-desktop first-letter:lg:py-[223px] lg:bg-background-color;
+}
 .input-form {
   @apply w-full bg-transparent h-[54px] rounded-[42px] bg-contain border-[1px] border-border-color  hover:border-grey-text-color transition-colors hover:placeholder-grey-text-color text-[14px] leading-[1.29] placeholder-border-color py-[18px] px-[24px] outline-none
   md:text-[17px] md:pt-[14px] md:pb-[15px];
+}
+.test-input {
+  @apply shadow-sm focus:outline-none focus:border-correct-color focus:ring-1 focus:ring-correct-color
+  disabled:bg-grey-text-color disabled:text-grey-text-color disabled:border-b-grey-text-color disabled:shadow-none
+  invalid:border-error-color invalid:text-error-color
+  focus:invalid:border-error-color focus:invalid:ring-error-color;
 }
 .input-container {
   @apply flex flex-col gap-[14px] md:w-[400px]
@@ -46,21 +90,6 @@
   @apply text-welcome-text-color text-[28px] mb-[28px] font-semibold leading-[1.14]
   md:text-[40px] md:leading-[1.1] md:pl-[32px]
   lg:pl-[0];
-}
-.welcome-container {
-  @apply container min-h-[100vh] m-auto bg-mobile-bg-welcome  py-[304px] 
-  md:bg-tablet-bg-welcome md:py-[400px] 
-  lg:bg-desctop-bg-welcome lg:py-[273px] lg:bg-background-color;
-}
-.form-sign-up-container {
-  @apply container min-h-[100vh] py-[191px] bg-mobile-bg-welcome m-auto
-  md:bg-tablet-bg-welcome md:py-[280px]
-  lg:bg-desctop-bg-welcome lg:py-[153px];
-}
-.form-sign-in-container {
-  @apply container min-h-[100vh] py-[259px] bg-mobile-bg-welcome m-auto
-  md:bg-tablet-bg-welcome md:py-[350px]
-  lg:bg-desctop-bg-welcome lg:py-[223px];
 }
 .welcome-title {
   @apply text-welcome-text-color text-center text-[28px] font-semibold mb-[14px] leading-[1.14]
@@ -85,7 +114,7 @@
   lg:pl-[0];
 }
 .sign-btn {
-  @apply transition-shadow shadow-lg hover:shadow-primary-text-color/50 bg-primary-text-color text-primary-text-button-color font-semibold py-[14px] px-[40px] rounded-[42px] text-[14px] leading-[1.29]
+  @apply bg-primary-text-color text-primary-text-button-color font-semibold py-[14px] px-[40px] rounded-[42px] text-[14px] leading-[1.29]
   md:text-[16px] md:leading-[1.1] md:py-[18px];
 }
 .sign-link-btn {
