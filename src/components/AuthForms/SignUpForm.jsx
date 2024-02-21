@@ -4,11 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { selectAuthToken } from '../../redux/auth/authSelectors';
 import Calendar from '../DatePicker/Calendar';
+import { useState } from 'react';
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
   const token = useSelector(selectAuthToken);
   const navigate = useNavigate();
+  const [dateOfBirth, setDateOfBirth] = useState(null);
 
   const {
     onBlur,
@@ -18,7 +20,12 @@ const SignUpForm = () => {
     reset,
   } = useForm();
 
+  const getDateOfBirth = (date) => {
+    setDateOfBirth(date);
+  };
+
   const onSubmit = (data) => {
+    data.dateOfBirth = dateOfBirth;
     dispatch(signUpThunk(data));
 
     if (token) navigate('/home');
@@ -47,7 +54,7 @@ const SignUpForm = () => {
                 /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/i,
             })}
           />
-          <Calendar />
+          <Calendar getDateOfBirth={getDateOfBirth} />
           <input
             className="input-form"
             onBlur={onBlur}

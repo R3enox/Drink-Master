@@ -1,13 +1,20 @@
 import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import sprite from '../../assets/sprite.svg';
+import { format } from 'date-fns';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import MaskedInput from 'react-text-mask';
 import { CalendarGlobalStyles } from './Calendar.styled';
 
-const Calendar = () => {
+const Calendar = ({ getDateOfBirth }) => {
   const [startDate, setStartDate] = useState(null);
+
+  const handleDateChange = (date) => {
+    setStartDate(date);
+    const formattedDate = format(date, 'dd/MM/yyyy');
+    getDateOfBirth(formattedDate);
+  };
 
   return (
     <>
@@ -27,7 +34,7 @@ const Calendar = () => {
             mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
           />
         }
-        onChange={(date) => setStartDate(date)}
+        onChange={handleDateChange}
         dateFormat={'dd/MM/yyyy'}
         calendarStartDay={1}
       />
