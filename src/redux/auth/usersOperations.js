@@ -1,25 +1,26 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-export const avatarApi = createApi({
+export const userApi = createApi({
   // const setToken = (token) => {
   //   instance.defaults.headers.common.Authorization = `Bearer ${token}`;
   // };
 
 
-  reducerPath: 'avatar',
+  reducerPath: 'user',
   baseQuery: fetchBaseQuery({
-    // baseUrl: 'https://drink-master-4fm6.onrender.com ',
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'https://drink-master-4fm6.onrender.com ',
+    // baseUrl: 'http://localhost:3000',
   }),
   tagTypes: ['users'],
   endpoints: (builder) => ({
-    uploadAvatar: builder.mutation({
+    uploadUser: builder.mutation({
       //  const token = state.auth.token;
       //    setToken(token);
       //    const { data } = await instance.post('/auth/api/updateAvatar');
-      query: () => ({
-        url: `api/users/avatar`,
-        method: 'POST',
+      query: (value) => ({
+        url: `api/users/update`,
+        method: 'PATCH',
+        body: value
       }),
       providesTags: ['users'],
     }),
@@ -27,8 +28,8 @@ export const avatarApi = createApi({
 });
 
 export const {
- useUploadAvatarMutation
-} = avatarApi
+ useUploadUserMutation
+} = userApi
 
 // import axios from 'axios';
 // import { createAsyncThunk } from '@reduxjs/toolkit';

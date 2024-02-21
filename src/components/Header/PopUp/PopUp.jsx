@@ -1,5 +1,5 @@
 import { useCallback, useEffect} from 'react';
-   import * as SC from '../PopUp/PopUp.styled';
+
 import { IMG } from '../../../../images';
 
 
@@ -25,13 +25,22 @@ const PopUp = ({ openPopUpFnc, openEl, openModal, openLogOutModal }) => {
 
   return (
     <>
-      <SC.PopUpWrp onClose={openPopUpFnc}>
+      <div onClick={openPopUpFnc}
+        className="absolute p-[18px] h-[134px] w-[177px] bg-indigo-500 top-[80px] md:top-[85px] right-[3px]  lg:right-[300px] rounded-md bg-primary-text-button-color"
+      >
         <div onClick={openModal}>
-          <p>Edit profile</p>
-          <img src={IMG.icon} width="17" height="17" alt="pen" />
+          <div className="flex justify-between mb-[28px]">
+            <p>Edit profile</p>
+            <img src={IMG.icon} width="17" height="17" alt="pen" />
+          </div>
         </div>
-        <button onClick={openLogOutModal}>Log out</button>
-      </SC.PopUpWrp>
+        <button
+          className="w-full text-center pt-[12px] pb-[12px] pl-[45] pr-[45] rounded-[200px] bg-transparent border-[1px]  border-border-color "
+          onClick={openLogOutModal}
+        >
+          Log out
+        </button>
+      </div>
     </>
   );
 };

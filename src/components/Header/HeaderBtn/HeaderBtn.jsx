@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { HeaderSideMenu } from '../HeaderSideMenu/HeaderSideMenu';
 
+
 import sprite from '../../../assets/sprite.svg';
 
 export const HeaderBtn = () => {
@@ -12,14 +13,9 @@ export const HeaderBtn = () => {
 
   return (
     <>
-      <button className="pl-11 fill: white" onClick={toogleModal}>
-        <svg width={32} height={32} fill="white">
-          <use
-            className="w-6 h-6 fill: white;"
-            fill="white"
-            alt="burger"
-            href={sprite + `icon-burger`}
-          ></use>
+      <button className="ml-[14px] md:ml-[24px]" onClick={toogleModal}>
+        <svg className="stroke-primary-text-color sm:w-[22px] h-[22px] md:w-[28px] md:h-[28px]">
+          <use href={sprite + '#icon-burger'}></use>
         </svg>
       </button>
       {burger && <HeaderSideMenu toogleModal={toogleModal} burger={burger} />}

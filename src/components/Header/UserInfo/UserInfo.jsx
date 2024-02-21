@@ -2,10 +2,11 @@ import { useState } from 'react';
 import PopUp from '../PopUp/PopUp';
 import LogOutModal from '../LogOutModal/LogOutModal';
 import HeaderModal from '../HeaderModal/HeaderModal';
-
-import { FaRegCircleUser } from 'react-icons/fa6';
 import UserProfileForm from '../UserProfileForm/UserProfileForm';
-
+import { selectAuthUser } from '../../../redux/auth/authSelectors';
+import { useSelector } from 'react-redux';
+import { Avatar, StyledEngineProvider } from '@mui/material';
+import { useUploadUserMutation } from '../../../redux/auth/usersOperations';
 
 const UserInfo = () => {
   const [openEl, setOpenEl] = useState(null);
@@ -13,7 +14,8 @@ const UserInfo = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [isOpenLogOutModal, setIsOpenLogOutModal] = useState(false);
 
-
+  const [uploadUser] = useUploadUserMutation();
+  const user = useSelector(selectAuthUser);
 
   const openPopUp = (e) => {
     if (!popUpIsOpen) {
@@ -32,35 +34,16 @@ const UserInfo = () => {
   const toogleLogOutModal = () => {
     setIsOpenLogOutModal(!isOpenLogOutModal);
   };
-  // const [isOpenModal, setIsOpenModal] = useState(false);
 
-  // const toogleModal = () => setIsOpenModal(!isOpenModal);
-
-  // useEffect(() => {
-  //   const onESCClick = (e) => {
-  //     if (e.code === 'Escape') {
-  //       toogleSelect();
-  //     }
-  //   };
-  //   window.addEventListener('keydown', onESCClick);
-
-  //   return () => {
-  //     window.removeEventListener('keydown', onESCClick);
-  //   };
-  // }, []);
   return (
     <>
-      <button className='pl-16' onClick={openPopUp}>
-        <FaRegCircleUser color="f3f3f3" size={30} />
-        {/* <div avatar={avatar}>
-          {avatar ? (
-            ''
-          ) : (
-            <img src={IMG.noUser} width="22" height="22" alt="logo" />
-          )}
-        </div> */}
-
-        {/* <p{userName || 'User Name'}</p> */}
+      <button className="flex" onClick={openPopUp}>
+        <div className="flex gap-[8px] md:gap-[14px] items-center ">
+          <StyledEngineProvider injectFirst>
+            <Avatar className="w-[32px] h-[32px] md:w-[41px] md:h-[42px] lg:w-[39px] lg:h-[39px] " />
+          </StyledEngineProvider>
+          <p>{user.name ?? 'User Name'}</p>
+        </div>
 
         {popUpIsOpen && (
           <PopUp
@@ -78,7 +61,7 @@ const UserInfo = () => {
       )}
 
       {modalIsOpen && (
-        <HeaderModal isOpen={modalIsOpen} openFnc={togleModal}>
+        <HeaderModal className="" isOpen={modalIsOpen} openFnc={togleModal}>
           <UserProfileForm />
         </HeaderModal>
       )}

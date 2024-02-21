@@ -7,11 +7,12 @@ import {
 } from './authFunctionsReducer';
 
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { signInThunk, signUpThunk } from './authOperations';
+import { signInThunk, signOutThunk, signUpThunk } from './authOperations';
 
 const STATUS = { PENDING: 'pending', REJECTED: 'rejected' };
 
-const getActions = (type) => isAnyOf(signUpThunk[type], signInThunk[type]);
+const getActions = (type) =>
+  isAnyOf(signUpThunk[type], signInThunk[type], signOutThunk[type]);
 
 const authSlice = createSlice({
   name: 'auth',
@@ -21,6 +22,9 @@ const authSlice = createSlice({
     builder
       .addCase(signUpThunk.fulfilled, handleFulfilledSignUp)
       .addCase(signInThunk.fulfilled, handleFulfilledSignIn)
+      .addCase(signOutThunk.fulfilled, () => {
+        return initialState;
+      })
       .addMatcher(getActions(PENDING), handlePending)
       .addMatcher(getActions(REJECTED), handleRejected);
   },

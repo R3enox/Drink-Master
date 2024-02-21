@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import { avatarApi } from './auth/usersOperations';
+import {  userApi } from './auth/usersOperations';
 import storage from 'redux-persist/lib/storage';
-import { drinksReducer } from './drinks/drinksSlice';
+
 import { drinksReducer } from './drinks/drinksSlice';
 import { authReducer } from './auth/authReducer';
+import persistStore from 'redux-persist/es/persistStore';
+import persistReducer from 'redux-persist/es/persistReducer';
 
 // import {
 //   persistStore,
@@ -30,7 +32,7 @@ export const store = configureStore({
   reducer: {
     auth: persistReducer(authConfig, authReducer),
     drinks: drinksReducer,
-    [avatarApi.reducerPath]: avatarApi.reducer,
+    [userApi.reducerPath]: userApi.reducer,
   },
 
 
@@ -39,7 +41,8 @@ export const store = configureStore({
 
   middleware: (getDefaultMiddleware) =>
 
-    getDefaultMiddleware().concat(avatarApi.middleware)
+    getDefaultMiddleware().concat(userApi.middleware)
 });
 
+export const persistor = persistStore(store);
 

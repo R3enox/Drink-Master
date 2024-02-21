@@ -9,7 +9,7 @@ export const Nav = styled.nav`
   position: absolute;
   display: flex;
   flex-direction: column;
-  height: 180px;
+  height: 100%;
   background-color: #0a0a11;
   text-decoration: none;
   width: 100%;
