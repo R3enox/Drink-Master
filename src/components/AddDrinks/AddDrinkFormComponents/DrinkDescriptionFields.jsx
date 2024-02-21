@@ -1,38 +1,26 @@
 import spite from '../../../assets/sprite.svg';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Select from 'react-select';
 import { selectAuthUser } from '../../../redux/auth/authSelectors';
 import { useSelector } from 'react-redux';
 import { userAge } from '../userAge';
-
-const optionsCategory = [
-  { value: 'Ordinary Drink', label: 'Ordinary Drink' },
-  { value: 'Cocktail', label: 'Cocktail' },
-  { value: 'Shake', label: 'Shake' },
-  { value: 'Other/Unknown', label: 'Other/Unknown' },
-  { value: 'Cocoa', label: 'Cocoa' },
-  { value: 'Ordinary Drink', label: 'Ordinary Drink' },
-  { value: 'Cocktail', label: 'Cocktail' },
-  { value: 'Shake', label: 'Shake' },
-  { value: 'Other/Unknown', label: 'Other/Unknown' },
-  { value: 'Cocoa', label: 'Cocoa' },
-  { value: 'Ordinary Drink', label: 'Ordinary Drink' },
-  { value: 'Cocktail', label: 'Cocktail' },
-  { value: 'Shake', label: 'Shake' },
-  { value: 'Other/Unknown', label: 'Other/Unknown' },
-  { value: 'Cocoa', label: 'Cocoa' },
-];
-const optionsGlass = [
-  { value: 'Ordinary Drink', label: 'Ordinary Drink' },
-  { value: 'Cocktail', label: 'Cocktail' },
-  { value: 'Shake', label: 'Shake' },
-  { value: 'Other/Unknown', label: 'Other/Unknown' },
-  { value: 'Cocoa', label: 'Cocoa' },
-];
+import { createOptionsFromArrOfStr } from '../../../helpers/createCollectionOptions';
+import { useFilters } from '../../../hooks/useFilters';
 
 export const DrinkPageHero = () => {
+  const { categories, glasses } = useFilters();
   const [preview, setPreview] = useState();
   const [age, setAge] = useState(0);
+
+  const categoriesOptions = useMemo(
+    () => createOptionsFromArrOfStr(categories ?? []),
+    [categories]
+  );
+
+  const glassesOptions = useMemo(
+    () => createOptionsFromArrOfStr(glasses ?? []),
+    [glasses]
+  );
 
   const user = useSelector(selectAuthUser);
 
@@ -113,9 +101,9 @@ export const DrinkPageHero = () => {
           <Select
             id="selectCategory"
             classNamePrefix="custom_select"
-            options={optionsCategory}
+            options={categoriesOptions}
             name="category"
-            defaultValue={optionsCategory[0]}
+            defaultValue={categoriesOptions[0]}
             isRequired={true}
           />
         </div>
@@ -129,9 +117,9 @@ export const DrinkPageHero = () => {
           <Select
             id="selectGlass"
             classNamePrefix="custom_select"
-            options={optionsGlass}
+            options={glassesOptions}
             name="glass"
-            defaultValue={optionsCategory[0]}
+            defaultValue={glassesOptions[0]}
             isRequired={true}
           />
         </div>

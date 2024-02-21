@@ -1,32 +1,20 @@
 import sprite from '../../../assets/sprite.svg';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { AddDrinkTitle } from './AddDrinkTitle';
 import Select from 'react-select';
 import { nanoid } from 'nanoid';
 import { useFilters } from '../../../hooks/useFilters';
-
-const optionsCategory = [
-  { value: 'Ordinary Drink', label: 'Ordinary Drink' },
-  { value: 'Cocktail', label: 'Cocktail' },
-  { value: 'Shake', label: 'Shake' },
-  { value: 'Other/Unknown', label: 'Other/Unknown' },
-  { value: 'Cocoa', label: 'Cocoa' },
-  { value: 'Ordinary Drink', label: 'Ordinary Drink' },
-  { value: 'Cocktail', label: 'Cocktail' },
-  { value: 'Shake', label: 'Shake' },
-  { value: 'Other/Unknown', label: 'Other/Unknown' },
-  { value: 'Cocoa', label: 'Cocoa' },
-  { value: 'Ordinary Drink', label: 'Ordinary Drink' },
-  { value: 'Cocktail', label: 'Cocktail' },
-  { value: 'Shake', label: 'Shake' },
-  { value: 'Other/Unknown', label: 'Other/Unknown' },
-  { value: 'Cocoa', label: 'Cocoa' },
-];
+import { createOptionsFromArrOfObj } from '../../../helpers/createCollectionOptions';
 
 export const DrinkIngredientsFields = () => {
   const { ingredients } = useFilters();
   const [ingredientsCount, setIngredientsCount] = useState(3);
   const [ingredientInputs, setIngredientInputs] = useState([]);
+
+  const ingredientsOptions = useMemo(
+    () => createOptionsFromArrOfObj(ingredients ?? []),
+    [ingredients]
+  );
 
   useEffect(() => {
     const newIngredientInputs = [];
@@ -37,9 +25,9 @@ export const DrinkIngredientsFields = () => {
           <Select
             className="flex-initial w-52"
             name="title"
-            options={ingredients}
+            options={ingredientsOptions}
             classNamePrefix="ingredientsSelect"
-            defaultValue={ingredients[i]}
+            defaultValue={ingredientsOptions[i]}
             isRequired={true}
           />
           <label>
@@ -63,7 +51,7 @@ export const DrinkIngredientsFields = () => {
   }, [ingredientsCount]);
 
   const handleInc = () => {
-    if (optionsCategory.length <= ingredientsCount) {
+    if (ingredientsOptions.length <= ingredientsCount) {
       return;
     }
     const newCount = ingredientsCount + 1;
