@@ -6,15 +6,15 @@ export const drinksApi = createApi({
   reducerPath: 'drinks',
   baseQuery: fetchBaseQuery({
     baseUrl: `${baseURL}`,
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().auth.token;
+      if (token) {
+        headers.set('authorization', `Bearer ${token}`);
+      }
+      return headers;
+    },
   }),
 
-  prepareHeaders: (headers, { getState }) => {
-    const token = getState().auth.token;
-    if (token) {
-      headers.set('authorization', `Bearer ${token}`);
-    }
-    return headers;
-  },
   tagTypes: ['drinks'],
 
   endpoints: (builder) => ({

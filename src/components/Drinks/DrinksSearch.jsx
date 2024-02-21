@@ -1,55 +1,62 @@
-import { useEffect, useState } from 'react';
-import Select from 'react-select';
-import sprite from '../../assets/sprite.svg';
+import { useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { useFilters } from '../../hooks/useFilters';
-import { useSelector } from 'react-redux';
-import { selectAuthToken } from '../../redux/auth/authSelectors';
+// import { useSelector } from 'react-redux';
+// import { selectAuthToken } from '../../redux/auth/authSelectors';
+import Select from 'react-select';
+import { useDrinkFilters } from '../../hooks/useDrinkFilters';
+import sprite from '../../assets/sprite.svg';
 
-const filterOptions = (item) => ({
-  value: item.toLowerCase(),
-  label: item,
-});
+// const filterOptions = (item) => ({
+//   value: item.toLowerCase(),
+//   label: item,
+// });
 
-const initialState = {
-  category: '',
-  ingredient: '',
-  keyName: '',
-};
-export const DrinksSearch = ({ onFilterChange }) => {
-  const token = useSelector(selectAuthToken);
-  const [selectedFilters, setSelectedFilters] = useState(initialState);
+// const initialState = {
+//   category: '',
+//   ingredient: '',
+//   keyName: '',
+// };
+export const DrinksSearch = () => {
+  // const token = useSelector(selectAuthToken);
+  // const [selectedFilters, setSelectedFilters] = useState(initialState);
   const { categories, ingredients } = useFilters();
-  const ingredientsList = ingredients
-    .map((item) => item.title)
-    .sort((a, b) => a.localeCompare(b));
+  const { keyName, category, ingredient, setDrinkFilter } = useDrinkFilters();
+
+  const createCategoriesOptions = (collection) =>
+    collection.map((title) => ({
+      value: title,
+      label: title,
+    }));
+  const createIngredientsOptions = (collection) =>
+    collection
+      .map(({ title }) => ({
+        value: title,
+        label: title,
+      }))
+      .sort((a, b) => a.localeCompare(b));
+
+  // export const DrinksSearch = () => {
+
+  const categoriesOptions = useMemo(
+    () => createCategoriesOptions(categories ?? []),
+    [categories]
+  );
+
+  const ingredientsOptions = useMemo(
+    () => createIngredientsOptions(ingredients ?? []),
+    [ingredients]
+  );
+
   const { handleSubmit, setValue, watch } = useForm({
-    defaultValues: { keyName: '' },
+    defaultValues: {
+      keyName: keyName || '',
+    },
   });
 
-  const handleFilterChange = (filterType, selectedValue) => {
-    setSelectedFilters((prevFilters) => ({
-      ...prevFilters,
-      [filterType]: selectedValue,
-    }));
-  };
-  const handleReset = () => {
-    setValue('keyName', '');
-    setSelectedFilters((prevFilters) => ({
-      ...prevFilters,
-      keyName: '',
-    }));
-  };
   const onSubmit = (values) => {
-    setSelectedFilters((prevFilters) => ({
-      ...prevFilters,
-      keyName: values.keyName,
-    }));
+    setDrinkFilter('keyName', values.keyName);
   };
-  useEffect(() => {
-    if (!token) return;
-    onFilterChange(selectedFilters);
-  }, [selectedFilters]);
 
   return (
     <div className="flex flex-col  items-center md:flex-row gap-[14px] md:gap-[8px] pt-[40px] md:pt-[60px] lg:pt-[80px]">
@@ -62,15 +69,17 @@ export const DrinksSearch = ({ onFilterChange }) => {
           type="text"
           placeholder="Enter the text"
           onChange={(e) => {
-            console.log(e);
             setValue('keyName', e.target.value);
           }}
-          value={watch('keyName') || ''}
+          value={watch('keyName' || '')}
         />
         <div className="flex items-center">
           <button
             type="reset"
-            onClick={handleReset}
+            onClick={() => {
+              setValue('keyName', '');
+              setDrinkFilter('keyName', '');
+            }}
             className="w-[10px] h-[10px] md:w-[15px] md:h-[15px]"
           >
             {watch('keyName') && (
@@ -87,28 +96,30 @@ export const DrinksSearch = ({ onFilterChange }) => {
         </div>
       </form>
       <Select
-        options={categories && categories.map(filterOptions)}
+        options={categoriesOptions}
         placeholder={'All categories'}
         classNamePrefix="searchSelect"
         isClearable={true}
         onChange={(selectedValue) =>
-          handleFilterChange(
-            'category',
-            selectedValue ? selectedValue.value : ''
-          )
+          setDrinkFilter('category', selectedValue.value)
         }
+        defaultValue={{
+          value: category || '',
+          label: category || 'All categories',
+        }}
       />
       <Select
-        options={ingredientsList && ingredientsList.map(filterOptions)}
+        options={ingredientsOptions}
         placeholder={'Ingredients'}
         classNamePrefix="searchSelect"
         isClearable={true}
         onChange={(selectedValue) =>
-          handleFilterChange(
-            'ingredient',
-            selectedValue ? selectedValue.value : ''
-          )
+          setDrinkFilter('ingredient', selectedValue.value)
         }
+        defaultValue={{
+          value: ingredient || '',
+          label: ingredient || 'Ingredients',
+        }}
       />
     </div>
   );
