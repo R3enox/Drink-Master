@@ -1,5 +1,5 @@
 const AddDrinkPage = () => {
-  return <div>AddDrinkPage</div>;
+  return <div style={{ textAlign: 'center' }}>AddDrinkPage</div>;
 };
 
 export default AddDrinkPage;

@@ -1,10 +1,10 @@
-import { Container, Title } from './NotFoundPage.styled';
+import { NotFoundPageTitle, NotFoundPageWrapper } from './NotFoundPage.styled';
 
 const NotFoundPage = () => {
   return (
-    <Container>
-      <Title>404</Title>
-    </Container>
+    <NotFoundPageWrapper>
+      <NotFoundPageTitle>4&nbsp;&nbsp;&nbsp;4</NotFoundPageTitle>
+    </NotFoundPageWrapper>
   );
 };
 

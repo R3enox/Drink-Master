@@ -2,10 +2,10 @@ import { useEffect, Suspense, lazy } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import SharedLayout from 'components/SharedLayout/SharedLayout';
+import SharedLayout from './components/SharedLayout/SharedLayout';
 import { RestrictedRoute } from './components/SharedLayout/RestrictedRoute';
 import { PrivateRoute } from './components/SharedLayout/PrivateRoute';
-import { AppWrapper } from './App.styled';
+// import { AppWrapper } from './App.styled';
 
 import { refreshUserThunk } from './redux/auth/authOperations';
 import { useAuth } from './hooks/useAuth';
@@ -34,57 +34,57 @@ export const App = () => {
 
   return (
     !isRefreshing && (
-      <AppWrapper>
-        <Suspense fallback={<p>Loading...</p>}>
-          <Routes>
+      // <AppWrapper>
+      <Suspense fallback={<p>Loading...</p>}>
+        <Routes>
+          <Route
+            path="/welcome"
+            element={<RestrictedRoute component={<WelcomePage />} />}
+          />
+          <Route
+            path="/signup"
+            element={<RestrictedRoute component={<SignUpPage />} />}
+          />
+          <Route
+            path="/signin"
+            element={<RestrictedRoute component={<SignInPage />} />}
+          />
+          <Route path="/" element={<SharedLayout />}>
+            <Route index element={<Navigate to="/home" />} />
             <Route
-              path="/welcome"
-              element={<RestrictedRoute component={<WelcomePage />} />}
+              path="home"
+              element={<PrivateRoute component={<HomePage />} />}
             />
             <Route
-              path="/signup"
-              element={<RestrictedRoute component={<SignUpPage />} />}
+              path="drinks"
+              element={<PrivateRoute component={<DrinksPage />} />}
             />
             <Route
-              path="/signin"
-              element={<RestrictedRoute component={<SignInPage />} />}
+              path="favorites"
+              element={<PrivateRoute component={<FavoriteDrinksPage />} />}
             />
-            <Route path="/" element={<SharedLayout />}>
-              <Route index element={<Navigate to="/home" />} />
-              <Route
-                path="home"
-                element={<PrivateRoute component={<HomePage />} />}
-              />
-              <Route
-                path="drinks"
-                element={<PrivateRoute component={<DrinksPage />} />}
-              />
-              <Route
-                path="favorites"
-                element={<PrivateRoute component={<FavoriteDrinksPage />} />}
-              />
-              <Route
-                path="my"
-                element={<PrivateRoute component={<MyDrinksPage />} />}
-              />
-              <Route
-                path="drink/:drinkId"
-                element={<PrivateRoute component={<DrinkPage />} />}
-              />
-              <Route
-                path="add"
-                element={<PrivateRoute component={<AddDrinkPage />} />}
-              />
-            </Route>
+            <Route
+              path="my"
+              element={<PrivateRoute component={<MyDrinksPage />} />}
+            />
+            <Route
+              path="drink/:drinkId"
+              element={<PrivateRoute component={<DrinkPage />} />}
+            />
+            <Route
+              path="add"
+              element={<PrivateRoute component={<AddDrinkPage />} />}
+            />
             <Route
               path="*"
               element={
                 isLoggedIn ? <NotFoundPage /> : <Navigate to="/welcome" />
               }
             />
-          </Routes>
-        </Suspense>
-      </AppWrapper>
+          </Route>
+        </Routes>
+      </Suspense>
+      // </AppWrapper>
     )
   );
 };
