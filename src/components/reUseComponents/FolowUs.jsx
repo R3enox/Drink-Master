@@ -2,8 +2,8 @@ import sprite from '../../assets/sprite.svg';
 
 export const FolowUs = () => {
   return (
-    <ul className="flex gap-x-[14px]">
-      <li className="p-[8px] border-[1px] rounded-[10px] border-border-color">
+    <ul className="flex gap-x-[14px] md:gap-x-[16px]">
+      <li className="p-[7px] border-[1px] rounded-[10px] border-border-color">
         <a
           href="https://www.facebook.com/goITclub/"
           target="_blank"
@@ -14,7 +14,7 @@ export const FolowUs = () => {
           </svg>
         </a>
       </li>
-      <li className="p-[8px] border-[1px] rounded-[10px] border-border-color">
+      <li className="p-[7px] border-[1px] rounded-[10px] border-border-color">
         <a
           href="https://www.instagram.com/goitclub/"
           target="_blank"
@@ -25,7 +25,7 @@ export const FolowUs = () => {
           </svg>
         </a>
       </li>
-      <li className="p-[8px] border-[1px] rounded-[10px] border-border-color">
+      <li className="p-[7px] border-[1px] rounded-[10px] border-border-color">
         <a
           href="https://www.youtube.com/c/GoIT"
           target="_blank"

@@ -1,2 +1,4 @@
 https://github.com/R3enox/frontend-drink-master/pull/6
 https://github.com/R3enox/frontend-drink-master/pull/16
+https://github.com/R3enox/frontend-drink-master/pull/18
+https://github.com/R3enox/frontend-drink-master/pull/23

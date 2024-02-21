@@ -83,19 +83,27 @@ const SignUpForm = () => {
             placeholder="Password"
             autoComplete="off"
             {...register('password', {
-              required: 'Password is required.',
-              minLength: 6,
-              pattern: {
-                value: '/^(?=.*[a-z])(?=.*[A-Z])(?=.*d)[a-zA-Zd]{8,}$/i',
-                message: 'This is an ERROR password.',
+              required: true,
+              minLength: {
+                value: 6,
               },
             })}
           />
-          {/* {errors.password && errors.password.type === 'minLength' ? (
-      <p>Password should be at-least 6 characters.</p>
-    ) : (
-      <p>This is an CORRECT password</p>
-    )} */}
+
+          {/* {errors.password && (
+            <>
+              {errors.password.type === 'required' && (
+                <span className=" text-error-color ml-[24px] text-sm">
+                  Password is required.
+                </span>
+              )}
+              {errors.password.type === 'minLength' && (
+                <span className=" ml-[24px] text-sm">
+                  Password must be at least 6 characters long.
+                </span>
+              )}
+            </>
+          )} */}
         </div>
         <div className="btn-container">
           <button className="sign-btn" type="submit">

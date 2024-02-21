@@ -1,35 +1,38 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { DrinkCardPreview } from '../reUseComponents/DrinkCardPreview';
 import {
   selectDrinksIsLoading,
-  drinksSelector,
+  selectDrinks,
 } from '../../redux/drinks/drinksSelector';
-import { getDrinks } from '../../redux/drinks/operations';
-import { DrinkCardPreview } from './DrinkCardPreview';
-import { Link } from 'react-router-dom';
+import { getDrinks } from '../../redux/drinks/drinksAPI';
+
 const categories = ['Ordinary Drink', 'Cocktail', 'Shake', 'Other/Unknown'];
 
 export const PreviewDrinks = () => {
-  const drinks = useSelector(drinksSelector);
+  const drinks = useSelector(selectDrinks);
   const isLoading = useSelector(selectDrinksIsLoading);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getDrinks());
-    // диспатч категорий
   }, [dispatch]);
+
   return isLoading ? (
     <div>Please wait</div>
   ) : (
-    <div>
-      <ul>
+    <div className="flex flex-col gap-[60px] md:gap-[80px] ">
+      <ul className="flex flex-col gap-[40px] md:gap-[80px] ">
         {categories.map((category) => (
           <li key={category}>
-            <strong>{category}</strong>
-            <ul className="categoryListDrink">
+            <p className="font-semibold text-[28px] md:text-[40px] leading-[1.14] md:leading-[1.1] pb-[24px] md:pb-[40px]">
+              {category}
+            </p>
+            <ul className="flex flex-wrap flex-row md:gap-[20px] overflow-hidden h-[392px] md:h-[398px] lg:h-[438px]">
               {drinks
                 .filter((drink) => category === drink.category)
-                .slice(0, 4)
                 .map((drink) => (
                   <DrinkCardPreview key={drink._id} drink={drink} />
                 ))}
@@ -37,9 +40,12 @@ export const PreviewDrinks = () => {
           </li>
         ))}
       </ul>
-      <br />
-
-      <Link to="../drinks"> Other drinks</Link>
+      <Link
+        to="/drinks"
+        className="inline-block border-[1px] mx-auto px-[40px] py-[14px] md:px-[44px] md:py-[18px] font-semibold text-[14px] leading-[1.28] md:text-[16px] md:leading-[1.25] bg-primary-text-color text-primary-text-button-color text-center hover:text-primary-text-color hover:bg-transparent hover:border-[1px] border-border-color rounded-[42px]"
+      >
+        Other drinks
+      </Link>
     </div>
   );
 };
