@@ -72,23 +72,32 @@ body {
     );
   }
 }
+.welcome-bg-container {
+  @apply bg-image-set  bg-cover h-[100vh] 
+   md:bg-image-set-tablet 
+   lg:bg-image-set-desktop lg:bg-background-color;
+}
+
 .welcome-container {
-  @apply bg-image-set
-   container min-h-[100vh] bg-no-repeat m-auto py-[304px] 
-   md:bg-image-set-tablet md:py-[400px] 
-   lg:bg-image-set-desktop lg:py-[273px] lg:bg-background-color;
+  @apply container  m-auto py-[304px] md:pl-[32px];
+}
+.form-sign-up-bg-container {
+  @apply bg-image-set  
+  min-h-[100vh] bg-cover
+  md:bg-image-set-tablet 
+  lg:bg-image-set-desktop lg:bg-background-color;
 }
 .form-sign-up-container {
+  @apply container  py-[191px] m-auto md:pl-[32px];
+}
+.form-sign-in-bg-container {
   @apply bg-image-set  
-  container min-h-[100vh] bg-no-repeat py-[191px] m-auto
-  md:bg-image-set-tablet md:py-[280px]
-  lg:bg-image-set-desktop lg:py-[153px] lg:bg-background-color;
+  min-h-[100vh] bg-cover
+  md:bg-image-set-tablet 
+  lg:bg-image-set-desktop lg:bg-background-color;
 }
 .form-sign-in-container {
-  @apply bg-image-set  
-  container min-h-[100vh] bg-no-repeat py-[259px] m-auto
-  md:bg-image-set-tablet md:py-[350px]
-  lg:bg-image-set-desktop lg:py-[223px] lg:bg-background-color;
+  @apply container py-[259px] m-auto md:pl-[32px];
 }
 .input-form {
   @apply w-full bg-transparent h-[54px] rounded-[42px] bg-contain border-[1px] border-border-color hover:border-grey-text-color transition-colors hover:placeholder-grey-text-color text-[14px] leading-[1.29] placeholder-border-color py-[18px] px-[24px] outline-none md:text-[17px] 
