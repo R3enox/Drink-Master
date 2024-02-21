@@ -11,6 +11,7 @@ import { drinkIdStorageReducer } from './drinkIdStorageReducer/drinkIdStorageRed
 import persistReducer from 'redux-persist/es/persistReducer';
 import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
 import persistStore from 'redux-persist/es/persistStore';
+import { myDrinksApi } from './myDrinks/myDrinksSlice';
 
 const authConfig = {
   key: 'auth',
@@ -28,6 +29,7 @@ export const store = configureStore({
     [userApi.reducerPath]: userApi.reducer,
     filters: filtersReducer,
     drinkIdStorage: drinkIdStorageReducer,
+    [myDrinksApi.reducerPath]: myDrinksApi.reducer,
   },
 
   middleware: (getDefaultMiddleware) =>

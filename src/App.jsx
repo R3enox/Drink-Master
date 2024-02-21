@@ -10,6 +10,7 @@ import { PrivateRoute } from './components/SharedLayout/PrivateRoute';
 import { refreshUserThunk } from './redux/auth/authOperations';
 import { useAuth } from './hooks/useAuth';
 
+
 const WelcomePage = lazy(() => import('pages/WelcomePage/WelcomePage'));
 const SignUpPage = lazy(() => import('pages/SignUpPage/SignUpPage'));
 const SignInPage = lazy(() => import('pages/SignInPage/SignInPage'));
