@@ -21,7 +21,7 @@ export const Drinks = ({ filters }) => {
     <div>Loading</div>
   ) : (
     <div className="pt-[40px]">
-      {drinks.length > 0 && (
+      {drinks?.length > 0 && (
         <ul className="flex flex-wrap flex-col md:flex-row gap-[28px] md:gap-x-[20px] md:gap-y-[40px] lg:gap-y-[80px]">
           {/* delete slice after paginator realization */}
           {drinks.slice(0, 9).map((drink) => (
@@ -29,7 +29,9 @@ export const Drinks = ({ filters }) => {
           ))}
         </ul>
       )}
-      {drinks.length === 0 && !isLoading && <p>Заглушка для пустого фильтра</p>}
+      {drinks?.length === 0 && !isLoading && (
+        <p>Заглушка для пустого фильтра</p>
+      )}
       <br />
       <Paginator />
     </div>

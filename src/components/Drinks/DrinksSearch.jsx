@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import { selectAuthToken } from '../../redux/auth/authSelectors';
 
 const filterOptions = (item) => ({
-  value: item.toLowerCase().replace(/ /g, '%20'),
+  value: item.toLowerCase(),
   label: item,
 });
 
@@ -20,7 +20,9 @@ export const DrinksSearch = ({ onFilterChange }) => {
   const token = useSelector(selectAuthToken);
   const [selectedFilters, setSelectedFilters] = useState(initialState);
   const { categories, ingredients } = useFilters();
-  const ingredientsList = ingredients.map((item) => item.title);
+  const ingredientsList = ingredients
+    .map((item) => item.title)
+    .sort((a, b) => a.localeCompare(b));
   const { handleSubmit, setValue, watch } = useForm({
     defaultValues: { keyName: '' },
   });
@@ -85,7 +87,7 @@ export const DrinksSearch = ({ onFilterChange }) => {
         </div>
       </form>
       <Select
-        options={categories.map(filterOptions)}
+        options={categories && categories.map(filterOptions)}
         placeholder={'All categories'}
         classNamePrefix="searchSelect"
         isClearable={true}
@@ -97,7 +99,7 @@ export const DrinksSearch = ({ onFilterChange }) => {
         }
       />
       <Select
-        options={ingredientsList.map(filterOptions)}
+        options={ingredientsList && ingredientsList.map(filterOptions)}
         placeholder={'Ingredients'}
         classNamePrefix="searchSelect"
         isClearable={true}

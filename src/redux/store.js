@@ -28,7 +28,7 @@ export const store = configureStore({
     auth: persistReducer(authConfig, authReducer),
     drinks: drinksReducer,
     filters: filtersReducer,
-    drinkIdStorage: drinkIdStorageReducer
+    drinkIdStorage: drinkIdStorageReducer,
   },
   middleware: (getDefaultMiddleware) =>
     //   getDefaultMiddleware().concat(drinksApi.middleware),
