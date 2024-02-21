@@ -6,8 +6,18 @@ export const DrinkImageComponent = ({ description }) => {
       <picture className="flex justify-center items-center mb-[32px]">
         <source
           media="(min-width: 768px)"
+          type="image/webp"
+          srcSet={`${drinkImage.drinkTabletWeb} 1x, ${drinkImage.drinkTabletWeb2x} 2x`}
+        />
+        <source
+          media="(min-width: 768px)"
           type="image/png"
           srcSet={`${drinkImage.drinkTabletPng} 1x, ${drinkImage.drinkTabletPng2x} 2x`}
+        />
+        <source
+          media="(min-width: 375px)"
+          type="image/webp"
+          srcSet={`${drinkImage.drinkMobileWeb} 1x, ${drinkImage.drinkMobileWeb2x} 2x`}
         />
 
         <source
