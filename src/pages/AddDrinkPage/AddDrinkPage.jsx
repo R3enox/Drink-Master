@@ -5,12 +5,12 @@ import { PageTitle } from '../../components/reUseComponents/PageTitle';
 
 const AddDrinkPage = () => {
   return (
-    <>
+    <main className="container">
       <PageTitle title="Add drink" />
       <AddDrinkForm />
       <FollowUs />
       <PopularDrinks />
-    </>
+    </main>
   );
 };
 
