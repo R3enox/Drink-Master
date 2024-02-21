@@ -6,9 +6,8 @@ import DrinksList from '../../components/DrinksList/DrinksList';
 import { PageTitle } from '../../components/reUseComponents/PageTitle';
 
 const MyDrinksPage = () => {
-  const { data, error, isLoading, isFetching, isError } = useFetchMyDrinksQuery(
-    '65d4671508869ef73d2e85cc'
-  );
+  const { data, error, isLoading, isFetching, isError } =
+    useFetchMyDrinksQuery();
 
   const [deleteMyDrink] = useDeleteMyDrinkMutation();
 

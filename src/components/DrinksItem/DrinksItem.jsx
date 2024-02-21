@@ -18,7 +18,7 @@ const DrinksItem = ({ myDrink, onDelete }) => {
   };
 
   return (
-    <li key={_id} className="flex-basis-[calc(33.333% - 20px)]">
+    <li key={_id} className="md:w-[342px] lg:w-[400px]">
       <img
         src={drinkThumb || 'placeholderImage'}
         alt={drink}
@@ -28,7 +28,7 @@ const DrinksItem = ({ myDrink, onDelete }) => {
       <h2 className="mb-[4px] text-[18px] md:text-[24px] font-[500] leading-[1.33]">
         {drink}
       </h2>
-      <p className="text-grey-text-color mb-[18px] text-[14px] leading-[1.29] ">
+      <p className="mb-[18px] text-[14px] leading-[1.29] text-grey-text-color">
         {alcoholic ? 'Alcoholic' : 'Non-alcoholic'}
       </p>
       <p className="mb-[18px] text-ellipsis  line-clamp-4 text-[14px] mb:text-[16px] leading-[1.29] mb:leading-[1.38]">
