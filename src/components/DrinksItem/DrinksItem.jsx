@@ -10,8 +10,6 @@ const DrinksItem = ({ myDrink, onDelete }) => {
   const handleDelete = async () => {
     try {
       await deleteMyDrink(_id);
-      console.log('Drink deleted successfully');
-      onDelete();
     } catch (error) {
       console.error('Error deleting drink', error);
     }
@@ -24,10 +22,9 @@ const DrinksItem = ({ myDrink, onDelete }) => {
         alt={drink}
         className="rounded-[8px] mb-[18px] md:mb-[24px]"
       />
-
-      <h2 className="mb-[4px] text-[18px] md:text-[24px] font-[500] leading-[1.33]">
+      <h3 className="mb-[4px] text-[18px] md:text-[24px] font-[500] leading-[1.33]">
         {drink}
-      </h2>
+      </h3>
       <p className="mb-[18px] text-[14px] leading-[1.29] text-grey-text-color">
         {alcoholic ? 'Alcoholic' : 'Non-alcoholic'}
       </p>
