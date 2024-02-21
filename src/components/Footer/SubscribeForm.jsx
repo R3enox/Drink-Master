@@ -11,7 +11,6 @@ export const SubscribeForm = () => {
     console.log(data);
     reset();
   };
-  console.log(errors);
 
   return (
     <div className="md:flex flex-col lg:w-[309px]">
