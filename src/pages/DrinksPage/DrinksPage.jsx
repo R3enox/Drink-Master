@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Drinks } from '../../components/Drinks/Drinks';
-import { DrinksSearch } from '../../components/Drinks/DrinksSearch';
-import { PageTitle } from '../../components/reUseComponents/PageTitle';
 
-export default function DrinksPage() {
+import { PageTitle } from 'components/reUseComponents/PageTitle';
+import { DrinksSearch } from 'components/Drinks/DrinksSearch';
+import { Drinks } from 'components/Drinks/Drinks';
+
+const DrinksPage = () => {
   const [filters, setFilters] = useState('');
 
   const onFilterChange = (newFilters) => {
@@ -12,9 +13,11 @@ export default function DrinksPage() {
       ...newFilters,
     }));
   };
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   return (
     <div className="container">
       <PageTitle title="Drinks" />
@@ -22,4 +25,6 @@ export default function DrinksPage() {
       <Drinks filters={filters} />
     </div>
   );
-}
+};
+
+export default DrinksPage;

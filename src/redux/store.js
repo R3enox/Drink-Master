@@ -30,6 +30,7 @@ export const store = configureStore({
     drinks: drinksReducer,
     filters: filtersReducer,
     drinkIdStorage: drinkIdStorageReducer,
+    [myDrinksApi.reducerPath]: myDrinksApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     //   getDefaultMiddleware().concat(drinksApi.middleware),

@@ -7,22 +7,24 @@ import { PageTitle } from '../../components/reUseComponents/PageTitle';
 
 const MyDrinksPage = () => {
   const { data, error, isLoading, isFetching, isError } = useFetchMyDrinksQuery(
-    '65cf72409bdf635521161ec2'
+    '65d4671508869ef73d2e85cc'
   );
 
   const [deleteMyDrink] = useDeleteMyDrinkMutation();
 
   return (
-    <div>
-      <PageTitle title="My drinks" />
-      {/* {isFetching && <loader/>} */}
-      {data && data.length > 0 ? (
-        <DrinksList data={data} onDelete={deleteMyDrink} />
-      ) : (
-        <p> Заглушка</p>
-        // <DrinkImageComponent description="You don't have your own drinks yet" />
-      )}
-    </div>
+    <section className="pb-[80px]">
+      <div className="container mx-auto">
+        <PageTitle title="My drinks" className="mb-[40] mb:mb-[60]" />
+        {/* {isFetching && <loader/>} */}
+        {data && data.length > 0 ? (
+          <DrinksList data={data} onDelete={deleteMyDrink} />
+        ) : (
+          <p> Заглушка</p>
+          // <DrinkImageComponent description="You don't have your own drinks yet" />
+        )}
+      </div>
+    </section>
   );
 };
 

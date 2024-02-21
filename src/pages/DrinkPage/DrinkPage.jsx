@@ -1,19 +1,22 @@
-import { useDispatch, useSelector } from 'react-redux';
-import DrinkPageHero from '../../components/DrinkPageHero/DrinkPageHero';
-import { selectGetCurrentCocktail } from '../../redux/drinkIdStorageReducer/drinkIdStorageReducer.selectors';
-import DrinkIngredientsList from '../../components/DrinkIngredientsList/DrinkIngredientsList';
-import RecipePreparation from '../../components/RecipePreparation/RecipePreparation';
 import { useEffect } from 'react';
-import { fetchCocktailsById } from '../../redux/drinkIdStorageReducer/services/drinkIdServices';
 import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
+import DrinkPageHero from 'components/DrinkPageHero/DrinkPageHero';
+import DrinkIngredientsList from 'components/DrinkIngredientsList/DrinkIngredientsList';
+import RecipePreparation from 'components/RecipePreparation/RecipePreparation';
+
+import { selectGetCurrentCocktail } from '../../redux/drinkIdStorageReducer/drinkIdStorageReducer.selectors';
+import { fetchCocktailsById } from '../../redux/drinkIdStorageReducer/services/drinkIdServices';
 import { getIdIngredients } from './services.js';
-import { useFilters } from '../../hooks/useFilters.js';
+import { useFilters } from 'hooks/useFilters.js';
 
 const DrinkPage = () => {
   const currentCocktail = useSelector(selectGetCurrentCocktail);
   const dispatch = useDispatch();
   const { drinkId } = useParams();
   const { ingredients } = useFilters();
+
   const ingIds = getIdIngredients(currentCocktail);
   const ingredByFilter =
     ingredients &&

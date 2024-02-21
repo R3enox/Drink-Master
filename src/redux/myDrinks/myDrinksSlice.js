@@ -12,7 +12,7 @@ const axiosBaseQuery =
         params,
         headers: {
           ...headers,
-          Authorization: `Bearer ${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Y2Y3MjQwOWJkZjYzNTUyMTE2MWVjMiIsImlhdCI6MTcwODM1NzM5NywiZXhwIjoxNzA4NDAwNTk3fQ.lQ4EOcOmtdEERCdgmxNfNMku2B9npOeCGgPHmOm5wP4'}`,
+          Authorization: `Bearer ${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZDQ2NzE1MDg4NjllZjczZDJlODVjYyIsImlhdCI6MTcwODUxMTEwNywiZXhwIjoxNzA4NTU0MzA3fQ.0YX9neTmrnaE9Jujqs4lJBJyGkrkT7x-ZrXLOWYrx_k'}`,
           //   Authorization: `Bearer ${token}`,
         },
       });
@@ -34,7 +34,7 @@ export const myDrinksApi = createApi({
     baseUrl: 'http://localhost:3000/api',
     // baseUrl: 'https://drink-master-4fm6.onrender.com/api/',
     token:
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Y2Y3MjQwOWJkZjYzNTUyMTE2MWVjMiIsImlhdCI6MTcwODM1NzM5NywiZXhwIjoxNzA4NDAwNTk3fQ.lQ4EOcOmtdEERCdgmxNfNMku2B9npOeCGgPHmOm5wP4',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZDQ2NzE1MDg4NjllZjczZDJlODVjYyIsImlhdCI6MTcwODUxMTEwNywiZXhwIjoxNzA4NTU0MzA3fQ.0YX9neTmrnaE9Jujqs4lJBJyGkrkT7x-ZrXLOWYrx_k',
   }),
   tagTypes: ['myDrinks'],
   endpoints: (build) => ({
