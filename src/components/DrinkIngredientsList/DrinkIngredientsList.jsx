@@ -1,4 +1,4 @@
-const DrinkIngredientsList = ({ ingredients }) => {
+const DrinkIngredientsList = ({ ingredients, currentIngred }) => {
   return (
     <>
       <h2 className="mb-[42px] mt-[18px] font-medium text-base leading-5 text-grey-text-color md:mt-[80px] md:font-medium md:text-base lg:mt-[100px]">
@@ -7,17 +7,20 @@ const DrinkIngredientsList = ({ ingredients }) => {
       <div className="grid grid-cols-2 gap-[20px] md:grid-cols-3 md:lg:grid-cols-5  md:gap-[22px]">
         {ingredients &&
           ingredients.map(
-            ({
-              _id,
-              title,
-              ingredientThumb,
-              'thumb-medium': thumbMedium,
-              'thumb-small': thumbSmall,
-            }) => {
+            (
+              {
+                _id,
+                title,
+                ingredientThumb,
+                'thumb-medium': thumbMedium,
+                'thumb-small': thumbSmall,
+              },
+              index
+            ) => {
               return (
                 <div
-                  key={_id['$oid']}
-                  className="md:w-[220px] md:h-[220px] lg:w-[220px]lg:h-[220px] md:mb-[22px]"
+                  key={_id}
+                  className="hover:scale-110 hover:cursor-pointer transition duration-250 md:w-[220px] md:h-[220px] lg:w-[220px]lg:h-[220px] md:mb-[22px]"
                 >
                   <div className="p-[25px] relative w-[157px] h-[157px] rounded-lg flex-col flex items-center bg-ingredients-card-bg md:w-[220px] md:h-[220px] lg:p-[32px]">
                     <picture>
@@ -33,12 +36,12 @@ const DrinkIngredientsList = ({ ingredients }) => {
                       />
                     </picture>
                   </div>
-                  <div className="flex justify-between mt-[8px] md:mt-[14px] ">
+                  <div className="flex justify-between items-center mt-[8px] md:mt-[14px] ">
                     <p className=" font-medium leading-5 text-xs md:text-lg md:leading-6 lg:font-medium lg:text-base lg:leading-[1.33333] ">
                       {title}
                     </p>
                     <p className="text-grey-text-color font-medium text-sm leading-5 md:font-medium md:text-base md:leading-[1.25] lg:text-base">
-                      3cl
+                      {currentIngred[index].measure}
                     </p>
                   </div>
                 </div>

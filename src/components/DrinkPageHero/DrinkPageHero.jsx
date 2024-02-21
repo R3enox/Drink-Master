@@ -6,7 +6,7 @@ const DrinkPageHero = ({ cocktail }) => {
 
   return (
     <div className=" lg:flex justify-between">
-      <div className="">
+      <div>
         <h2 className="pb-2 font-semibold text-2xl leading-tight text-gray-100 md:font-semibold md:text-5xl md:leading-tight lg:font-semibold lg:text-5xl lg:leading-[1.0625]">
           {drink}
         </h2>
@@ -26,10 +26,10 @@ const DrinkPageHero = ({ cocktail }) => {
             </button>
           ) : (
             <button
-              className="bg-primary-text-color rounded-full px-10 py-3 w-56 h-12 bg-white text-black lg:rounded-full lg:px-11 lg:py-4 lg:w-64 lg:h-14"
+              className="bg-primary-text-color  text-primary-text-button-color  rounded-full px-10 py-3 w-56 h-12 bg-white text-black lg:rounded-full lg:px-11 lg:py-4 lg:w-64 lg:h-14 hover:bg-button-hover-color hover:border hover:border-solid hover:border-primary-text-color hover:text-primary-text-color"
               type="button"
             >
-              <span className=" text-sm leading-4 text-primary-text-button-color lg:font-semibold lg:text-base lg:leading-[1.125]">
+              <span className=" text-sm leading-4lg:font-semibold lg:text-base lg:leading-[1.125] ">
                 Add to favorite drinks
               </span>
             </button>
