@@ -1,6 +1,7 @@
 
 import { Modal } from '@mui/material';
-import { MdClose } from 'react-icons/md';
+import sprite from '../../../assets/sprite.svg';
+// import { MdClose } from 'react-icons/md';
 
 const HeaderModal = ({ children, isOpen, openFnc }) => {
   return (
@@ -10,7 +11,10 @@ const HeaderModal = ({ children, isOpen, openFnc }) => {
           className="absolute items-center flex justify-center top-[18px] right-[18px]"
           onClick={openFnc}
         >
-          <MdClose className=" w-[px] h-[24px] md:w-[32px] md:h-[32px]" />
+          {/* <MdClose className=" w-[px] h-[24px] md:w-[32px] md:h-[32px]" /> */}
+          <svg className="stroke-primary-text-color w-[22px] h-[22px] md:w-[28px] md:h-[28px]">
+            <use href={sprite + '#icon-cross'}></use>
+          </svg>
         </button>
         {children}
       </div>

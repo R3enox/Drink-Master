@@ -9,7 +9,9 @@ import {
   getIngredients,
 } from '../../redux/filters/operations';
 import { useEffect } from 'react';
-import { HeaderRender } from '../Header/HeaderReander/HeaderRender';
+import { Header } from '../Header/Header';
+
+
 
 
 
@@ -27,7 +29,7 @@ const SharedLayout = () => {
   }, [isLoggedIn, categories, ingredients, glasses, dispatch]);
   return (
     <>
-      < HeaderRender/>
+      < Header/>
       <Outlet />
       <Footer />
     </>

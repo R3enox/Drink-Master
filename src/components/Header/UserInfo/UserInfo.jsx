@@ -1,12 +1,10 @@
 import { useState } from 'react';
-import PopUp from '../PopUp/PopUp';
+import UserLogoPopup from '../UserLogoPopup/UserLogoPopup';
 import LogOutModal from '../LogOutModal/LogOutModal';
 import HeaderModal from '../HeaderModal/HeaderModal';
-import UserProfileForm from '../UserProfileForm/UserProfileForm';
+import UserLogo from '../UserLogo/UserLogo';
 import { selectAuthUser } from '../../../redux/auth/authSelectors';
 import { useSelector } from 'react-redux';
-import { Avatar, StyledEngineProvider } from '@mui/material';
-import { useUploadUserMutation } from '../../../redux/auth/usersOperations';
 
 const UserInfo = () => {
   const [openEl, setOpenEl] = useState(null);
@@ -14,7 +12,6 @@ const UserInfo = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [isOpenLogOutModal, setIsOpenLogOutModal] = useState(false);
 
-  const [uploadUser] = useUploadUserMutation();
   const user = useSelector(selectAuthUser);
 
   const openPopUp = (e) => {
@@ -37,16 +34,14 @@ const UserInfo = () => {
 
   return (
     <>
-      <button className="flex" onClick={openPopUp}>
-        <div className="flex gap-[8px] md:gap-[14px] items-center ">
-          <StyledEngineProvider injectFirst>
-            <Avatar className="w-[32px] h-[32px] md:w-[41px] md:h-[42px] lg:w-[39px] lg:h-[39px] " />
-          </StyledEngineProvider>
-          <p>{user.name ?? 'User Name'}</p>
+      <button className="flex items-center" onClick={openPopUp}>
+        <div className=" gap-[8px] md:gap-[14px] items-center ">
+          {/* <div>{user.avatarURL}</div> */}
+          <p className="">{user.name ?? 'User Name'}</p>
         </div>
 
         {popUpIsOpen && (
-          <PopUp
+          <UserLogoPopup
             openModal={togleModal}
             openLogOutModal={toogleLogOutModal}
             openPopUpFnc={openPopUp}
@@ -62,7 +57,7 @@ const UserInfo = () => {
 
       {modalIsOpen && (
         <HeaderModal className="" isOpen={modalIsOpen} openFnc={togleModal}>
-          <UserProfileForm />
+          <UserLogo />
         </HeaderModal>
       )}
     </>

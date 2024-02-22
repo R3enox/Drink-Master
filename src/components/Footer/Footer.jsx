@@ -7,9 +7,9 @@ import { Link } from 'react-router-dom';
 
 export const Footer = () => {
   return (
-    <footer className="container pt-[40px] pb-[18px] border-solid border-t-[1px] border-border-color bg-mobile-bg-footer bg-bottom h-full bg-containe bg-no-repeat md:pb-[24px] md:pt-[80px] md:bg-tablet-bg-footer lg:bg-desktop-bg-footer">
+    <footer className="container mx-auto w-[100vw] pt-[40px] pb-[18px] border-solid border-t-[1px] border-border-color bg-footer-set bg-bottom h-full bg-containe bg-no-repeat md:pb-[24px] md:pt-[80px] md:bg-footer-set-tablet lg:bg-footer-set-desktop">
       <div className="flex flex-wrap md:flex-nowrap md:gap-x-[251px]">
-        <div className="flex  gap-x-[90px]  mb-[40px] md:flex-col gap-y-[40px] lg:flex-row lg:gap-x-[411px]">
+        <div className="flex gap-x-[90px]  mb-[40px] md:flex-col gap-y-[40px] lg:flex-row lg:gap-x-[411px]">
           <div className="flex flex-col  gap-y-[20px] lg:gap-y-[43px]">
             <div className="flex gap-x-[14px] items-center ">
               <Link to={'/'}>

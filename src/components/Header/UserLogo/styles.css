@@ -1,0 +1,10 @@
+input[type=file] {
+    display: none;
+}
+
+label {
+    /* width: 100px;
+    height: 100px;
+    background-color: #fff; */
+    display: block;
+}

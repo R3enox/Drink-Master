@@ -1,21 +1,20 @@
-import { HeaderBtn } from '../HeaderBtn/HeaderBtn';
-import { HeaderLogo } from '../HeaderLogo/HeaderLogo';
+// import { HeaderBtn } from '../HeaderBtn/HeaderBtn';
+// import { Logo } from '../Logo/Logo';
 
-import UserInfo from '../UserInfo/UserInfo';
+// import UserInfo from '../UserInfo/UserInfo';
 
-const HeaderMobileMenu = () => {
-  return (
-    <>
-      <HeaderLogo />
+// const HeaderMobileMenu = () => {
+//   return (
+//     <>
+//       <Logo />
 
-      <div className=" flex ">
-        <UserInfo />
+//       <div className=" flex ">
+//         <UserInfo />
 
-    
-        <HeaderBtn />
-      </div>
-    </>
-  );
-};
+//         <HeaderBtn />
+//       </div>
+//     </>
+//   );
+// };
 
-export default HeaderMobileMenu;
+// export default HeaderMobileMenu;

@@ -14,6 +14,32 @@ export default {
         'desktop-bg-footer': "url('assets/img/footer/desktop-bg-footer.png')",
         'desktop-bg-footer@2x':
           "url('assets/img/footer/desktop-bg-footer@2x.png')",
+        // Home Page
+        'mobile-bg-homepage':
+          "url('assets/img/homePage/mobile-bg-homepage.png')",
+        'mobile-bg-homepage@2x':
+          "url('assets/img/homePage/mobile-bg-homepage@2x.png')",
+        'tablet-bg-homepage':
+          "url('assets/img/homePage/tablet-bg-homepage.png')",
+        'tablet-bg-homepage@2x':
+          "url('assets/img/homePage/tablet-bg-homepage@2x.png')",
+        'desktop-bg-homepage':
+          "url('assets/img/homePage/desktop-bg-homepage.png')",
+        'desktop-bg-homepage@2x':
+          "url('assets/img/homePage/desktop-bg-homepage@2x.png')",
+        // Common Pages
+        'mobile-bg-commonpage':
+          "url('assets/img/commonPages/mobile-bg-commonpage.png')",
+        'mobile-bg-commonpage@2x':
+          "url('assets/img/commonPages/mobile-bg-commonpage@2x.png')",
+        'tablet-bg-commonpage':
+          "url('assets/img/commonPages/tablet-bg-commonpage.png')",
+        'tablet-bg-commonpage@2x':
+          "url('assets/img/commonPages/tablet-bg-commonpage@2x.png')",
+        'desktop-bg-commonpage':
+          "url('assets/img/commonPages/desktop-bg-commonpage.png')",
+        'desktop-bg-commonpage@2x':
+          "url('assets/img/commonPages/desktop-bg-commonpage@2x.png')",
       },
     },
     container: {
@@ -44,11 +70,10 @@ export default {
       'border-color-add': 'rgba(64, 112, 205, 0.5)',
       'grey-text-color': 'rgba(243, 243, 243, 0.5)',
       'ingredients-card-bg': ' rgba(22, 31, 55, 0.5)',
-      'ingredients-card-bg': ' rgba(22, 31, 55, 0.5)',
       transparent: 'rgba(243, 243, 243, 0)',
       'background-color': '#080811',
-      "error-color": '#da1414',
-      "correct-color": '#3cbc81',
+      'error-color': '#da1414',
+      'correct-color': '#3cbc81',
     },
   },
   plugins: [],

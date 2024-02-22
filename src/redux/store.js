@@ -3,8 +3,10 @@ import { configureStore } from '@reduxjs/toolkit';
 import {  userApi } from './auth/usersOperations';
 import storage from 'redux-persist/lib/storage';
 
-import { drinksReducer } from './drinks/drinksSlice';
+import { drinksReducer } from './drinks/drinksAPI';
 // import { drinksApi } from '../redux/drinks/drinksSlice';
+// import { drinksReducer } from './drinks/drinksSlice';
+import { drinksApi } from '../redux/drinks/drinksAPI';
 import { authReducer } from './auth/authReducer';
 import { filtersReducer } from './filters/slice';
 import { drinkIdStorageReducer } from './drinkIdStorageReducer/drinkIdStorageReducer';
@@ -27,6 +29,9 @@ export const store = configureStore({
     auth: persistReducer(authConfig, authReducer),
     drinks: drinksReducer,
     [userApi.reducerPath]: userApi.reducer,
+    // drinks: drinksReducer,
+    [drinksApi.reducerPath]: drinksApi.reducer,
+
     filters: filtersReducer,
     drinkIdStorage: drinkIdStorageReducer,
     [myDrinksApi.reducerPath]: myDrinksApi.reducer,
@@ -38,7 +43,10 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }) .concat(userApi.middleware)
-});
+    })
+      .concat(drinksApi.middleware)
+      .concat(myDrinksApi.middleware)
+
 
 export const persistor = persistStore(store);
 
