@@ -1,1 +1,0 @@
-import{j as t}from"./index-8c7eeaa5.js";import{D as e}from"./DrinkImageComponent-0b22056b.js";import{P as o}from"./PageTitle-c3f53d05.js";const i=()=>t.jsxs("section",{className:"container",children:[t.jsx(o,{title:"Favorites"}),t.jsx(e,{description:"You havent added any favorite cocktails yet"})]});export{i as default};
