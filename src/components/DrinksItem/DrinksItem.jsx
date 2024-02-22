@@ -1,21 +1,9 @@
 import { Link } from 'react-router-dom';
-import { useDeleteMyDrinkMutation } from '../../redux/myDrinks/myDrinksSlice';
 
 import sprite from '../../assets/sprite.svg';
 
 const DrinksItem = ({ myDrink, onDelete }) => {
   const { _id, drink, drinkThumb, alcoholic, description } = myDrink;
-  const [deleteMyDrink] = useDeleteMyDrinkMutation();
-
-  const handleDelete = async () => {
-    try {
-      await deleteMyDrink(_id);
-      console.log('Drink deleted successfully');
-      onDelete();
-    } catch (error) {
-      console.error('Error deleting drink', error);
-    }
-  };
 
   return (
     <li key={_id} className="md:w-[342px] lg:w-[400px]">
@@ -43,7 +31,7 @@ const DrinksItem = ({ myDrink, onDelete }) => {
         </Link>
         <button
           type="button"
-          onClick={handleDelete}
+          onClick={() => onDelete(_id)}
           className="transition-colors min-w-[46px] h-[46px] md:min-w-[56px] md:h-[54px] rounded-[40px] bg-primary-text-button-color hover:bg-primary-text-color p-[11px] md:py-[15px] md:px-[16px] stroke-primary-text-color hover:stroke-primary-text-button-color"
         >
           <svg className="fill-none hover:inherit w-[24px] h-[24px] ">
