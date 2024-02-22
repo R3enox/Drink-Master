@@ -4,6 +4,7 @@ import {
 } from '../../redux/myDrinks/myDrinksSlice';
 import DrinksList from '../../components/DrinksList/DrinksList';
 import { PageTitle } from '../../components/reUseComponents/PageTitle';
+import { DrinkImageComponent } from '../../components/reUseComponents/DrinkImageComponent';
 
 const MyDrinksPage = () => {
   const { data, error, isLoading, isFetching, isError } =
@@ -19,8 +20,7 @@ const MyDrinksPage = () => {
         {data && data.length > 0 ? (
           <DrinksList data={data} onDelete={deleteMyDrink} />
         ) : (
-          <p> Заглушка</p>
-          // <DrinkImageComponent description="You don't have your own drinks yet" />
+          <DrinkImageComponent description="You don't have your own drinks yet" />
         )}
       </div>
     </section>

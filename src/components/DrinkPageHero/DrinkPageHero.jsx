@@ -1,8 +1,42 @@
-const DrinkPageHero = ({ cocktail }) => {
-  if (!cocktail) return null;
+import { useSelector } from 'react-redux';
+import {
+  useAddFavoritesMutation,
+  useRemoveFavoritesMutation,
+} from '../../redux/favorites/favoriteSlice';
+import { ButtonComponent } from '../reUseComponents/buttonComponent';
+import { selectAuthUser } from '../../redux/auth/authSelectors';
+import { useState } from 'react';
 
-  const { drink, category, alcoholic, description, drinkThumb, favorites } =
+const DrinkPageHero = ({ cocktail }) => {
+  const user = useSelector(selectAuthUser);
+  const [isFirstRender, setIsFirstRender] = useState(true);
+
+  const [addToFavorite] = useAddFavoritesMutation();
+
+  const [deleteFavorite] = useRemoveFavoritesMutation();
+
+  const { _id, drink, category, alcoholic, description, drinkThumb, favorite } =
     cocktail;
+
+  const isFavoriteFirstRender = favorite?.includes(user.id);
+  const [isFavorite, setIsFavorite] = useState(isFavoriteFirstRender);
+  const isFav = isFirstRender ? isFavoriteFirstRender : isFavorite;
+
+  const toggleFavorite = async (id) => {
+    try {
+      if (isFav) {
+        await deleteFavorite(id);
+        setIsFavorite(false);
+      } else {
+        await addToFavorite(id);
+        setIsFavorite(true);
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsFirstRender(false);
+    }
+  };
 
   return (
     <div className=" lg:flex justify-between">
@@ -17,22 +51,18 @@ const DrinkPageHero = ({ cocktail }) => {
           {description}
         </p>
         <div className="pt-10 pb-20">
-          {favorites ? (
-            <button
-              className="bg-primary-text-color border rounded-full px-10 py-3 w-56 h-12 font-semibold text-base leading-tight text-blue-900"
-              type="button"
-            >
-              Удалить из избранных
-            </button>
+          {isFav ? (
+            <ButtonComponent
+              descr={'Remove from favorites'}
+              btnFunction={() => toggleFavorite(_id)}
+              id={_id}
+            />
           ) : (
-            <button
-              className="bg-primary-text-color  text-primary-text-button-color  rounded-full px-10 py-3 w-56 h-12 bg-white text-black lg:rounded-full lg:px-11 lg:py-4 lg:w-64 lg:h-14 hover:bg-button-hover-color hover:border hover:border-solid hover:border-primary-text-color hover:text-primary-text-color"
-              type="button"
-            >
-              <span className=" text-sm leading-4lg:font-semibold lg:text-base lg:leading-[1.125] ">
-                Add to favorite drinks
-              </span>
-            </button>
+            <ButtonComponent
+              descr={'Add to favorite drinks'}
+              btnFunction={() => toggleFavorite(_id)}
+              id={_id}
+            />
           )}
         </div>
       </div>

@@ -6,11 +6,7 @@ const DrinksList = ({ data, onDelete }) => {
       <ul className="flex flex-col gap-y-[40px] md:flex-row flex-wrap md:gap-x-[20px] md:gap-y-[80px]">
         {data &&
           data.map((drink) => (
-            <DrinksItem
-              key={drink._id}
-              myDrink={drink}
-              onDelete={() => onDelete(drink._id)}
-            />
+            <DrinksItem key={drink._id} myDrink={drink} onDelete={onDelete} />
           ))}
       </ul>
     </div>
