@@ -142,6 +142,31 @@ body {
   md:text-[14px] md:leading-[1.29];
 }
 
+/* Typing Effect */
+.typing-container {
+  display: inline-block;
+  font-family: 'arial';
+  font-size: 24px;
+}
+.typed {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  animation: typing;
+  animation-duration: 2.5s;
+  animation-timing-function: steps(25, end);
+  animation-fill-mode: forwards;
+  text-overflow: ellipsis;
+}
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
 /* /Welcome-SignIn-SignUp-Pages */
 
 .categoryListDrink {
