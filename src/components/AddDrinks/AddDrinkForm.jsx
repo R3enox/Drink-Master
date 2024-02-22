@@ -51,9 +51,9 @@ export const AddDrinkForm = () => {
       body: formData,
     }).then((response) => {
       if (response.ok) {
-        console.log('Good'); // Это будет вызвано только в случае успешного выполнения запроса
+        console.log('status 200');
       } else {
-        console.log('Error:', response.statusText); // Обработка ошибки, если запрос не удался
+        console.log('Error:', response.statusText);
       }
     });
   };
@@ -66,7 +66,7 @@ export const AddDrinkForm = () => {
         <RecipePreparation />
         <button
           type="submit"
-          className="block w-[108px] h-[46px] rounded-[42px] bg-primary-text-color text-primary-text-button-color hover:border-hover-button-border-color hover:border-2 focus:border-hover-button-border-color focus:border-2 focus:outline-none"
+          className="block w-[108px] h-[46px] border-2 border-primary-text-color outline-none  rounded-[42px] bg-primary-text-color text-primary-text-button-color hover:border-hover-button-border-color hover:border-2 focus:border-hover-button-border-color focus:border-2 focus:outline-none ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms]"
         >
           Add
         </button>
