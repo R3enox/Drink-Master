@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Loader } from '../../components/Loader/Loader.jsx';
+import Loader from '../../components/Loader/Loader.jsx';
 
 import DrinkPageHero from 'components/DrinkPageHero/DrinkPageHero';
 import DrinkIngredientsList from 'components/DrinkIngredientsList/DrinkIngredientsList';
