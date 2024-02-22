@@ -2,7 +2,10 @@ import * as drinkImage from '../../assets/img/drinkImage/index.js';
 
 export const DrinkImageComponent = ({ description }) => {
   return (
-    <div>
+    <div
+      className="mt-[91px] md:mt-[100px] lg:mt-[67px] mb-[80px] md:mb-[140px]"
+      x
+    >
       <picture className="flex justify-center items-center mb-[32px]">
         <source
           media="(min-width: 768px)"
