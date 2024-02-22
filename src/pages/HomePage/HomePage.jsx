@@ -3,7 +3,8 @@ import { PreviewDrinks } from 'components/Drinks/PreviewDrinks';
 
 const HomePage = () => {
   return (
-    <div className="bg-mobile-bg-homepage md:bg-tablet-bg-homepage lg:bg-desktop-bg-homepage bg-contain bg-no-repeat">
+    <div className="bg-home-set
+    md:bg-home-set-tablet lg:bg-home-set-desktop bg-contain bg-no-repeat">
       <Hero />
       <PreviewDrinks />
     </div>
@@ -11,3 +12,5 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
+
