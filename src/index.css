@@ -153,6 +153,29 @@ body {
   md:text-[14px] md:leading-[1.29];
 }
 
+/* Footer */
+
+@layer base {
+  .bg-footer-set {
+    background-image: image-set(
+      url('assets/img/footer/mobile-bg-footer.png') 1x,
+      url('assets/img/footer/mobile-bg-footer@2.png') 2x
+    );
+  }
+  .bg-footer-set-tablet {
+    background-image: image-set(
+      url('assets/img/footer/tablet-bg-footer.png') 1x,
+      url('assets/img/footer/tablet-bg-footer@2x.png') 2x
+    );
+  }
+  .bg-footer-set-desktop {
+    background-image: image-set(
+      url('assets/img/footer/desktop-bg-footer.png') 1x,
+      url('assets/img/footer/desktop-bg-footer@2x.png') 2x
+    );
+  }
+}
+
 /* Search Filters Select styles  */
 
 .searchSelect__control {

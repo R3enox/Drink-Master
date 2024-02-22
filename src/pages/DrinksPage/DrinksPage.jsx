@@ -11,7 +11,7 @@ const DrinksPage = () => {
 
   return (
     <div className="bg-mobile-bg-commonpage md:bg-tablet-bg-commonpage lg:bg-desktop-bg-commonpage bg-cover bg-no-repeat">
-      <div className="container m-auto">
+      <div className="container mx-auto pb-[80px]">
         <PageTitle title="Drinks" />
         <DrinksSearch />
         <Drinks />

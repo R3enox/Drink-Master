@@ -22,7 +22,7 @@ export const Drinks = () => {
   const drinksAreNotFinded = !isLoading && data?.totalCount === 0;
 
   return (
-    <div className="pt-[40px]">
+    <div className="mt-[40px]">
       {data?.paginatedResult?.length > 0 && (
         <ul className="flex flex-wrap flex-col md:flex-row gap-[28px] md:gap-x-[20px] md:gap-y-[40px] lg:gap-y-[80px]">
           {data?.paginatedResult?.map((drink) => (
