@@ -1,6 +1,6 @@
 import DrinksItem from '../DrinksItem/DrinksItem';
 
-const DrinksList = ({ data, onDelete }) => {
+const DrinksList = ({ data, openMyDrinkModal }) => {
   return (
     <div>
       <ul className="flex flex-col gap-y-[40px] md:flex-row flex-wrap md:gap-x-[20px] md:gap-y-[80px]">
@@ -9,7 +9,7 @@ const DrinksList = ({ data, onDelete }) => {
             <DrinksItem
               key={drink._id}
               myDrink={drink}
-              onDelete={() => onDelete(drink._id)}
+              openMyDrinkModal={openMyDrinkModal}
             />
           ))}
       </ul>

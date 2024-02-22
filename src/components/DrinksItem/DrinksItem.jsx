@@ -1,19 +1,9 @@
 import { Link } from 'react-router-dom';
-import { useDeleteMyDrinkMutation } from '../../redux/myDrinks/myDrinksSlice';
 
 import sprite from '../../assets/sprite.svg';
 
-const DrinksItem = ({ myDrink, onDelete }) => {
+const DrinksItem = ({ myDrink, openMyDrinkModal }) => {
   const { _id, drink, drinkThumb, alcoholic, description } = myDrink;
-  const [deleteMyDrink] = useDeleteMyDrinkMutation();
-
-  const handleDelete = async () => {
-    try {
-      await deleteMyDrink(_id);
-    } catch (error) {
-      console.error('Error deleting drink', error);
-    }
-  };
 
   return (
     <li key={_id} className="md:w-[342px] lg:w-[400px]">
@@ -25,10 +15,10 @@ const DrinksItem = ({ myDrink, onDelete }) => {
       <h3 className="mb-[4px] text-[18px] md:text-[24px] font-[500] leading-[1.33]">
         {drink}
       </h3>
-      <p className="mb-[18px] text-[14px] leading-[1.29] text-grey-text-color">
+      <p className="mb-[18px] text-[14px] md:mb-[24px] leading-[1.29] text-grey-text-color">
         {alcoholic ? 'Alcoholic' : 'Non-alcoholic'}
       </p>
-      <p className="mb-[18px] text-ellipsis  line-clamp-4 text-[14px] mb:text-[16px] leading-[1.29] mb:leading-[1.38]">
+      <p className="mb-[18px] md:mb-[24px] text-ellipsis  line-clamp-4 text-[14px] md:text-[16px] leading-[1.29] md:leading-[1.38]">
         {description}
       </p>
       <div className="flex gap-[8px]">
@@ -40,7 +30,7 @@ const DrinksItem = ({ myDrink, onDelete }) => {
         </Link>
         <button
           type="button"
-          onClick={handleDelete}
+          onClick={openMyDrinkModal}
           className="transition-colors min-w-[46px] h-[46px] md:min-w-[56px] md:h-[54px] rounded-[40px] bg-primary-text-button-color hover:bg-primary-text-color p-[11px] md:py-[15px] md:px-[16px] stroke-primary-text-color hover:stroke-primary-text-button-color"
         >
           <svg className="fill-none hover:inherit w-[24px] h-[24px] ">
