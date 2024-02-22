@@ -7,6 +7,7 @@ export const getCategories = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const res = await API.get('/filters/categories');
+      console.log(res);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

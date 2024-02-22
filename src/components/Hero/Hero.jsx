@@ -3,7 +3,7 @@ import * as imgHero from '../../assets/img/hero/index.js';
 
 export const Hero = () => {
   return (
-    <section className="container pt-[80px] md:pt-[120px] lg:pt-[128px] lg:flex gap-x-[130px]">
+    <section className="container m-auto pt-[80px] pb-[56px] md:pt-[120px] md:pb-[61px] lg:pt-[128px] lg:pb-[80px] lg:flex gap-x-[130px]">
       <div className="mb-[47px] md:mb-[54px]">
         <h1
           className=" font-semibold text-[32px] leading-[1.19]  
@@ -18,7 +18,7 @@ export const Hero = () => {
         </p>
 
         <Link
-          className="rounded-[42px] bg-primary-text-color px-[40px] py-[14px] font-semibold text-primary-text-button-color text-[14px] leading-[1.29] hover:border-2 border-border-color-add md:px-[44px] md:py-[18px] md:text-[16px] md:leading-[1.12]"
+          className="rounded-[42px] bg-primary-text-color px-[40px] py-[14px] font-semibold transition-colors border-[2px] border-transparent text-primary-text-button-color text-[14px] leading-[1.29] hover:border-[2px] hover:border-border-color-add md:px-[44px] md:py-[18px] md:text-[16px] md:leading-[1.12]"
           to="/add"
         >
           Add Drink

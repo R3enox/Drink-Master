@@ -1,3 +1,4 @@
+
 import { useSelector } from 'react-redux';
 import {
   useAddFavoritesMutation,
@@ -6,6 +7,9 @@ import {
 import { ButtonComponent } from '../reUseComponents/buttonComponent';
 import { selectAuthUser } from '../../redux/auth/authSelectors';
 import { useState } from 'react';
+
+import { Link } from 'react-router-dom';
+
 
 const DrinkPageHero = ({ cocktail }) => {
   const user = useSelector(selectAuthUser);
@@ -41,15 +45,16 @@ const DrinkPageHero = ({ cocktail }) => {
   return (
     <div className=" lg:flex justify-between">
       <div>
-        <h2 className="pb-2 font-semibold text-2xl leading-tight text-gray-100 md:font-semibold md:text-5xl md:leading-tight lg:font-semibold lg:text-5xl lg:leading-[1.0625]">
+        <h2 className="mb-[8px] font-semibold text-[32px] leading-[1.19] text-gray-100 md:font-semibold md:text-[57px] md:leading-[1.07] lg:text-[64px] lg:leading-[1.06]">
           {drink}
         </h2>
-        <p className="font-normal text-xs leading-4 text-grey-text-color pb-5 md:font-normal md:text-base md:leading-5">
+        <p className="text-[12px] leading-[1.17] text-grey-text-color mb-[20px] md:text-[16px] md:leading-[1.25]">
           {category}/{alcoholic}
         </p>
-        <p className="font-normal text-base leading-tight text-gray-100 text-start md:font-normal md:leading-[22px] md:w-[593px] lg:leading-[1.375] ">
+        <p className="text-[14px] leading-[1.29] mb-[40px] text-gray-100 md:text-[16px] md:leading-[1.37] md:max-w-[593px]">
           {description}
         </p>
+
         <div className="pt-10 pb-20">
           {isFav ? (
             <ButtonComponent
@@ -63,12 +68,15 @@ const DrinkPageHero = ({ cocktail }) => {
               btnFunction={() => toggleFavorite(_id)}
               id={_id}
             />
+
+        
+
           )}
-        </div>
+        
       </div>
       <div>
         <img
-          className="w-[335px]  rounded-xl md:w-[704px] md:object-cover lg:w-[400px] "
+          className="mb-[18px] w-[335px] rounded-xl md:mb-[80px] md:w-[704px] md:object-cover lg:w-[400px] lg:mb-[100px] "
           src={drinkThumb}
           alt="poster cocktail"
         />

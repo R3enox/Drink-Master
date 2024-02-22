@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import Loader from '../../components/Loader/Loader.jsx';
 
 import DrinkPageHero from 'components/DrinkPageHero/DrinkPageHero';
 import DrinkIngredientsList from 'components/DrinkIngredientsList/DrinkIngredientsList';
@@ -37,19 +38,18 @@ const DrinkPage = () => {
   }, [drinkId, dispatch]);
 
   return (
-    <section className="mt-20 mb-20">
+
+    <section className="py-[80px] md:py-[140px] lg:pt-[132px]">
+      {isLoading && <Loader />}
       {isError && <h1>{isError}</h1>}
-      {isLoading && <h1>Loading...</h1>}
-      {currentCocktail && (
-        <div className="container mx-auto ">
-          <DrinkPageHero cocktail={currentCocktail} />
-          <DrinkIngredientsList
-            ingredients={ingredByFilter}
-            currentIngred={ingIds}
-          />
-          <RecipePreparation description={currentCocktail} />
-        </div>
-      )}
+      <div className="container mx-auto ">
+        <DrinkPageHero cocktail={currentCocktail} />
+        <DrinkIngredientsList
+          ingredients={ingredByFilter}
+          currentIngred={ingIds}
+        />
+        <RecipePreparation description={currentCocktail} />
+      </div>
     </section>
   );
 };
