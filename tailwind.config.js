@@ -43,6 +43,7 @@ export default {
       // },
     },
     container: {
+      center: true,
       padding: {
         sm: '1.25rem',
         md: '2rem',
@@ -69,6 +70,7 @@ export default {
       'border-color': 'rgba(243, 243, 243, 0.2)',
       'border-color-add': 'rgba(64, 112, 205, 0.5)',
       'grey-text-color': 'rgba(243, 243, 243, 0.5)',
+      'hover-button-border-color': 'rgba(64, 112, 205, 0.5)',
       'ingredients-card-bg': ' rgba(22, 31, 55, 0.5)',
       transparent: 'rgba(243, 243, 243, 0)',
       'background-color': '#080811',

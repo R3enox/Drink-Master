@@ -3,6 +3,10 @@ import { useForm } from 'react-hook-form';
 import { useFilters } from '../../hooks/useFilters';
 import Select from 'react-select';
 import { useDrinkFilters } from '../../hooks/useDrinkFilters';
+import {
+  createOptionsFromArrOfObj,
+  createOptionsFromArrOfStr,
+} from '../../helpers/createCollectionOptions';
 import sprite from '../../assets/sprite.svg';
 
 export const DrinksSearch = () => {
@@ -14,21 +18,20 @@ export const DrinksSearch = () => {
       value: title,
       label: title,
     }));
+
   const createIngredientsOptions = (collection) =>
-    collection
-      .map(({ title }) => ({
-        value: title,
-        label: title,
-      }))
-      .sort((a, b) => a.value.localeCompare(b.value));
+    collection.map(({ title }) => ({
+      value: title,
+      label: title,
+    }));
 
   const categoriesOptions = useMemo(
-    () => createCategoriesOptions(categories ?? []),
+    () => createOptionsFromArrOfStr(categories ?? []),
     [categories]
   );
 
   const ingredientsOptions = useMemo(
-    () => createIngredientsOptions(ingredients ?? []),
+    () => createOptionsFromArrOfObj(ingredients ?? []),
     [ingredients]
   );
   const { handleSubmit, setValue, watch } = useForm({
