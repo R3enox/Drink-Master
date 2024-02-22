@@ -1,20 +1,12 @@
 import sprite from '../../../assets/sprite.svg';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AddDrinkTitle } from './AddDrinkTitle';
 import Select from 'react-select';
 import { nanoid } from 'nanoid';
-import { useFilters } from '../../../hooks/useFilters';
-import { createOptionsFromArrOfObj } from '../../../helpers/createCollectionOptions';
 
-export const DrinkIngredientsFields = () => {
-  const { ingredients } = useFilters();
+export const DrinkIngredientsFields = ({ ingredientsOptions }) => {
   const [ingredientsCount, setIngredientsCount] = useState(3);
   const [ingredientInputs, setIngredientInputs] = useState([]);
-
-  const ingredientsOptions = useMemo(
-    () => createOptionsFromArrOfObj(ingredients ?? []),
-    [ingredients]
-  );
 
   useEffect(() => {
     if (ingredientInputs.length === 0) {
