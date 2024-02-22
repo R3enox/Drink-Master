@@ -14,7 +14,6 @@ export const drinksApi = createApi({
       return headers;
     },
   }),
-
   tagTypes: ['drinks'],
 
   endpoints: (builder) => ({

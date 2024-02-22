@@ -4,6 +4,7 @@ import { Paginator } from '../reUseComponents/Paginator/Paginator';
 import { useDrinkFilters } from 'hooks/useDrinkFilters';
 import { usePagination } from 'hooks/usePagination';
 import { DrinksLimit } from 'constants/paginationLimits';
+import { DrinkImageComponent } from '../reUseComponents/DrinkImageComponent';
 
 export const Drinks = () => {
   const { page, limit, countPagesOfPagination, setPage } =
@@ -30,7 +31,9 @@ export const Drinks = () => {
         </ul>
       )}
       {drinksAreNotFinded ? (
-        <p>Заглушка для пустого фильтра</p>
+        <DrinkImageComponent
+          description={'We did not find any drinks for you'}
+        />
       ) : (
         <Paginator
           totalCount={data?.totalCount}

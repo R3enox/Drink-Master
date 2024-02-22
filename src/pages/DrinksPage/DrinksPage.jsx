@@ -10,7 +10,7 @@ const DrinksPage = () => {
   }, []);
 
   return (
-    <div className="container">
+    <div className="container m-auto">
       <PageTitle title="Drinks" />
       <DrinksSearch />
       <Drinks />

@@ -1,25 +1,11 @@
 import { useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { useFilters } from '../../hooks/useFilters';
-// import { useSelector } from 'react-redux';
-// import { selectAuthToken } from '../../redux/auth/authSelectors';
 import Select from 'react-select';
 import { useDrinkFilters } from '../../hooks/useDrinkFilters';
 import sprite from '../../assets/sprite.svg';
 
-// const filterOptions = (item) => ({
-//   value: item.toLowerCase(),
-//   label: item,
-// });
-
-// const initialState = {
-//   category: '',
-//   ingredient: '',
-//   keyName: '',
-// };
 export const DrinksSearch = () => {
-  // const token = useSelector(selectAuthToken);
-  // const [selectedFilters, setSelectedFilters] = useState(initialState);
   const { categories, ingredients } = useFilters();
   const { keyName, category, ingredient, setDrinkFilter } = useDrinkFilters();
 
@@ -98,7 +84,7 @@ export const DrinksSearch = () => {
         classNamePrefix="searchSelect"
         isClearable={category && true}
         onChange={(selectedValue) =>
-          setDrinkFilter('category', selectedValue.value)
+          setDrinkFilter('category', selectedValue?.value || '')
         }
         defaultValue={{
           value: category || '',
@@ -111,7 +97,7 @@ export const DrinksSearch = () => {
         classNamePrefix="searchSelect"
         isClearable={ingredient && true}
         onChange={(selectedValue) =>
-          setDrinkFilter('ingredient', selectedValue.value)
+          setDrinkFilter('ingredient', selectedValue?.value || '')
         }
         defaultValue={{
           value: ingredient || '',
