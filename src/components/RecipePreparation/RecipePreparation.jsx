@@ -1,3 +1,5 @@
+import * as imgResipe from '../../assets/img/drinkId/index.js';
+
 const RecipePreparation = ({ description }) => {
   return (
     <div className="mb-[80px] mt-[80px]  md:mb-[140px] lg:flex lg:gap-[20px] ">
@@ -13,16 +15,16 @@ const RecipePreparation = ({ description }) => {
       <picture>
         <source
           media="(min-width: 1440px)"
-          srcSet="../../../public/drink-section-Img/drink-img-ds.jpg"
+          srcSet={imgResipe.descImg}
         />
         <source
           media="(min-width: 768px)"
           className=" "
-          srcSet="../../../public/drink-section-Img/drink-img-tb.jpg"
+          srcSet={imgResipe.tabletImg}
         />
         <img
           className="rounded-xl w-[335px] mt-[40px] md:w-[704px] lg:w-[631px] lg:mt-[0px] "
-          src="../../../public/drink-section-img/drink-img.jpg"
+          src={imgResipe.mobileImg}
           alt="cocktails"
         />
       </picture>

@@ -13,6 +13,7 @@ import { useFilters } from 'hooks/useFilters.js';
 import { selectAuthError } from '../../redux/auth/authSelectors.js';
 
 
+
 const DrinkPage = () => {
   const currentCocktail = useSelector(selectGetCurrentCocktail);
   const isLoading = useSelector(selectIsLoading)
@@ -44,6 +45,8 @@ const DrinkPage = () => {
         <DrinkPageHero cocktail={currentCocktail} />
         <DrinkIngredientsList ingredients={ingredByFilter} currentIngred={ingIds} />
         <RecipePreparation description={currentCocktail} />
+    
+
       </div>
     </section>
   );

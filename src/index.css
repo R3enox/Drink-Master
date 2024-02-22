@@ -72,33 +72,64 @@ body {
     );
   }
 }
+.welcome-bg-container {
+  @apply bg-image-set  bg-cover h-[100vh] 
+   md:bg-image-set-tablet 
+   lg:bg-image-set-desktop lg:bg-background-color;
+}
+
+.input-form {
+  @apply w-full bg-transparent h-[54px] rounded-[42px] bg-contain border-[1px] border-border-color hover:border-grey-text-color transition-colors hover:placeholder-grey-text-color text-[14px] leading-[1.29] placeholder-border-color py-[18px] px-[24px] outline-none md:text-[17px] md:pt-[14px] md:pb-[15px];
+}
+
+.input-form.error {
+  @apply border-error-color;
+}
+
+.input-form.correct {
+  @apply border-correct-color;
+}
+
+.input-container {
+  @apply flex flex-col gap-[14px] md:w-[400px] md:pl-[32px] lg:pl-[0];
+}
+
+.form-title {
+  @apply text-welcome-text-color text-[28px] mb-[28px] font-semibold leading-[1.14] md:text-[40px] md:leading-[1.1] md:pl-[32px] lg:pl-[0];
+}
+
+.errorMsg {
+  @apply text-error-color text-[12px] ml-[24px] mt-[8px];
+}
+
+.correctMsg {
+  @apply text-correct-color text-[12px] ml-[24px] mt-[8px];
+}
+
 .welcome-container {
-  @apply bg-image-set
-   container min-h-[100vh] bg-no-repeat m-auto py-[304px] 
-   md:bg-image-set-tablet md:py-[400px] 
-   lg:bg-image-set-desktop lg:py-[273px] lg:bg-background-color;
+  @apply container  m-auto py-[304px] md:pl-[32px];
+}
+.form-sign-up-bg-container {
+  @apply bg-image-set  
+  min-h-[100vh] bg-cover
+  md:bg-image-set-tablet 
+  lg:bg-image-set-desktop lg:bg-background-color;
 }
 .form-sign-up-container {
+  @apply container  py-[191px] m-auto md:pl-[32px];
+}
+.form-sign-in-bg-container {
   @apply bg-image-set  
-  container min-h-[100vh] bg-no-repeat py-[191px] m-auto
-  md:bg-image-set-tablet md:py-[280px]
-  lg:bg-image-set-desktop lg:py-[153px] lg:bg-background-color;
+  min-h-[100vh] bg-cover
+  md:bg-image-set-tablet 
+  lg:bg-image-set-desktop lg:bg-background-color;
 }
 .form-sign-in-container {
-  @apply bg-image-set  
-  container min-h-[100vh] bg-no-repeat py-[259px] m-auto
-  md:bg-image-set-tablet md:py-[350px]
-  lg:bg-image-set-desktop lg:py-[223px] lg:bg-background-color;
+  @apply container py-[259px] m-auto md:pl-[32px];
 }
 .input-form {
   @apply w-full bg-transparent h-[54px] rounded-[42px] bg-contain border-[1px] border-border-color hover:border-grey-text-color transition-colors hover:placeholder-grey-text-color text-[14px] leading-[1.29] placeholder-border-color py-[18px] px-[24px] outline-none md:text-[17px] 
   md:pt-[14px] md:pb-[15px];
-}
-.test-input {
-  @apply shadow-sm focus:outline-none focus:border-correct-color focus:ring-1 focus:ring-correct-color
-  disabled:bg-grey-text-color disabled:text-grey-text-color disabled:border-b-grey-text-color disabled:shadow-none
-  invalid:border-error-color invalid:text-error-color
-  focus:invalid:border-error-color focus:invalid:ring-error-color;
 }
 .input-container {
   @apply flex flex-col gap-[14px] 
@@ -120,14 +151,6 @@ body {
   md:text-left 
   lg:w-[500px];
 }
-.welcome-sign-up-link {
-  @apply transition-shadow shadow-lg hover:shadow-primary-text-color/50 bg-primary-text-color text-primary-text-button-color font-semibold py-[14px] px-[40px] rounded-[42px] text-[14px] leading-[1.29] 
-  md:py-[18px] md:px-[44px] md:text-[16px] md:leading-[1.12];
-}
-.welcome-sign-in-link {
-  @apply transition-shadow shadow-lg hover:shadow-primary-text-color/50 text-primary-text-color font-semibold py-[14px] px-[40px] rounded-[42px] border-[1px] border-border-color text-[14px] leading-[1.29] 
-  md:py-[18px] md:px-[44px] md:text-[16px] md:leading-[1.12];
-}
 .btn-container {
   @apply flex flex-col gap-[14px] mt-[28px] md:mt-[40px] 
   md:pl-[32px] md:w-[400px] 
@@ -141,8 +164,16 @@ body {
   @apply transition hover:decoration-primary-text-color outline-none underline decoration-grey-text-color font-semibold text-center text-primary-text-color text-[12px] leading-[1.29] 
   md:text-[14px] md:leading-[1.29];
 }
+.welcome-sign-in-link {
+  @apply transition-shadow shadow-lg hover:shadow-primary-text-color/50 text-primary-text-color  py-[14px] px-[40px] rounded-[42px] border-[1px] border-border-color text-[14px] leading-[1.29] 
+  md:py-[18px] md:px-[44px] md:text-[16px] md:leading-[1.12];
+}
+.welcome-sign-up-link {
+  @apply transition-shadow shadow-lg hover:shadow-primary-text-color/50 bg-primary-text-color text-primary-text-button-color font-semibold py-[14px] px-[40px] rounded-[42px] text-[14px] leading-[1.29] 
+  md:py-[18px] md:px-[44px] md:text-[16px] md:leading-[1.12];
+}
 
-/* Typing Effect */
+/* Typing-Text-Effect */
 .typing-container {
   display: inline-block;
   font-family: 'arial';
@@ -167,6 +198,71 @@ body {
   }
 }
 
+/* Button-Welcome-Page-Animation */
+.btn-up {
+  border: 1px solid rgb(255, 255, 255);
+  filter: drop-shadow(0px 0px 10px rgb(255, 255, 255));
+  animation: flickering 1.5ms linear infinite both;
+  background-color: rgba(243, 243, 243, 0.7);
+  transition: 0.6s;
+  box-shadow: 0px 0px 60px #1f4c65;
+  -webkit-box-reflect: below 8px
+    linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+}
+.btn-in {
+  margin-left: 14px;
+  filter: drop-shadow(0px 0px 15px rgb(255, 255, 255, 0.7));
+}
+@keyframes flickering {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  41.99% {
+    opacity: 1;
+  }
+
+  42% {
+    opacity: 0;
+  }
+
+  43% {
+    opacity: 0;
+  }
+
+  43.01% {
+    opacity: 1;
+  }
+
+  47.99% {
+    opacity: 1;
+  }
+
+  48% {
+    opacity: 0;
+  }
+
+  49% {
+    opacity: 0;
+  }
+
+  49.01% {
+    opacity: 1;
+  }
+}
+.btn-up:hover {
+  border: none;
+  background-color: #161f37;
+  /* background-color: #434d67; */
+  color: #f3f3f3;
+}
+.btn-in:hover {
+  background-color: #161f37;
+  /* background-color: #434d67; */
+  color: #f3f3f3;
+}
+
 /* /Welcome-SignIn-SignUp-Pages */
 
 .categoryListDrink {
@@ -174,7 +270,6 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
 }
-
 .filter-search {
   display: flex;
   gap: 8px;

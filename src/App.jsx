@@ -11,6 +11,7 @@ import { refreshUserThunk } from './redux/auth/authOperations';
 import { useAuth } from './hooks/useAuth';
 import Loader from './components/Loader/Loader';
 
+
 const WelcomePage = lazy(() => import('pages/WelcomePage/WelcomePage'));
 const SignUpPage = lazy(() => import('pages/SignUpPage/SignUpPage'));
 const SignInPage = lazy(() => import('pages/SignInPage/SignInPage'));
