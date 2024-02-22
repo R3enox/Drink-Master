@@ -1,14 +1,6 @@
-// import { useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-
-// import {
-//   selectDrinksIsLoading,
-//   drinksSelector,
-// } from '../../redux/drinks/drinksSelector';
 import { useGetDrinksQuery } from '../../redux/drinks/drinksAPI';
 import { DrinkCardPreview } from '../reUseComponents/DrinkCardPreview';
 import { Link } from 'react-router-dom';
-// import { selectAuthToken } from '../../redux/auth/authSelectors';
 import { useFilters } from '../../hooks/useFilters';
 const popularCategories = [
   'Ordinary Drink',
@@ -19,23 +11,17 @@ const popularCategories = [
 
 export const PreviewDrinks = () => {
   const { data, isLoading } = useGetDrinksQuery();
-  // const token = useSelector(selectAuthToken);
-  // const drinks = useSelector(drinksSelector);
-  // const isLoading = useSelector(selectDrinksIsLoading);
+
   const { categories } = useFilters();
   const filteredCategories =
     categories &&
     popularCategories.filter((category) => categories.includes(category));
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   if (!token) return;
-  //   dispatch(getDrinks());
-  // }, [dispatch, token]);
+
   return isLoading ? (
     <div>Loading</div>
   ) : (
     data && (
-      <div className="flex flex-col gap-[60px] md:gap-[80px] ">
+      <div className="flex flex-col gap-[60px] md:gap-[80px] mt-[112px] md:mt-[123px] lg:mt-[160px]">
         <ul className="flex flex-col gap-[40px] md:gap-[80px] ">
           {filteredCategories.map((category) => (
             <li key={category}>
