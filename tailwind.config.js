@@ -4,19 +4,6 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        // Welcome-Page
-        'mobile-bg-welcome':
-          "url('assets/img/welcomePage/mobile-bg-welcome-page.png')",
-        'mobile-bg-welcome@2x':
-          "url('assets/img/welcomePage/mobile-bg-welcome-page@2x.png')",
-        'tablet-bg-welcome':
-          "url('assets/img/welcomePage/tablet-bg-welcome-page.png')",
-        'tablet-bg-welcome@2x':
-          "url('assets/img/welcomePage/tablet-bg-welcome-page@2x.png')",
-        'desctop-bg-welcome':
-          "url('assets/img/welcomePage/desctop-bg-welcome.png')",
-        'desctop-bg-welcome@2x':
-          "url('assets/img/welcomePage/desktop-bg-welcome@2x.png')",
         // Footer
         'mobile-bg-footer': "url('assets/img/footer/mobile-bg-footer.png')",
         'mobile-bg-footer@2x':
@@ -59,9 +46,10 @@ export default {
       'grey-text-color': 'rgba(243, 243, 243, 0.5)',
       'hover-button-border-color': 'rgba(64, 112, 205, 0.5)',
       'ingredients-card-bg': ' rgba(22, 31, 55, 0.5)',
-
       transparent: 'rgba(243, 243, 243, 0)',
       'background-color': '#080811',
+      'error-color': '#da1414',
+      'correct-color': '#3cbc81',
     },
   },
   plugins: [],
