@@ -1,7 +1,11 @@
-import { useGetDrinksQuery } from '../../redux/drinks/drinksAPI';
-import { DrinkCardPreview } from '../reUseComponents/DrinkCardPreview';
 import { Link } from 'react-router-dom';
+
+import { DrinkCardPreview } from '../reUseComponents/DrinkCardPreview';
+import { useGetDrinksQuery } from '../../redux/drinks/drinksAPI';
 import { useFilters } from '../../hooks/useFilters';
+import { getDeviceType } from '../../helpers/getDeviceType';
+import { HomeDrinksLimit } from '../../constants/paginationLimits';
+
 const popularCategories = [
   'Ordinary Drink',
   'Cocktail',
@@ -10,7 +14,9 @@ const popularCategories = [
 ];
 
 export const PreviewDrinks = () => {
-  const { data, isLoading } = useGetDrinksQuery();
+  const { data, isLoading } = useGetDrinksQuery(
+    HomeDrinksLimit[getDeviceType()]
+  );
 
   const { categories } = useFilters();
   const filteredCategories =

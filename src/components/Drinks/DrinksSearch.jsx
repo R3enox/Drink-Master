@@ -14,13 +14,12 @@ export const DrinksSearch = () => {
       value: title,
       label: title,
     }));
+
   const createIngredientsOptions = (collection) =>
-    collection
-      .map(({ title }) => ({
-        value: title,
-        label: title,
-      }))
-      .sort((a, b) => a.value.localeCompare(b.value));
+    collection.map(({ title }) => ({
+      value: title,
+      label: title,
+    }));
 
   const categoriesOptions = useMemo(
     () => createCategoriesOptions(categories ?? []),
