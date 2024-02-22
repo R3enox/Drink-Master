@@ -82,13 +82,13 @@ export const DrinkPageHero = () => {
           name="drink"
           placeholder="Enter item title"
           required
-          className="block pb-[14px] outline-none hover:placeholder-primary-text-color bg-transparent w-[335px]  h-[34px] border-b border-grey-text-color focus:outline-none focus:border-primary-text-color hover:border-primary-text-color placeholder-grey-text-color placeholder-font-normal placeholder-text-sm transition-all ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms]"
+          className="block pb-[14px] outline-none hover:placeholder-primary-text-color bg-transparent w-[335px]  h-[34px] border-b border-grey-text-color focus:outline-none focus:border-primary-text-color hover:border-primary-text-color placeholder-grey-text-color placeholder-font-normal placeholder-text-sm transition ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms]"
         />
         <input
           type="text"
           name="description"
           placeholder="Enter about recipe"
-          className="block pb-[14px] outline-none hover:placeholder-primary-text-color   bg-transparent w-[335px] h-[34px] border-b border-grey-text-color  focus:outline-none  focus:border-primary-text-color hover:border-primary-text-color placeholder-grey-text-color placeholder-font-normal placeholder-text-sm transition-colors ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms]"
+          className="block pb-[14px] outline-none hover:placeholder-primary-text-color   bg-transparent w-[335px] h-[34px] border-b border-grey-text-color  focus:outline-none  focus:border-primary-text-color hover:border-primary-text-color placeholder-grey-text-color placeholder-font-normal placeholder-text-sm transition ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms]"
           required
         />
         <div className="relative">
