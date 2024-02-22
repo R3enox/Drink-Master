@@ -10,6 +10,7 @@ import UniversalModalWrap from '../../components/DrinksItem/UniversalModal';
 import UniversalModal from '../../components/DrinksItem/UniversalModal';
 import ModalButtons from '../../components/DrinksItem/ModalButtons';
 
+
 const MyDrinksPage = () => {
   const { data, error, isLoading, isFetching, isError } =
     useFetchMyDrinksQuery();
@@ -52,6 +53,7 @@ const MyDrinksPage = () => {
           <DrinksList data={data} openMyDrinkModal={openMyDrinkModal} />
         ) : (
           <DrinkImageComponent description="You don't have your own drinks yet" />
+
         )}
         {isOpen && (
           <UniversalModal

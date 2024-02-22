@@ -1,5 +1,11 @@
 import { DeviceTypes } from './deviceTypes';
 
+const HomeDrinksLimit = {
+  [DeviceTypes.MOBILE]: 1,
+  [DeviceTypes.TABLET]: 2,
+  [DeviceTypes.DESKTOP]: 3,
+};
+
 const DrinksLimit = {
   [DeviceTypes.MOBILE]: 10,
   [DeviceTypes.TABLET]: 10,
@@ -11,6 +17,7 @@ const MyDrinksLimit = {
   [DeviceTypes.TABLET]: 8,
   [DeviceTypes.DESKTOP]: 9,
 };
+
 const FavoriteDrinksLimit = {
   [DeviceTypes.MOBILE]: 8,
   [DeviceTypes.TABLET]: 8,
@@ -24,6 +31,7 @@ const CountPagesOfPagination = {
 };
 
 export {
+  HomeDrinksLimit,
   DrinksLimit,
   MyDrinksLimit,
   FavoriteDrinksLimit,
