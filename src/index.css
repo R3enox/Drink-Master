@@ -281,6 +281,28 @@ body {
   }
 }
 
+/* Common Pages */
+@layer base {
+  .bg-common-set {
+    background-image: image-set(
+      url('assets/img/homePage/mobile-bg-commonpage.png') 1x,
+      url('assets/img/homePage/mobile-bg-commonpage@2x.png') 2x
+    );
+  }
+  .bg-common-set-tablet {
+    background-image: image-set(
+      url('assets/img/homePage/tablet-bg-commonpage.png') 1x,
+      url('assets/img/homePage/tablet-bg-commonpage@2x.png') 2x
+    );
+  }
+  .bg-common-set-desktop {
+    background-image: image-set(
+      url('assets/img/homePage/desktop-bg-commonpage.png') 1x,
+      url('assets/img/homePage/desktop-bg-commonpage@2x.png') 2x
+    );
+  }
+}
+
 /* Search Filters Select styles  */
 
 .searchSelect__control {
