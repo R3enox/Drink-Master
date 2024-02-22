@@ -1,8 +1,7 @@
 import { useMemo } from 'react';
 import { useForm } from 'react-hook-form';
-import Select from 'react-select';
-
 import { useFilters } from '../../hooks/useFilters';
+import Select from 'react-select';
 import { useDrinkFilters } from '../../hooks/useDrinkFilters';
 import {
   createOptionsFromArrOfObj,
@@ -14,6 +13,18 @@ export const DrinksSearch = () => {
   const { categories, ingredients } = useFilters();
   const { keyName, category, ingredient, setDrinkFilter } = useDrinkFilters();
 
+  const createCategoriesOptions = (collection) =>
+    collection.map((title) => ({
+      value: title,
+      label: title,
+    }));
+
+  const createIngredientsOptions = (collection) =>
+    collection.map(({ title }) => ({
+      value: title,
+      label: title,
+    }));
+
   const categoriesOptions = useMemo(
     () => createOptionsFromArrOfStr(categories ?? []),
     [categories]
@@ -23,7 +34,6 @@ export const DrinksSearch = () => {
     () => createOptionsFromArrOfObj(ingredients ?? []),
     [ingredients]
   );
-
   const { handleSubmit, setValue, watch } = useForm({
     defaultValues: {
       keyName: keyName || '',
@@ -35,7 +45,7 @@ export const DrinksSearch = () => {
   };
 
   return (
-    <div className="flex flex-col  items-center md:flex-row gap-[14px] md:gap-[8px] pt-[40px] md:pt-[60px] lg:pt-[80px]">
+    <div className="flex flex-col items-center md:flex-row gap-[14px] md:gap-[8px] mt-[40px] md:mt-[60px] lg:mt-[80px]">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-row w-full justify-between items-center md:w-[264px] hover:border-grey-text-color hover:color-transparent bg-transparent h-[54px] rounded-[200px] border-[1px] border-border-color  placeholder-border-color py-[18px] md:py-[14px] px-[24px]"
@@ -75,9 +85,9 @@ export const DrinksSearch = () => {
         options={categoriesOptions}
         placeholder={'All categories'}
         classNamePrefix="searchSelect"
-        isClearable={true}
+        isClearable={category && true}
         onChange={(selectedValue) =>
-          setDrinkFilter('category', selectedValue.value)
+          setDrinkFilter('category', selectedValue?.value || '')
         }
         defaultValue={{
           value: category || '',
@@ -88,9 +98,9 @@ export const DrinksSearch = () => {
         options={ingredientsOptions}
         placeholder={'Ingredients'}
         classNamePrefix="searchSelect"
-        isClearable={true}
+        isClearable={ingredient && true}
         onChange={(selectedValue) =>
-          setDrinkFilter('ingredient', selectedValue.value)
+          setDrinkFilter('ingredient', selectedValue?.value || '')
         }
         defaultValue={{
           value: ingredient || '',
