@@ -3,7 +3,7 @@ import { PreviewDrinks } from 'components/Drinks/PreviewDrinks';
 
 const HomePage = () => {
   return (
-    <div className="container pb-[80px] md:pb-[140px]">
+    <div className="bg-mobile-bg-homepage md:bg-tablet-bg-homepage lg:bg-desktop-bg-homepage bg-contain bg-no-repeat">
       <Hero />
       <PreviewDrinks />
     </div>

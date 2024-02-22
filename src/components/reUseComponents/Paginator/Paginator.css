@@ -3,10 +3,14 @@
   justify-content: center;
   align-items: center;
   gap: 14px;
-  margin-top: 40px;
-  margin-bottom: 40px;
-
+  margin-top: 80px;
   list-style: none;
+}
+
+@media screen and (max-width: 767px) {
+  .pagination-list {
+    margin-top: 40px;
+  }
 }
 
 .pagination-list li {
@@ -47,8 +51,6 @@
 .pagination-list .next svg {
   rotate: 180deg;
 }
-
-
 
 .pagination-list .previous {
   margin-right: 20px;
