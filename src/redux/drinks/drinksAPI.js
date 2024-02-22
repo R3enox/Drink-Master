@@ -23,16 +23,16 @@ export const drinksApi = createApi({
       providesTags: ['drinks'],
     }),
     filterDrinks: builder.query({
-      query: (filters) => {
-        const queryParams = new URLSearchParams();
-        if (filters.category) {
-          queryParams.append('category', filters.category);
+      query: ({ page, limit, keyName, category, ingredient }) => {
+        const queryParams = new URLSearchParams({ page, limit });
+        if (category) {
+          queryParams.append('category', category);
         }
-        if (filters.ingredient) {
-          queryParams.append('ingredient', filters.ingredient);
+        if (ingredient) {
+          queryParams.append('ingredient', ingredient);
         }
-        if (filters.keyName) {
-          queryParams.append('keyName', filters.keyName);
+        if (keyName) {
+          queryParams.append('keyName', keyName);
         }
         const queryString = queryParams.toString();
         return `/drinks/search?${queryString}`;
