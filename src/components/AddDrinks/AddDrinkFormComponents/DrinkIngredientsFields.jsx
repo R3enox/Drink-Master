@@ -34,7 +34,7 @@ export const DrinkIngredientsFields = () => {
             name="title"
             options={ingredientsOptions}
             classNamePrefix="ingredientsSelect"
-            defaultValue={ingredientsOptions[i]}
+            placeholder={ingredientsOptions[i].label}
             isRequired={true}
           />
           <label>
@@ -72,7 +72,7 @@ export const DrinkIngredientsFields = () => {
           name="title"
           options={ingredientsOptions}
           classNamePrefix="ingredientsSelect"
-          defaultValue={ingredientsOptions[randomIndex]}
+          placeholder={ingredientsOptions[randomIndex].label}
           isRequired={true}
         />
         <label>

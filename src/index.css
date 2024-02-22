@@ -54,18 +54,24 @@ body {
 /* Welcome-SignIn-SignUp-Pages */
 @layer base {
   .bg-image-set {
-    background-image: image-set(url('assets/img/welcomePage/mobile-bg-welcome-page.png') 1x,
-        url('assets/img/welcomePage/mobile-bg-welcome-page@2x.png') 2x);
+    background-image: image-set(
+      url('assets/img/welcomePage/mobile-bg-welcome-page.png') 1x,
+      url('assets/img/welcomePage/mobile-bg-welcome-page@2x.png') 2x
+    );
   }
 
   .bg-image-set-tablet {
-    background-image: image-set(url('assets/img/welcomePage/tablet-bg-welcome-page.png') 1x,
-        url('assets/img/welcomePage/tablet-bg-welcome-page@2x.png') 2x);
+    background-image: image-set(
+      url('assets/img/welcomePage/tablet-bg-welcome-page.png') 1x,
+      url('assets/img/welcomePage/tablet-bg-welcome-page@2x.png') 2x
+    );
   }
 
   .bg-image-set-desktop {
-    background-image: image-set(url('assets/img/welcomePage/desktop-bg-welcome.png') 1x,
-        url('assets/img/welcomePage/desktop-bg-welcome@2x.png') 2x);
+    background-image: image-set(
+      url('assets/img/welcomePage/desktop-bg-welcome.png') 1x,
+      url('assets/img/welcomePage/desktop-bg-welcome@2x.png') 2x
+    );
   }
 }
 
@@ -214,6 +220,15 @@ body {
     opacity: 1;
     transform: scale(1);
   }
+}
+
+/* Add photo */
+.containerPhoto:hover .addPhotoButton {
+  background: rgba(64, 112, 205, 0.5);
+}
+
+.containerPhoto:hover .svgPhotoAddDrink {
+  stroke: #f3f3f3;
 }
 
 /* AddDrinks Select */
@@ -384,6 +399,15 @@ body {
   text-align: end !important;
 }
 
+.ingredientsSelect__placeholder {
+  color: rgba(243, 243, 243, 0.5) !important;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.ingredientsSelect__control:hover .ingredientsSelect__placeholder {
+  color: #f3f3f3 !important;
+}
+
 .ingredientsSelect__indicators {
   margin-right: 18px !important;
 }
@@ -414,7 +438,7 @@ body {
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
-.ingredientsSelect__indicator:hover {
+.ingredientsSelect__control:hover .ingredientsSelect__indicator {
   color: #848080 !important;
 }
 
@@ -425,7 +449,7 @@ body {
 
 .ingredientsSelect__single-value {
   margin: 0 !important;
-  color: rgba(243, 243, 243, 0.5) !important;
+  color: #f3f3f3 !important;
 }
 
 .ingredientsSelect__input-container {

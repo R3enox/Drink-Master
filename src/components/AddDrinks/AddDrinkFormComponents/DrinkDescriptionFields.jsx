@@ -51,15 +51,15 @@ export const DrinkPageHero = () => {
           onChange={handleUploadedFile}
         />
         <label htmlFor="fileInput" className="cursor-pointer">
-          <div className="flex justify-center items-center w-[335px] h-[320px]  rounded-lg bg-primary-text-button-color bg-opacity-50 hover:bg-filter-scroll-text ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms] ">
+          <div className="containerPhoto flex justify-center items-center w-[335px] h-[320px]  rounded-lg bg-primary-text-button-color bg-opacity-50 ">
             {preview === undefined ? (
               <div className="flex flex-col pointer-events-none items-center w-20 h-[88px] ">
                 <button
                   tabIndex="-1"
                   type="button"
-                  className="flex justify-center items-center  mb-[18px] w-[50px] h-[50px] bg-primary-text-color rounded-[6px]"
+                  className="addPhotoButton flex justify-center items-center  mb-[18px] w-[50px] h-[50px] bg-primary-text-color rounded-[6px] ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms]"
                 >
-                  <svg className="stroke-primary-text-button-color w-[28px] h-[28px] ">
+                  <svg className="svgPhotoAddDrink stroke-primary-text-button-color w-[28px] h-[28px] ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms]">
                     <use href={spite + '#icon-plus'}></use>
                   </svg>
                 </button>
