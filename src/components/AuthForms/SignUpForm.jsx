@@ -2,12 +2,17 @@ import { useForm } from 'react-hook-form';
 import { signUpThunk } from '../../redux/auth/authOperations';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { selectAuthToken } from '../../redux/auth/authSelectors';
+import {
+  selectAuthIsLoading,
+  selectAuthToken,
+} from '../../redux/auth/authSelectors';
 import { DevTool } from '@hookform/devtools';
 import Calendar from '../DatePicker/Calendar';
 import { useState } from 'react';
+import Loader from '../Loader/Loader';
 
 const SignUpForm = () => {
+  const { isLoading } = useSelector(selectAuthIsLoading);
   const dispatch = useDispatch();
   const token = useSelector(selectAuthToken);
   const navigate = useNavigate();
@@ -37,6 +42,7 @@ const SignUpForm = () => {
 
   return (
     <div className="form-sign-up-bg-container">
+      {isLoading && <Loader />}
       <div className="form-sign-up-container">
         <form
           className="flex flex-col w-[335px]"
