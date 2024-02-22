@@ -17,6 +17,13 @@ export const DrinkIngredientsFields = () => {
   );
 
   useEffect(() => {
+    if (ingredientInputs.length === 0) {
+      newIngredient(ingredientsCount);
+      return;
+    }
+  }, []);
+
+  const newIngredient = (ingredientsCount) => {
     const newIngredientInputs = [];
     for (let i = 0; i < ingredientsCount; i++) {
       const id = nanoid();
@@ -48,7 +55,7 @@ export const DrinkIngredientsFields = () => {
       );
     }
     setIngredientInputs(newIngredientInputs);
-  }, [ingredientsCount]);
+  };
 
   const handleInc = () => {
     if (ingredientsOptions.length <= ingredientsCount) {
@@ -56,6 +63,34 @@ export const DrinkIngredientsFields = () => {
     }
     const newCount = ingredientsCount + 1;
     setIngredientsCount(newCount);
+    let randomIndex = Math.floor(Math.random() * ingredientsOptions.length);
+    const id = nanoid();
+    ingredientInputs.push(
+      <li key={id} className="flex items-center mb-3.5 gap-x-2">
+        <Select
+          className="flex-initial w-52"
+          name="title"
+          options={ingredientsOptions}
+          classNamePrefix="ingredientsSelect"
+          defaultValue={ingredientsOptions[randomIndex]}
+          isRequired={true}
+        />
+        <label>
+          <input
+            type="text"
+            placeholder="1  cl"
+            name="measure"
+            required
+            className="text-primary-text-color placeholder-primary-text-color bg-transparent w-[100px] h-[50px] border-grey-text-color border-[1px] rounded-[200px] pl-[18px] hover:border-primary-text-color focus:border-primary-text-color outline-none ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms]  "
+          />
+        </label>
+        <button type="button" id={id} onClick={() => handleDelete(id)}>
+          <svg className=" stroke-primary-text-color w-[18px] h-[18px] hover:stroke-[#848080] focus:stroke-[#848080] ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms] ">
+            <use href={`${sprite}#icon-cross`} />
+          </svg>
+        </button>
+      </li>
+    );
   };
 
   const handleDec = () => {
@@ -64,6 +99,7 @@ export const DrinkIngredientsFields = () => {
     }
     const newCount = ingredientsCount - 1;
     setIngredientsCount(newCount);
+    ingredientInputs.pop();
   };
 
   const handleDelete = (id) => {
@@ -75,7 +111,7 @@ export const DrinkIngredientsFields = () => {
 
   return (
     <>
-      <div className="flex gap-20">
+      <div className="flex justify-between">
         <AddDrinkTitle text="Ingredients" className="inline-block" />
         <div
           id="counter"
