@@ -38,18 +38,19 @@ const DrinkPage = () => {
   }, [drinkId, dispatch]);
 
   return (
-
     <section className="py-[80px] md:py-[140px] lg:pt-[132px]">
       {isLoading && <Loader />}
       {isError && <h1>{isError}</h1>}
-      <div className="container mx-auto ">
-        <DrinkPageHero cocktail={currentCocktail} />
-        <DrinkIngredientsList
-          ingredients={ingredByFilter}
-          currentIngred={ingIds}
-        />
-        <RecipePreparation description={currentCocktail} />
-      </div>
+      {currentCocktail && (
+        <div className="container mx-auto ">
+          <DrinkPageHero cocktail={currentCocktail} />
+          <DrinkIngredientsList
+            ingredients={ingredByFilter}
+            currentIngred={ingIds}
+          />
+          <RecipePreparation description={currentCocktail} />
+        </div>
+      )}
     </section>
   );
 };

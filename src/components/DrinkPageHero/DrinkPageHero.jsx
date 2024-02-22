@@ -1,4 +1,3 @@
-
 import { useSelector } from 'react-redux';
 import {
   useAddFavoritesMutation,
@@ -7,9 +6,6 @@ import {
 import { ButtonComponent } from '../reUseComponents/buttonComponent';
 import { selectAuthUser } from '../../redux/auth/authSelectors';
 import { useState } from 'react';
-
-import { Link } from 'react-router-dom';
-
 
 const DrinkPageHero = ({ cocktail }) => {
   const user = useSelector(selectAuthUser);
@@ -68,11 +64,8 @@ const DrinkPageHero = ({ cocktail }) => {
               btnFunction={() => toggleFavorite(_id)}
               id={_id}
             />
-
-        
-
           )}
-        
+        </div>
       </div>
       <div>
         <img
