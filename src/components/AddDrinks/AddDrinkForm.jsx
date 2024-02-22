@@ -25,17 +25,18 @@ export const AddDrinkForm = () => {
 
     console.log(formData);
 
-    formData.getAll('title').forEach((title, index) => {
+    formData.getAll('ingredientId').forEach((ingredientId, index) => {
       const measure = formData.getAll('measure')[index];
       addedIngredients.push({
-        title: ingredientsOptions.find((option) => option.value === title)
-          .label,
+        title: ingredientsOptions.find(
+          (option) => option.value === ingredientId
+        ).label,
         measure,
-        ingredientId: title,
+        ingredientId,
       });
     });
 
-    formData.delete('title');
+    formData.delete('ingredientId');
     formData.delete('measure');
 
     addedIngredients.forEach((addedIngredient, index) => {

@@ -23,7 +23,7 @@ export const DrinkIngredientsFields = ({ ingredientsOptions }) => {
         <li key={id} className="flex items-center mb-3.5 gap-x-2">
           <Select
             className="flex-initial w-52"
-            name="title"
+            name="ingredientId"
             options={ingredientsOptions}
             classNamePrefix="ingredientsSelect"
             placeholder={ingredientsOptions[i].label}
