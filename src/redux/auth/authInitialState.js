@@ -10,5 +10,6 @@ export const initialState = {
   isLoggedIn: false,
   isRefreshing: false,
   error: null,
-  token: null,
+  accessToken: null,
+  refreshToken: null,
 };

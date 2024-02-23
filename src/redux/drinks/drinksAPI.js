@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import instance from '../../services/axios';
+
 const baseURL = instance.defaults.baseURL;
 
 export const drinksApi = createApi({
@@ -7,9 +8,9 @@ export const drinksApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: `${baseURL}`,
     prepareHeaders: (headers, { getState }) => {
-      const token = getState().auth.token;
-      if (token) {
-        headers.set('authorization', `Bearer ${token}`);
+      const accessToken = getState().auth.accessToken;
+      if (accessToken) {
+        headers.set('authorization', `Bearer ${accessToken}`);
       }
       return headers;
     },

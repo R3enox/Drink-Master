@@ -3,14 +3,14 @@ import { DrinkIngredientsFields } from './AddDrinkFormComponents/DrinkIngredient
 import { RecipePreparation } from './AddDrinkFormComponents/RecipePreparation';
 import { useSelector } from 'react-redux';
 import { useMemo } from 'react';
-import { selectAuthToken } from '../../redux/auth/authSelectors';
+import { selectAuthAccessToken } from '../../redux/auth/authSelectors';
 import { useFilters } from '../../hooks/useFilters';
 import { createOptionsFromArrOfObjUsingId } from '../../helpers/createCollectionOptions';
 import { BtnDarkTheme } from '../reUseComponents/Buttons/Buttons';
 
 export const AddDrinkForm = () => {
   const { ingredients } = useFilters();
-  const authToken = useSelector(selectAuthToken);
+  const authToken = useSelector(selectAuthAccessToken);
   const addedIngredients = [];
 
   const ingredientsOptions = useMemo(

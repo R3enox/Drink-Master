@@ -1,16 +1,17 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import instance from '../../services/axios';
+
+const baseURL = instance.defaults.baseURL;
 
 export const myDrinksApi = createApi({
   reducerPath: 'myDrinksApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://drink-master-4fm6.onrender.com/api/',
+    baseUrl: `${baseURL}`,
     prepareHeaders: (headers, { getState }) => {
-      const token = getState().auth.token;
-
-      if (token) {
-        headers.set('authorization', `Bearer ${token}`);
+      const accessToken = getState().auth.accessToken;
+      if (accessToken) {
+        headers.set('authorization', `Bearer ${accessToken}`);
       }
-
       return headers;
     },
   }),
