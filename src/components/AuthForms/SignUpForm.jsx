@@ -139,12 +139,14 @@ const SignUpForm = () => {
                   },
                 })}
               />
+              {/* background-color: antiquewhite; stroke: black; fill: none;
+              border-radius: 50%; */}
               {showPassword ? (
                 <svg
                   onClick={() => {
                     setShowPassword(!showPassword);
                   }}
-                  className="absolute w-[20px] h-[20px] top-[18px] right-[18px] fill-none stroke-primary-text-color"
+                  className="absolute w-[20px] h-[20px] top-[18px] right-[18px] fill-none stroke-primary-text-color hover:stroke-button-hover-color hover:bg-primary-text-color rounded-full"
                 >
                   <use href={sprite + '#icon-eye'}></use>
                 </svg>
@@ -153,7 +155,7 @@ const SignUpForm = () => {
                   onClick={() => {
                     setShowPassword(!showPassword);
                   }}
-                  className="absolute w-[20px] h-[20px] top-[18px] right-[18px] fill-none stroke-primary-text-color"
+                  className="absolute w-[20px] h-[20px] top-[18px] right-[18px] fill-none stroke-primary-text-color hover:stroke-button-hover-color hover:bg-primary-text-color rounded-full"
                 >
                   <use href={sprite + '#icon-eye-off'}></use>
                 </svg>
