@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import toast from 'react-hot-toast';
-
+import { toast } from 'react-toastify';
 import API, { setAuthToken } from 'services/axios';
 
 export const signUpThunk = createAsyncThunk(
