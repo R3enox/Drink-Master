@@ -46,10 +46,9 @@ body {
     );
   }
 }
-.welcome-bg-container {
-  @apply bg-image-set  bg-cover h-[100vh] 
-   md:bg-image-set-tablet 
-   lg:bg-image-set-desktop lg:bg-background-color;
+
+.restricted-page-container {
+  @apply bg-image-set bg-cover min-h-[100vh] md:bg-image-set-tablet lg:bg-image-set-desktop lg:bg-background-color flex justify-center items-center py-[20px] px-[20px] md:px-[64px] lg:px-[100px];
 }
 
 .input-form {
@@ -80,71 +79,42 @@ body {
   @apply text-correct-color text-[12px] ml-[24px] mt-[8px];
 }
 
-.welcome-container {
-  @apply container  m-auto py-[304px] md:pl-[32px];
-}
-.form-sign-up-bg-container {
-  @apply bg-image-set  
-  min-h-[100vh] bg-cover
-  md:bg-image-set-tablet 
-  lg:bg-image-set-desktop lg:bg-background-color;
-}
 .form-sign-up-container {
-  @apply container  py-[280px] m-auto md:pl-[32px] md:py-[153px] lg:pl-[100px];
+  @apply container py-[280px] m-auto md:pl-[32px] md:py-[153px] lg:pl-[100px];
 }
-.form-sign-in-bg-container {
-  @apply bg-image-set  
-  min-h-[100vh] bg-cover
-  md:bg-image-set-tablet 
-  lg:bg-image-set-desktop lg:bg-background-color;
-}
+
 .form-sign-in-container {
   @apply container py-[259px] m-auto md:pl-[32px] md:py-[350px] lg:py-[223px] lg:pl-[100px];
 }
 .input-form {
-  @apply w-full bg-transparent h-[54px] rounded-[42px] bg-contain border-[1px] border-border-color hover:border-grey-text-color transition-colors hover:placeholder-primary-text-color text-[14px] leading-[1.29] placeholder-border-color py-[18px] px-[24px] outline-none md:text-[17px] 
-  md:pt-[14px] md:pb-[15px];
+  @apply w-full bg-transparent h-[54px] rounded-[42px] bg-contain border-[1px] border-border-color hover:border-grey-text-color transition-colors hover:placeholder-primary-text-color text-[14px] leading-[1.29] placeholder-border-color py-[18px] px-[24px] outline-none md:text-[17px]  md:pt-[14px] md:pb-[15px];
 }
 .input-container {
-  @apply flex flex-col gap-[14px] 
-  md:w-[400px] md:pl-[32px] 
-  lg:pl-[0];
+  @apply flex flex-col gap-[14px] md:w-[400px] md:pl-[32px] lg:pl-[0];
 }
 .form-title {
-  @apply text-welcome-text-color text-[28px] mb-[28px] font-semibold leading-[1.14] 
-  md:text-[40px] md:leading-[1.1] md:pl-[32px] 
-  lg:pl-[0];
+  @apply text-welcome-text-color text-[28px] mb-[28px] font-semibold leading-[1.14] md:text-[40px] md:leading-[1.1] md:pl-[32px] lg:pl-[0];
 }
 .welcome-title {
-  @apply text-welcome-text-color text-center text-[28px] font-semibold mb-[14px] leading-[1.14] 
-  md:text-[40px] md:leading-[1.1];
+  @apply text-welcome-text-color text-center text-[28px] font-semibold mb-[14px] leading-[1.14] md:text-[40px] md:leading-[1.1];
 }
 .welcome-desc {
-  @apply text-welcome-text-color text-center w-[319px] text-sm leading-[1.29] 
-  md:w-[470px] md:text-[18px] md:leading-[1.33] 
-  md:text-left 
-  lg:w-[500px];
+  @apply text-welcome-text-color text-center w-[319px] text-sm leading-[1.29] md:w-[470px] md:text-[18px] md:leading-[1.33] md:text-left lg:w-[500px];
 }
 .btn-container {
-  @apply flex flex-col gap-[14px] mt-[28px] md:mt-[40px] 
-  md:pl-[32px] md:w-[400px] 
-  lg:pl-[0];
+  @apply flex flex-col gap-[14px] mt-[28px] md:mt-[40px] md:pl-[32px] md:w-[400px] lg:pl-[0];
 }
 .sign-btn {
-  @apply bg-primary-text-color text-primary-text-button-color font-semibold py-[18px] rounded-[42px] text-[14px] leading-[1.29]
-  md:text-[16px] md:leading-[1.1] md:py-[18px];
+  @apply bg-primary-text-color text-primary-text-button-color font-semibold py-[18px] rounded-[42px] text-[14px] leading-[1.29] md:text-[16px] md:leading-[1.1] md:py-[18px];
 }
 .sign-link-btn {
-  @apply transition hover:decoration-primary-text-color outline-none underline decoration-grey-text-color font-semibold text-center text-primary-text-color text-[12px] leading-[1.33] 
-  md:text-[14px] md:leading-[1.29];
+  @apply transition hover:decoration-primary-text-color outline-none underline decoration-grey-text-color font-semibold text-center text-primary-text-color text-[12px] leading-[1.33] md:text-[14px] md:leading-[1.29];
 }
 .welcome-sign-in-link {
-  @apply transition-shadow shadow-lg hover:shadow-primary-text-color/50 text-primary-text-color  py-[14px] px-[40px] rounded-[42px] border-[1px] border-border-color text-[14px] leading-[1.29] 
-  md:py-[18px] md:px-[44px] md:text-[16px] md:leading-[1.12];
+  @apply transition-shadow shadow-lg hover:shadow-primary-text-color/50 text-primary-text-color py-[14px] px-[40px] rounded-[42px] border-[1px] border-border-color text-[14px] leading-[1.29] md:py-[18px] md:px-[44px] md:text-[16px] md:leading-[1.12];
 }
 .welcome-sign-up-link {
-  @apply transition-shadow shadow-lg hover:shadow-primary-text-color/50 bg-primary-text-color text-primary-text-button-color font-semibold py-[14px] px-[40px] rounded-[42px] text-[14px] leading-[1.29] 
-  md:py-[18px] md:px-[44px] md:text-[16px] md:leading-[1.12];
+  @apply transition-shadow shadow-lg hover:shadow-primary-text-color/50 bg-primary-text-color text-primary-text-button-color font-semibold py-[14px] px-[40px] rounded-[42px] text-[14px] leading-[1.29] md:py-[18px] md:px-[44px] md:text-[16px] md:leading-[1.12];
 }
 
 /* Typing-Text-Effect */
