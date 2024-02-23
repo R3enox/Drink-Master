@@ -14,14 +14,14 @@ import storage from 'redux-persist/lib/storage';
 import { drinksApi } from '../redux/drinks/drinksAPI';
 import { authReducer } from './auth/authReducer';
 import { filtersReducer } from './filters/slice';
-import { drinkIdStorageReducer } from './drinkIdStorageReducer/drinkIdStorageReducer';
+import { drinkIdApi } from './drinkIdStorageReducer/drinkIdStorageReducer';
 import { myDrinksApi } from './myDrinks/myDrinksSlice';
 import { favoriteApi } from './favorites/favoriteSlice';
 
 const authConfig = {
   key: 'auth',
   storage,
-  withelist: ['token'],
+  witelist: ['token'],
 };
 
 export const store = configureStore({
@@ -29,7 +29,7 @@ export const store = configureStore({
     auth: persistReducer(authConfig, authReducer),
     [drinksApi.reducerPath]: drinksApi.reducer,
     filters: filtersReducer,
-    drinkIdStorage: drinkIdStorageReducer,
+    [drinkIdApi.reducerPath]: drinkIdApi.reducer,
     [myDrinksApi.reducerPath]: myDrinksApi.reducer,
     [favoriteApi.reducerPath]: favoriteApi.reducer,
   },
@@ -41,7 +41,8 @@ export const store = configureStore({
     }).concat(
       drinksApi.middleware,
       myDrinksApi.middleware,
-      favoriteApi.middleware
+      favoriteApi.middleware,
+      drinkIdApi.middleware,
     ),
 });
 

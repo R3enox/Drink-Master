@@ -5,6 +5,7 @@ import {
 import DrinksList from '../../components/DrinksList/DrinksList';
 import { PageTitle } from '../../components/reUseComponents/PageTitle';
 import { DrinkImageComponent } from '../../components/reUseComponents/DrinkImageComponent';
+import ScrollBtn from '../../components/reUseComponents/Buttons/ScrollBtn.jsx/ScrollBtn';
 
 const MyDrinksPage = () => {
   const { data, error, isLoading, isFetching, isError } =
@@ -22,7 +23,9 @@ const MyDrinksPage = () => {
         ) : (
           <DrinkImageComponent description="You don't have your own drinks yet" />
         )}
+        {data && data.length === 20 && <ScrollBtn/> }
       </div>
+      
     </section>
   );
 };
