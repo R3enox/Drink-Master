@@ -33,7 +33,10 @@ const SignInForm = () => {
   }
 
   return (
-    <form className="flex flex-col w-[335px]" onSubmit={handleSubmit(onSubmit)}>
+    <form
+      className="flex flex-col w-[335px] md:w-[400px] lg:w-[400px]"
+      onSubmit={handleSubmit(onSubmit)}
+    >
       <h1 className="form-title">Sign In</h1>
       <div className="input-container">
         <div className="relative">

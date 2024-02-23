@@ -50,7 +50,7 @@ const SignUpForm = () => {
 
   return (
     <form
-      className="flex flex-col w-[335px]"
+      className="flex flex-col w-[335px] md:w-[400px] lg:w-[400px]"
       onSubmit={handleSubmit(onSubmit)}
       noValidate
     >

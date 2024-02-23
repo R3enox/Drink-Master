@@ -62,14 +62,6 @@ body {
   @apply border-correct-color;
 }
 
-.input-container {
-  @apply flex flex-col gap-[14px] md:w-[400px] md:pl-[32px] lg:pl-[0];
-}
-
-.form-title {
-  @apply text-welcome-text-color text-[28px] mb-[28px] font-semibold leading-[1.14] md:text-[40px] md:leading-[1.1] md:pl-[32px] lg:pl-[0];
-}
-
 .errorMsg {
   @apply text-error-color text-[12px] ml-[24px] mt-[8px];
 }
@@ -89,13 +81,13 @@ body {
   @apply w-full bg-transparent h-[54px] rounded-[42px] bg-contain border-[1px] border-border-color hover:border-grey-text-color transition-colors hover:placeholder-primary-text-color text-[14px] leading-[1.29] placeholder-border-color py-[18px] px-[24px] outline-none md:text-[17px]  md:pt-[14px] md:pb-[15px];
 }
 .input-container {
-  @apply flex flex-col gap-[14px] md:w-[400px] md:pl-[32px] lg:pl-[0];
+  @apply flex flex-col gap-[14px] md:w-[400px];
 }
 .react-datepicker {
   @apply left-[-51px] md:left-[-34px] lg:left-[-18px];
 }
 .form-title {
-  @apply text-welcome-text-color text-[28px] mb-[28px] font-semibold leading-[1.14] md:text-[40px] md:leading-[1.1] md:pl-[32px] lg:pl-[0];
+  @apply text-welcome-text-color text-[28px] mb-[28px] font-semibold leading-[1.14] md:text-[40px] md:leading-[1.1];
 }
 .welcome-title {
   @apply text-welcome-text-color text-center text-[28px] font-semibold mb-[14px] leading-[1.14] md:text-[40px] md:leading-[1.1];
@@ -104,7 +96,7 @@ body {
   @apply text-welcome-text-color text-center w-[319px] text-sm leading-[1.29] md:w-[470px] md:text-[18px] md:leading-[1.33] md:text-left lg:w-[500px];
 }
 .btn-container {
-  @apply flex flex-col gap-[14px] mt-[28px] md:mt-[40px] md:pl-[32px] md:w-[400px] lg:pl-[0];
+  @apply flex flex-col gap-[14px] mt-[28px] md:mt-[40px] md:w-[400px];
 }
 .sign-btn {
   @apply bg-primary-text-color text-primary-text-button-color font-semibold py-[18px] rounded-[42px] text-[14px] leading-[1.29] md:text-[16px] md:leading-[1.1] md:py-[18px];
