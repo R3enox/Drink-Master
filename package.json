@@ -31,6 +31,7 @@
     "react-router-dom": "^6.15.0",
     "react-select": "^5.8.0",
     "react-text-mask": "^5.5.0",
+    "react-type-animation": "^3.2.0",
     "redux-persist": "^6.0.0",
     "styled-components": "^6.0.7",
     "swiper": "^11.0.6",

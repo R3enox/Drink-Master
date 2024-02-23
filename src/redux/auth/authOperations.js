@@ -7,6 +7,7 @@ export const signUpThunk = createAsyncThunk(
   'auth/signup',
   async (formData, thunkApi) => {
     try {
+      console.log('hier')
       const { data } = await API.post('/auth/signup', formData);
       setAuthToken(data.token);
       return data;
