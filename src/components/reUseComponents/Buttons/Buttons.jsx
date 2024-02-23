@@ -15,14 +15,9 @@ export const LinkDarkTheme = ({ children, to }) => {
   );
 };
 
-export const BtnDarkTheme = ({ children, onClick, disabled }) => {
+export const BtnDarkTheme = ({ children }) => {
   return (
-    <button
-      disabled={disabled}
-      onClick={onClick}
-      type="submit"
-      className={css.button}
-    >
+    <button type="submit" className={css.button}>
       <div className={css.dotsBorder}></div>
       <span className={css.textButton}>{children}</span>
     </button>
