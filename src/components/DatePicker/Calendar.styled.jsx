@@ -2,13 +2,13 @@ import { createGlobalStyle } from 'styled-components';
 
 export const CalendarGlobalStyles = createGlobalStyle`
   .react-datepicker__wrapper {
-    position: relative;
   }
   .react-datepicker-wrapper {
     width: 100%;
   }
 
   .react-datepicker {
+    position: absolute;
     flex-direction: column;
     align-items: center;
     width: 219px;

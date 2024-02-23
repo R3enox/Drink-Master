@@ -6,6 +6,7 @@ import { useMemo } from 'react';
 import { selectAuthToken } from '../../redux/auth/authSelectors';
 import { useFilters } from '../../hooks/useFilters';
 import { createOptionsFromArrOfObjUsingId } from '../../helpers/createCollectionOptions';
+import { BtnDarkTheme } from '../reUseComponents/Buttons/Buttons';
 
 export const AddDrinkForm = () => {
   const { ingredients } = useFilters();
@@ -78,12 +79,13 @@ export const AddDrinkForm = () => {
         <DrinkPageHero />
         <DrinkIngredientsFields ingredientsOptions={ingredientsOptions} />
         <RecipePreparation />
-        <button
+        {/* <button
           type="submit"
           className="block w-[108px] h-[46px] border-2 border-primary-text-color outline-none  rounded-[42px] bg-primary-text-color text-primary-text-button-color hover:border-hover-button-border-color hover:border-2 focus:border-hover-button-border-color focus:border-2 focus:outline-none ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms]"
         >
           Add
-        </button>
+        </button> */}
+        <BtnDarkTheme>Add</BtnDarkTheme>
       </form>
     </section>
   );
