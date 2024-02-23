@@ -5,6 +5,7 @@ import { useGetDrinksQuery } from '../../redux/drinks/drinksAPI';
 import { useFilters } from '../../hooks/useFilters';
 import { getDeviceType } from '../../helpers/getDeviceType';
 import { HomeDrinksLimit } from '../../constants/paginationLimits';
+import Loader from '../Loader/Loader';
 
 const popularCategories = [
   'Ordinary Drink',
@@ -24,7 +25,7 @@ export const PreviewDrinks = () => {
     popularCategories.filter((category) => categories.includes(category));
 
   return isLoading ? (
-    <div>Loading</div>
+    <Loader isStatic />
   ) : (
     data && (
       <div className="container m-auto conflex flex-col gap-[60px] pb-[80px] md:gap-[80px] pt-[56px] md:pt-[61px] md:pb-[140px] lg:pt-[80px]">
