@@ -11,12 +11,13 @@ const SignInForm = () => {
   const navigate = useNavigate();
 
   const {
-    onBlur,
     register,
     handleSubmit,
-    // formState: { errors },
+    formState: { errors, dirtyFields },
     reset,
-  } = useForm();
+  } = useForm({
+    mode: 'onChange',
+  });
 
   const onSubmit = (data) => {
     dispatch(signInThunk(data));
@@ -27,67 +28,74 @@ const SignInForm = () => {
   return (
     <div className="form-sign-in-bg-container">
       {isLoading && <Loader />}
-      {!isLoading && (
-        <div className="form-sign-in-container">
-          <form
-            className="flex flex-col w-[335px]"
-            onSubmit={handleSubmit(onSubmit)}
-          >
-            <h1 className="form-title">Sign In</h1>
-            <div className="input-container">
+      <div className="form-sign-in-container">
+        <form
+          className="flex flex-col w-[335px]"
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <h1 className="form-title">Sign In</h1>
+          <div className="input-container">
+            <div>
               <input
-                className="input-form"
-                onBlur={onBlur}
+                className={`input-form ${errors?.email && 'error'} ${
+                  dirtyFields.email && !errors.email && 'correct'
+                }`}
                 type="email"
                 placeholder="Email"
                 autoComplete="off"
                 {...register('email', {
-                  required: 'Email is required.',
+                  required: 'Email is required',
                   pattern: {
                     value: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/,
-                    message: 'This is an ERROR email.',
+                    message: 'This is an ERROR email',
                   },
                 })}
               />
-
-              {/* {errors.email && errors.email.type === 'pattern' ? (
-        <p className="errorMsg">This is an ERROR email.</p>
-      ) : (
-        <p>This is an CORRECT email</p>
-      )} */}
-
+              {errors?.email && (
+                <p className="errorMsg">{errors.email.message}</p>
+              )}
+              {dirtyFields.email && !errors.email && (
+                <p className="correctMsg">This is a CORRECT email</p>
+              )}
+            </div>
+            <div>
               <input
-                className="input-form"
-                onBlur={onBlur}
+                className={`input-form ${errors?.password && 'error'} ${
+                  dirtyFields.password && !errors.password && 'correct'
+                }`}
                 type="password"
                 placeholder="Password"
                 autoComplete="off"
                 {...register('password', {
-                  required: 'Password is required.',
-                  minLength: 6,
+                  required: 'Password is required',
+                  minLength: {
+                    value: 6,
+                    message: 'Password has to be at least 6 characters',
+                  },
                   pattern: {
                     value: '/^(?=.*[a-z])(?=.*[A-Z])(?=.*d)[a-zA-Zd]{8,}$/i',
-                    message: 'This is an ERROR password.',
+                    message: 'This is an ERROR password',
                   },
                 })}
               />
-              {/* {errors.password && errors.password.type === 'minLength' ? (
-        <p>Password should be at-least 6 characters.</p>
-      ) : (
-        <p>This is an CORRECT password</p>
-      )} */}
+              {errors?.password && (
+                <p className="errorMsg">{errors.password.message}</p>
+              )}
+              {dirtyFields.password && !errors.password && (
+                <p className="correctMsg">This is a CORRECT password</p>
+              )}
             </div>
-            <div className="btn-container">
-              <button className="sign-btn" type="submit">
-                Sign In
-              </button>
-              <Link className="sign-link-btn" to="/signup">
-                Sign Up
-              </Link>
-            </div>
-          </form>
-        </div>
-      )}
+          </div>
+          <div className="btn-container">
+            <button className="sign-btn" type="submit">
+              Sign In
+            </button>
+            <Link className="sign-link-btn" to="/signup">
+              Sign Up
+            </Link>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
