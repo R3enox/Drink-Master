@@ -3,9 +3,9 @@ import {
   useAddFavoritesMutation,
   useRemoveFavoritesMutation,
 } from '../../redux/favorites/favoriteSlice';
-import { ButtonComponent } from '../reUseComponents/buttonComponent';
 import { selectAuthUser } from '../../redux/auth/authSelectors';
 import { useState } from 'react';
+import { ButtonComponent } from '../reUseComponents/ButtonComponent';
 
 const DrinkPageHero = ({ cocktail }) => {
   const user = useSelector(selectAuthUser);
@@ -50,7 +50,6 @@ const DrinkPageHero = ({ cocktail }) => {
         <p className="text-[14px] leading-[1.29] mb-[40px] text-gray-100 md:text-[16px] md:leading-[1.37] md:max-w-[593px]">
           {description}
         </p>
-
         <div className="pt-10 pb-20">
           {isFav ? (
             <ButtonComponent
