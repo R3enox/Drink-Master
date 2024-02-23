@@ -4,11 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { selectAuthIsLoading } from '../../redux/auth/authSelectors';
 import Loader from '../Loader/Loader';
+import { useState } from 'react';
+import sprite from '../../assets/sprite.svg';
 
 const SignInForm = () => {
   const { isLoading } = useSelector(selectAuthIsLoading);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
 
   const {
     register,
@@ -35,7 +38,7 @@ const SignInForm = () => {
         >
           <h1 className="form-title">Sign In</h1>
           <div className="input-container">
-            <div>
+            <div className="relative">
               <input
                 className={`input-form ${errors?.email && 'error'} ${
                   dirtyFields.email && !errors.email && 'correct'
@@ -52,18 +55,28 @@ const SignInForm = () => {
                 })}
               />
               {errors?.email && (
-                <p className="errorMsg">{errors.email.message}</p>
+                <>
+                  <svg className="absolute w-[20px] h-[20px] top-[18px] right-[18px] fill-error-color stroke-error-color">
+                    <use href={sprite + '#icon-error'}></use>
+                  </svg>
+                  <p className="errorMsg">{errors.email.message}</p>
+                </>
               )}
               {dirtyFields.email && !errors.email && (
-                <p className="correctMsg">This is a CORRECT email</p>
+                <>
+                  <svg className="absolute w-[20px] h-[20px] top-[18px] right-[18px] fill-correct-color stroke-correct-color">
+                    <use href={sprite + '#icon-done'}></use>
+                  </svg>
+                  <p className="correctMsg">This is a CORRECT email</p>
+                </>
               )}
             </div>
-            <div>
+            <div className="relative">
               <input
                 className={`input-form ${errors?.password && 'error'} ${
                   dirtyFields.password && !errors.password && 'correct'
                 }`}
-                type="password"
+                type={showPassword ? 'text' : 'password'}
                 placeholder="Password"
                 autoComplete="off"
                 {...register('password', {
@@ -78,6 +91,25 @@ const SignInForm = () => {
                   },
                 })}
               />
+              {showPassword ? (
+                <svg
+                  onClick={() => {
+                    setShowPassword(!showPassword);
+                  }}
+                  className="absolute w-[20px] h-[20px] top-[18px] right-[18px] fill-none stroke-primary-text-color hover:stroke-button-hover-color hover:bg-primary-text-color rounded-full"
+                >
+                  <use href={sprite + '#icon-eye'}></use>
+                </svg>
+              ) : (
+                <svg
+                  onClick={() => {
+                    setShowPassword(!showPassword);
+                  }}
+                  className="absolute w-[20px] h-[20px] top-[18px] right-[18px] fill-none stroke-primary-text-color hover:stroke-button-hover-color hover:bg-primary-text-color rounded-full"
+                >
+                  <use href={sprite + '#icon-eye-off'}></use>
+                </svg>
+              )}
               {errors?.password && (
                 <p className="errorMsg">{errors.password.message}</p>
               )}

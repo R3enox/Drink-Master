@@ -30,7 +30,7 @@ const Calendar = ({ getDateOfBirth }) => {
         }
         customInput={
           <MaskedInput
-            className="w-full bg-transparent h-[54px] rounded-[42px] border-[1px] border-border-color  hover:border-grey-text-color hover:placeholder-primary-text-color text-[14px] leading-[1.29] placeholder-border-color py-[18px] px-[24px] outline-none"
+            className="w-full bg-transparent h-[54px] rounded-[42px] border-[1px] border-border-color  hover:border-grey-text-color hover:placeholder-primary-text-color text-[14px] md:text-[17px] leading-[1.29] placeholder-border-color py-[18px] px-[24px] outline-none"
             mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
           />
         }
@@ -38,7 +38,7 @@ const Calendar = ({ getDateOfBirth }) => {
         dateFormat={'dd/MM/yyyy'}
         calendarStartDay={1}
       />
-      <CalendarGlobalStyles />
+      <CalendarGlobalStyles className="react-datepicker" />
     </>
   );
 };

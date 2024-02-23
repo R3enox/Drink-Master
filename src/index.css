@@ -109,6 +109,9 @@ body {
   md:w-[400px] md:pl-[32px] 
   lg:pl-[0];
 }
+.react-datepicker {
+  @apply left-[-51px] md:left-[-34px] lg:left-[-18px];
+}
 .form-title {
   @apply text-welcome-text-color text-[28px] mb-[28px] font-semibold leading-[1.14] 
   md:text-[40px] md:leading-[1.1] md:pl-[32px] 
