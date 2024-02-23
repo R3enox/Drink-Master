@@ -10,7 +10,7 @@ import { PrivateRoute } from './components/SharedLayout/PrivateRoute';
 import { refreshUserThunk } from './redux/auth/authOperations';
 import { useAuth } from './hooks/useAuth';
 import Loader from './components/Loader/Loader';
-
+import { TostBox } from './components/reUseComponents/Toast';
 
 const WelcomePage = lazy(() => import('pages/WelcomePage/WelcomePage'));
 const SignUpPage = lazy(() => import('pages/SignUpPage/SignUpPage'));
@@ -84,6 +84,7 @@ export const App = () => {
             />
           </Route>
         </Routes>
+        <TostBox />
       </Suspense>
       // </AppWrapper>
     )
