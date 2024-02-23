@@ -1,7 +1,6 @@
 import { useCallback, useEffect } from 'react';
 import sprite from '../../../assets/sprite.svg';
 
-
 const UserLogoPopup = ({
   openPopUpFnc,
   openEl,
@@ -29,7 +28,7 @@ const UserLogoPopup = ({
     <>
       <div
         onClick={openPopUpFnc}
-        className="absolute p-[18px] h-[134px] w-[177px] bg-indigo-500 top-[80px] md:top-[85px] right-[3px]  lg:right-[3px] rounded-md bg-primary-text-button-color"
+        className="z-[101] absolute p-[18px] h-[134px] w-[177px] bg-indigo-500 top-[80px] md:top-[85px] right-[3px]  lg:right-[3px] rounded-md bg-primary-text-button-color"
       >
         <div onClick={openModal}>
           <div className="flex justify-between mb-[28px]">

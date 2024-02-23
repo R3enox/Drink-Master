@@ -1,16 +1,16 @@
 import { NavLink } from 'react-router-dom';
 import { useMainNav } from '../../../../hooks/useMainNav';
-import * as SC from '../HeaderSideMenu/SideMenu.styled';
-
-
 
 export const HeaderSideMenu = ({ toogleModal, burger }) => {
   const mainNav = useMainNav();
 
   return (
-    <div className="bg-mobile-bg-welcome@2x">
-      <SC.Nav className={burger ? 'open' : 'close'}>
-      
+    <div className="bg-mobile-bg-commonpage">
+      <nav
+        className={`bg-button-hover-color overflow-hidden absolute flex flex-col h-[1000%] w-full z-[100] bg-mobile-bg-commonpage bg-no-repeat  ${
+          burger ? 'open top-[75px] left-0' : 'close top-[-100px] left-0'
+        }`}
+      >
         <ul className="flex flex-col mt-[160px] font-medium items-center gap-[16px] -[1.12] ">
           {mainNav.map(({ id, href, title }) => (
             <li
@@ -23,7 +23,7 @@ export const HeaderSideMenu = ({ toogleModal, burger }) => {
             </li>
           ))}
         </ul>
-      </SC.Nav>
+      </nav>
     </div>
   );
 };

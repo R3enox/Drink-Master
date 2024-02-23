@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import UserLogoPopup from '../UserLogoPopup/UserLogoPopup';
 import LogOutModal from '../LogOutModal/LogOutModal';
-import HeaderModal from '../HeaderModal/HeaderModal';
+
 import UserLogo from '../UserLogo/UserLogo';
 import { selectAuthUser } from '../../../redux/auth/authSelectors';
 import { useSelector } from 'react-redux';
+import UniversalModal from '../../reUseComponents/ UniversalModal/ UniversalModal';
 
 const UserInfo = () => {
   const [openEl, setOpenEl] = useState(null);
@@ -35,9 +36,17 @@ const UserInfo = () => {
   return (
     <>
       <button className="flex items-center" onClick={openPopUp}>
-        <div className=" gap-[8px] md:gap-[14px] items-center ">
-          {/* <div>{user.avatarURL}</div> */}
-          <p className="">{user.name ?? 'User Name'}</p>
+        <div className="flex gap-[8px] md:gap-[14px] items-center ">
+          <div>
+            <img
+              srcSet={`${user.avatarURL}`}
+              alt="avatar"
+              width={44}
+              height={44}
+              className="rounded-full sm:w-[32px] sm:h-[32px]  md:w-[44px] md:h-[44px] lg:w-[44px] lg:h-[39px]"
+            />
+          </div>
+          <p className="">{user.name}</p>
         </div>
 
         {popUpIsOpen && (
@@ -50,18 +59,30 @@ const UserInfo = () => {
         )}
       </button>
       {isOpenLogOutModal && (
-        <HeaderModal isOpen={isOpenLogOutModal} openFnc={toogleLogOutModal}>
+        <UniversalModal
+          isOpen={isOpenLogOutModal}
+          closeFnc={toogleLogOutModal}
+          content={'Are you sure you want to log out?'}
+        >
           <LogOutModal closeFnc={toogleLogOutModal} />
-        </HeaderModal>
+        </UniversalModal>
       )}
 
       {modalIsOpen && (
-        <HeaderModal className="" isOpen={modalIsOpen} openFnc={togleModal}>
+        <UniversalModal
+          className=""
+          isOpen={modalIsOpen}
+          closeFnc={togleModal}
+          content={``}
+        
+        >
           <UserLogo />
-        </HeaderModal>
+        </UniversalModal>
       )}
     </>
   );
 };
 
 export default UserInfo;
+
+ 
