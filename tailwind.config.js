@@ -73,8 +73,7 @@ export default {
       'hover-button-border-color': 'rgba(64, 112, 205, 0.5)',
       'ingredients-card-bg': ' rgba(22, 31, 55, 0.5)',
       transparent: 'rgba(243, 243, 243, 0)',
-      'background-color':
-        'linear-gradient(180deg, #000 46.3%, rgba(0, 0, 0, 0.58) 72.75%, rgba(0, 0, 0, 0) 100%);',
+      'background-color': '#06060c;',
       'error-color': '#da1414',
       'correct-color': '#3cbc81',
     },

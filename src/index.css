@@ -166,7 +166,7 @@ body {
   border-radius: 50%;
   margin: 10px;
   transform: scale(1);
-  animation: pulse 2s infinite;
+  animation: pulse 1.5s infinite;
 }
 
 @keyframes pulse {
