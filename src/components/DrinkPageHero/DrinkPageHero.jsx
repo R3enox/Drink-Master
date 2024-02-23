@@ -1,10 +1,42 @@
-import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import {
+  useAddFavoritesMutation,
+  useRemoveFavoritesMutation,
+} from '../../redux/favorites/favoriteSlice';
+import { selectAuthUser } from '../../redux/auth/authSelectors';
+import { useState } from 'react';
+import { ButtonComponent } from '../reUseComponents/ButtonComponent';
 
 const DrinkPageHero = ({ cocktail }) => {
-  if (!cocktail) return null;
+  const user = useSelector(selectAuthUser);
+  const [isFirstRender, setIsFirstRender] = useState(true);
 
-  const { drink, category, alcoholic, description, drinkThumb, favorites } =
+  const [addToFavorite] = useAddFavoritesMutation();
+
+  const [deleteFavorite] = useRemoveFavoritesMutation();
+
+  const { _id, drink, category, alcoholic, description, drinkThumb, favorite } =
     cocktail;
+
+  const isFavoriteFirstRender = favorite?.includes(user.id);
+  const [isFavorite, setIsFavorite] = useState(isFavoriteFirstRender);
+  const isFav = isFirstRender ? isFavoriteFirstRender : isFavorite;
+
+  const toggleFavorite = async (id) => {
+    try {
+      if (isFav) {
+        await deleteFavorite(id);
+        setIsFavorite(false);
+      } else {
+        await addToFavorite(id);
+        setIsFavorite(true);
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsFirstRender(false);
+    }
+  };
 
   return (
     <div className=" lg:flex justify-between">
@@ -18,21 +50,19 @@ const DrinkPageHero = ({ cocktail }) => {
         <p className="text-[14px] leading-[1.29] mb-[40px] text-gray-100 md:text-[16px] md:leading-[1.37] md:max-w-[593px]">
           {description}
         </p>
-        <div className="">
-          {favorites ? (
-            <Link
-              className="bg-primary-text-color border rounded-full px-10 py-3 w-56 h-12 font-semibold text-base leading-tight text-blue-900"
-              type="button"
-            >
-              Удалить из избранных
-            </Link>
+        <div className="pt-10 pb-20">
+          {isFav ? (
+            <ButtonComponent
+              descr={'Remove from favorites'}
+              btnFunction={() => toggleFavorite(_id)}
+              id={_id}
+            />
           ) : (
-            <Link
-              className="mb-[80px] bg-primary-text-color  text-primary-text-button-color font-semibold text-[14px] leading-[1.29] border-transparent border-[1px] rounded-[42px] px-[40px] py-[14px] bg-white text-black md:text-[16px] md:leading-[1.12] lg:px-[44px] lg:py-[18px] lg:w-64 lg:h-14 hover:bg-button-hover-color hover:border hover:border-primary-text-color hover:text-primary-text-color"
-              type="button"
-            >
-              Add to favorite drinks
-            </Link>
+            <ButtonComponent
+              descr={'Add to favorite drinks'}
+              btnFunction={() => toggleFavorite(_id)}
+              id={_id}
+            />
           )}
         </div>
       </div>

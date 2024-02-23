@@ -239,6 +239,49 @@ body {
     );
   }
 }
+/* Home-Page */
+@layer base {
+  .bg-home-set {
+    background-image: image-set(
+      url('assets/img/homePage/mobile-bg-homepage.png') 1x,
+      url('assets/img/homePage/mobile-bg-homepage@2x.png') 2x
+    );
+  }
+  .bg-home-set-tablet {
+    background-image: image-set(
+      url('assets/img/homePage/tablet-bg-homepage.png') 1x,
+      url('assets/img/homePage/tablet-bg-homepage@2x.png') 2x
+    );
+  }
+  .bg-home-set-desktop {
+    background-image: image-set(
+      url('assets/img/homePage/desktop-bg-homepage.png') 1x,
+      url('assets/img/homePage/desktop-bg-homepage@2x.png') 2x
+    );
+  }
+}
+
+/* Common Pages */
+@layer base {
+  .bg-common-set {
+    background-image: image-set(
+      url('assets/img/commonPages/mobile-bg-commonpage.png') 1x,
+      url('assets/img/commonPages/mobile-bg-commonpage@2x.png') 2x
+    );
+  }
+  .bg-common-set-tablet {
+    background-image: image-set(
+      url('assets/img/commonPages/tablet-bg-commonpage.png') 1x,
+      url('assets/img/commonPages/tablet-bg-commonpage@2x.png') 2x
+    );
+  }
+  .bg-common-set-desktop {
+    background-image: image-set(
+      url('assets/img/commonPages/desktop-bg-commonpage.png') 1x,
+      url('assets/img/commonPages/desktop-bg-commonpage@2x.png') 2x
+    );
+  }
+}
 
 /* Search Filters Select styles  */
 
@@ -331,4 +374,257 @@ body {
   width: 17px !important;
   color: #f3f3f3 !important;
   padding: 0px !important;
+}
+
+/* Animation */
+
+@keyframes selectMenu {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Add photo */
+.containerPhoto:hover .addPhotoButton {
+  background: rgba(64, 112, 205, 0.5);
+}
+
+.containerPhoto:hover .svgPhotoAddDrink {
+  stroke: #f3f3f3;
+}
+
+/* AddDrinks Select */
+.custom_select__control {
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  min-height: 34px !important;
+  width: 335px !important;
+  height: 34px !important;
+  border-bottom: 1px solid rgba(243, 243, 243, 0.5) !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+  justify-content: end !important;
+  column-gap: 8px !important;
+  align-items: flex-start !important;
+  transition: border-bottom 250ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.custom_select__control:hover {
+  border-bottom: 1px solid #f3f3f3 !important;
+}
+
+::-webkit-scrollbar {
+  width: 8px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #434d67 !important;
+  border-radius: 20px !important;
+  width: 8px !important;
+  height: 110px !important;
+  margin-left: 10px !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555 !important;
+}
+
+.custom_select__menu {
+  position: absolute !important;
+  top: 100% !important;
+  right: 0 !important;
+  z-index: 999 !important;
+  background-color: #161f37 !important;
+  color: rgba(243, 243, 243, 0.4) !important;
+  border-radius: 12px !important;
+  width: 131px !important;
+  max-height: 286px !important;
+  overflow: hidden !important;
+  padding: 10px !important;
+
+  font-weight: 400 !important;
+  font-size: 12px !important;
+  line-height: 133% !important;
+  animation: selectMenu 400ms ease-out !important;
+}
+
+.custom_select__value-container--has-value {
+  max-width: 230px !important;
+}
+
+.custom_select__value-container {
+  padding: 0 !important;
+}
+
+.custom_select__single-value {
+  margin: 0 !important;
+}
+
+.custom_select__input-container {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.custom_select__input {
+  color: #f3f3f3 !important;
+}
+
+.custom_select__single-value {
+  color: #f3f3f3 !important;
+  text-align: end !important;
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  line-height: 100% !important;
+  width: fit-content !important;
+  margin-left: auto !important;
+}
+
+.custom_select__input::placeholder {
+  color: rgba(243, 243, 243, 0.5) !important;
+}
+
+.custom_select__indicator-separator {
+  display: none !important;
+}
+
+.custom_select__indicator {
+  padding: 0 !important;
+  cursor: pointer;
+  color: #f3f3f3 !important;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.custom_select__indicator:hover {
+  color: #848080 !important;
+}
+
+.custom_select__option {
+  background-color: transparent !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  margin-bottom: 6px !important;
+}
+
+.custom_select__indicator .css-tj5bde-Svg {
+  transition: transform 0.3s ease-in-out !important;
+}
+
+.custom_select__indicators {
+  align-items: flex-start !important;
+}
+
+.custom_select__control--menu-is-open .css-tj5bde-Svg {
+  transform: rotate(180deg) !important;
+}
+
+/* Ingredients Select */
+
+.ingredientsSelect__control {
+  background-color: transparent !important;
+  border: none !important;
+  border: 1px solid rgba(243, 243, 243, 0.5) !important;
+  border-radius: 200px !important;
+  width: 200px !important;
+  height: 50px !important;
+  box-shadow: none !important;
+  color: #f3f3f3 !important;
+  cursor: pointer !important;
+  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.ingredientsSelect__control:hover {
+  border: 1px solid #f3f3f3 !important;
+}
+
+.ingredientsSelect__menu {
+  background-color: #161f37 !important;
+  color: rgba(243, 243, 243, 0.4) !important;
+  border-radius: 12px !important;
+  width: 200px !important;
+  height: 286px !important;
+  overflow: hidden !important;
+  padding: 10px !important;
+
+  font-weight: 400 !important;
+  font-size: 12px !important;
+  line-height: 133% !important;
+  animation: selectMenu 400ms ease-out !important;
+}
+
+.ingredientsSelect__input {
+  color: #f3f3f3 !important;
+  text-align: end !important;
+}
+
+.ingredientsSelect__placeholder {
+  color: rgba(243, 243, 243, 0.5) !important;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.ingredientsSelect__control:hover .ingredientsSelect__placeholder {
+  color: #f3f3f3 !important;
+}
+
+.ingredientsSelect__indicators {
+  margin-right: 18px !important;
+}
+
+.ingredientsSelect__indicator-separator {
+  display: none !important;
+}
+
+.ingredientsSelect__option {
+  background-color: transparent !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  margin-bottom: 6px !important;
+}
+
+.ingredientsSelect__indicator .css-tj5bde-Svg {
+  transition: transform 0.5s ease-in-out !important;
+}
+
+.ingredientsSelect__control--menu-is-open .css-tj5bde-Svg {
+  transform: rotate(180deg) !important;
+}
+
+.ingredientsSelect__indicator {
+  cursor: pointer;
+  color: #f3f3f3 !important;
+  padding: 0 !important;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.ingredientsSelect__control:hover .ingredientsSelect__indicator {
+  color: #848080 !important;
+}
+
+.ingredientsSelect__value-container {
+  padding: 0 !important;
+  margin-left: 18px !important;
+}
+
+.ingredientsSelect__single-value {
+  margin: 0 !important;
+  color: #f3f3f3 !important;
+}
+
+.ingredientsSelect__input-container {
+  padding: 0 !important;
+  margin: 0 !important;
 }

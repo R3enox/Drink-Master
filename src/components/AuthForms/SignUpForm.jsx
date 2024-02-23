@@ -77,7 +77,9 @@ const SignUpForm = () => {
                 <p className="correctMsg">This is a CORRECT name</p>
               )}
             </div>
-            <Calendar getDateOfBirth={getDateOfBirth} />
+            <div>
+              <Calendar getDateOfBirth={getDateOfBirth} />
+            </div>
             <div>
               <input
                 className={`input-form ${errors?.email && 'error'} ${
