@@ -1,9 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import instance from '../../services/axios';
+const baseURL = instance.defaults.baseURL;
 
 export const favoriteApi = createApi({
   reducerPath: 'favorites',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://drink-master-4fm6.onrender.com/api/',
+    baseUrl: `${baseURL}`,
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.token;
 

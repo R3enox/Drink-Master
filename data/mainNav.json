@@ -1,0 +1,32 @@
+[{ 
+ "id" : 1,
+  "href" : "/home",
+  "title" : "Home"
+  
+},
+{ 
+ "id" : 2,
+  "href" : "/drinks",
+  "title" : "Drinks"
+ 
+
+},
+{ 
+ "id" : 3,
+  "href" : "/add",
+  "title" : "Add drink"
+   
+
+},
+{ 
+ "id" : 4,
+  "href" : "/my",
+  "title" : "My drinks"
+ 
+},
+{ 
+ "id" : 5,
+  "href" : "/favorites",
+  "title" : "Favorites"
+
+}]

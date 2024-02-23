@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-
 import sprite from '../../assets/sprite.svg';
+import { DeleteBtn, LinkSeeMore } from '../reUseComponents/Buttons/Buttons';
 
 const DrinksItem = ({ myDrink, openMyDrinkModal, onChooseItem }) => {
   const { _id, drink, drinkThumb, alcoholic, description } = myDrink;
@@ -29,21 +29,12 @@ const DrinksItem = ({ myDrink, openMyDrinkModal, onChooseItem }) => {
         {description}
       </p>
       <div className="flex gap-[8px]">
-        <Link
-          className="transition-colors bg-primary-text-button-color   hover:bg-primary-text-color  hover:text-hover-text-color  py-[14px] px-[40px] md:py-[18px] md:px-[44px] rounded-[42px] text-[14px] md:text-[16px] font-[600] leading-[1.29] md:leading-[1.26] border-none"
-          to={`/drink/${_id}`}
-        >
-          See more
-        </Link>
-        <button
-          type="button"
-          onClick={openModal}
-          className="px-[14px] py-[13px] md:px-[16px]  md:py-[15px] rounded-[40px] bg-primary-text-button-color hover:bg-primary-text-color p-[11px] stroke-primary-text-color hover:stroke-primary-text-button-color transition-colors"
-        >
+        <LinkSeeMore to={`/drink/${_id}`}>See more</LinkSeeMore>
+        <DeleteBtn onClick={openModal}>
           <svg className="fill-none hover:inherit w-[24px] h-[24px] ">
             <use href={sprite + '#icon-trash'}></use>
           </svg>
-        </button>
+        </DeleteBtn>
       </div>
     </li>
   );

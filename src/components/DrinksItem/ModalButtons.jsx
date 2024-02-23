@@ -1,5 +1,4 @@
 const ModalButtons = ({ handleDeleteClick, closeMyDrinkModal, drinkId }) => {
-  console.log(drinkId);
   return (
     <div className="flex flex-row items-center space-x-2">
       <button

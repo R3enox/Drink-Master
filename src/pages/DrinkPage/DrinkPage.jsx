@@ -39,7 +39,7 @@ const DrinkPage = () => {
 
   return (
     <section className="py-[80px] md:py-[140px] lg:pt-[132px]">
-      {isLoading && <Loader />}
+      {isLoading && <Loader isStatic />}
       {isError && <h1>{isError}</h1>}
       {currentCocktail && (
         <div className="container mx-auto ">

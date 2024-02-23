@@ -5,13 +5,13 @@ import {
 import DrinksList from '../../components/DrinksList/DrinksList';
 import { PageTitle } from '../../components/reUseComponents/PageTitle';
 import { DrinkImageComponent } from '../../components/reUseComponents/DrinkImageComponent';
+import Loader from '../../components/Loader/Loader';
 import { useState } from 'react';
 import UniversalModal from '../../components/DrinksItem/UniversalModal';
 import ModalButtons from '../../components/DrinksItem/ModalButtons';
 
 const MyDrinksPage = () => {
-  const { data, error, isLoading, isFetching, isError } =
-    useFetchMyDrinksQuery();
+  const { data, error, isFetching, isError } = useFetchMyDrinksQuery();
   console.log(data);
 
   const [deleteMyDrink] = useDeleteMyDrinkMutation();
@@ -28,7 +28,6 @@ const MyDrinksPage = () => {
 
   const handleDeleteClick = async (_id) => {
     try {
-      console.log(_id);
       await deleteMyDrink(_id);
       closeMyDrinkModal();
     } catch (error) {
@@ -44,10 +43,9 @@ const MyDrinksPage = () => {
       <section className="pb-[80px] md:pb-[140px] ">
         <div className="container mx-auto">
           <PageTitle title="My drinks" />
-          {/* {isFetching && <loader/>} */}
+          {isFetching && <Loader isStatic />}
           {/* {error && <Redirect to="error.message" />} */}
           {data && data.length > 0 ? (
-            // <DrinksList data={data} onDelete={deleteMyDrink} />
             <DrinksList
               data={data}
               openMyDrinkModal={openMyDrinkModal}
