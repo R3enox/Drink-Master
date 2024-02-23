@@ -6,6 +6,7 @@ import {
 import { selectAuthUser } from '../../redux/auth/authSelectors';
 import { useState } from 'react';
 import { ButtonComponent } from '../reUseComponents/ButtonComponent';
+import { toast } from 'react-toastify';
 
 const DrinkPageHero = ({ cocktail }) => {
   const user = useSelector(selectAuthUser);
@@ -32,7 +33,7 @@ const DrinkPageHero = ({ cocktail }) => {
         setIsFavorite(true);
       }
     } catch (error) {
-      console.log(error);
+      toast.error(error.message);
     } finally {
       setIsFirstRender(false);
     }
@@ -54,13 +55,19 @@ const DrinkPageHero = ({ cocktail }) => {
           {isFav ? (
             <ButtonComponent
               descr={'Remove from favorites'}
-              btnFunction={() => toggleFavorite(_id)}
+              btnFunction={() => {
+                toggleFavorite(_id);
+                toast('Drink removed from favorites !');
+              }}
               id={_id}
             />
           ) : (
             <ButtonComponent
               descr={'Add to favorite drinks'}
-              btnFunction={() => toggleFavorite(_id)}
+              btnFunction={() => {
+                toggleFavorite(_id);
+                toast('Drink added to favorites !');
+              }}
               id={_id}
             />
           )}
