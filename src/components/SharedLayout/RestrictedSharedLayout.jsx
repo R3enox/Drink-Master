@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
+import { TostBox } from '../reUseComponents/Toast';
 
 import Loader from '../Loader/Loader';
 
@@ -9,6 +10,7 @@ const RestrictedSharedLayout = () => {
       <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
+      <TostBox />
     </div>
   );
 };

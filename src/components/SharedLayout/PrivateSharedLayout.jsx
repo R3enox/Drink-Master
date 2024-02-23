@@ -1,6 +1,7 @@
 import { Suspense, useEffect } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { TostBox } from '../reUseComponents/Toast';
 
 import { Footer } from '../Footer/Footer';
 import Loader from '../Loader/Loader';
@@ -57,6 +58,7 @@ const PrivateSharedLayout = () => {
         <Outlet />
       </Suspense>
       <Footer />
+      <TostBox />
     </>
   );
 };
