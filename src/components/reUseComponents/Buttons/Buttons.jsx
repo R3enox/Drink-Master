@@ -53,9 +53,10 @@ export const DeleteBtn = ({ children, onClick }) => {
   );
 };
 
-export const LinkHeaderNav = ({ children }) => {
+export const LinkHeaderNav = ({ children, to }) => {
   return (
     <Link
+      to={to}
       className="transition shadow-lg hover:shadow-primary-text-color/50 bg-transparent hover:bg-primary-text-button-color
       text-primary-text-color  py-[8px] px-[16px] rounded-[40px] border-[1px] border-border-color text-[14px] leading-[1.6] font-medium"
     >
