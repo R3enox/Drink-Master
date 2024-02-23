@@ -1,3 +1,7 @@
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+
 import { initialState } from './authInitialState';
 import {
   handleFulfilledRefreshUser,
@@ -9,8 +13,12 @@ import {
   handleRejectedRefreshUser,
 } from './authFunctionsReducer';
 
-import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { refreshUserThunk, signInThunk, signOutThunk, signUpThunk } from './authOperations';
+import {
+  refreshUserThunk,
+  signInThunk,
+  signOutThunk,
+  signUpThunk,
+} from './authOperations';
 
 const STATUS = { PENDING: 'pending', REJECTED: 'rejected' };
 
@@ -36,4 +44,10 @@ const authSlice = createSlice({
   },
 });
 
-export const authReducer = authSlice.reducer;
+const authConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['token'],
+};
+
+export const authReducer = persistReducer(authConfig, authSlice.reducer);

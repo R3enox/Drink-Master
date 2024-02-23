@@ -10,7 +10,10 @@ const DrinksPage = () => {
   }, []);
 
   return (
-    <div className="bg-mobile-bg-commonpage md:bg-tablet-bg-commonpage lg:bg-desktop-bg-commonpage bg-cover bg-no-repeat">
+    <div
+      className="bg-common-set
+    md:bg-common-set-tablet lg:bg-common-set-desktop bg-contain bg-no-repeat"
+    >
       <div className="container mx-auto pb-[80px]">
         <PageTitle title="Drinks" />
         <DrinksSearch />
