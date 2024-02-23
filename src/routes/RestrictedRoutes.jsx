@@ -11,6 +11,7 @@ const RestrictedRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<RestrictedSharedLayout />}>
+        <Route index element={<Navigate to="/welcome" />} />
         <Route path="welcome" element={<WelcomePage />} />
         <Route path="signup" element={<SignUpPage />} />
         <Route path="signin" element={<SignInPage />} />

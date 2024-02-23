@@ -97,7 +97,7 @@ const SignInForm = () => {
               onClick={() => {
                 setShowPassword(!showPassword);
               }}
-              className="absolute w-[20px] h-[20px] top-[18px] right-[18px] fill-none stroke-primary-text-color hover:stroke-button-hover-color hover:bg-primary-text-color rounded-full"
+              className="absolute w-[20px] h-[20px] top-[18px] right-[18px] fill-none stroke-primary-text-color cursor-pointer  rounded-full"
             >
               <use href={sprite + '#icon-eye'}></use>
             </svg>
@@ -106,7 +106,7 @@ const SignInForm = () => {
               onClick={() => {
                 setShowPassword(!showPassword);
               }}
-              className="absolute w-[20px] h-[20px] top-[18px] right-[18px] fill-none stroke-primary-text-color hover:stroke-button-hover-color hover:bg-primary-text-color rounded-full"
+              className="absolute w-[20px] h-[20px] top-[18px] right-[18px] fill-none stroke-primary-text-color cursor-pointer  rounded-full"
             >
               <use href={sprite + '#icon-eye-off'}></use>
             </svg>
