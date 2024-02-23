@@ -5,7 +5,7 @@ const WelcomePage = () => {
     <section className="welcome-bg-container">
       <div className="welcome-container">
         <div className=" flex flex-col md:px-[32px] lg:px-[0]">
-          <div className="flex flex-col items-center md:items-start mb-[45px]">
+          <div className="flex flex-col items-center md:items-start mb-[40px]">
             <div className="typing-container">
               <h1 className="typed welcome-title">Welcome to the app!</h1>
             </div>
