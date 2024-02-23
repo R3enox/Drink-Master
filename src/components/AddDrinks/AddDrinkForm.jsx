@@ -55,6 +55,7 @@ export const AddDrinkForm = () => {
       console.log('name: ', name);
       console.log('value: ', value);
     });
+    console.log(formData);
 
     fetch('http://localhost:3000/api/drinks/own/add', {
       method: 'POST',

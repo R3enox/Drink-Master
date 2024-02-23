@@ -11,19 +11,8 @@ import sprite from '../../assets/sprite.svg';
 
 export const DrinksSearch = () => {
   const { categories, ingredients } = useFilters();
+  console.log(ingredients.map((item) => item.title));
   const { keyName, category, ingredient, setDrinkFilter } = useDrinkFilters();
-
-  const createCategoriesOptions = (collection) =>
-    collection.map((title) => ({
-      value: title,
-      label: title,
-    }));
-
-  const createIngredientsOptions = (collection) =>
-    collection.map(({ title }) => ({
-      value: title,
-      label: title,
-    }));
 
   const categoriesOptions = useMemo(
     () => createOptionsFromArrOfStr(categories ?? []),
