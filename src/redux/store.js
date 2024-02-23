@@ -21,7 +21,7 @@ import { favoriteApi } from './favorites/favoriteSlice';
 const authConfig = {
   key: 'auth',
   storage,
-  withelist: ['token'],
+  whitelist: ['token'],
 };
 
 export const store = configureStore({
