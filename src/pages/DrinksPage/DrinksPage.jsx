@@ -10,10 +10,15 @@ const DrinksPage = () => {
   }, []);
 
   return (
-    <div className="container">
-      <PageTitle title="Drinks" />
-      <DrinksSearch />
-      <Drinks />
+    <div
+      className="bg-common-set
+    md:bg-common-set-tablet lg:bg-common-set-desktop bg-contain bg-no-repeat"
+    >
+      <div className="container mx-auto pb-[80px]">
+        <PageTitle title="Drinks" />
+        <DrinksSearch />
+        <Drinks />
+      </div>
     </div>
   );
 };

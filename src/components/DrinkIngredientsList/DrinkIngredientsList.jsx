@@ -1,7 +1,7 @@
 const DrinkIngredientsList = ({ ingredients, currentIngred }) => {
   return (
     <>
-      <h2 className="mb-[42px] mt-[18px] font-medium text-base leading-5 text-grey-text-color md:mt-[80px] md:font-medium md:text-base lg:mt-[100px]">
+      <h2 className="mb-[42px] font-medium text-[16px] leading-[1.25] text-grey-text-color md:mb-[24px] md:font-medium md:text-[16px] md:leading-[1.25]">
         Ingredients
       </h2>
       <div className="grid grid-cols-2 gap-[20px] md:grid-cols-3 md:lg:grid-cols-5  md:gap-[22px]">
@@ -20,9 +20,9 @@ const DrinkIngredientsList = ({ ingredients, currentIngred }) => {
               return (
                 <div
                   key={_id}
-                  className="hover:scale-110 hover:cursor-pointer transition duration-250 md:w-[220px] md:h-[220px] lg:w-[220px]lg:h-[220px] md:mb-[22px]"
+                  className=" scale-100 ease-in-out duration-300  hover:scale-[1.035] hover:contrast-[0.9] md:mb-[22px]"
                 >
-                  <div className="p-[25px] relative w-[157px] h-[157px] rounded-lg flex-col flex items-center bg-ingredients-card-bg md:w-[220px] md:h-[220px] lg:p-[32px]">
+                  <div className="mb-[8px] p-[25px] relative rounded-lg flex-col flex items-center bg-ingredients-card-bg md:p-[22px] ">
                     <picture>
                       <source
                         media="(min-width: 1440px)"
@@ -32,15 +32,15 @@ const DrinkIngredientsList = ({ ingredients, currentIngred }) => {
                       <img
                         src={thumbSmall}
                         alt=""
-                        className="w-[107px] h-[107px] md:w-[157px] md:h-[157px] lg:w-[157px] lg:h-[157px]"
+                        className=" md:w-[157px] md:h-[157px] lg:w-[157px] lg:h-[157px] "
                       />
                     </picture>
                   </div>
-                  <div className="flex justify-between items-center mt-[8px] md:mt-[14px] ">
-                    <p className=" font-medium leading-5 text-xs md:text-lg md:leading-6 lg:font-medium lg:text-base lg:leading-[1.33333] ">
+                  <div className=" flex justify-between items-center md:mt-[14px] ">
+                    <p className="font-medium leading-[1.29px] text-[14px] md:text-lg md:leading-6 lg:font-medium lg:text-base lg:leading-[1.33333] ">
                       {title}
                     </p>
-                    <p className="text-grey-text-color font-medium text-sm leading-5 md:font-medium md:text-base md:leading-[1.25] lg:text-base">
+                    <p className="mt-[8px] mb-[8px] text-grey-text-color font-medium leading-[1.29px] text-[14px] md:font-medium md:text-base md:leading-[1.25] lg:text-base">
                       {currentIngred[index].measure}
                     </p>
                   </div>
