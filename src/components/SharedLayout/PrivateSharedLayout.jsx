@@ -1,14 +1,16 @@
+import { Suspense, useEffect } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
-import { Footer } from '../Footer/Footer';
 import { useDispatch, useSelector } from 'react-redux';
-import { useFilters } from 'hooks/useFilters';
+
+import { Footer } from '../Footer/Footer';
+import Loader from '../Loader/Loader';
 import { selectAuthIsLoggedIn } from '../../redux/auth/authSelectors';
 import {
   getCategories,
   getGlasses,
   getIngredients,
 } from '../../redux/filters/operations';
-import { useEffect } from 'react';
+import { useFilters } from 'hooks/useFilters';
 
 const HeaderDemoNav = () => {
   return (
@@ -36,7 +38,7 @@ const HeaderDemoNav = () => {
   );
 };
 
-const SharedLayout = () => {
+const PrivateSharedLayout = () => {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectAuthIsLoggedIn);
   const { categories, ingredients, glasses } = useFilters();
@@ -51,10 +53,12 @@ const SharedLayout = () => {
   return (
     <>
       <HeaderDemoNav />
-      <Outlet />
+      <Suspense fallback={<Loader isStatic />}>
+        <Outlet />
+      </Suspense>
       <Footer />
     </>
   );
 };
 
-export default SharedLayout;
+export default PrivateSharedLayout;
