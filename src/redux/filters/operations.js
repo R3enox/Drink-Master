@@ -20,6 +20,8 @@ export const getIngredients = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const res = await API.get('/filters/ingredients');
+      console.log(res);
+
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
