@@ -71,7 +71,8 @@ export default {
       'grey-text-color': 'rgba(243, 243, 243, 0.5)',
       'ingredients-card-bg': ' rgba(22, 31, 55, 0.5)',
       transparent: 'rgba(243, 243, 243, 0)',
-      'background-color': '#080811',
+      'background-color':
+        'linear-gradient(180deg, #000 46.3%, rgba(0, 0, 0, 0.58) 72.75%, rgba(0, 0, 0, 0) 100%);',
       'error-color': '#da1414',
       'correct-color': '#3cbc81',
     },

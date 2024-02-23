@@ -1,0 +1,10 @@
+.type::after {
+  content: ' . ';
+  animation-fill-mode: forwards;
+}
+
+@keyframes cursor {
+  85% {
+    opacity: 0;
+  }
+}
