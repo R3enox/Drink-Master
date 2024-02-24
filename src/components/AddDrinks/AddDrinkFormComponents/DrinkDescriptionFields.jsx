@@ -185,7 +185,7 @@ export const DrinkPageHero = () => {
                   disabled={true}
                 />
                 <div
-                  className={` w-4 h-4 p-0.5 border-grey-text-color 
+                  className={` w-4 h-4 border-grey-text-color 
                 ${
                   age >= 18 ? 'cursor-pointer' : ''
                 }  rounded-[50%] border-[1.30px] peer-checked:border-primary-text-color `}
@@ -204,7 +204,7 @@ export const DrinkPageHero = () => {
                   className="peer sr-only"
                   defaultChecked
                 />
-                <div className=" w-4 h-4 p-0.5 border-grey-text-color cursor-pointer rounded-[50%] border-[1.30px] peer-checked:border-primary-text-color "></div>
+                <div className=" w-4 h-4 border-grey-text-color cursor-pointer rounded-[50%] border-[1.30px] peer-checked:border-primary-text-color "></div>
                 <div className=" absolute  left-[2.8%] w-2.5 h-2.5 bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
                 <span className="text-grey-text-color  peer-checked:text-primary-text-color">
                   Non-alcoholic

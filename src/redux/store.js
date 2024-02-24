@@ -15,10 +15,12 @@ import {
 import persistStore from 'redux-persist/es/persistStore';
 import { myDrinksApi } from './myDrinks/myDrinksSlice';
 import { favoriteApi } from './favorites/favoriteSlice';
+import { popularDrinksReducer } from './popular/popularSlice';
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
+    popular: popularDrinksReducer,
     [userApi.reducerPath]: userApi.reducer,
     [drinksApi.reducerPath]: drinksApi.reducer,
     filters: filtersReducer,

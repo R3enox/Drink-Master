@@ -623,4 +623,14 @@ body {
 }
 
 @media screen and (min-width: 768px) {
+  .ingredientsSelect__control {
+    width: 332px !important;
+    height: 56px !important;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .ingredientsSelect__control {
+    width: 316px !important;
+  }
 }
