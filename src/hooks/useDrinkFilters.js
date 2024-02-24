@@ -7,7 +7,12 @@ export const useDrinkFilters = () => {
   const ingredient = params.get('ingredient') ?? '';
 
   const setDrinkFilter = (key, value) => {
-    params.set(key, value);
+    if (value === '') {
+      params.delete(key);
+    } else {
+      params.set(key, value);
+    }
+
     setParams(params);
   };
 
