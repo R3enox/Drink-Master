@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import instance from '../../services/axios';
 
 export const addDrink = createAsyncThunk(
-  'drinks//own/add',
+  'drinks/own/add',
   async (formData, { rejectWithValue }) => {
     try {
       const { data } = await instance.post(`/drinks/own/add`, formData);
