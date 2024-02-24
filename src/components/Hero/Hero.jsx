@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import * as imgHero from '../../assets/img/hero/index.js';
 import { LinkDarkTheme } from '../reUseComponents/Buttons/Buttons.jsx';
 import TypingText from '../reUseComponents/TypingTextAnimation/TypingText.jsx';
+import ThemeToggler from '../ThemeToggler/ThemeToggler.jsx';
 
 export const Hero = () => {
   return (
@@ -22,6 +23,7 @@ export const Hero = () => {
           beverages.
         </p>
         <LinkDarkTheme to="/add">Add drink</LinkDarkTheme>
+        <ThemeToggler/>
       </div>
       <picture className="flex justify-center items-center">
         <source
