@@ -11,7 +11,7 @@ const DrinksItem = ({ myDrink, openMyDrinkModal, onChooseItem }) => {
 
   return (
     <li key={_id} className="md:w-[342px] lg:w-[400px]">
-      <Link to={`/drink/${_id}`} className="overflow-hidden rounded-[8px]">
+      <Link to={`../drink/${_id}`} className="overflow-hidden rounded-[8px]">
         <img
           src={drinkThumb || 'placeholderImage'}
           alt={drink}
