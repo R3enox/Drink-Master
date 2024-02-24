@@ -10,16 +10,18 @@ import {
 } from 'redux-persist';
 
 import { authReducer } from './auth/authReducer';
-import { drinksApi } from './drinks/drinksAPI';
+// import { drinksApi } from './drinks/drinksAPI';
 import { filtersReducer } from './filters/slice';
 import { drinkIdStorageReducer } from './drinkIdStorageReducer/drinkIdStorageReducer';
 import { myDrinksApi } from './myDrinks/myDrinksSlice';
 import { favoriteApi } from './favorites/favoriteSlice';
+import { drinksReducer } from './drinks/drinksSlice';
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
-    [drinksApi.reducerPath]: drinksApi.reducer,
+    // [drinksApi.reducerPath]: drinksApi.reducer,
+    drinks: drinksReducer,
     filters: filtersReducer,
     drinkIdStorage: drinkIdStorageReducer,
     [myDrinksApi.reducerPath]: myDrinksApi.reducer,
@@ -31,7 +33,7 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }).concat(
-      drinksApi.middleware,
+      // drinksApi.middleware,
       myDrinksApi.middleware,
       favoriteApi.middleware
     ),

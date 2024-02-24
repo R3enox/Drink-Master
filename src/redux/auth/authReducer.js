@@ -21,6 +21,11 @@ const getActions = (type) => isAnyOf(signUpThunk[type], signInThunk[type]);
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    setAccessToken(state, { payload }) {
+      state.accessToken = payload;
+    },
+  },
   extraReducers: (builder) => {
     const { PENDING, REJECTED } = STATUS;
     builder
@@ -40,4 +45,5 @@ const authConfig = {
   whitelist: ['accessToken', 'refreshToken'],
 };
 
+export const { setAccessToken } = authSlice.actions;
 export const authReducer = persistReducer(authConfig, authSlice.reducer);
