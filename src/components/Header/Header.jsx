@@ -1,5 +1,5 @@
 import { Logo } from './Logo/Logo';
-import UserInfo from './UserInfo/UserInfo';
+// import UserInfo from './UserInfo/UserInfo';
 import { Navigation } from './Navigation/Navigation';
 import { HeaderBtn } from './HeaderBtn/HeaderBtn';
 
@@ -11,7 +11,7 @@ export const Header = () => {
           <Logo />
           <Navigation />
           <div className="flex">
-            <UserInfo />
+            {/* <UserInfo /> */}
             <HeaderBtn />
           </div>
         </>

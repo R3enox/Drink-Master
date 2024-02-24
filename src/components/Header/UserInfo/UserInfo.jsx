@@ -74,7 +74,6 @@ const UserInfo = () => {
           isOpen={modalIsOpen}
           closeFnc={togleModal}
           content={``}
-        
         >
           <UserLogo />
         </UniversalModal>
@@ -84,5 +83,3 @@ const UserInfo = () => {
 };
 
 export default UserInfo;
-
- 

@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 import API, { setAuthToken } from 'services/axios';
+import { clearAuthToken } from '../../services/axios';
 
 export const signUpThunk = createAsyncThunk(
   'auth/signup',
@@ -22,7 +23,6 @@ export const signInThunk = createAsyncThunk(
     try {
       const { data } = await API.post('/auth/signin', formData);
       setAuthToken(data.accessToken);
-      // localStorage.setItem('refreshToken', data.refreshToken);
       return data;
     } catch (error) {
       toast.error(`You entered an incorrect login or password`);
@@ -49,12 +49,16 @@ export const refreshUserThunk = createAsyncThunk(
   async (_, thunkApi) => {
     try {
       const state = thunkApi.getState();
-      const token = state.auth.accessToken;
-      setAuthToken(token);
+      const accessToken = state.auth.accessToken;
+
+      setAuthToken(accessToken);
       const { data } = await API.post('/auth/refresh');
+      console.log('data', data);
+      console.log('1');
       return data;
     } catch (error) {
-      toast.error('Error refresh contacts');
+      console.log('2');
+      toast.error('Error refresh');
       return thunkApi.rejectWithValue(error.message);
     }
   }
@@ -66,7 +70,7 @@ export const getCurrent = async (accessToken) => {
     const { data } = await API.get('/users/current');
     return data;
   } catch (error) {
-    setAuthToken();
+    clearAuthToken();
     throw error;
   }
 };

@@ -21,14 +21,12 @@ instance.interceptors.response.use(
   (response) => response,
   async (error) => {
     if (error.response.status === 401) {
-      const refreshToken = store.getState().auth.refreshToken;
-      // const refreshToken = localStorage.getItem('refreshToken');
       try {
-        const { data } = await instance.post('/auth/refresh', { refreshToken });
-
+        console.log('1111');
+        const { data } = await instance.post('/auth/refresh');
         setAuthToken(data.accessToken);
         store.dispatch(setTokens(data));
-        // localStorage.setItem('refreshToken', data.refreshToken);
+
         error.config.headers.authorization = `Bearer ${data.accessToken}`;
         return instance(error.config);
       } catch (error) {
