@@ -9,3 +9,9 @@ export const createOptionsFromArrOfObj = (collection) =>
     value: title,
     label: title,
   }));
+
+export const createOptionsFromArrOfObjUsingId = (collection) =>
+  collection.map(({ title, _id }) => ({
+    value: _id,
+    label: title,
+  }));

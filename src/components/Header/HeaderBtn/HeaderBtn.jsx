@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { HeaderSideMenu } from '../HeaderSideMenu/HeaderSideMenu';
 
-
 import sprite from '../../../assets/sprite.svg';
 
 

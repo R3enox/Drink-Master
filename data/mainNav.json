@@ -1,32 +1,32 @@
 [{ 
  "id" : 1,
-  "href" : "/",
+  "href" : "/home",
   "title" : "Home"
   
 },
 { 
  "id" : 2,
-  "href" : "/",
+  "href" : "/drinks",
   "title" : "Drinks"
  
 
 },
 { 
  "id" : 3,
-  "href" : "produse",
+  "href" : "/add",
   "title" : "Add drink"
    
 
 },
 { 
  "id" : 4,
-  "href" : "comenzi",
+  "href" : "/my",
   "title" : "My drinks"
  
 },
 { 
  "id" : 5,
-  "href" : "contact",
+  "href" : "/favorites",
   "title" : "Favorites"
 
 }]

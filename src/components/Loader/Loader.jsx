@@ -1,8 +1,10 @@
 import css from './Loader.module.css';
 
-const Loader = () => {
+const Loader = ({ isStatic }) => {
+  const classname = isStatic ? css.staticContainer : css.fixedContainer;
+
   return (
-    <div className={css.fixedContainer}>
+    <div className={classname}>
       <div className={css.spinner}>
         <span>L</span>
         <span>O</span>

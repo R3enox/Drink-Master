@@ -1,40 +1,54 @@
-import { nanoid } from 'nanoid';
 import { DrinkPageHero } from './AddDrinkFormComponents/DrinkDescriptionFields';
 import { DrinkIngredientsFields } from './AddDrinkFormComponents/DrinkIngredientsFields';
 import { RecipePreparation } from './AddDrinkFormComponents/RecipePreparation';
 import { useSelector } from 'react-redux';
+import { useMemo } from 'react';
 import { selectAuthToken } from '../../redux/auth/authSelectors';
+import { useFilters } from '../../hooks/useFilters';
+import { createOptionsFromArrOfObjUsingId } from '../../helpers/createCollectionOptions';
+import { BtnDarkTheme } from '../reUseComponents/Buttons/Buttons';
 
 export const AddDrinkForm = () => {
+  const { ingredients } = useFilters();
   const authToken = useSelector(selectAuthToken);
-  const ingredients = [];
+  const addedIngredients = [];
+
+  const ingredientsOptions = useMemo(
+    () => createOptionsFromArrOfObjUsingId(ingredients ?? []),
+    [ingredients]
+  );
 
   const onSubmit = (e) => {
     e.preventDefault();
-    ingredients.length = 0;
-
-    console.log(authToken);
+    addedIngredients.length = 0;
 
     const formData = new FormData(e.currentTarget);
 
-    formData.getAll('title').forEach((title, index) => {
+    console.log(formData);
+
+    formData.getAll('ingredientId').forEach((ingredientId, index) => {
       const measure = formData.getAll('measure')[index];
-      ingredients.push({
-        title,
+      addedIngredients.push({
+        title: ingredientsOptions.find(
+          (option) => option.value === ingredientId
+        ).label,
         measure,
-        ingredientId: nanoid(),
+        ingredientId,
       });
     });
 
-    formData.delete('title');
+    formData.delete('ingredientId');
     formData.delete('measure');
 
-    ingredients.forEach((ingredient, index) => {
-      formData.append(`ingredients[${index}][title]`, ingredient.title);
-      formData.append(`ingredients[${index}][measure]`, ingredient.measure);
+    addedIngredients.forEach((addedIngredient, index) => {
+      formData.append(`ingredients[${index}][title]`, addedIngredient.title);
+      formData.append(
+        `ingredients[${index}][measure]`,
+        addedIngredient.measure
+      );
       formData.append(
         `ingredients[${index}][ingredientId]`,
-        ingredient.ingredientId
+        addedIngredient.ingredientId
       );
     });
 
@@ -43,7 +57,7 @@ export const AddDrinkForm = () => {
       console.log('value: ', value);
     });
 
-    fetch('http://localhost:3000/api/drinks/own/add', {
+    fetch('http://localhost:3000/api/drinks/add', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${authToken}`,
@@ -62,14 +76,15 @@ export const AddDrinkForm = () => {
     <section className="margin pb-20 pt-10">
       <form onSubmit={onSubmit}>
         <DrinkPageHero />
-        <DrinkIngredientsFields />
+        <DrinkIngredientsFields ingredientsOptions={ingredientsOptions} />
         <RecipePreparation />
-        <button
+        {/* <button
           type="submit"
           className="block w-[108px] h-[46px] border-2 border-primary-text-color outline-none  rounded-[42px] bg-primary-text-color text-primary-text-button-color hover:border-hover-button-border-color hover:border-2 focus:border-hover-button-border-color focus:border-2 focus:outline-none ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms]"
         >
           Add
-        </button>
+        </button> */}
+        <BtnDarkTheme>Add</BtnDarkTheme>
       </form>
     </section>
   );

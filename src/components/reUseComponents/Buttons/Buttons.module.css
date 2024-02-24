@@ -1,0 +1,151 @@
+/* Universal-Animation-Button-Style */
+
+/* === BtnDarkTheme ==== */
+
+.button {
+  --white: rgb(255, 255, 255);
+  --border_radius: 9999px;
+  --transtion: 0.3s ease-in-out;
+  --offset: 2px;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0.875rem 2.5rem;
+  background-color: transparent;
+  border: none;
+  border-radius: var(--border_radius);
+  border-radius: 50%;
+
+  transform: scale(calc(1 + (var(--active, 0) * 0.1)));
+  transition: transform var(--transtion);
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background-color: #f3f3f3;
+  border-radius: var(--border_radius);
+  box-shadow:
+    inset 0 1px hsl(175, 86%, 60%),
+    inset 0 -1px 3px 0 hsl(209, 97%, 50%),
+    0px 4px 10px -4px hsla(0 0% 0% / calc(1 - var(--active, 0)));
+  transition: all var(--transtion);
+  z-index: 0;
+}
+
+.button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  height: 100%;
+  background-color: hsla(166, 91%, 91%, 0.75);
+  background-image: radial-gradient(
+      at 51% 89%,
+      rgb(63, 197, 238) 0px,
+      transparent 50%
+    ),
+    radial-gradient(at 100% 100%, rgb(77, 139, 189) 0px, transparent 50%),
+    radial-gradient(at 22% 91%, rgb(91, 160, 216) 0px, transparent 50%);
+  background-position: top;
+  opacity: var(--active, 0);
+  border-radius: var(--border_radius);
+  transition: opacity var(--transtion);
+  z-index: 2;
+}
+
+.button:is(:hover, :focus-visible) {
+  --active: 1;
+}
+
+.button:active {
+  transform: scale(1);
+}
+
+.button .dotsBorder {
+  --size_border: calc(100% + 5px);
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: var(--size_border);
+  height: var(--size_border);
+  background-color: transparent;
+  border-radius: var(--border_radius);
+  z-index: -10;
+}
+
+.button .dotsBorder::before {
+  content: '';
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: left;
+  transform: rotate(0deg);
+  width: 100%;
+  height: 2rem;
+  background-color: white;
+  mask: linear-gradient(transparent 0%, white 120%);
+  animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.button .textButton {
+  position: relative;
+  z-index: 10;
+  font-size: 14px;
+  color: #161f37;
+  font-weight: 600;
+  line-height: 129%;
+}
+
+@media screen and (min-width: 768px) {
+  .button {
+    padding: 1.125rem 2.75rem;
+  }
+
+  .button .textButton {
+    font-size: 16px;
+    line-height: 112%;
+  }
+}
+
+/* === BtnLightTheme ==== */
+/* 
+.btnTransparent::before {
+  background-color: #161f37;
+}
+
+.btnTransparent .dotsBorderTransparent::before {
+  background-color: transparent;
+}
+
+.btnTransparent .textBtnTransparent {
+  color: #f3f3f3;
+}
+
+@media screen and (min-width: 768px) {
+  .btnTransparent {
+    padding: 1.125rem 2.75rem;
+  }
+
+  .btnTransparent .textBtnTransparent {
+    font-size: 16px;
+    line-height: 112%;
+  }
+} */
