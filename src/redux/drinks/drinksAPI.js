@@ -18,7 +18,7 @@ export const drinksApi = createApi({
 
   endpoints: (builder) => ({
     getDrinks: builder.query({
-      query: (limit) => `/drinks?limit=${limit}`,
+      query: (per_category) => `/drinks?per_category=${per_category}`,
       providesTags: ['drinks'],
     }),
     filterDrinks: builder.query({
