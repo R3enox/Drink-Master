@@ -29,8 +29,9 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setAccessToken(state, { payload }) {
-      state.accessToken = payload;
+    setTokens(state, { payload }) {
+      state.accessToken = payload.accessToken;
+      state.refreshToken = payload.refreshToken;
     },
   },
   extraReducers: (builder) => {
@@ -55,5 +56,5 @@ const authConfig = {
   whitelist: ['accessToken', 'refreshToken'],
 };
 
-export const { setAccessToken } = authSlice.actions;
+export const { setTokens } = authSlice.actions;
 export const authReducer = persistReducer(authConfig, authSlice.reducer);

@@ -23,9 +23,6 @@ export const PreviewDrinks = () => {
   const data = useSelector(selectDrinks);
   const isLoading = useSelector(selectDrinksIsLoading);
   const dispatch = useDispatch();
-  // const { data, isLoading } = useGetDrinksQuery(
-  //   HomeDrinksLimit[getDeviceType()]
-  // );
 
   useEffect(() => {
     dispatch(getDrinks(HomeDrinksLimit[getDeviceType()]));

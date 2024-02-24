@@ -15,6 +15,7 @@ export const handleFulfilledSignUp = (state, { payload }) => {
   state.isLoggedIn = true;
   state.isRefreshing = false;
   state.accessToken = payload.accessToken;
+  state.refreshToken = payload.refreshToken;
   state.user = payload.user;
   state.error = null;
 };
@@ -24,6 +25,7 @@ export const handleFulfilledSignIn = (state, { payload }) => {
   state.isLoggedIn = true;
   state.isRefreshing = false;
   state.accessToken = payload.accessToken;
+  state.refreshToken = payload.refreshToken;
   state.user = payload.user;
   state.error = null;
 };
@@ -37,6 +39,7 @@ export const handleFulfilledRefreshUser = (state, { payload }) => {
   state.isRefreshing = false;
   state.user = payload.user;
   state.accessToken = payload.accessToken;
+  state.refreshToken = payload.refreshToken;
 };
 
 export const handleRejectedRefreshUser = (state) => {
@@ -44,4 +47,5 @@ export const handleRejectedRefreshUser = (state) => {
   state.isLoggedIn = false;
   state.user = initialState.user;
   state.accessToken = initialState.accessToken;
+  state.refreshToken = initialState.refreshToken;
 };

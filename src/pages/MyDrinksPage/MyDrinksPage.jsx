@@ -1,20 +1,28 @@
-import {
-  useDeleteMyDrinkMutation,
-  useFetchMyDrinksQuery,
-} from '../../redux/myDrinks/myDrinksSlice';
 import DrinksList from '../../components/DrinksList/DrinksList';
 import { PageTitle } from '../../components/reUseComponents/PageTitle';
 import { DrinkImageComponent } from '../../components/reUseComponents/DrinkImageComponent';
 import Loader from '../../components/Loader/Loader';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import UniversalModal from '../../components/DrinksItem/UniversalModal';
 import ModalButtons from '../../components/DrinksItem/ModalButtons';
+import { deleteMyDrink, getMyDrinks } from '../../redux/myDrinks/myDrinksAPI';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  selectMyDrinks,
+  selectMyDrinksError,
+  selectMyDrinksLoading,
+} from '../../redux/myDrinks/myDrinksSelector';
 
 const MyDrinksPage = () => {
-  const { data, error, isFetching, isError } = useFetchMyDrinksQuery();
-  console.log(data);
+  const dispatch = useDispatch();
+  const data = useSelector(selectMyDrinks);
+  const isLoading = useSelector(selectMyDrinksLoading);
+  const isError = useSelector(selectMyDrinksError);
 
-  const [deleteMyDrink] = useDeleteMyDrinkMutation();
+  useEffect(() => {
+    dispatch(getMyDrinks());
+  }, [dispatch]);
+
   const [isOpen, setIsOpen] = useState(false);
   const [currentId, setCurrentId] = useState(null);
 
@@ -28,7 +36,7 @@ const MyDrinksPage = () => {
 
   const handleDeleteClick = async (_id) => {
     try {
-      await deleteMyDrink(_id);
+      await dispatch(deleteMyDrink(_id));
       closeMyDrinkModal();
     } catch (error) {
       console.error('Помилка видалення: ', error);
@@ -43,8 +51,8 @@ const MyDrinksPage = () => {
       <section className="pb-[80px] md:pb-[140px] ">
         <div className="container mx-auto">
           <PageTitle title="My drinks" />
-          {isFetching && <Loader isStatic />}
-          {/* {error && <Redirect to="error.message" />} */}
+          {isLoading && <Loader isStatic />}
+          {/* {isError && <Redirect to="error.message" />} */}
           {data && data.length > 0 ? (
             <DrinksList
               data={data}

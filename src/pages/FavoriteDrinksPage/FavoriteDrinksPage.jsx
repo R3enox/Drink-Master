@@ -1,25 +1,38 @@
-import {
-  useFechFavoritesQuery,
-  useRemoveFavoritesMutation,
-} from '../../redux/favorites/favoriteSlice';
 import { DrinkImageComponent } from '../../components/reUseComponents/DrinkImageComponent';
 import { PageTitle } from '../../components/reUseComponents/PageTitle';
 import DrinksList from '../../components/DrinksList/DrinksList';
 import Loader from '../../components/Loader/Loader';
 import { toast } from 'react-toastify';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  deleteFavorite,
+  getFavorites,
+} from '../../redux/favorites/favoriteAPI';
+import { useEffect } from 'react';
+import {
+  selectFavorites,
+  selectFavoritesError,
+  selectFavoritesIsLoading,
+} from '../../redux/favorites/favoriteSelector';
 
 const FavoriteDrinksPage = () => {
-  const { data, error, isFetching } = useFechFavoritesQuery();
+  const dispatch = useDispatch();
+  const data = useSelector(selectFavorites);
+  const isLoading = useSelector(selectFavoritesIsLoading);
+  const isError = useSelector(selectFavoritesError);
 
-  const [deleteFavorite] = useRemoveFavoritesMutation();
+  useEffect(() => {
+    dispatch(getFavorites());
+  }, [dispatch]);
+
   return (
     <section className="pb-[80px] mb:pb-[140]">
       <div className="container mx-auto ">
-        {isFetching && <Loader />}
-        {error && toast.error(`Oops, something went wrong!!`)}
+        {isLoading && <Loader />}
+        {isError && toast.error(`Oops, something went wrong!!`)}
         <PageTitle title={'Favorites'} />
         {data && data.length > 0 ? (
-          <DrinksList data={data} onDelete={deleteFavorite} />
+          <DrinksList data={data} onDelete={() => dispatch(deleteFavorite())} />
         ) : (
           <DrinkImageComponent
             description={"You haven't added any favorite cocktails yet"}

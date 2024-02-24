@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { store } from '../redux/store';
-import { setAccessToken } from '../redux/auth/authReducer';
+import { setTokens } from '../redux/auth/authReducer';
 
 const instance = axios.create({
   // baseURL: 'https://drink-master-4fm6.onrender.com/api',
@@ -21,13 +21,14 @@ instance.interceptors.response.use(
   (response) => response,
   async (error) => {
     if (error.response.status === 401) {
-      const refreshToken = localStorage.getItem('refreshToken');
+      const refreshToken = store.getState().auth.refreshToken;
+      // const refreshToken = localStorage.getItem('refreshToken');
       try {
         const { data } = await instance.post('/auth/refresh', { refreshToken });
 
         setAuthToken(data.accessToken);
-        store.dispatch(setAccessToken(data.accessToken));
-        localStorage.setItem('refreshToken', data.refreshToken);
+        store.dispatch(setTokens(data));
+        // localStorage.setItem('refreshToken', data.refreshToken);
         error.config.headers.authorization = `Bearer ${data.accessToken}`;
         return instance(error.config);
       } catch (error) {

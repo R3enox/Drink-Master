@@ -22,7 +22,7 @@ export const signInThunk = createAsyncThunk(
     try {
       const { data } = await API.post('/auth/signin', formData);
       setAuthToken(data.accessToken);
-      localStorage.setItem('refreshToken', data.refreshToken);
+      // localStorage.setItem('refreshToken', data.refreshToken);
       return data;
     } catch (error) {
       toast.error(`You entered an incorrect login or password`);
@@ -40,9 +40,10 @@ export const signOutThunk = createAsyncThunk(
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
 
-    }})
-    
 export const refreshUserThunk = createAsyncThunk(
   'auth/refresh',
   async (_, thunkApi) => {
@@ -73,9 +74,7 @@ export const getCurrent = async (accessToken) => {
 // export const refreshUserThunk = createAsyncThunk(
 //   'auth/refresh',
 //   async (_, thunkAPI) => {
-//     console.log(thunkAPI.getState());
 //     const persistedToken = thunkAPI.getState().auth.accessToken;
-//     console.log('persistedToken', persistedToken);
 //     if (persistedToken === null) {
 //       return thunkAPI.rejectWithValue('Unable to fetch user');
 //     }
