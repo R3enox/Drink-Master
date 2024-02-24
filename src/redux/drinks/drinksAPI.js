@@ -22,8 +22,8 @@ export const drinksApi = createApi({
       providesTags: ['drinks'],
     }),
     filterDrinks: builder.query({
-      query: ({ page, limit, search, category, ingredient }) => {
-        const queryParams = new URLSearchParams({ page, limit });
+      query: ({ page, per_page, search, category, ingredient }) => {
+        const queryParams = new URLSearchParams({ page, per_page });
         if (search) queryParams.append('search', search);
         if (category) queryParams.append('category', category);
         if (ingredient) queryParams.append('ingredient', ingredient);

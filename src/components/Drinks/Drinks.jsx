@@ -7,13 +7,13 @@ import { DrinksLimit } from 'constants/paginationLimits';
 import { DrinkImageComponent } from '../reUseComponents/DrinkImageComponent';
 
 export const Drinks = () => {
-  const { page, limit, countPagesOfPagination, setPage } =
+  const { page, per_page, countPagesOfPagination, setPage } =
     usePagination(DrinksLimit);
   const { search, category, ingredient } = useDrinkFilters();
 
   const { data, isLoading } = useFilterDrinksQuery({
     page,
-    limit,
+    per_page,
     search,
     category,
     ingredient,
@@ -37,7 +37,7 @@ export const Drinks = () => {
       ) : (
         <Paginator
           totalCount={data?.totalCount}
-          itemsPerPage={limit}
+          itemsPerPage={per_page}
           setPage={setPage}
           initialPage={page}
           countPagesOfPagination={countPagesOfPagination}
