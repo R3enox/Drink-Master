@@ -1,0 +1,112 @@
+.btnCssbuttons {
+  font-family: 'Manrope', sans-serif;
+  --btn-color: #161f37;
+  position: relative;
+  padding: 14px 22px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.29;
+  color: #f3f3f3;
+  background: none;
+  border: none;
+  outline: none;
+  overflow: hidden;
+  cursor: pointer;
+  /* filter: drop-shadow(0 2px 8px rgba(249, 250, 250, 0.32)); */
+  transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.btnCssbuttons::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background: var(--btn-color);
+  border-radius: 42px;
+  transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.btnCssbuttons span,
+.btnCssbuttons span span {
+  display: inline-flex;
+  vertical-align: middle;
+  transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.btnCssbuttons span {
+  transition-delay: 0.05s;
+}
+
+.btnCssbuttons span:first-child {
+  padding-right: 7px;
+}
+
+.btnCssbuttons span span {
+  margin-left: 8px;
+  transition-delay: 0.1s;
+}
+
+.btnCssbuttons ul {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  transform: translateY(-50%);
+}
+
+.btnCssbuttons ul li {
+  flex: 1;
+}
+
+.btnCssbuttons ul li a {
+  display: inline-flex;
+  vertical-align: middle;
+  transform: translateY(55px);
+  transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.btnCssbuttons ul li a:hover {
+  opacity: 0.5;
+}
+
+.btnCssbuttons:hover::before {
+  transform: scale(1.2);
+}
+
+.btnCssbuttons:hover span,
+.btnCssbuttons:hover span span {
+  transform: translateY(-55px);
+}
+
+.btnCssbuttons:hover ul li a {
+  transform: translateY(0);
+}
+
+.btnCssbuttons:hover ul li:nth-child(1) a {
+  transition-delay: 0.15s;
+}
+
+.btnCssbuttons:hover ul li:nth-child(2) a {
+  transition-delay: 0.2s;
+}
+
+.btnCssbuttons:hover ul li:nth-child(3) a {
+  transition-delay: 0.25s;
+}
+
+@media screen and (min-width: 768px) {
+  .btnCssbuttons {
+    padding: 16px 32px;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.56;
+    height: 54px;
+  }
+}

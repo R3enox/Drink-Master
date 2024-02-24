@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-
+import Loader from '../Loader/Loader';
+import { LinkDarkTheme } from '../reUseComponents/Buttons/Buttons';
 import { DrinkCardPreview } from '../reUseComponents/DrinkCardPreview';
 import { useGetDrinksQuery } from '../../redux/drinks/drinksAPI';
 import { useFilters } from '../../hooks/useFilters';
@@ -24,7 +24,7 @@ export const PreviewDrinks = () => {
     popularCategories.filter((category) => categories.includes(category));
 
   return isLoading ? (
-    <div>Loading</div>
+    <Loader isStatic />
   ) : (
     data && (
       <div className="container m-auto conflex flex-col gap-[60px] pb-[80px] md:gap-[80px] pt-[56px] md:pt-[61px] md:pb-[140px] lg:pt-[80px]">
@@ -45,12 +45,7 @@ export const PreviewDrinks = () => {
           ))}
         </ul>
         <div className="flex justify-center ">
-          <Link
-            to="/drinks"
-            className="px-[40px] py-[14px] md:px-[44px] md:py-[18px] font-semibold text-[14px] leading-[1.28] md:text-[16px] md:leading-[1.25] bg-primary-text-color text-primary-text-button-color text-center border-border-color rounded-[42px] transition-shadow shadow-lg hover:shadow-primary-text-color/50"
-          >
-            Other drinks
-          </Link>
+          <LinkDarkTheme to="/drinks">Other drinks</LinkDarkTheme>
         </div>
       </div>
     )

@@ -1,15 +1,17 @@
 import sprite from '../../assets/sprite.svg';
-import { FolowUs } from '../reUseComponents/FolowUs';
 import { PrivacyPolicy } from './PrivacyPolicy';
 import { Nav } from './Nav';
 import { SubscribeForm } from './SubscribeForm';
 import { Link } from 'react-router-dom';
+import { FollowUs } from '../reUseComponents/FollowUs/FollowUs';
 
 export const Footer = () => {
   return (
-    <footer className="container mx-auto w-[100vw] pt-[40px] pb-[18px] border-solid border-t-[1px]
+    <footer
+      className="container mx-auto w-[100vw] pt-[40px] pb-[18px] border-solid border-t-[1px]
      border-border-color bg-footer-set bg-bottom h-full bg-containe bg-no-repeat
-     md:pb-[24px] md:pt-[80px] md:bg-footer-set-tablet lg:bg-footer-set-desktop">
+     md:pb-[24px] md:pt-[80px] md:bg-footer-set-tablet lg:bg-footer-set-desktop"
+    >
       <div className="flex flex-wrap md:flex-nowrap md:gap-x-[251px]">
         <div className="flex gap-x-[90px]  mb-[40px] md:flex-col gap-y-[40px] lg:flex-row lg:gap-x-[411px]">
           <div className="flex flex-col  gap-y-[20px] lg:gap-y-[43px]">
@@ -26,7 +28,7 @@ export const Footer = () => {
                 Drink Master
               </Link>
             </div>
-            <FolowUs />
+            <FollowUs />
           </div>
           <Nav />
         </div>
