@@ -50,3 +50,25 @@ export const handleRejectedRefreshUser = (state, payload) => {
   state.user = initialState.user;
   state.token = initialState.token;
 };
+
+export const handlePendingUpdateUser = (state) => {
+  state.isLoading = true;
+  state.error = null;
+  state.isRefreshing = true;
+};
+
+export const handleFulfilledUpdateUser = (state, { payload }) => {
+  state.isLoading = false;
+  state.error = null;
+  state.isLoggedIn = true;
+  state.isRefreshing = false;
+  state.user.name = payload.user.name;
+  state.user.avatarURL = payload.user.avatarURL;
+};
+
+export const handleRejectedUpdateUser = (state, payload) => {
+  state.isLoading = false;
+  state.error = payload;
+  state.isRefreshing = false;
+  state.isLoggedIn = false;
+};

@@ -60,3 +60,17 @@ export const refreshUserThunk = createAsyncThunk(
     }
   }
 );
+
+ export const updateUserThunk = createAsyncThunk(
+   'user/update',
+   async (formData, thunkApi) => {
+     try {
+       const { data } = await API.patch('/users/update', formData);
+       return data;
+     } catch (error) {
+       return thunkApi.rejectWithValue(error.message);
+     }
+   }
+ );
+
+

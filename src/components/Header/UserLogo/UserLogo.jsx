@@ -1,16 +1,19 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useUploadUserMutation } from '../../../redux/auth/usersOperations';
-import { useSelector } from 'react-redux';
-import { selectAuthUser } from '../../../redux/auth/authSelectors';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { selectAuthUser} from '../../../redux/auth/authSelectors';
 import sprite from '../../../assets/sprite.svg';
+import { updateUserThunk } from '../../../redux/user/usersOperations';
+
 // import "./styles.css"
 // import avatar from "../../../assets/img/header/index"
 
 const UserLogo = () => {
   const user = useSelector(selectAuthUser);
-
-  const [uploadUser] = useUploadUserMutation();
+  
+ const dispatch = useDispatch();
+ 
 
   const [preview, setPreview] = useState();
   const [userName, setUserName] = useState({ name: user.name });
@@ -34,7 +37,10 @@ const UserLogo = () => {
     formData.append('name', data.name);
     console.log(data.avatar[0]);
     console.log(formData);
-    return uploadUser(formData);
+     dispatch(updateUserThunk(formData));
+  
+    // closeFnc()
+    
   };
 
   const { register, handleSubmit } = useForm();
@@ -42,32 +48,32 @@ const UserLogo = () => {
   return (
     <>
       <form
-        className=" items-center flex flex-col   "
+        className="items-center flex flex-col   "
         onSubmit={handleSubmit(onSubmit)}
       >
-        <label className=" ">
+        <label className="items-center flex flex-col  ">
           <input
-            className=""
+            className="overflow-hidden"
             type="file"
             {...register('avatar', { required: true })}
             onChange={handleUploadedFile}
           />
 
-          <div className="w-[200px] flex flex-col">
+          <div className=" flex flex-col items-center pb-[28px] md:pb-[50px]">
             <img
-              className=" rounded-xl md:mb-[80px] md:w-[704px] md:object-cover lg:w-[400px] lg:mb-[100px] "
+              className="w-[100px] h-[100px] rounded-full   "
               src={preview}
               alt="avatar"
               //  srcSet={`${avatar}`}
             />
 
-            <svg className="stroke-primary-text-color sm:w-[22px] h-[22px] md:w-[28px] md:h-[28px]">
+            <svg className="stroke-primary-text-color sm:w-[22px] h-[22px] md:w-[28px] md:h-[28px] absolute top-[168px] rounded-[10px] bg-grey-text-color">
               <use href={sprite + '#icon-plus'}></use>
             </svg>
           </div>
         </label>
         <input
-          className="pl-[24px] md:w-[400px] mt-[18px] md:mt-[25px] w-full  py-[18px] rounded-[200px] bg-transparent border-[1px]  border-border-color text-primary-text-color text-[16px] leading-[1.12] font-semibold hover:bg-primary-text-color hover:text-primary-text-button-color transition-colors md:text-[17px] md:py-[18px] md:leading-[1.56]"
+          className="w-[285px] pl-[24px] md:w-[400px]   py-[18px] rounded-[200px] bg-transparent border-[1px]  border-border-color text-primary-text-color text-[16px] leading-[1.12] font-semibold hover:bg-primary-text-color hover:text-primary-text-button-color transition-colors md:text-[17px] md:py-[18px] md:leading-[1.56]"
           {...register('name', { required: true })}
           type="text"
           placeholder="name"
@@ -75,14 +81,13 @@ const UserLogo = () => {
           onChange={handleChange}
           value={userName.name}
         />
-        {/* <svg className="fill-primary-text-color w-[17px] h-[17px] ">
+        <svg className="fill-primary-text-color w-[17px] h-[17px] absolute top-[225px] right-[60px]">
           <use href={sprite + '#icon-pancil'}></use>
-        </svg> */}
+        </svg>
 
         <button
-          className="  mt-[18px] md:mt-[25px] w-full text-center py-[18px] rounded-[200px] bg-transparent border-[1px]  border-border-color text-primary-text-color text-[16px] leading-[1.12] font-semibold hover:bg-primary-text-color hover:text-primary-text-button-color transition-colors md:text-[17px] md:py-[18px] md:leading-[1.56]"
+          className="w-[285px] md:w-full sm:mt-[18px] md:mt-[25px]  text-center py-[18px] rounded-[200px] bg-transparent border-[1px]  border-border-color text-primary-text-color text-[16px] leading-[1.12] font-semibold hover:bg-primary-text-color hover:text-primary-text-button-color transition-colors md:text-[17px] md:py-[18px] md:leading-[1.56]"
           type="submit"
-          onSubmit={handleSubmit(onSubmit)}
         >
           Save changes
         </button>
