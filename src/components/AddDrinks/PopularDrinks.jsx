@@ -22,12 +22,12 @@ export const PopularDrinks = () => {
           <li key={drink._id}>
             <a
               href={`/frontend-drink-master/drink/${drink._id}`}
-              className="flex gap-[14px] w-[336px] h-[90px] lg:w-[336px]"
+              className="flex gap-[14px] w-[336px] h-[90px] lg:w-[336px] "
             >
               <img
                 src={drink.drinkThumb}
                 alt={drink.drink}
-                className="w-[90px] h-[90px] rounded-[8px]"
+                className="w-[90px] h-[90px] rounded-[8px] object-cover scale-100 ease-in-out duration-300  hover:scale-[1.035] hover:contrast-[0.9"
               />
               <div>
                 <h3>{drink.drink}</h3>

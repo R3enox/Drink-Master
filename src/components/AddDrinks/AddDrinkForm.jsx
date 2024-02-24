@@ -1,16 +1,18 @@
 import { DrinkPageHero } from './AddDrinkFormComponents/DrinkDescriptionFields';
 import { DrinkIngredientsFields } from './AddDrinkFormComponents/DrinkIngredientsFields';
 import { RecipePreparation } from './AddDrinkFormComponents/RecipePreparation';
-import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useMemo } from 'react';
-import { selectAuthToken } from '../../redux/auth/authSelectors';
+// import { selectAuthToken } from '../../redux/auth/authSelectors';
 import { useFilters } from '../../hooks/useFilters';
 import { createOptionsFromArrOfObjUsingId } from '../../helpers/createCollectionOptions';
 import { BtnDarkTheme } from '../reUseComponents/Buttons/Buttons';
+import { addDrink } from '../../redux/addDrinks/addDrinkSlice';
 
 export const AddDrinkForm = () => {
+  const dispatch = useDispatch();
   const { ingredients } = useFilters();
-  const authToken = useSelector(selectAuthToken);
+  // const authToken = useSelector(selectAuthToken);
   const addedIngredients = [];
 
   const ingredientsOptions = useMemo(
@@ -57,19 +59,7 @@ export const AddDrinkForm = () => {
       console.log('value: ', value);
     });
 
-    fetch('http://localhost:3000/api/drinks/own/add', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${authToken}`,
-      },
-      body: formData,
-    }).then((response) => {
-      if (response.ok) {
-        console.log('status 200');
-      } else {
-        console.log('Error:', response.statusText);
-      }
-    });
+    dispatch(addDrink(formData));
   };
 
   return (
