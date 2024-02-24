@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import { BtnSubscribe } from '../reUseComponents/Buttons/Buttons';
 
 export const SubscribeForm = () => {
   const {
@@ -12,9 +13,7 @@ export const SubscribeForm = () => {
     reset();
   };
 
-  
   // console.log(errors);
-
 
   return (
     <div className="md:flex flex-col lg:w-[309px]">
@@ -38,12 +37,7 @@ export const SubscribeForm = () => {
             },
           })}
         />
-        <button
-          className="w-full text-center py-[18px] rounded-[200px] bg-transparent border-[1px]  border-border-color text-primary-text-color text-[16px] leading-[1.12] font-semibold hover:bg-primary-text-color hover:text-primary-text-button-color transition-colors md:text-[17px] md:py-[14px] md:leading-[1.56]"
-          type="submit"
-        >
-          Subscribe
-        </button>
+        <BtnSubscribe>Subscribe</BtnSubscribe>
       </form>
     </div>
   );
