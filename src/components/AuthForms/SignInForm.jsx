@@ -93,6 +93,7 @@ const SignInForm = () => {
             })}
           />
           {showPassword ? (
+
             <svg
               onClick={() => {
                 setShowPassword(!showPassword);

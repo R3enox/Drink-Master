@@ -6,7 +6,7 @@ import { CountPagesOfPagination } from 'constants/paginationLimits';
 export const usePagination = (pageLimits) => {
   const [params, setParams] = useSearchParams();
   const page = params.get('page') ?? 1;
-  const limit = params.get('limit') ?? pageLimits[getDeviceType()];
+  const per_page = params.get('per_page') ?? pageLimits[getDeviceType()];
   const countPagesOfPagination = CountPagesOfPagination[getDeviceType()];
 
   const setPage = (value) => {
@@ -14,16 +14,16 @@ export const usePagination = (pageLimits) => {
     setParams(params);
   };
 
-  const setLimit = (value) => {
-    params.set('limit', value);
+  const setPerPage = (value) => {
+    params.set('per_page', value);
     setParams(params);
   };
 
   return {
     page: Number(page),
-    limit: Number(limit),
+    per_page: Number(per_page),
     countPagesOfPagination,
     setPage,
-    setLimit,
+    setPerPage,
   };
 };

@@ -12,11 +12,18 @@ import {
   handleRejected,
   handleRejectedRefreshUser,
 } from './authFunctionsReducer';
-import { refreshUserThunk, signInThunk, signUpThunk } from './authOperations';
+
+import {
+  refreshUserThunk,
+  signInThunk,
+  signOutThunk,
+  signUpThunk,
+} from './authOperations';
 
 const STATUS = { PENDING: 'pending', REJECTED: 'rejected' };
 
-const getActions = (type) => isAnyOf(signUpThunk[type], signInThunk[type]);
+const getActions = (type) =>
+  isAnyOf(signUpThunk[type], signInThunk[type], signOutThunk[type]);
 
 const authSlice = createSlice({
   name: 'auth',
@@ -31,6 +38,9 @@ const authSlice = createSlice({
     builder
       .addCase(signUpThunk.fulfilled, handleFulfilledSignUp)
       .addCase(signInThunk.fulfilled, handleFulfilledSignIn)
+      .addCase(signOutThunk.fulfilled, () => {
+        return initialState;
+      })
       .addCase(refreshUserThunk.pending, handlePendingRefreshUser)
       .addCase(refreshUserThunk.fulfilled, handleFulfilledRefreshUser)
       .addCase(refreshUserThunk.rejected, handleRejectedRefreshUser)

@@ -1,16 +1,19 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { userApi } from './auth/usersOperations';
+import { drinksApi } from '../redux/drinks/drinksAPI';
+import { authReducer } from './auth/authReducer';
+import { filtersReducer } from './filters/slice';
+import { drinkIdStorageReducer } from './drinkIdStorageReducer/drinkIdStorageReducer';
 import {
-  persistStore,
   FLUSH,
-  REHYDRATE,
   PAUSE,
   PERSIST,
   PURGE,
   REGISTER,
+  REHYDRATE,
 } from 'redux-persist';
 
 import { authReducer } from './auth/authReducer';
-// import { drinksApi } from './drinks/drinksAPI';
 import { filtersReducer } from './filters/slice';
 import { drinkIdStorageReducer } from './drinkIdStorageReducer/drinkIdStorageReducer';
 import { myDrinksApi } from './myDrinks/myDrinksSlice';
@@ -20,20 +23,20 @@ import { drinksReducer } from './drinks/drinksSlice';
 export const store = configureStore({
   reducer: {
     auth: authReducer,
-    // [drinksApi.reducerPath]: drinksApi.reducer,
     drinks: drinksReducer,
+    [userApi.reducerPath]: userApi.reducer,
     filters: filtersReducer,
     drinkIdStorage: drinkIdStorageReducer,
     [myDrinksApi.reducerPath]: myDrinksApi.reducer,
     [favoriteApi.reducerPath]: favoriteApi.reducer,
   },
+
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }).concat(
-      // drinksApi.middleware,
       myDrinksApi.middleware,
       favoriteApi.middleware
     ),
