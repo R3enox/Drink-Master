@@ -7,9 +7,13 @@ const AddDrinkPage = () => {
   return (
     <main className="container">
       <PageTitle title="Add drink" />
-      <AddDrinkForm />
-      <FollowUs />
-      <PopularDrinks />
+      <div className="lg:flex lg:gap-[94px]">
+        <AddDrinkForm />
+        <div>
+          <FollowUs />
+          <PopularDrinks />
+        </div>
+      </div>
     </main>
   );
 };

@@ -22,7 +22,7 @@ export const DrinkIngredientsFields = ({ ingredientsOptions }) => {
       newIngredientInputs.push(
         <li key={id} className="flex items-center mb-3.5 gap-x-2">
           <Select
-            className="flex-initial w-52"
+            className="flex-initial"
             name="ingredientId"
             options={ingredientsOptions}
             classNamePrefix="ingredientsSelect"
@@ -35,11 +35,16 @@ export const DrinkIngredientsFields = ({ ingredientsOptions }) => {
               placeholder="1  cl"
               name="measure"
               required
-              className="text-primary-text-color placeholder-primary-text-color bg-transparent w-[100px] h-[50px] border-grey-text-color border-[1px] rounded-[200px] pl-[18px] hover:border-primary-text-color focus:border-primary-text-color outline-none ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms]  "
+              className="text-primary-text-color placeholder-primary-text-color bg-transparent w-[100px] md:w-[150px]  h-[50px] md:h-[56px] border-grey-text-color border-[1px] rounded-[200px] pl-[18px] md:pl-[24px] hover:border-primary-text-color focus:border-primary-text-color outline-none ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms]  "
             />
           </label>
-          <button type="button" id={id} onClick={() => handleDelete(id)}>
-            <svg className=" stroke-primary-text-color w-[18px] h-[18px] hover:stroke-[#848080] focus:stroke-[#848080] ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms] ">
+          <button
+            className="md:ml-auto "
+            type="button"
+            id={id}
+            onClick={() => handleDelete(id)}
+          >
+            <svg className=" stroke-primary-text-color w-[18px] md:w-[20px] h-[18px] md:h-[20px]  hover:stroke-[#848080] focus:stroke-[#848080] ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms] ">
               <use href={`${sprite}#icon-cross`} />
             </svg>
           </button>
@@ -58,7 +63,7 @@ export const DrinkIngredientsFields = ({ ingredientsOptions }) => {
     let randomIndex = Math.floor(Math.random() * ingredientsOptions.length);
     const id = nanoid();
     ingredientInputs.push(
-      <li key={id} className="flex items-center mb-3.5 gap-x-2">
+      <li key={id} className="flex items-center mb-3.5 gap-x-2 md:mb-[24px]">
         <Select
           className="flex-initial w-52"
           name="title"
@@ -76,7 +81,12 @@ export const DrinkIngredientsFields = ({ ingredientsOptions }) => {
             className="text-primary-text-color placeholder-primary-text-color bg-transparent w-[100px] h-[50px] border-grey-text-color border-[1px] rounded-[200px] pl-[18px] hover:border-primary-text-color focus:border-primary-text-color outline-none ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms]  "
           />
         </label>
-        <button type="button" id={id} onClick={() => handleDelete(id)}>
+        <button
+          className="md:ml-auto "
+          type="button"
+          id={id}
+          onClick={() => handleDelete(id)}
+        >
           <svg className=" stroke-primary-text-color w-[18px] h-[18px] hover:stroke-[#848080] focus:stroke-[#848080] ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms] ">
             <use href={`${sprite}#icon-cross`} />
           </svg>
@@ -103,11 +113,11 @@ export const DrinkIngredientsFields = ({ ingredientsOptions }) => {
 
   return (
     <>
-      <div className="flex justify-between">
+      <div className="flex justify-between lg:w-[540px]">
         <AddDrinkTitle text="Ingredients" className="inline-block" />
         <div
           id="counter"
-          className="w-[104px] h-[38px]   flex justify-around items-center border-solid border-grey-text-color border-[1px] rounded-3xl"
+          className="w-[104px] h-[38px] md:w-[114px] md:h-[44px]  flex justify-around items-center border-solid border-grey-text-color border-[1px] rounded-3xl"
         >
           <button type="button" data-action="decrement" onClick={handleDec}>
             <svg width="16" height="16" className="stroke-primary-text-color ">
@@ -124,7 +134,7 @@ export const DrinkIngredientsFields = ({ ingredientsOptions }) => {
           </button>
         </div>
       </div>
-      <ul className="mb-20">{ingredientInputs}</ul>
+      <ul className="mb-20 lg:w-[540px]">{ingredientInputs}</ul>
     </>
   );
 };
