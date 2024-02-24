@@ -21,12 +21,11 @@ instance.interceptors.response.use(
   (response) => response,
   async (error) => {
     if (error.response.status === 401) {
+      const refreshToken = store.getState().auth.refreshToken;
       try {
-        console.log('1111');
-        const { data } = await instance.post('/auth/refresh');
+        const { data } = await instance.post('/auth/refresh', { refreshToken });
         setAuthToken(data.accessToken);
         store.dispatch(setTokens(data));
-
         error.config.headers.authorization = `Bearer ${data.accessToken}`;
         return instance(error.config);
       } catch (error) {
@@ -36,6 +35,18 @@ instance.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+export const getCurrent = async (token) => {
+  try {
+    console.log('1');
+    setAuthToken(token);
+    const { data } = await instance.get('/users/current');
+    return data;
+  } catch (error) {
+    clearAuthToken();
+    throw error;
+  }
+};
 
 export const clearAuthToken = () => {
   instance.defaults.headers.common.authorization = '';

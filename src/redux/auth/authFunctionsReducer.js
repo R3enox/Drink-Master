@@ -30,11 +30,12 @@ export const handleFulfilledSignIn = (state, { payload }) => {
   state.error = null;
 };
 
-export const handlePendingRefreshUser = (state) => {
+export const handlePendingCurrentUser = (state) => {
   state.isRefreshing = true;
+  state.error = null;
 };
 
-export const handleFulfilledRefreshUser = (state, { payload }) => {
+export const handleFulfilledCurrentUser = (state, { payload }) => {
   state.isLoggedIn = true;
   state.isRefreshing = false;
   state.user = payload.user;
@@ -42,10 +43,10 @@ export const handleFulfilledRefreshUser = (state, { payload }) => {
   state.refreshToken = payload.refreshToken;
 };
 
-export const handleRejectedRefreshUser = (state, { payload }) => {
+export const handleRejectedCurrentUser = (state, { payload }) => {
   state.isRefreshing = false;
-  // state.isLoggedIn = false;
-  // state.user = initialState.user;
-  // state.accessToken = payload.accessToken;
-  // state.refreshToken = payload.refreshToken;
+  state.isLoggedIn = false;
+  state.user = initialState.user;
+  state.accessToken = payload.accessToken;
+  state.refreshToken = payload.refreshToken;
 };

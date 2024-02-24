@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 import API, { setAuthToken } from 'services/axios';
-import { clearAuthToken } from '../../services/axios';
+import { getCurrent } from '../../services/axios';
 
 export const signUpThunk = createAsyncThunk(
   'auth/signup',
@@ -50,30 +50,34 @@ export const refreshUserThunk = createAsyncThunk(
     try {
       const state = thunkApi.getState();
       const accessToken = state.auth.accessToken;
-
+      const refreshToken = state.auth.refreshToken;
       setAuthToken(accessToken);
-      const { data } = await API.post('/auth/refresh');
-      console.log('data', data);
-      console.log('1');
+      const { data } = await API.post('/auth/refresh', { refreshToken });
       return data;
     } catch (error) {
-      console.log('2');
       toast.error('Error refresh');
       return thunkApi.rejectWithValue(error.message);
     }
   }
 );
 
-export const getCurrent = async (accessToken) => {
-  try {
-    setAuthToken(accessToken);
-    const { data } = await API.get('/users/current');
-    return data;
-  } catch (error) {
-    clearAuthToken();
-    throw error;
+export const fetchCurrentThunk = createAsyncThunk(
+  'auth/current',
+  async (_, { rejectWithValue, getState }) => {
+    try {
+      const { auth } = getState();
+      const result = await API.getCurrent(auth.token);
+      return result;
+    } catch ({ response }) {
+      const { status, data } = response;
+      const error = {
+        status,
+        message: data.message,
+      };
+      return rejectWithValue(error);
+    }
   }
-};
+);
 
 // export const refreshUserThunk = createAsyncThunk(
 //   'auth/refresh',

@@ -4,17 +4,17 @@ import storage from 'redux-persist/lib/storage';
 
 import { initialState } from './authInitialState';
 import {
-  handleFulfilledRefreshUser,
+  handleFulfilledCurrentUser,
   handleFulfilledSignIn,
   handleFulfilledSignUp,
   handlePending,
-  handlePendingRefreshUser,
+  handlePendingCurrentUser,
   handleRejected,
-  handleRejectedRefreshUser,
+  handleRejectedCurrentUser,
 } from './authFunctionsReducer';
 
 import {
-  refreshUserThunk,
+  fetchCurrentThunk,
   signInThunk,
   signOutThunk,
   signUpThunk,
@@ -42,9 +42,9 @@ const authSlice = createSlice({
       .addCase(signOutThunk.fulfilled, () => {
         return initialState;
       })
-      .addCase(refreshUserThunk.pending, handlePendingRefreshUser)
-      .addCase(refreshUserThunk.fulfilled, handleFulfilledRefreshUser)
-      .addCase(refreshUserThunk.rejected, handleRejectedRefreshUser)
+      .addCase(fetchCurrentThunk.pending, handlePendingCurrentUser)
+      .addCase(fetchCurrentThunk.fulfilled, handleFulfilledCurrentUser)
+      .addCase(fetchCurrentThunk.rejected, handleRejectedCurrentUser)
       .addMatcher(getActions(PENDING), handlePending)
       .addMatcher(getActions(REJECTED), handleRejected);
   },
