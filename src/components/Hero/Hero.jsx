@@ -23,7 +23,6 @@ export const Hero = () => {
           beverages.
         </p>
         <LinkDarkTheme to="/add">Add drink</LinkDarkTheme>
-        <ThemeToggler/>
       </div>
       <picture className="flex justify-center items-center">
         <source
