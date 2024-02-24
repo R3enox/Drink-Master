@@ -58,7 +58,7 @@ export const DrinkIngredientsFields = ({ ingredientsOptions }) => {
     let randomIndex = Math.floor(Math.random() * ingredientsOptions.length);
     const id = nanoid();
     ingredientInputs.push(
-      <li key={id} className="flex items-center mb-3.5 gap-x-2">
+      <li key={id} className="flex items-center mb-3.5 gap-x-2 md:mb-[24px]">
         <Select
           className="flex-initial w-52"
           name="title"
@@ -103,11 +103,11 @@ export const DrinkIngredientsFields = ({ ingredientsOptions }) => {
 
   return (
     <>
-      <div className="flex justify-between">
+      <div className="flex justify-between lg:w-[540px]">
         <AddDrinkTitle text="Ingredients" className="inline-block" />
         <div
           id="counter"
-          className="w-[104px] h-[38px]   flex justify-around items-center border-solid border-grey-text-color border-[1px] rounded-3xl"
+          className="w-[104px] h-[38px] md:w-[114px] md:h-[44px]  flex justify-around items-center border-solid border-grey-text-color border-[1px] rounded-3xl"
         >
           <button type="button" data-action="decrement" onClick={handleDec}>
             <svg width="16" height="16" className="stroke-primary-text-color ">
@@ -124,7 +124,7 @@ export const DrinkIngredientsFields = ({ ingredientsOptions }) => {
           </button>
         </div>
       </div>
-      <ul className="mb-20">{ingredientInputs}</ul>
+      <ul className="mb-20 lg:w-[540px]">{ingredientInputs}</ul>
     </>
   );
 };
