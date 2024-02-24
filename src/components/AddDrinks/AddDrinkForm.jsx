@@ -3,7 +3,6 @@ import { DrinkIngredientsFields } from './AddDrinkFormComponents/DrinkIngredient
 import { RecipePreparation } from './AddDrinkFormComponents/RecipePreparation';
 import { useDispatch } from 'react-redux';
 import { useMemo } from 'react';
-// import { selectAuthToken } from '../../redux/auth/authSelectors';
 import { useFilters } from '../../hooks/useFilters';
 import { createOptionsFromArrOfObjUsingId } from '../../helpers/createCollectionOptions';
 import { BtnDarkTheme } from '../reUseComponents/Buttons/Buttons';
@@ -12,7 +11,7 @@ import { addDrink } from '../../redux/addDrinks/addDrinkSlice';
 export const AddDrinkForm = () => {
   const dispatch = useDispatch();
   const { ingredients } = useFilters();
-  // const authToken = useSelector(selectAuthToken);
+
   const addedIngredients = [];
 
   const ingredientsOptions = useMemo(
