@@ -58,7 +58,7 @@ export const AddDrinkForm = () => {
     });
     console.log(formData);
 
-    fetch('http://localhost:3000/api/drinks/own/add', {
+    fetch('http://localhost:3000/api/drinks/add', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${authToken}`,

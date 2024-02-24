@@ -18,23 +18,17 @@ export const drinksApi = createApi({
 
   endpoints: (builder) => ({
     getDrinks: builder.query({
-      query: (limit) => `/drinks?limit=${limit}`,
+      query: (per_category) => `/drinks?per_category=${per_category}`,
       providesTags: ['drinks'],
     }),
     filterDrinks: builder.query({
-      query: ({ page, limit, keyName, category, ingredient }) => {
-        const queryParams = new URLSearchParams({ page, limit });
-        if (category) {
-          queryParams.append('category', category);
-        }
-        if (ingredient) {
-          queryParams.append('ingredient', ingredient);
-        }
-        if (keyName) {
-          queryParams.append('keyName', keyName);
-        }
-        const queryString = queryParams.toString();
-        return `/drinks/search?${queryString}`;
+      query: ({ page, per_page, search, category, ingredient }) => {
+        const queryParams = new URLSearchParams({ page, per_page });
+        if (search) queryParams.append('search', search);
+        if (category) queryParams.append('category', category);
+        if (ingredient) queryParams.append('ingredient', ingredient);
+
+        return `/drinks/search?${queryParams}`;
       },
       providesTags: ['drinks'],
     }),
