@@ -22,19 +22,13 @@ export const drinksApi = createApi({
       providesTags: ['drinks'],
     }),
     filterDrinks: builder.query({
-      query: ({ page, limit, keyName, category, ingredient }) => {
+      query: ({ page, limit, search, category, ingredient }) => {
         const queryParams = new URLSearchParams({ page, limit });
-        if (category) {
-          queryParams.append('category', category);
-        }
-        if (ingredient) {
-          queryParams.append('ingredient', ingredient);
-        }
-        if (keyName) {
-          queryParams.append('keyName', keyName);
-        }
-        const queryString = queryParams.toString();
-        return `/drinks/search?${queryString}`;
+        if (search) queryParams.append('search', search);
+        if (category) queryParams.append('category', category);
+        if (ingredient) queryParams.append('ingredient', ingredient);
+
+        return `/drinks/search?${queryParams}`;
       },
       providesTags: ['drinks'],
     }),

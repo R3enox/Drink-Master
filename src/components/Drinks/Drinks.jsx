@@ -9,12 +9,12 @@ import { DrinkImageComponent } from '../reUseComponents/DrinkImageComponent';
 export const Drinks = () => {
   const { page, limit, countPagesOfPagination, setPage } =
     usePagination(DrinksLimit);
-  const { keyName, category, ingredient } = useDrinkFilters();
+  const { search, category, ingredient } = useDrinkFilters();
 
   const { data, isLoading } = useFilterDrinksQuery({
     page,
     limit,
-    keyName,
+    search,
     category,
     ingredient,
   });
