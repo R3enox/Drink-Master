@@ -59,11 +59,11 @@ export const PreviewDrinks = () => {
           ))}
         </ul>
       )}
-        <div className="flex justify-center ">
-          <LinkDarkTheme to="/drinks">
-            {t('link.PreviewDrinks.SignUp')}
-          </LinkDarkTheme>
-        </div>
+      <div className="flex justify-center ">
+        <LinkDarkTheme to="/drinks">
+          {t('link.PreviewDrinks.LinkDarkTheme')}
+        </LinkDarkTheme>
+      </div>
     </div>
   );
 };
