@@ -1,16 +1,14 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectAuthUser} from '../../../redux/auth/authSelectors';
+import { selectAuthUser } from '../../../redux/auth/authSelectors';
 import sprite from '../../../assets/sprite.svg';
 import { updateUserThunk } from '../../../redux/auth/authOperations';
 
-
-const UserLogo = ({closeFnc}) => {
+const UserLogo = ({ closeFnc }) => {
   const user = useSelector(selectAuthUser);
-  
- const dispatch = useDispatch();
- 
+
+  const dispatch = useDispatch();
 
   const [preview, setPreview] = useState(null);
   const [userName, setUserName] = useState({ name: user.name });
@@ -29,15 +27,12 @@ const UserLogo = ({closeFnc}) => {
   };
 
   const onSubmit = async (data) => {
-   
     const formData = new FormData();
     formData.append('avatar', data.avatar[0]);
     formData.append('name', data.name);
-    console.log(data.avatar[0]);
-    console.log(formData);
-     await dispatch(updateUserThunk(formData));
-   closeFnc()
-    
+
+    await dispatch(updateUserThunk(formData));
+    closeFnc();
   };
 
   const { register, handleSubmit } = useForm();
@@ -47,7 +42,6 @@ const UserLogo = ({closeFnc}) => {
       <form
         className="items-center flex flex-col   "
         onSubmit={handleSubmit(onSubmit)}
-       
       >
         <label className=" items-center flex flex-col  ">
           <input
@@ -58,7 +52,6 @@ const UserLogo = ({closeFnc}) => {
           />
 
           <div className=" flex flex-col items-center pb-[34px] md:pb-[65px]">
-          
             <img
               src={preview}
               srcSet={preview ?? user.avatarURL}
@@ -66,8 +59,7 @@ const UserLogo = ({closeFnc}) => {
               className="rounded-full sm:w-[80px] sm:h-[80px]  md:w-[100px] md:h-[100px] "
             />
             <svg className=" hover:bg-primary-text-color hover:stroke-primary-text-button-color stroke-primary-text-color sm:w-[28px] h-[28px] md:w-[32px] md:h-[32px] absolute top-[120px] md:top-[140px] rounded-full bg-icon-plus">
-              <use  href={sprite + '#icon-plus'} 
-             ></use>
+              <use href={sprite + '#icon-plus'}></use>
             </svg>
           </div>
         </label>
@@ -84,9 +76,7 @@ const UserLogo = ({closeFnc}) => {
           <use href={sprite + '#icon-pancil'}></use>
         </svg>
 
-        <button
-          className="w-[285px] md:w-full sm:mt-[18px] md:mt-[25px]  text-center py-[18px] rounded-[200px] bg-transparent border-[1px]  border-border-color text-primary-text-color text-[16px] leading-[1.12] font-semibold hover:bg-primary-text-color hover:text-primary-text-button-color transition-colors  md:py-[18px] "
-        >
+        <button className="w-[285px] md:w-full sm:mt-[18px] md:mt-[25px]  text-center py-[18px] rounded-[200px] bg-transparent border-[1px]  border-border-color text-primary-text-color text-[16px] leading-[1.12] font-semibold hover:bg-primary-text-color hover:text-primary-text-button-color transition-colors  md:py-[18px] ">
           Save changes
         </button>
       </form>

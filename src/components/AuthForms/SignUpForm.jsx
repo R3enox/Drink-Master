@@ -37,7 +37,6 @@ const SignUpForm = () => {
     dispatch(signUpThunk(data));
     console.log('first');
     if (token) {
-      console.log('second');
       navigate('/home');
     }
 

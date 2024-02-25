@@ -50,7 +50,6 @@ export const handleRejectedCurrentUser = (state) => {
 export const handlePendingUpdateUser = (state) => {
   state.isUpdateUserLoading = true;
   state.isUpdateUserError = null;
-  
 };
 
 export const handleFulfilledUpdateUser = (state, { payload }) => {
@@ -63,5 +62,4 @@ export const handleFulfilledUpdateUser = (state, { payload }) => {
 export const handleRejectedUpdateUser = (state, payload) => {
   state.isUpdateUserLoading = false;
   state.isUpdateUserError = payload;
-
 };
