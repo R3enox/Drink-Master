@@ -11,9 +11,13 @@ const AddDrinkPage = () => {
   return (
     <main className="container">
       <PageTitle title={t('title.AddDrink')} />
-      <AddDrinkForm />
-      <FollowUs />
-      <PopularDrinks />
+      <div className="lg:flex lg:gap-[94px]">
+        <AddDrinkForm />
+        <div>
+          <FollowUs />
+          <PopularDrinks />
+        </div>
+      </div>
     </main>
   );
 };

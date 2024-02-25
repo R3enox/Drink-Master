@@ -1,10 +1,16 @@
 import Loader from '../Loader/Loader';
 import { LinkDarkTheme } from '../reUseComponents/Buttons/Buttons';
 import { DrinkCardPreview } from '../reUseComponents/DrinkCardPreview';
-import { useGetDrinksQuery } from '../../redux/drinks/drinksAPI';
+import { getDrinks } from '../../redux/drinks/drinksAPI';
 import { useFilters } from '../../hooks/useFilters';
 import { getDeviceType } from '../../helpers/getDeviceType';
 import { HomeDrinksLimit } from '../../constants/paginationLimits';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import {
+  selectDrinks,
+  selectDrinksIsLoading,
+} from '../../redux/drinks/drinksSelector';
 
 import { useTranslation } from 'react-i18next';
 import '../../i18n';
@@ -19,9 +25,13 @@ const popularCategories = [
 export const PreviewDrinks = () => {
   const { t, i18n } = useTranslation();
 
-  const { data, isLoading } = useGetDrinksQuery(
-    HomeDrinksLimit[getDeviceType()]
-  );
+  const data = useSelector(selectDrinks);
+  const isLoading = useSelector(selectDrinksIsLoading);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getDrinks(HomeDrinksLimit[getDeviceType()]));
+  }, [dispatch]);
 
   const { categories } = useFilters();
   const filteredCategories =

@@ -1,14 +1,21 @@
-import {
-  useDeleteMyDrinkMutation,
-  useFetchMyDrinksQuery,
-} from '../../redux/myDrinks/myDrinksSlice';
 import DrinksList from '../../components/DrinksList/DrinksList';
 import { PageTitle } from '../../components/reUseComponents/PageTitle';
 import { DrinkImageComponent } from '../../components/reUseComponents/DrinkImageComponent';
 import Loader from '../../components/Loader/Loader';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import UniversalModal from '../../components/DrinksItem/UniversalModal';
+import { Paginator } from '../../components/reUseComponents/Paginator/Paginator';
 import ModalButtons from '../../components/DrinksItem/ModalButtons';
+import { deleteMyDrink, getMyDrinks } from '../../redux/myDrinks/myDrinksAPI';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  selectMyDrinks,
+  selectMyDrinksError,
+  selectMyDrinksLoading,
+  selectMyDrinksTotalCount,
+} from '../../redux/myDrinks/myDrinksSelector';
+import { usePagination } from '../../hooks/usePagination';
+import { MyDrinksLimit } from '../../constants/paginationLimits';
 
 import { useTranslation } from 'react-i18next';
 import '../../i18n';
@@ -16,9 +23,19 @@ import '../../i18n';
 const MyDrinksPage = () => {
   const { t, i18n } = useTranslation();
 
-  const { data, isFetching, isError } = useFetchMyDrinksQuery();
+  const dispatch = useDispatch();
+  const data = useSelector(selectMyDrinks);
+  const isLoading = useSelector(selectMyDrinksLoading);
+  const isError = useSelector(selectMyDrinksError);
 
-  const [deleteMyDrink] = useDeleteMyDrinkMutation();
+  const { page, per_page, countPagesOfPagination, setPage } =
+    usePagination(MyDrinksLimit);
+  const totalCount = useSelector(selectMyDrinksTotalCount);
+
+  useEffect(() => {
+    dispatch(getMyDrinks({ page, per_page }));
+  }, [dispatch, page, per_page]);
+
   const [isOpen, setIsOpen] = useState(false);
   const [currentId, setCurrentId] = useState(null);
 
@@ -32,12 +49,14 @@ const MyDrinksPage = () => {
 
   const handleDeleteClick = async (_id) => {
     try {
-      await deleteMyDrink(_id);
+      await dispatch(deleteMyDrink(_id));
       closeMyDrinkModal();
     } catch (error) {
       console.error('Помилка видалення: ', error);
     }
   };
+
+  const drinksAreNotFinded = !isLoading && totalCount === 0;
 
   return (
     <div
@@ -48,15 +67,25 @@ const MyDrinksPage = () => {
         <div className="container mx-auto">
           {isError && <h1>{isError}</h1>}
           <PageTitle title={t('title.myDrinks')} />
-          {isFetching && <Loader isStatic />}
-          {/* {error && <Redirect to="error.message" />} */}
-          {data && data.length > 0 ? (
-            <DrinksList
-              data={data}
-              openMyDrinkModal={openMyDrinkModal}
-              onChooseItem={setCurrentId}
-            />
-          ) : (
+          {isLoading && <Loader isStatic />}
+          {totalCount > 0 && (
+            <>
+              <DrinksList
+                data={data}
+                openMyDrinkModal={openMyDrinkModal}
+                onChooseItem={setCurrentId}
+              />
+              <Paginator
+                totalCount={totalCount}
+                itemsPerPage={per_page}
+                setPage={setPage}
+                forcePage={page}
+                initialPage={page}
+                countPagesOfPagination={countPagesOfPagination}
+              />
+            </>
+          )}
+          {drinksAreNotFinded && (
             <DrinkImageComponent
               description={t('DrinkImageComponent.myDrinks')}
             />

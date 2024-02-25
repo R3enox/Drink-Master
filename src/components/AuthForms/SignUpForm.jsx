@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   selectAuthIsLoading,
-  selectAuthToken,
+  selectAuthAccessToken,
 } from '../../redux/auth/authSelectors';
 import Calendar from '../DatePicker/Calendar';
 import { useState } from 'react';
@@ -19,7 +19,7 @@ const SignUpForm = () => {
 
   const isLoading = useSelector(selectAuthIsLoading);
   const dispatch = useDispatch();
-  const token = useSelector(selectAuthToken);
+  const token = useSelector(selectAuthAccessToken);
   const navigate = useNavigate();
   const [dateOfBirth, setDateOfBirth] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
@@ -40,9 +40,8 @@ const SignUpForm = () => {
   const onSubmit = (data) => {
     data.dateOfBirth = dateOfBirth;
     dispatch(signUpThunk(data));
-    console.log('first');
+
     if (token) {
-      console.log('second');
       navigate('/home');
     }
 

@@ -253,6 +253,27 @@ body {
     );
   }
 }
+/* Favorites Page */
+@layer base {
+  .bg-favorites-set {
+    background-image: image-set(
+      url('assets/img/favoritesPage/mobile-bg-favorite.png') 1x,
+      url('assets/img/favoritesPage/mobile-bg-favorite@2x.png') 2x
+    );
+  }
+  .bg-favorites-set-tablet {
+    background-image: image-set(
+      url('assets/img/favoritesPage/tablet-bg-favorites.png') 1x,
+      url('assets/img/favoritesPage/tablet-bg-favorites@2x.png') 2x
+    );
+  }
+  .bg-favorites-set-desktop {
+    background-image: image-set(
+      url('assets/img/favoritesPage/desktop-bg-favorites.png') 1x,
+      url('assets/img/favoritesPage/desktop-bg-favorites@2x.png') 2x
+    );
+  }
+}
 
 /* Search Filters Select styles  */
 
@@ -503,6 +524,28 @@ body {
   transform: rotate(180deg) !important;
 }
 
+@media screen and (min-width: 768px) {
+  .custom_select__control {
+    width: 352px !important;
+    height: 41px !important;
+  }
+  .custom_select__menu {
+    border-radius: 20px !important;
+    width: 139px !important;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .custom_select__control {
+    width: 393px !important;
+  }
+  .custom_select__menu {
+    width: 154px !important;
+    height: 306px !important;
+    font-size: 14px !important;
+    line-height: 129% !important;
+  }
+}
+
 /* Ingredients Select */
 
 .ingredientsSelect__control {
@@ -598,4 +641,17 @@ body {
 .ingredientsSelect__input-container {
   padding: 0 !important;
   margin: 0 !important;
+}
+
+@media screen and (min-width: 768px) {
+  .ingredientsSelect__control {
+    width: 332px !important;
+    height: 56px !important;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .ingredientsSelect__control {
+    width: 316px !important;
+  }
 }

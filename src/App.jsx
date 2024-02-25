@@ -5,9 +5,9 @@ import PrivateRoutes from './routes/PrivateRoutes';
 import RestrictedRoutes from './routes/RestrictedRoutes';
 import Loader from './components/Loader/Loader';
 
-import { refreshUserThunk } from './redux/auth/authOperations';
 import { selectAuthIsLoading } from './redux/auth/authSelectors';
 import { useAuth } from './hooks/useAuth';
+import { fetchCurrentThunk } from './redux/auth/authOperations';
 
 export const App = () => {
   const [isFirstRender, setIsFirstRender] = useState(true);
@@ -16,7 +16,7 @@ export const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(refreshUserThunk());
+    dispatch(fetchCurrentThunk());
     setIsFirstRender(false);
   }, [dispatch]);
 

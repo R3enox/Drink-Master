@@ -13,6 +13,7 @@ export const useDrinkFilters = () => {
       params.set(key, value);
     }
 
+    params.set('page', 1);
     setParams(params);
   };
 

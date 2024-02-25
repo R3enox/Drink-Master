@@ -6,6 +6,7 @@ import UserLogo from '../UserLogo/UserLogo';
 import { selectAuthUser } from '../../../redux/auth/authSelectors';
 import { useSelector } from 'react-redux';
 import UniversalModal from '../../reUseComponents/ UniversalModal/ UniversalModal';
+import HeaderModal from '../HeaderModal/HeaderModal';
 
 import { useTranslation } from 'react-i18next';
 import '../../../i18n';
@@ -48,7 +49,7 @@ const UserInfo = () => {
               alt="avatar"
               width={44}
               height={44}
-              className="rounded-full sm:w-[32px] sm:h-[32px]  md:w-[44px] md:h-[44px] lg:w-[44px] lg:h-[39px]"
+              className="rounded-full sm:w-[32px] sm:h-[32px]  md:w-[44px] md:h-[44px] lg:w-[39px] lg:h-[39px]"
             />
           </div>
           <p className="">{user.name}</p>
@@ -68,20 +69,21 @@ const UserInfo = () => {
           isOpen={isOpenLogOutModal}
           closeFnc={toogleLogOutModal}
           content={t('UniversalModal.useSelector')}
+          hidden={`hidden`}
         >
           <LogOutModal closeFnc={toogleLogOutModal} />
         </UniversalModal>
       )}
 
       {modalIsOpen && (
-        <UniversalModal
+        <HeaderModal
           className=""
           isOpen={modalIsOpen}
           closeFnc={togleModal}
           content={``}
         >
-          <UserLogo />
-        </UniversalModal>
+          <UserLogo closeFnc={togleModal} />
+        </HeaderModal>
       )}
     </>
   );
