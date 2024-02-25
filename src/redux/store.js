@@ -15,10 +15,12 @@ import {
   REHYDRATE,
 } from 'redux-persist';
 import persistStore from 'redux-persist/es/persistStore';
+import { popularDrinksReducer } from './popular/popularSlice';
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
+    drinks: drinksReducer,
     popular: popularDrinksReducer,
     [userApi.reducerPath]: userApi.reducer,
     filters: filtersReducer,

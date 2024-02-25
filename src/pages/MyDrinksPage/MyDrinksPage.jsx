@@ -12,19 +12,24 @@ import {
   selectMyDrinks,
   selectMyDrinksError,
   selectMyDrinksLoading,
+  selectMyDrinksTotalCount,
 } from '../../redux/myDrinks/myDrinksSelector';
+import { usePagination } from '../../hooks/usePagination';
+import { MyDrinksLimit } from '../../constants/paginationLimits';
 
 const MyDrinksPage = () => {
   const dispatch = useDispatch();
   const data = useSelector(selectMyDrinks);
   const isLoading = useSelector(selectMyDrinksLoading);
   const isError = useSelector(selectMyDrinksError);
+
   const { page, per_page, countPagesOfPagination, setPage } =
     usePagination(MyDrinksLimit);
+  const totalCount = useSelector(selectMyDrinksTotalCount);
 
   useEffect(() => {
-    dispatch(getMyDrinks());
-  }, [dispatch]);
+    dispatch(getMyDrinks({ page, per_page }));
+  }, [dispatch, page, per_page]);
 
   const [isOpen, setIsOpen] = useState(false);
   const [currentId, setCurrentId] = useState(null);
@@ -46,7 +51,7 @@ const MyDrinksPage = () => {
     }
   };
 
-  const drinksAreNotFinded = !isFetching && data?.totalCount === 0;
+  const drinksAreNotFinded = !isLoading && totalCount === 0;
 
   return (
     <div

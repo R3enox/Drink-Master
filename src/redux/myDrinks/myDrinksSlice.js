@@ -1,39 +1,3 @@
-// import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-// import instance from '../../services/axios';
-
-// const baseURL = instance.defaults.baseURL;
-
-// export const myDrinksApi = createApi({
-//   reducerPath: 'myDrinksApi',
-//   baseQuery: fetchBaseQuery({
-//     baseUrl: `${baseURL}`,
-//     prepareHeaders: (headers, { getState }) => {
-//       const accessToken = getState().auth.accessToken;
-//       if (accessToken) {
-//         headers.set('authorization', `Bearer ${accessToken}`);
-//       }
-//       return headers;
-//     },
-//   }),
-
-//   tagTypes: ['myDrinks'],
-//   endpoints: (build) => ({
-//     fetchMyDrinks: build.query({
-//       query: () => ({ url: '/drinks/own', method: 'get' }),
-//       providesTags: ['myDrinks'],
-//     }),
-//     deleteMyDrink: build.mutation({
-//       query: (id) => ({
-//         url: `/drinks/own/remove/${id}`,
-//         method: 'delete',
-//       }),
-//       invalidatesTags: ['myDrinks'],
-//     }),
-//   }),
-// });
-
-// export const { useFetchMyDrinksQuery, useDeleteMyDrinkMutation } = myDrinksApi;
-
 import { createSlice } from '@reduxjs/toolkit';
 import { deleteMyDrink, getMyDrinks } from './myDrinksAPI';
 
@@ -41,6 +5,7 @@ export const myDrinksSlice = createSlice({
   name: 'myDrinks',
   initialState: {
     myDrinks: [],
+    totalCount: null,
     isLoading: false,
     error: null,
   },
@@ -50,9 +15,10 @@ export const myDrinksSlice = createSlice({
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(getMyDrinks.fulfilled, (state, action) => {
+      .addCase(getMyDrinks.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.myDrinks = action.payload;
+        state.myDrinks = payload.paginatedResult;
+        state.totalCount = payload.totalCount;
       })
       .addCase(getMyDrinks.rejected, (state, action) => {
         state.isLoading = false;
