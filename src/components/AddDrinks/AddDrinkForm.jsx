@@ -54,7 +54,7 @@ export const AddDrinkForm = () => {
   };
 
   return (
-    <section className="margin pb-20 lg:pb-[140px]">
+    <section className="pb-20 lg:pb-[140px]">
       <form onSubmit={onSubmit}>
         <DrinkPageHero />
         <DrinkIngredientsFields ingredientsOptions={ingredientsOptions} />

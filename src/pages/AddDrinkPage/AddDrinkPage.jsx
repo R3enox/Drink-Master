@@ -5,16 +5,21 @@ import { PageTitle } from '../../components/reUseComponents/PageTitle';
 
 const AddDrinkPage = () => {
   return (
-    <main className="container">
-      <PageTitle title="Add drink" />
-      <div className="lg:flex lg:gap-[94px]">
-        <AddDrinkForm />
-        <div>
-          <FollowUs />
-          <PopularDrinks />
+    <div
+      className="dark:bg-common-set
+    md:dark:bg-common-set-tablet lg:dark:bg-common-set-desktop bg-contain bg-no-repeat"
+    >
+      <div className="container mx-auto">
+        <PageTitle title="Add drink" />
+        <div className="lg:flex lg:gap-[94px]">
+          <AddDrinkForm />
+          <div>
+            <FollowUs />
+            <PopularDrinks />
+          </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 };
 

@@ -42,7 +42,7 @@ const UniversalModal = ({ children, isOpen, closeFnc, content }) => {
             <use href={sprite + '#icon-cross'}></use>
           </svg>
         </button>
-        <p className="text-[14px] leading-[1.29] md:text-[18px] md:leading-[1.33] mb-[25px] md:mb-[37px] text-center">
+        <p className="text-primary-text-color text-[14px] leading-[1.29] md:text-[18px] md:leading-[1.33] mb-[25px] md:mb-[37px] text-center">
           {content}
         </p>
         {children}

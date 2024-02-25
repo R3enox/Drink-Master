@@ -3,7 +3,7 @@
   transition: background-color 0.3s ease;
   display: flex;
   align-items: center;
-  margin-right: 46px;
+  margin-right: 62px;
 }
 
 @media screen and (min-width: 1440px) {

@@ -54,51 +54,49 @@ const MyDrinksPage = () => {
   const drinksAreNotFinded = !isLoading && totalCount === 0;
 
   return (
-    <div
-      className="dark:bg-common-set
-    md:dark:bg-common-set-tablet lg:dark:bg-common-set-desktop bg-contain bg-no-repeat"
+    <section
+      className="pb-[80px] md:pb-[140px] dark:bg-common-set
+    md:dark:bg-common-set-tablet lg:dark:bg-common-set-desktop bg-cover bg-no-repeat"
     >
-      <section className="pb-[80px] md:pb-[140px] ">
-        <div className="container mx-auto">
-          <PageTitle title="My drinks" />
-          {isLoading && <Loader isStatic />}
-          {/* {isError && <Redirect to="error.message" />} */}
-          {totalCount > 0 && (
-            <>
-              <DrinksList
-                data={data}
-                openMyDrinkModal={openMyDrinkModal}
-                onChooseItem={setCurrentId}
-              />
-              <Paginator
-                totalCount={totalCount}
-                itemsPerPage={per_page}
-                setPage={setPage}
-                forcePage={page}
-                initialPage={page}
-                countPagesOfPagination={countPagesOfPagination}
-              />
-            </>
-          )}
-          {drinksAreNotFinded && (
-            <DrinkImageComponent description="You don't have your own drinks yet" />
-          )}
-          {isOpen && (
-            <UniversalModal
-              isOpen={isOpen}
-              closeFnc={closeMyDrinkModal}
-              content={'Are you sure you want to delete your drink?'}
-            >
-              <ModalButtons
-                closeMyDrinkModal={closeMyDrinkModal}
-                handleDeleteClick={() => handleDeleteClick(currentId)}
-                drinkId={data}
-              />
-            </UniversalModal>
-          )}
-        </div>
-      </section>
-    </div>
+      <div className="container mx-auto">
+        <PageTitle title="My drinks" />
+        {isLoading && <Loader isStatic />}
+        {/* {isError && <Redirect to="error.message" />} */}
+        {totalCount > 0 && (
+          <>
+            <DrinksList
+              data={data}
+              openMyDrinkModal={openMyDrinkModal}
+              onChooseItem={setCurrentId}
+            />
+            <Paginator
+              totalCount={totalCount}
+              itemsPerPage={per_page}
+              setPage={setPage}
+              forcePage={page}
+              initialPage={page}
+              countPagesOfPagination={countPagesOfPagination}
+            />
+          </>
+        )}
+        {drinksAreNotFinded && (
+          <DrinkImageComponent description="You don't have your own drinks yet" />
+        )}
+        {isOpen && (
+          <UniversalModal
+            isOpen={isOpen}
+            closeFnc={closeMyDrinkModal}
+            content={'Are you sure you want to delete your drink?'}
+          >
+            <ModalButtons
+              closeMyDrinkModal={closeMyDrinkModal}
+              handleDeleteClick={() => handleDeleteClick(currentId)}
+              drinkId={data}
+            />
+          </UniversalModal>
+        )}
+      </div>
+    </section>
   );
 };
 

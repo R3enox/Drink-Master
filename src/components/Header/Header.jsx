@@ -8,7 +8,7 @@ import HamburgerMenu from './HamburgerMenu/HamburgerMenu';
 export const Header = () => {
   return (
     <>
-      <div className="container bg-mobile-bg-commonpage bg-[length:150px_1700px] bg-no-repeat   flex p-5 border-b  border-border-color text-primary-text-color justify-between md:pl-[32px] md:pr-[32px] lg:pt-[22px] lg:pb-[23px] lg:pl-[100px] lg:pr-[100px]">
+      <div className="container bg-mobile-bg-commonpage bg-[length:150px_1700px] bg-no-repeat   flex p-5 border-b border-border-color-for-light dark:border-border-color text-primary-text-color justify-between md:pl-[32px] md:pr-[32px] lg:pt-[22px] lg:pb-[23px] lg:pl-[100px] lg:pr-[100px]">
         <>
           <Logo />
           <Navigation />
