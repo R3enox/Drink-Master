@@ -93,7 +93,6 @@ const SignInForm = () => {
             })}
           />
           {showPassword ? (
-
             <svg
               onClick={() => {
                 setShowPassword(!showPassword);
@@ -124,6 +123,12 @@ const SignInForm = () => {
         <button className="btn-up sign-btn" type="submit">
           Sign In
         </button>
+        <Link
+          className="sign-link-btn"
+          to="http://localhost:3000/api/auth/google"
+        >
+          Google
+        </Link>
         <Link className="sign-link-btn" to="/signup">
           Sign Up
         </Link>
