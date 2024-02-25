@@ -63,3 +63,18 @@ export const handleRejectedUpdateUser = (state, payload) => {
   state.isUpdateUserLoading = false;
   state.isUpdateUserError = payload;
 };
+
+export const handlePendingSubscribeUser = (state) => {
+  state.isUpdateUserLoading = true;
+  state.isUpdateUserError = null;
+};
+
+export const handleFulfilledSubscribeUser = (state) => {
+  state.isSubscribeUserLoading = false;
+  state.isSubscribeUserError = null;
+};
+
+export const handleRejectedSubscribeUser = (state, payload) => {
+  state.isSubscribeUserLoading = false;
+  state.isSubscribeUserError = payload;
+};

@@ -43,7 +43,6 @@ export const signOutThunk = createAsyncThunk(
   }
 );
 
-
 export const fetchCurrentThunk = createAsyncThunk(
   'auth/current',
   async (_, thunkApi) => {
@@ -64,16 +63,26 @@ export const fetchCurrentThunk = createAsyncThunk(
   }
 );
 
- export const updateUserThunk = createAsyncThunk(
-   'user/update',
-   async (formData, thunkApi) => {
-     try {
-       const { data } = await API.patch('/users/update', formData);
-       return data;
-     } catch (error) {
-       return thunkApi.rejectWithValue(error.message);
-     }
-   }
- );
+export const updateUserThunk = createAsyncThunk(
+  'user/update',
+  async (formData, thunkApi) => {
+    try {
+      const { data } = await API.patch('/users/update', formData);
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
 
-
+export const subscribeUserThunk = createAsyncThunk(
+  'user/subscribe',
+  async (email, thunkApi) => {
+    try {
+      const { data } = await API.post('/users/subscribe', email);
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);

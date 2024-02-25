@@ -11,15 +11,22 @@ import {
   handlePending,
   handlePendingUpdateUser,
   handleRejected,
-  
   handleRejectedUpdateUser,
   handlePendingCurrentUser,
   handleRejectedCurrentUser,
-  
+  handlePendingSubscribeUser,
+  handleFulfilledSubscribeUser,
+  handleRejectedSubscribeUser,
 } from './authFunctionsReducer';
 
-
-import {  signInThunk, signOutThunk, signUpThunk, updateUserThunk, fetchCurrentThunk } from './authOperations';
+import {
+  signInThunk,
+  signOutThunk,
+  signUpThunk,
+  updateUserThunk,
+  fetchCurrentThunk,
+  subscribeUserThunk,
+} from './authOperations';
 
 const STATUS = { PENDING: 'pending', REJECTED: 'rejected' };
 
@@ -46,6 +53,9 @@ const authSlice = createSlice({
       .addCase(updateUserThunk.pending, handlePendingUpdateUser)
       .addCase(updateUserThunk.fulfilled, handleFulfilledUpdateUser)
       .addCase(updateUserThunk.rejected, handleRejectedUpdateUser)
+      .addCase(subscribeUserThunk.pending, handlePendingSubscribeUser)
+      .addCase(subscribeUserThunk.fulfilled, handleFulfilledSubscribeUser)
+      .addCase(subscribeUserThunk.rejected, handleRejectedSubscribeUser)
       .addCase(fetchCurrentThunk.pending, handlePendingCurrentUser)
       .addCase(fetchCurrentThunk.fulfilled, handleFulfilledCurrentUser)
       .addCase(fetchCurrentThunk.rejected, handleRejectedCurrentUser)

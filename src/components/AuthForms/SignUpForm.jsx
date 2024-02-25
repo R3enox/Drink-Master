@@ -165,9 +165,20 @@ const SignUpForm = () => {
         </div>
       </div>
       <div className="btn-container">
-        <button className="btn-up sign-btn" type="submit">
-          Sign Up
-        </button>
+        <div className="flex ">
+          <Link
+            to="http://localhost:3000/api/auth/google"
+            className="relative btn-google sign-google"
+            type="submit"
+          >
+            <svg className="w-[28px] h-[28px] fill-none stroke-primary-text-color cursor-pointer  rounded-full">
+              <use href={sprite + '#icon-google'}></use>
+            </svg>
+          </Link>
+          <button className="btn-up sign-btn signup-btn" type="submit">
+            Sign Up
+          </button>
+        </div>
         <Link className="sign-link-btn" to="/signin">
           Sign in
         </Link>
