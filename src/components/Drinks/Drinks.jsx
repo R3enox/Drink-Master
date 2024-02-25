@@ -6,7 +6,12 @@ import { usePagination } from 'hooks/usePagination';
 import { DrinksLimit } from 'constants/paginationLimits';
 import { DrinkImageComponent } from '../reUseComponents/DrinkImageComponent';
 
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
+
 export const Drinks = () => {
+  const { t, i18n } = useTranslation();
+
   const { page, per_page, countPagesOfPagination, setPage } =
     usePagination(DrinksLimit);
   const { search, category, ingredient } = useDrinkFilters();
@@ -31,9 +36,7 @@ export const Drinks = () => {
         </ul>
       )}
       {drinksAreNotFinded ? (
-        <DrinkImageComponent
-          description={'We did not find any drinks for you'}
-        />
+        <DrinkImageComponent description={t('DrinkImageComponent.Drinks')} />
       ) : (
         <Paginator
           totalCount={data?.totalCount}

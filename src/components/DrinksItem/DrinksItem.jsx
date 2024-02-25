@@ -2,7 +2,12 @@ import { Link } from 'react-router-dom';
 import sprite from '../../assets/sprite.svg';
 import { DeleteBtn, LinkSeeMore } from '../reUseComponents/Buttons/Buttons';
 
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
+
 const DrinksItem = ({ myDrink, openMyDrinkModal, onChooseItem }) => {
+  const { t, i18n } = useTranslation();
+
   const { _id, drink, drinkThumb, alcoholic, description } = myDrink;
   const openModal = () => {
     openMyDrinkModal();
@@ -23,13 +28,15 @@ const DrinksItem = ({ myDrink, openMyDrinkModal, onChooseItem }) => {
         {drink}
       </h3>
       <p className="mb-[18px] text-[14px] md:mb-[24px] leading-[1.29] text-grey-text-color">
-        {alcoholic ? 'Alcoholic' : 'Non-alcoholic'}
+        {alcoholic ? t('cocktailType.alco') : t('cocktailType.non')}
       </p>
       <p className="mb-[18px] md:mb-[24px] text-ellipsis  line-clamp-4 text-[14px] md:text-[16px] leading-[1.29] md:leading-[1.38]">
         {description}
       </p>
       <div className="flex gap-[8px]">
-        <LinkSeeMore to={`/drink/${_id}`}>See more</LinkSeeMore>
+        <LinkSeeMore to={`/drink/${_id}`}>
+          {t('link.DrinksItem.SeeMore')}
+        </LinkSeeMore>
         <DeleteBtn onClick={openModal}>
           <svg className="fill-none hover:inherit w-[24px] h-[24px] ">
             <use href={sprite + '#icon-trash'}></use>

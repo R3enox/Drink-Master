@@ -10,9 +10,13 @@ import { useState } from 'react';
 import UniversalModal from '../../components/DrinksItem/UniversalModal';
 import ModalButtons from '../../components/DrinksItem/ModalButtons';
 
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
+
 const MyDrinksPage = () => {
-  const { data, error, isFetching, isError } = useFetchMyDrinksQuery();
-  console.log(data);
+  const { t, i18n } = useTranslation();
+
+  const { data, isFetching, isError } = useFetchMyDrinksQuery();
 
   const [deleteMyDrink] = useDeleteMyDrinkMutation();
   const [isOpen, setIsOpen] = useState(false);
@@ -42,7 +46,8 @@ const MyDrinksPage = () => {
     >
       <section className="pb-[80px] md:pb-[140px] ">
         <div className="container mx-auto">
-          <PageTitle title="My drinks" />
+          {isError && <h1>{isError}</h1>}
+          <PageTitle title={t('title.myDrinks')} />
           {isFetching && <Loader isStatic />}
           {/* {error && <Redirect to="error.message" />} */}
           {data && data.length > 0 ? (
@@ -52,13 +57,15 @@ const MyDrinksPage = () => {
               onChooseItem={setCurrentId}
             />
           ) : (
-            <DrinkImageComponent description="You don't have your own drinks yet" />
+            <DrinkImageComponent
+              description={t('DrinkImageComponent.myDrinks')}
+            />
           )}
           {isOpen && (
             <UniversalModal
               isOpen={isOpen}
               closeFnc={closeMyDrinkModal}
-              content={'Are you sure you want to delete your drink?'}
+              content={t('UniversalModal.myDrinks')}
             >
               <ModalButtons
                 closeMyDrinkModal={closeMyDrinkModal}

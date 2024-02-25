@@ -7,7 +7,12 @@ import Loader from '../Loader/Loader';
 import { useState } from 'react';
 import sprite from '../../assets/sprite.svg';
 
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
+
 const SignInForm = () => {
+  const { t, i18n } = useTranslation();
+
   const isLoading = useSelector(selectAuthIsLoading);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -37,7 +42,7 @@ const SignInForm = () => {
       className="flex flex-col w-[335px] md:w-[400px] lg:w-[400px]"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <h1 className="form-title">Sign In</h1>
+      <h1 className="form-title">{t('title.SignInForm')}</h1>
       <div className="input-container">
         <div className="relative">
           <input
@@ -45,13 +50,15 @@ const SignInForm = () => {
               dirtyFields.email && !errors.email && 'correct'
             }`}
             type="email"
-            placeholder="Email"
+            placeholder={t('inputPlaceholder.SignInForm.email')}
             autoComplete="off"
             {...register('email', {
-              required: 'Email is required',
+              required: `${t('inputPlaceholder.SignInForm.emailValid')}`,
               pattern: {
                 value: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/,
-                message: 'This is an ERROR email',
+                message: `${t(
+                  'inputPlaceholder.SignInForm.emailPatternError'
+                )}`,
               },
             })}
           />
@@ -68,7 +75,9 @@ const SignInForm = () => {
               <svg className="absolute w-[20px] h-[20px] top-[18px] right-[18px] fill-correct-color stroke-correct-color">
                 <use href={sprite + '#icon-done'}></use>
               </svg>
-              <p className="correctMsg">This is a CORRECT email</p>
+              <p className="correctMsg">
+                {t('inputPlaceholder.SignInForm.emailPatternCorrect')}
+              </p>
             </>
           )}
         </div>
@@ -78,22 +87,25 @@ const SignInForm = () => {
               dirtyFields.password && !errors.password && 'correct'
             }`}
             type={showPassword ? 'text' : 'password'}
-            placeholder="Password"
+            placeholder={t('inputPlaceholder.SignInForm.password')}
             autoComplete="off"
             {...register('password', {
-              required: 'Password is required',
+              required: `${t('inputPlaceholder.SignInForm.passwordValid')}`,
               minLength: {
                 value: 6,
-                message: 'Password has to be at least 6 characters',
+                message: `${t(
+                  'inputPlaceholder.SignInForm.passwordPatternErrorLength'
+                )}`,
               },
               pattern: {
                 value: '/^(?=.*[a-z])(?=.*[A-Z])(?=.*d)[a-zA-Zd]{8,}$/i',
-                message: 'This is an ERROR password',
+                message: `${t(
+                  'inputPlaceholder.SignInForm.passwordPatternError'
+                )}`,
               },
             })}
           />
           {showPassword ? (
-
             <svg
               onClick={() => {
                 setShowPassword(!showPassword);
@@ -116,16 +128,18 @@ const SignInForm = () => {
             <p className="errorMsg">{errors.password.message}</p>
           )}
           {dirtyFields.password && !errors.password && (
-            <p className="correctMsg">This is a CORRECT password</p>
+            <p className="correctMsg">
+              {t('inputPlaceholder.SignInForm.passwordPatternCorrect')}
+            </p>
           )}
         </div>
       </div>
       <div className="btn-container">
         <button className="btn-up sign-btn" type="submit">
-          Sign In
+          {t('button.SignInForm.SignIn')}
         </button>
         <Link className="sign-link-btn" to="/signup">
-          Sign Up
+          {t('link.SignInForm.SignUp')}
         </Link>
       </div>
     </form>

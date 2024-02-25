@@ -2,12 +2,17 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useUploadUserMutation } from '../../../redux/auth/usersOperations';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { selectAuthUser } from '../../../redux/auth/authSelectors';
 import sprite from '../../../assets/sprite.svg';
+import '../../../i18n';
+
 // import "./styles.css"
 // import avatar from "../../../assets/img/header/index"
 
 const UserLogo = () => {
+  const { t, i18n } = useTranslation();
+
   const user = useSelector(selectAuthUser);
 
   const [uploadUser] = useUploadUserMutation();
@@ -70,7 +75,7 @@ const UserLogo = () => {
           className="pl-[24px] md:w-[400px] mt-[18px] md:mt-[25px] w-full  py-[18px] rounded-[200px] bg-transparent border-[1px]  border-border-color text-primary-text-color text-[16px] leading-[1.12] font-semibold hover:bg-primary-text-color hover:text-primary-text-button-color transition-colors md:text-[17px] md:py-[18px] md:leading-[1.56]"
           {...register('name', { required: true })}
           type="text"
-          placeholder="name"
+          placeholder={t('inputPlaceholder.SignUpForm.name')}
           autoComplete="off"
           onChange={handleChange}
           value={userName.name}
@@ -84,7 +89,7 @@ const UserLogo = () => {
           type="submit"
           onSubmit={handleSubmit(onSubmit)}
         >
-          Save changes
+          {t('button.UserLogo.Save')}
         </button>
       </form>
     </>

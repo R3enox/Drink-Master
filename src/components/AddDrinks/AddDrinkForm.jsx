@@ -8,7 +8,11 @@ import { useFilters } from '../../hooks/useFilters';
 import { createOptionsFromArrOfObjUsingId } from '../../helpers/createCollectionOptions';
 import { BtnDarkTheme } from '../reUseComponents/Buttons/Buttons';
 
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
+
 export const AddDrinkForm = () => {
+  const { t, i18n } = useTranslation();
   const { ingredients } = useFilters();
   const authToken = useSelector(selectAuthToken);
   const addedIngredients = [];
@@ -84,7 +88,7 @@ export const AddDrinkForm = () => {
         >
           Add
         </button> */}
-        <BtnDarkTheme>Add</BtnDarkTheme>
+        <BtnDarkTheme>{t('button.AddDrink')}</BtnDarkTheme>
       </form>
     </section>
   );

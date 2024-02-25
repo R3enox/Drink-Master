@@ -6,6 +6,9 @@ import { useFilters } from '../../hooks/useFilters';
 import { getDeviceType } from '../../helpers/getDeviceType';
 import { HomeDrinksLimit } from '../../constants/paginationLimits';
 
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
+
 const popularCategories = [
   'Ordinary Drink',
   'Cocktail',
@@ -14,6 +17,8 @@ const popularCategories = [
 ];
 
 export const PreviewDrinks = () => {
+  const { t, i18n } = useTranslation();
+
   const { data, isLoading } = useGetDrinksQuery(
     HomeDrinksLimit[getDeviceType()]
   );
@@ -45,7 +50,9 @@ export const PreviewDrinks = () => {
           ))}
         </ul>
         <div className="flex justify-center ">
-          <LinkDarkTheme to="/drinks">Other drinks</LinkDarkTheme>
+          <LinkDarkTheme to="/drinks">
+            {t('link.PreviewDrinks.SignUp')}
+          </LinkDarkTheme>
         </div>
       </div>
     )
