@@ -13,7 +13,7 @@ i18n
     fallbackLng: 'ua', // use en if detected lng is not available
     // saveMissing: true, // send not translated keys to endpoint
      backend: {
-      loadPath: '/frontend-drink-master/public/locales/{{en}}/translation.json',
+      loadPath: '/frontend-drink-master/locales/{{en}}/translation.json',
     },
   });
 
