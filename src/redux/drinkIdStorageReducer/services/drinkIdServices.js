@@ -5,7 +5,7 @@ export const fetchCocktailsById = createAsyncThunk(
   'cocktail/getCocktailById',
   async (id, thunkApi) => {
     try {
-      const { data } = await API.get(`/drink/${id}`);
+      const { data } = await API.get(`/drinks/${id}`);
       return data;
     } catch (err) {
       //   Notify.failure('Not connected to the server');
