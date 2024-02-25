@@ -7,9 +7,15 @@ import { useFilters } from '../../hooks/useFilters';
 import { createOptionsFromArrOfObjUsingId } from '../../helpers/createCollectionOptions';
 import { BtnDarkTheme } from '../reUseComponents/Buttons/Buttons';
 import { addDrink } from '../../redux/addDrinks/addDrinkSlice';
+import { useNavigate } from 'react-router-dom';
+
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
 
 export const AddDrinkForm = () => {
+  const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { ingredients } = useFilters();
   const addedIngredients = [];
 
@@ -18,7 +24,7 @@ export const AddDrinkForm = () => {
     [ingredients]
   );
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     addedIngredients.length = 0;
 
@@ -59,13 +65,7 @@ export const AddDrinkForm = () => {
         <DrinkPageHero />
         <DrinkIngredientsFields ingredientsOptions={ingredientsOptions} />
         <RecipePreparation />
-        {/* <button
-          type="submit"
-          className="block w-[108px] h-[46px] border-2 border-primary-text-color outline-none  rounded-[42px] bg-primary-text-color text-primary-text-button-color hover:border-hover-button-border-color hover:border-2 focus:border-hover-button-border-color focus:border-2 focus:outline-none ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms]"
-        >
-          Add
-        </button> */}
-        <BtnDarkTheme>Add</BtnDarkTheme>
+        <BtnDarkTheme>{t('button.AddDrink.Add')}</BtnDarkTheme>
       </form>
     </section>
   );

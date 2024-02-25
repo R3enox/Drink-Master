@@ -17,7 +17,12 @@ import {
 import { usePagination } from '../../hooks/usePagination';
 import { MyDrinksLimit } from '../../constants/paginationLimits';
 
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
+
 const MyDrinksPage = () => {
+  const { t, i18n } = useTranslation();
+
   const dispatch = useDispatch();
   const data = useSelector(selectMyDrinks);
   const isLoading = useSelector(selectMyDrinksLoading);
@@ -60,9 +65,9 @@ const MyDrinksPage = () => {
     >
       <section className="pb-[80px] md:pb-[140px] ">
         <div className="container mx-auto">
-          <PageTitle title="My drinks" />
+          {isError && <h1>{isError}</h1>}
+          <PageTitle title={t('title.myDrinks')} />
           {isLoading && <Loader isStatic />}
-          {/* {isError && <Redirect to="error.message" />} */}
           {totalCount > 0 && (
             <>
               <DrinksList
@@ -81,13 +86,15 @@ const MyDrinksPage = () => {
             </>
           )}
           {drinksAreNotFinded && (
-            <DrinkImageComponent description="You don't have your own drinks yet" />
+            <DrinkImageComponent
+              description={t('DrinkImageComponent.myDrinks')}
+            />
           )}
           {isOpen && (
             <UniversalModal
               isOpen={isOpen}
               closeFnc={closeMyDrinkModal}
-              content={'Are you sure you want to delete your drink?'}
+              content={t('UniversalModal.myDrinks')}
             >
               <ModalButtons
                 closeMyDrinkModal={closeMyDrinkModal}

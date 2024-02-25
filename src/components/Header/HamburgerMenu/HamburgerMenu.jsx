@@ -3,11 +3,10 @@ import { NavLink } from 'react-router-dom';
 import { useMainNav } from '../../../../hooks/useMainNav';
 import { Logo } from '../Logo/Logo';
 
-const HamburgerMenu =() => {
+const HamburgerMenu = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
-   const mainNav = useMainNav();
-
+  const mainNav = useMainNav();
 
   return (
     <div className=" flex items-center justify-between  border-gray-400 pl-[14px]">
@@ -51,10 +50,9 @@ const HamburgerMenu =() => {
                     <li
                       className="rounded-[200px] bg-transparent border-[1px]  border-border-color text-primary-text-color text-[14px] py-[8px] px-[16px] hover:bg-primary-text-button-color transition-colors"
                       key={id}
+                      onClick={() => setIsNavOpen((prev) => !prev)}
                     >
-                      <NavLink onClick to={href}>
-                        {title}
-                      </NavLink>
+                      <NavLink to={href}>{title}</NavLink>
                     </li>
                   ))}
                 </ul>
@@ -85,5 +83,5 @@ const HamburgerMenu =() => {
     `}</style>
     </div>
   );
-}
+};
 export default HamburgerMenu;
