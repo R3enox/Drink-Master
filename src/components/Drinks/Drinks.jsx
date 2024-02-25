@@ -35,7 +35,7 @@ export const Drinks = () => {
           description={'We did not find any drinks for you'}
         />
       )}
-      {data?.totalCount && (
+      {data?.totalCount > 0 && (
         <Paginator
           totalCount={data?.totalCount}
           itemsPerPage={per_page}
