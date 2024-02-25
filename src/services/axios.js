@@ -3,19 +3,12 @@ import { store } from '../redux/store';
 import { setTokens } from '../redux/auth/authReducer';
 
 const instance = axios.create({
-  // baseURL: 'https://drink-master-4fm6.onrender.com/api',
-  baseURL: 'http://localhost:3000/api',
+  baseURL: 'https://drink-master-4fm6.onrender.com/api',
 });
 
 export const setAuthToken = (token) => {
   instance.defaults.headers.common.authorization = `Bearer ${token}`;
 };
-
-// instance.interceptors.request.use((config) => {
-//   const accessToken = localStorage.getItem('accessToken');
-//   config.headers.common.Authorization = `Bearer ${accessToken}`;
-//   return config;
-// });
 
 instance.interceptors.response.use(
   (response) => response,
@@ -35,18 +28,6 @@ instance.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-
-export const getCurrent = async (token) => {
-  try {
-    console.log('1');
-    setAuthToken(token);
-    const { data } = await instance.get('/users/current');
-    return data;
-  } catch (error) {
-    clearAuthToken();
-    throw error;
-  }
-};
 
 export const clearAuthToken = () => {
   instance.defaults.headers.common.authorization = '';

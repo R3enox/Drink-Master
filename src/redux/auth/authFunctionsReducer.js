@@ -39,14 +39,10 @@ export const handleFulfilledCurrentUser = (state, { payload }) => {
   state.isLoggedIn = true;
   state.isRefreshing = false;
   state.user = payload.user;
-  state.accessToken = payload.accessToken;
-  state.refreshToken = payload.refreshToken;
 };
 
-export const handleRejectedCurrentUser = (state, { payload }) => {
+export const handleRejectedCurrentUser = (state) => {
   state.isRefreshing = false;
   state.isLoggedIn = false;
   state.user = initialState.user;
-  state.accessToken = payload.accessToken;
-  state.refreshToken = payload.refreshToken;
 };

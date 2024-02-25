@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 import API, { setAuthToken } from 'services/axios';
-import { getCurrent } from '../../services/axios';
 
 export const signUpThunk = createAsyncThunk(
   'auth/signup',
@@ -63,36 +62,20 @@ export const refreshUserThunk = createAsyncThunk(
 
 export const fetchCurrentThunk = createAsyncThunk(
   'auth/current',
-  async (_, { rejectWithValue, getState }) => {
+  async (_, thunkApi) => {
     try {
-      const { auth } = getState();
-      console.log(auth);
-      const result = await API.getCurrent(auth.accessToken);
-      return result;
+      const state = thunkApi.getState();
+      const accessToken = state.auth.accessToken;
+      setAuthToken(accessToken);
+      const { data } = await API.get('/users/current');
+      return data;
     } catch ({ response }) {
       const { status, data } = response;
       const error = {
         status,
         message: data.message,
       };
-      return rejectWithValue(error);
+      return thunkApi.rejectWithValue(error);
     }
   }
 );
-
-// export const refreshUserThunk = createAsyncThunk(
-//   'auth/refresh',
-//   async (_, thunkAPI) => {
-//     const persistedToken = thunkAPI.getState().auth.accessToken;
-//     if (persistedToken === null) {
-//       return thunkAPI.rejectWithValue('Unable to fetch user');
-//     }
-//     try {
-//       setAuthToken(persistedToken);
-//       const res = await API.get('/users/current');
-//       return res.data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
