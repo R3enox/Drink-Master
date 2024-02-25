@@ -93,7 +93,7 @@ const FavoriteDrinksPage = () => {
             <UniversalModal
               isOpen={isOpen}
               closeFnc={closeFavoriteDrinkModal}
-              content={'Are you sure you want to delete your drink?'}
+              content={t('UniversalModal.Favorite')}
             >
               <ModalButtons
                 closeMyDrinkModal={closeFavoriteDrinkModal}

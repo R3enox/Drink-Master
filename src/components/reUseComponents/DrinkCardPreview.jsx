@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import defaultImgDrink from '../../assets/block.jpg';
+import '../../i18n';
+
 export const DrinkCardPreview = ({ drink }) => {
+  const { t, i18n } = useTranslation();
   const imageSrc = drink.drinkThumb || defaultImgDrink;
   return (
     <li key={drink._id} className="flex flex-col gap-[14px]">
@@ -22,7 +26,7 @@ export const DrinkCardPreview = ({ drink }) => {
           to={`../drink/${drink._id}`}
           className="block h-full text-grey-text-color hover:text-hover-text-color leading-[1.29] md:leading-[1.125]"
         >
-          See more
+          {t('link.DrinkCardPreview')}
         </Link>
       </div>
     </li>
