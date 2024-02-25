@@ -62,7 +62,7 @@ const DrinkPageHero = ({ cocktail }) => {
             />
           ) : (
             <ButtonComponent
-              descr={t('button.toggleFavorite.ButtonComponentDel')}
+              descr={t('button.toggleFavorite.ButtonComponentAdd')}
               btnFunction={() => {
                 toggleFavorite(_id);
                 toast.success(`${t('toastError.DrinkPageHeroAdd')}`, {
