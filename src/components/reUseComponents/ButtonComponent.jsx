@@ -6,7 +6,7 @@ export const ButtonComponent = ({ descr, btnFunction, id }) => {
       onClick={() => btnFunction(id)}
       disabled={!id}
     >
-      <span className="text-primary-text-button-color font-semibold text-[14px] leading-[1.29] transition lg:font-semibold lg:text-base lg:leading-[1.125] md:leading-[1.12]">
+      <span className=" text-[14px] leading-[1.29] transition lg:font-semibold lg:text-base lg:leading-[1.125] md:leading-[1.12]">
         {descr}
       </span>
     </button>
