@@ -1,4 +1,6 @@
-const DrinkIngredientsList = ({ ingredients, currentIngred }) => {
+const DrinkIngredientsList = ({ ingredients }) => {
+  console.log('ingredients: ', ingredients);
+
   return (
     <>
       <h2 className="mb-[42px] font-medium text-[16px] leading-[1.25] text-grey-text-color md:mb-[24px] md:font-medium md:text-[16px] md:leading-[1.25]">
@@ -12,11 +14,17 @@ const DrinkIngredientsList = ({ ingredients, currentIngred }) => {
                 _id,
                 title,
                 ingredientThumb,
+                measure,
                 'thumb-medium': thumbMedium,
                 'thumb-small': thumbSmall,
-              },
-              index
+              }
+              
             ) => {
+            
+            
+            
+          
+            
               return (
                 <div
                   key={_id}
@@ -40,8 +48,9 @@ const DrinkIngredientsList = ({ ingredients, currentIngred }) => {
                     <p className="font-medium leading-[1.29px] text-[14px] md:text-lg md:leading-6 lg:font-medium lg:text-base lg:leading-[1.33333] ">
                       {title}
                     </p>
+                  
                     <p className="mt-[8px] mb-[8px] text-grey-text-color font-medium leading-[1.29px] text-[14px] md:font-medium md:text-base md:leading-[1.25] lg:text-base">
-                      {currentIngred[index].measure}
+                      {measure}
                     </p>
                   </div>
                 </div>
