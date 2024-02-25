@@ -1,9 +1,12 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+import instance from '../../services/axios';
+const baseURL = instance.defaults.baseURL;
+
 export const myDrinksApi = createApi({
   reducerPath: 'myDrinksApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://drink-master-4fm6.onrender.com/api/',
+    baseUrl: `${baseURL}`,
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.token;
 
@@ -18,7 +21,10 @@ export const myDrinksApi = createApi({
   tagTypes: ['myDrinks'],
   endpoints: (build) => ({
     fetchMyDrinks: build.query({
-      query: () => ({ url: '/drinks/own', method: 'get' }),
+      query: ({ page, per_page }) => {
+        const queryParams = new URLSearchParams({ page, per_page });
+        return { url: `/drinks/own?${queryParams}`, method: 'get' };
+      },
       providesTags: ['myDrinks'],
     }),
     deleteMyDrink: build.mutation({
