@@ -4,8 +4,13 @@ import { useDispatch } from 'react-redux';
 import { subscribeUserThunk } from '../../redux/auth/authOperations';
 import sprite from '../../assets/sprite.svg';
 
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
+
 export const SubscribeForm = () => {
   const dispatch = useDispatch();
+  const { t, i18n } = useTranslation();
+
   const {
     register,
     handleSubmit,
@@ -20,8 +25,7 @@ export const SubscribeForm = () => {
   return (
     <div className="md:flex flex-col lg:w-[309px]">
       <p className="text-[14px] leading-[1.43] text-primary-text-color mb-[24px] md:text-[18px] md:leading-[1.33]">
-        Subscribe up to our newsletter. Be in touch with latest news and special
-        offers, etc.
+        {t('SubscribeForm.text')}
       </p>
       <form
         className="relative flex flex-col gap-y-[18px] mb-[80px] md:mb-[134px] lg:mb-[80px]"
@@ -32,12 +36,12 @@ export const SubscribeForm = () => {
             errors?.email && 'error'
           } ${dirtyFields?.email && !errors.email && 'correct'}`}
           type="email"
-          placeholder="Enter the email"
+          placeholder={t('inputPlaceholder.SubscribeForm.email')}
           {...register('email', {
-            required: 'Email is required.',
+            required: `${t('inputPlaceholder.SignInForm.emailValid')}`,
             pattern: {
               value: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/,
-              message: 'This is an ERROR email.',
+              message: `${t('inputPlaceholder.SignInForm.emailPatternError')}`,
             },
           })}
         />

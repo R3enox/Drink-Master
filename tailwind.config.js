@@ -37,6 +37,7 @@ export default {
       'background-color': '#06060c;',
       'error-color': '#da1414',
       'correct-color': '#3cbc81',
+      'icon-plus': 'rgb(71 85 105)'
     },
   },
   plugins: [],

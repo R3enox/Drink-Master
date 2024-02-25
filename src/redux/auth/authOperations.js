@@ -7,6 +7,7 @@ export const signUpThunk = createAsyncThunk(
   async (formData, thunkApi) => {
     try {
       const { data } = await API.post('/auth/signup', formData);
+      localStorage.removeItem('signUp');
       setAuthToken(data.accessToken);
       return data;
     } catch (error) {
