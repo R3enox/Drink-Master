@@ -1,8 +1,8 @@
-/* eslint-disable react/prop-types */
 import ReactPaginate from 'react-paginate';
 
-import sprite from 'assets/sprite.svg';
+import { scrollToTop } from 'helpers/scrollToTop';
 
+import sprite from 'assets/sprite.svg';
 import './Paginator.css';
 
 export const Paginator = ({
@@ -12,6 +12,11 @@ export const Paginator = ({
   setPage,
   countPagesOfPagination,
 }) => {
+  const handlePageChange = (e) => {
+    setPage(e.selected + 1);
+    scrollToTop();
+  };
+
   return (
     <ReactPaginate
       containerClassName={'pagination-list'}
@@ -19,7 +24,7 @@ export const Paginator = ({
       marginPagesDisplayed={1}
       pageCount={Math.ceil(totalCount / itemsPerPage)}
       initialPage={initialPage - 1}
-      onPageChange={(event) => setPage(event.selected + 1)}
+      onPageChange={handlePageChange}
       previousLabel={
         <svg>
           <use href={sprite + '#icon-pagination-arrow'}></use>
