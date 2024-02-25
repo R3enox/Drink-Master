@@ -5,7 +5,9 @@ import { initReactI18next } from 'react-i18next';
 
 i18n
   .use(detector)
-  .use(backend)
+  .use(backend: {
+        loadPath: '/frontend-drink-master/locales/{{en}}/translation.json'
+    })
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
     debug: true,
