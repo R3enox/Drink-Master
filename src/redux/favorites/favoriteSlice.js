@@ -1,52 +1,56 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import instance from '../../services/axios';
-const baseURL = instance.defaults.baseURL;
+import { createSlice } from '@reduxjs/toolkit';
+import { addFavorite, deleteFavorite, getFavorites } from './favoriteAPI';
 
-export const favoriteApi = createApi({
-  reducerPath: 'favorites',
-  baseQuery: fetchBaseQuery({
-    baseUrl: `${baseURL}`,
-    prepareHeaders: (headers, { getState }) => {
-      const token = getState().auth.token;
-
-      if (token) {
-        headers.set('authorization', `Bearer ${token}`);
-      }
-
-      return headers;
-    },
-  }),
-  tagTypes: ['favofitesDrinks'],
-  endpoints: (builder) => ({
-    fechFavorites: builder.query({
-      query: ({ page, per_page }) => {
-        const queryParams = new URLSearchParams({ page, per_page });
-        return {
-          url: `drinks/favorite?${queryParams}`,
-          method: 'GET',
-        };
-      },
-      providesTags: ['favofitesDrinks'],
-    }),
-    addFavorites: builder.mutation({
-      query: (id) => ({
-        url: `drinks/${id}/favorite/add`,
-        method: 'POST',
-      }),
-      invalidatesTags: ['favofitesDrinks'],
-    }),
-    removeFavorites: builder.mutation({
-      query: (id) => ({
-        url: `drinks/${id}/favorite/remove`,
-        method: 'delete',
-      }),
-      invalidatesTags: ['favofitesDrinks'],
-    }),
-  }),
+const favoritesSlice = createSlice({
+  name: 'favorites',
+  initialState: {
+    favorites: [],
+    totalCount: null,
+    isLoading: false,
+    error: null,
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getFavorites.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(getFavorites.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.favorites = payload.paginatedResult;
+        state.totalCount = payload.totalCount;
+      })
+      .addCase(getFavorites.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
+      .addCase(deleteFavorite.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(deleteFavorite.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.favorites = state.favorites.filter(
+          ({ _id: id }) => id !== payload
+        );
+      })
+      .addCase(deleteFavorite.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
+      .addCase(addFavorite.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(addFavorite.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.favorites.push(payload);
+      })
+      .addCase(addFavorite.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      });
+  },
 });
 
-export const {
-  useFechFavoritesQuery,
-  useRemoveFavoritesMutation,
-  useAddFavoritesMutation,
-} = favoriteApi;
+export const favoritesReducer = favoritesSlice.reducer;

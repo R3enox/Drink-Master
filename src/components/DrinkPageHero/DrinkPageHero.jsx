@@ -1,20 +1,22 @@
-import { useSelector } from 'react-redux';
-import {
-  useAddFavoritesMutation,
-  useRemoveFavoritesMutation,
-} from '../../redux/favorites/favoriteSlice';
+import { useDispatch, useSelector } from 'react-redux';
+// import {
+//   useAddFavoritesMutation,
+//   useRemoveFavoritesMutation,
+// } from '../../redux/favorites/favoriteSlice';
 import { selectAuthUser } from '../../redux/auth/authSelectors';
 import { useState } from 'react';
 import { ButtonComponent } from '../reUseComponents/ButtonComponent';
 import { toast } from 'react-toastify';
+import { addFavorite, deleteFavorite } from '../../redux/favorites/favoriteAPI';
 
 const DrinkPageHero = ({ cocktail }) => {
+  const dispath = useDispatch();
   const user = useSelector(selectAuthUser);
   const [isFirstRender, setIsFirstRender] = useState(true);
 
-  const [addToFavorite] = useAddFavoritesMutation();
+  // const [addToFavorite] = useAddFavoritesMutation();
 
-  const [deleteFavorite] = useRemoveFavoritesMutation();
+  // const [deleteFavorite] = useRemoveFavoritesMutation();
 
   const { _id, drink, category, alcoholic, description, drinkThumb, favorite } =
     cocktail;
@@ -26,10 +28,11 @@ const DrinkPageHero = ({ cocktail }) => {
   const toggleFavorite = async (id) => {
     try {
       if (isFav) {
-        await deleteFavorite(id);
+        await dispath(deleteFavorite(id));
         setIsFavorite(false);
       } else {
-        await addToFavorite(id);
+        await dispath(addFavorite(id));
+
         setIsFavorite(true);
       }
     } catch (error) {
@@ -66,7 +69,7 @@ const DrinkPageHero = ({ cocktail }) => {
               descr={'Add to favorite drinks'}
               btnFunction={() => {
                 toggleFavorite(_id);
-                toast('Drink added to favorites !');
+                toast.success('Drink added to favorites !', { icon: false });
               }}
               id={_id}
             />

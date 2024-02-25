@@ -253,6 +253,27 @@ body {
     );
   }
 }
+/* Favorites Page */
+@layer base {
+  .bg-favorites-set {
+    background-image: image-set(
+      url('assets/img/favoritesPage/mobile-bg-favorite.png') 1x,
+      url('assets/img/favoritesPage/mobile-bg-favorite@2x.png') 2x
+    );
+  }
+  .bg-favorites-set-tablet {
+    background-image: image-set(
+      url('assets/img/favoritesPage/tablet-bg-favorites.png') 1x,
+      url('assets/img/favoritesPage/tablet-bg-favorites@2x.png') 2x
+    );
+  }
+  .bg-favorites-set-desktop {
+    background-image: image-set(
+      url('assets/img/favoritesPage/desktop-bg-favorites.png') 1x,
+      url('assets/img/favoritesPage/desktop-bg-favorites@2x.png') 2x
+    );
+  }
+}
 
 /* Search Filters Select styles  */
 
