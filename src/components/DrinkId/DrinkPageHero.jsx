@@ -51,7 +51,7 @@ const DrinkPageHero = ({ cocktail }) => {
               descr={t('button.toggleFavorite.ButtonComponentDel')}
               btnFunction={() => {
                 toggleFavorite(_id,isFav,dispatch,deleteFavorite,setIsFavorite,addFavorite,setIsFavorite,setIsFirstRender,toast)
-                toast.success(`${t('toastError.DrinkPageHeroAdd')}`, {
+                toast.success(`${('toastError.DrinkPageHeroAdd')}`, {
                   icon: false,
                 });
               }}
