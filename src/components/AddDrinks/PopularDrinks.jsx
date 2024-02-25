@@ -30,7 +30,7 @@ export const PopularDrinks = () => {
               <img
                 src={drink.drinkThumb}
                 alt={drink.drink}
-                className="w-[90px] h-[90px] rounded-[8px] object-cover scale-100 ease-in-out duration-300  hover:scale-[1.035] hover:contrast-[0.9"
+                className="w-[90px] h-[90px] rounded-[8px] object-cover scale-100 ease-in-out duration-300  hover:scale-[1.035] hover:contrast-[0.9]"
               />
               <div>
                 <h3>{drink.drink}</h3>
