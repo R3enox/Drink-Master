@@ -28,7 +28,7 @@ const UserLogoPopup = ({
     <>
       <div
         onClick={openPopUpFnc}
-        className="z-[101] absolute p-[18px] h-[134px] w-[177px] bg-indigo-500 sm:top-[73px] md:top-[85px] sm:right-[15px] md:right-[25px]  lg:right-[95px] rounded-md bg-primary-text-button-color"
+        className="z-[101] absolute p-[18px] h-[134px] w-[177px] bg-indigo-500  sm:translate-x-[-20%] sm:translate-y-[78%]  md:translate-x-[-10%] md:translate-y-[82%]  lg:translate-x-[-20%] lg:translate-y-[82%] rounded-md bg-primary-text-button-color"
       >
         <div onClick={openModal}>
           <div className="flex justify-between mb-[28px]">

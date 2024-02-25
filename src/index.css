@@ -47,6 +47,23 @@ body {
   }
 }
 
+/* Header Burger Menu */
+@layer base {
+  .bg-header-burger {
+    background-image: image-set(url('assets/img/header/bg-header-burger.png') 1x,
+        url('assets/img/header/bg-header-burger.png') 2x);
+  }
+
+        .bg-header-left {
+          background-image: image-set(url('assets/img/header/bg-header-left.png') 1x,
+              url('assets/img/header/bg-header-left.png') 2x);
+        }
+
+
+
+
+}
+
 /* .restricted-page-container {
   @apply bg-image-set bg-cover min-h-[100vh] md:bg-image-set-tablet lg:bg-image-set-desktop lg:bg-background-color flex justify-center items-center py-[20px] px-[20px] md:px-[64px] lg:px-[100px];
 } */
