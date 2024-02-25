@@ -1,10 +1,12 @@
-const DrinkIngredientsList = ({ ingredients }) => {
-  console.log('ingredients: ', ingredients);
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
 
+const DrinkIngredientsList = ({ ingredients }) => {
+  const { t, i18n } = useTranslation();
   return (
     <>
       <h2 className="mb-[42px] font-medium text-[16px] leading-[1.25] text-grey-text-color md:mb-[24px] md:font-medium md:text-[16px] md:leading-[1.25]">
-        Ingredients
+        {t('title2.DrinkIngredientsList')}
       </h2>
       <div className="grid grid-cols-2 gap-[20px] md:grid-cols-3 md:lg:grid-cols-5  md:gap-[22px]">
         {ingredients &&

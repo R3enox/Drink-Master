@@ -8,10 +8,13 @@ import { createOptionsFromArrOfObjUsingId } from '../../helpers/createCollection
 import { BtnDarkTheme } from '../reUseComponents/Buttons/Buttons';
 import { addDrink } from '../../redux/addDrinks/addDrinkSlice';
 
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
+
 export const AddDrinkForm = () => {
+  const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
   const { ingredients } = useFilters();
-
   const addedIngredients = [];
 
   const ingredientsOptions = useMemo(
@@ -24,8 +27,6 @@ export const AddDrinkForm = () => {
     addedIngredients.length = 0;
 
     const formData = new FormData(e.currentTarget);
-
-    console.log(formData);
 
     formData.getAll('ingredientId').forEach((ingredientId, index) => {
       const measure = formData.getAll('measure')[index];
@@ -53,11 +54,6 @@ export const AddDrinkForm = () => {
       );
     });
 
-    formData.forEach((value, name) => {
-      console.log('name: ', name);
-      console.log('value: ', value);
-    });
-
     dispatch(addDrink(formData));
   };
 
@@ -73,7 +69,7 @@ export const AddDrinkForm = () => {
         >
           Add
         </button> */}
-        <BtnDarkTheme>Add</BtnDarkTheme>
+        <BtnDarkTheme>{t('button.AddDrink.Add')}</BtnDarkTheme>
       </form>
     </section>
   );

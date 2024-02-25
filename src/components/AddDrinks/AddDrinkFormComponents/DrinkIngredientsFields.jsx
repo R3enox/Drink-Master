@@ -4,7 +4,12 @@ import { AddDrinkTitle } from './AddDrinkTitle';
 import Select from 'react-select';
 import { nanoid } from 'nanoid';
 
+import { useTranslation } from 'react-i18next';
+import '../../../i18n';
+
 export const DrinkIngredientsFields = ({ ingredientsOptions }) => {
+  const { t, i18n } = useTranslation();
+
   const [ingredientsCount, setIngredientsCount] = useState(3);
   const [ingredientInputs, setIngredientInputs] = useState([]);
 
@@ -114,7 +119,7 @@ export const DrinkIngredientsFields = ({ ingredientsOptions }) => {
   return (
     <>
       <div className="flex justify-between lg:w-[540px]">
-        <AddDrinkTitle text="Ingredients" className="inline-block" />
+        <AddDrinkTitle text={t('title2.AddDrink')} className="inline-block" />
         <div
           id="counter"
           className="w-[104px] h-[38px] md:w-[114px] md:h-[44px]  flex justify-around items-center border-solid border-grey-text-color border-[1px] rounded-3xl"

@@ -1,24 +1,30 @@
 import { useParams } from 'react-router-dom';
-import { getIdIngredients, scrollToTop } from './services.js';
-import { useFilters } from 'hooks/useFilters.js';
+import { useDispatch, useSelector } from 'react-redux';
+
+import DrinkPageHero from 'components/DrinkPageHero/DrinkPageHero';
+import DrinkIngredientsList from 'components/DrinkIngredientsList/DrinkIngredientsList';
+import RecipePreparation from 'components/RecipePreparation/RecipePreparation';
+import Loader from 'components/Loader/Loader.jsx';
+
+import {
+  selectGetCurrentCocktail,
+  selectIsLoading,
+} from '../../redux/drinkIdStorageReducer/drinkIdStorageReducer.selectors';
+import { fetchCocktailsById } from '../../redux/drinkIdStorageReducer/services/drinkIdServices';
 import { selectAuthError } from '../../redux/auth/authSelectors.js';
-import { useSelector } from 'react-redux';
-import { useGetCocktailForIdQuery } from '../../redux/drinkIdStorageReducer/drinkIdStorageReducer';
-
-import Loader from '../../components/Loader/Loader.jsx';
-import DrinkPageHero from '../../components/DrinkId/DrinkPageHero.jsx';
-import DrinkIngredientsList from '../../components/DrinkId/DrinkIngredientsList.jsx';
-import RecipePreparation from '../../components/DrinkId/RecipePreparation.jsx';
-import ScrollBtn from '../../components/reUseComponents/Buttons/ScrollBtn.jsx/ScrollBtn.jsx';
+import { mapIngredientsOfCocktail } from 'helpers/createIngredientsCollection.js';
+import { scrollToTop } from 'helpers/scrollToTop.js';
+import { useFilters } from 'hooks/useFilters.js';
+import { useGetCocktailForIdQuery } from '../../redux/drinkIdStorageReducer/drinkIdStorageReducer.js';
 import { useEffect } from 'react';
-
 
 const DrinkPage = () => {
   const { drinkId } = useParams();
   const { data, isLoading } = useGetCocktailForIdQuery(drinkId);
   const isError = useSelector(selectAuthError);
   const { ingredients } = useFilters();
-  const ingIds = getIdIngredients(data);
+
+  const ingIds = mapIngredientsOfCocktail(data);
 
   const ingredByFilter =
     ingredients &&

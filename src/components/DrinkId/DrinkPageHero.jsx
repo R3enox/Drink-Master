@@ -1,20 +1,19 @@
-import { useSelector } from 'react-redux';
-import {
-  useAddFavoritesMutation,
-  useRemoveFavoritesMutation,
-} from '../../redux/favorites/favoriteSlice';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectAuthUser } from '../../redux/auth/authSelectors';
 import { useState } from 'react';
 import { ButtonComponent } from '../reUseComponents/ButtonComponent';
 import { toast } from 'react-toastify';
+import { addFavorite, deleteFavorite } from '../../redux/favorites/favoriteAPI';
+
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
 
 const DrinkPageHero = ({ cocktail }) => {
+  const { t, i18n } = useTranslation();
+
+  const dispatch = useDispatch();
   const user = useSelector(selectAuthUser);
   const [isFirstRender, setIsFirstRender] = useState(true);
-
-  const [addToFavorite] = useAddFavoritesMutation();
-
-  const [deleteFavorite] = useRemoveFavoritesMutation();
 
   const { _id, drink, category, alcoholic, description, drinkThumb, favorite } =
     cocktail;
@@ -26,10 +25,10 @@ const DrinkPageHero = ({ cocktail }) => {
   const toggleFavorite = async (id) => {
     try {
       if (isFav) {
-        await deleteFavorite(id);
+        await dispatch(deleteFavorite(id));
         setIsFavorite(false);
       } else {
-        await addToFavorite(id);
+        await dispatch(addFavorite(id));
         setIsFavorite(true);
       }
     } catch (error) {
@@ -54,19 +53,21 @@ const DrinkPageHero = ({ cocktail }) => {
         <div className="pt-10 pb-20">
           {isFav ? (
             <ButtonComponent
-              descr={'Remove from favorites'}
+              descr={t('button.toggleFavorite.ButtonComponentDel')}
               btnFunction={() => {
                 toggleFavorite(_id);
-                toast('Drink removed from favorites !');
+                toast(`${t('toastError.DrinkPageHeroDel')}`);
               }}
               id={_id}
             />
           ) : (
             <ButtonComponent
-              descr={'Add to favorite drinks'}
+              descr={t('button.toggleFavorite.ButtonComponentDel')}
               btnFunction={() => {
                 toggleFavorite(_id);
-                toast('Drink added to favorites !');
+                toast.success(`${t('toastError.DrinkPageHeroAdd')}`, {
+                  icon: false,
+                });
               }}
               id={_id}
             />

@@ -1,10 +1,19 @@
 import Loader from '../Loader/Loader';
 import { LinkDarkTheme } from '../reUseComponents/Buttons/Buttons';
 import { DrinkCardPreview } from '../reUseComponents/DrinkCardPreview';
-import { useGetDrinksQuery } from '../../redux/drinks/drinksAPI';
+import { getDrinks } from '../../redux/drinks/drinksAPI';
 import { useFilters } from '../../hooks/useFilters';
 import { getDeviceType } from '../../helpers/getDeviceType';
 import { HomeDrinksLimit } from '../../constants/paginationLimits';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import {
+  selectDrinks,
+  selectDrinksIsLoading,
+} from '../../redux/drinks/drinksSelector';
+
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
 
 const popularCategories = [
   'Ordinary Drink',
@@ -14,9 +23,15 @@ const popularCategories = [
 ];
 
 export const PreviewDrinks = () => {
-  const { data, isLoading } = useGetDrinksQuery(
-    HomeDrinksLimit[getDeviceType()]
-  );
+  const { t, i18n } = useTranslation();
+
+  const data = useSelector(selectDrinks);
+  const isLoading = useSelector(selectDrinksIsLoading);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getDrinks(HomeDrinksLimit[getDeviceType()]));
+  }, [dispatch]);
 
   const { categories } = useFilters();
   const filteredCategories =
@@ -45,7 +60,9 @@ export const PreviewDrinks = () => {
           ))}
         </ul>
         <div className="flex justify-center ">
-          <LinkDarkTheme to="/drinks">Other drinks</LinkDarkTheme>
+          <LinkDarkTheme to="/drinks">
+            {t('link.PreviewDrinks.SignUp')}
+          </LinkDarkTheme>
         </div>
       </div>
     )
