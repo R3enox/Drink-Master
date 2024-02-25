@@ -2,7 +2,7 @@ import sprite from '../../../assets/sprite.svg';
 
 import { useEffect, useCallback } from 'react';
 
-const HeaderModal = ({ children, isOpen, closeFnc}) => {
+const HeaderModal = ({ children, isOpen, closeFnc }) => {
   const closeOnClick = useCallback(() => {
     if (isOpen) {
       closeFnc();
@@ -24,7 +24,6 @@ const HeaderModal = ({ children, isOpen, closeFnc}) => {
   }, [closeOnClick]);
 
   const handleOverlayClick = (e) => {
-    console.log(e.target === e.currentTarget);
     if (e.target === e.currentTarget) {
       closeOnClick();
     }
@@ -48,5 +47,6 @@ const HeaderModal = ({ children, isOpen, closeFnc}) => {
         {children}
       </div>
     </div>
-  );}
-  export default HeaderModal;
+  );
+};
+export default HeaderModal;

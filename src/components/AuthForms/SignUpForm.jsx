@@ -35,9 +35,8 @@ const SignUpForm = () => {
   const onSubmit = (data) => {
     data.dateOfBirth = dateOfBirth;
     dispatch(signUpThunk(data));
-    console.log('first');
+
     if (token) {
-      console.log('second');
       navigate('/home');
     }
 
