@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAuthUser } from '../../redux/auth/authSelectors';
 import { useState } from 'react';
-import { ButtonComponent } from '../reUseComponents/ButtonComponent';
 import { toast } from 'react-toastify';
 import { addFavorite, deleteFavorite } from '../../redux/favorites/favoriteAPI';
+import { ButtonComponent } from '../reUseComponents/Buttons/Buttons';
 
 import { useTranslation } from 'react-i18next';
 import '../../i18n';
@@ -48,7 +48,7 @@ const DrinkPageHero = ({ cocktail }) => {
             />
           ) : (
             <ButtonComponent
-              descr={t('button.toggleFavorite.ButtonComponentDel')}
+              descr={t('button.toggleFavorite.ButtonComponentAdd')}
               btnFunction={() => {
                 toggleFavorite(_id,isFav,dispatch,deleteFavorite,setIsFavorite,addFavorite,setIsFavorite,setIsFirstRender,toast)
                 toast.success(`${('toastError.DrinkPageHeroAdd')}`, {
