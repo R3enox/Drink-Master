@@ -12,9 +12,6 @@ i18n
     whitelist: ['en', 'ua'],
     fallbackLng: 'ua', // use en if detected lng is not available
     // saveMissing: true, // send not translated keys to endpoint
-     backend: {
-      loadPath: '/locales/{{en}}/{{translation}}.json'
-     }
   });
 
 export default i18n;
