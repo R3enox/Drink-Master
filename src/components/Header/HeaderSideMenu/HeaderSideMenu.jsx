@@ -5,9 +5,9 @@ export const HeaderSideMenu = ({ toogleModal, burger }) => {
   const mainNav = useMainNav();
 
   return (
-    <div className="bg-mobile-bg-commonpage">
+    <div className="snap-none">
       <nav
-        className={`bg-button-hover-color overflow-hidden absolute flex flex-col h-[1000%] w-full z-[100] bg-mobile-bg-commonpage bg-no-repeat  ${
+        className={`bg-button-hover-color overflow-hidden absolute flex flex-col h-[1000%] w-full z-[100] bg-common-set-tablet  bg-[length:900px_1300px] bg-right-top bg-no-repeat snap-none  ${
           burger ? 'open top-[75px] left-0' : 'close top-[-100px] left-0'
         }`}
       >

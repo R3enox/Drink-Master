@@ -24,8 +24,6 @@ export const AddDrinkForm = () => {
 
     const formData = new FormData(e.currentTarget);
 
-    console.log(formData);
-
     formData.getAll('ingredientId').forEach((ingredientId, index) => {
       const measure = formData.getAll('measure')[index];
       addedIngredients.push({
@@ -50,11 +48,6 @@ export const AddDrinkForm = () => {
         `ingredients[${index}][ingredientId]`,
         addedIngredient.ingredientId
       );
-    });
-
-    formData.forEach((value, name) => {
-      console.log('name: ', name);
-      console.log('value: ', value);
     });
 
     dispatch(addDrink(formData));

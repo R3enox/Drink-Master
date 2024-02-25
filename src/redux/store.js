@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { userApi } from './auth/usersOperations';
 import { filtersReducer } from './filters/slice';
 import { drinkIdStorageReducer } from './drinkIdStorageReducer/drinkIdStorageReducer';
 import { drinksReducer } from './drinks/drinksSlice';
@@ -22,7 +21,6 @@ export const store = configureStore({
     auth: authReducer,
     drinks: drinksReducer,
     popular: popularDrinksReducer,
-    [userApi.reducerPath]: userApi.reducer,
     filters: filtersReducer,
     drinkIdStorage: drinkIdStorageReducer,
     myDrinks: myDrinksReducer,

@@ -43,22 +43,6 @@ export const signOutThunk = createAsyncThunk(
   }
 );
 
-export const refreshUserThunk = createAsyncThunk(
-  'auth/refresh',
-  async (_, thunkApi) => {
-    try {
-      const state = thunkApi.getState();
-      const accessToken = state.auth.accessToken;
-      const refreshToken = state.auth.refreshToken;
-      setAuthToken(accessToken);
-      const { data } = await API.post('/auth/refresh', { refreshToken });
-      return data;
-    } catch (error) {
-      toast.error('Error refresh');
-      return thunkApi.rejectWithValue(error.message);
-    }
-  }
-);
 
 export const fetchCurrentThunk = createAsyncThunk(
   'auth/current',
@@ -79,3 +63,17 @@ export const fetchCurrentThunk = createAsyncThunk(
     }
   }
 );
+
+ export const updateUserThunk = createAsyncThunk(
+   'user/update',
+   async (formData, thunkApi) => {
+     try {
+       const { data } = await API.patch('/users/update', formData);
+       return data;
+     } catch (error) {
+       return thunkApi.rejectWithValue(error.message);
+     }
+   }
+ );
+
+
