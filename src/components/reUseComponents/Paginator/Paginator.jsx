@@ -10,6 +10,7 @@ export const Paginator = ({
   totalCount,
   itemsPerPage,
   setPage,
+  forcePage,
   countPagesOfPagination,
 }) => {
   const handlePageChange = (e) => {
@@ -24,6 +25,7 @@ export const Paginator = ({
       marginPagesDisplayed={1}
       pageCount={Math.ceil(totalCount / itemsPerPage)}
       initialPage={initialPage - 1}
+      forcePage={forcePage - 1}
       onPageChange={handlePageChange}
       previousLabel={
         <svg>
