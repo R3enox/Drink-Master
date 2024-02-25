@@ -1,7 +1,15 @@
 .ThemeToggler {
-  /* padding: 20px; */
+  display: block;
   transition: background-color 0.3s ease;
   display: flex;
+  align-items: center;
+  margin-right: 46px;
+}
+
+@media screen and (min-width: 1440px) {
+  .ThemeToggler {
+    margin-right: 28px;
+  }
 }
 
 .theme-switch {
@@ -22,25 +30,11 @@
   left: 0;
   right: 0;
   bottom: 0;
-  /* background-color: #ccc; */
   transition: 0.4s;
   border-radius: 34px;
   width: 40px;
   height: 20px;
 }
-/* .slider1 {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #161f37;
-  transition: 0.4s;
-  border-radius: 34px;
-  width: 40px;
-  height: 20px;
-} */
 
 .slider:before {
   position: absolute;
@@ -64,14 +58,6 @@ input:checked + .slider:before {
 .round {
   background-color: #161f37;
 }
-
-/* .dark-theme {
-  background-color: white;
-  color: #161f37;
-} */
-/* .light-theme {
-  background-color: white;
-} */
 
 .light-theme .slider:before {
   background-color: white;

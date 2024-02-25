@@ -57,7 +57,7 @@ const FavoriteDrinksPage = () => {
 
   const drinksAreNotFinded = !isLoading && totalCount === 0;
   return (
-    <div className="bg-favorites-set md:bg-favorites-set-tablet lg:bg-favorites-set-desktop bg-contain bg-no-repeat">
+    <div className="dark:bg-favorites-set md:dark:bg-favorites-set-tablet lg:dark:bg-favorites-set-desktop bg-contain bg-no-repeat">
       <section className="pb-[80px] mb:pb-[140]">
         <div className="container mx-auto ">
           {isError && toast.error(`Oops, something went wrong!!`)}

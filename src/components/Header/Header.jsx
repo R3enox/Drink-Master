@@ -12,8 +12,10 @@ export const Header = () => {
         <>
           <Logo />
           <Navigation />
-          <div className="flex gap-[28px] items-center">
-            <ThemeToggler />
+          <div className="flex">
+            <div className="hidden lg:flex lg:items-center">
+              <ThemeToggler />
+            </div>
             <UserInfo />
 
             <HamburgerMenu />

@@ -26,7 +26,7 @@ export const DrinkCardPreview = ({ drink }) => {
         </p>
         <Link
           to={`../drink/${drink._id}`}
-          className="block h-full text-grey-text-color hover:text-hover-text-color leading-[1.29] md:leading-[1.125]"
+          className="block h-full text-hover-border-color-search dark:text-grey-text-color hover:text-hover-text-color leading-[1.29] md:leading-[1.125]"
         >
           See more
         </Link>
