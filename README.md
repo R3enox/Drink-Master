@@ -50,9 +50,13 @@
 
 
 ### **Utilits**:
-<p align="left" ><img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="figma"  width="40" height="40"/>
+<p align="left" ><img width="40" src="https://vitejs.dev/logo.svg" alt="Vite logo">
+<img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="figma"  width="40" height="40"/>
 <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git"  width="40" height="40"/>
-<img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg"  alt="postman" width="40" height="40"/></p>
+<img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg"  alt="postman" width="40" height="40"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="Skills" align="left" width="40" height="40"/>  
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/trello/trello-plain.svg" alt="Skills" align="left" width="40" height="40"/></p>
+
 
 ## Посилання
 
