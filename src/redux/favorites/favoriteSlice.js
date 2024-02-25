@@ -19,9 +19,10 @@ export const favoriteApi = createApi({
   tagTypes: ['favofitesDrinks'],
   endpoints: (builder) => ({
     fechFavorites: builder.query({
-      query: () => {
+      query: ({ page, per_page }) => {
+        const queryParams = new URLSearchParams({ page, per_page });
         return {
-          url: 'drinks/favorite',
+          url: `drinks/favorite?${queryParams}`,
           method: 'GET',
         };
       },

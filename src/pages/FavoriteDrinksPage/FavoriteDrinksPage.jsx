@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import {
   useFechFavoritesQuery,
   useRemoveFavoritesMutation,
@@ -6,21 +7,38 @@ import { DrinkImageComponent } from '../../components/reUseComponents/DrinkImage
 import { PageTitle } from '../../components/reUseComponents/PageTitle';
 import DrinksList from '../../components/DrinksList/DrinksList';
 import Loader from '../../components/Loader/Loader';
-import { toast } from 'react-toastify';
+import { Paginator } from '../../components/reUseComponents/Paginator/Paginator';
+import { FavoriteDrinksLimit } from 'constants/paginationLimits';
+import { usePagination } from 'hooks/usePagination';
 
 const FavoriteDrinksPage = () => {
-  const { data, error, isFetching } = useFechFavoritesQuery();
-
+  const { page, per_page, countPagesOfPagination, setPage } =
+    usePagination(FavoriteDrinksLimit);
+  const { data, error, isFetching } = useFechFavoritesQuery({ page, per_page });
   const [deleteFavorite] = useRemoveFavoritesMutation();
+
+  const drinksAreNotFinded = !isFetching && data.totalCount === 0;
+
   return (
     <section className="pb-[80px] mb:pb-[140]">
       <div className="container mx-auto ">
         {isFetching && <Loader />}
         {error && toast.error(`Oops, something went wrong!!`)}
         <PageTitle title={'Favorites'} />
-        {data && data.length > 0 ? (
-          <DrinksList data={data} onDelete={deleteFavorite} />
-        ) : (
+        {data?.totalCount > 0 && (
+          <>
+            <DrinksList data={data.paginatedResult} onDelete={deleteFavorite} />
+            <Paginator
+              totalCount={data?.totalCount}
+              itemsPerPage={per_page}
+              setPage={setPage}
+              forcePage={page}
+              initialPage={page}
+              countPagesOfPagination={countPagesOfPagination}
+            />
+          </>
+        )}
+        {drinksAreNotFinded && (
           <DrinkImageComponent
             description={"You haven't added any favorite cocktails yet"}
           />
@@ -29,4 +47,5 @@ const FavoriteDrinksPage = () => {
     </section>
   );
 };
+
 export default FavoriteDrinksPage;
