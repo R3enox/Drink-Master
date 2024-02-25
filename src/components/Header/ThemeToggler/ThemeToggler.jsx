@@ -1,18 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import styles from './ThemeToggler.module.css'; 
+import { useState, useEffect } from 'react';
+import styles from './ThemeToggler.module.css';
 
 const ThemeToggler = () => {
   const [isDarkTheme, setIsDarkTheme] = useState(() => {
     const storedTheme = localStorage.getItem('theme');
-    return storedTheme === 'dark'; 
+    return storedTheme === 'dark';
   });
 
   useEffect(() => {
     localStorage.setItem('theme', isDarkTheme ? 'dark' : 'light');
+    if (
+      isDarkTheme ||
+      (!('theme' in localStorage) &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
   }, [isDarkTheme]);
 
   const toggleTheme = () => {
-    setIsDarkTheme((prevTheme) => !prevTheme); 
+    setIsDarkTheme((prevTheme) => !prevTheme);
   };
 
   return (
@@ -25,7 +34,6 @@ const ThemeToggler = () => {
         <input type="checkbox" checked={isDarkTheme} onChange={toggleTheme} />
         <span className={`${styles.slider} ${styles.round}`}></span>
       </label>
-      <p>{isDarkTheme ? 'Темна тема' : 'Світла тема'}</p>
     </div>
   );
 };

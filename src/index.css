@@ -21,9 +21,11 @@ body {
 :root {
   font-family: 'Manrope', sans-serif;
   font-weight: 400;
+}
+/* .dark {
   background-color: #0a0a11;
   color: #f3f3f3;
-}
+} */
 
 /* Welcome-SignIn-SignUp-Pages */
 @layer base {

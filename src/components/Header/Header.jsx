@@ -2,6 +2,7 @@ import { Logo } from './Logo/Logo';
 import UserInfo from './UserInfo/UserInfo';
 import { Navigation } from './Navigation/Navigation';
 import { HeaderBtn } from './HeaderBtn/HeaderBtn';
+import ThemeToggler from './ThemeToggler/ThemeToggler';
 
 export const Header = () => {
   return (
@@ -10,7 +11,8 @@ export const Header = () => {
         <>
           <Logo />
           <Navigation />
-          <div className="flex">
+          <div className="flex gap-[28px] items-center">
+            <ThemeToggler />
             <UserInfo />
             <HeaderBtn />
           </div>
