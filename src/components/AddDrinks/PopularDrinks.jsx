@@ -6,10 +6,9 @@ import { getPopularDrinks } from '../../redux/selectors';
 export const PopularDrinks = () => {
   const dispatch = useDispatch();
   const popularDrinks = useSelector(getPopularDrinks);
-  console.log(popularDrinks);
 
   useEffect(() => {
-    dispatch(fetchPopularDrinks({ page: 1, limit: 4 }));
+    dispatch(fetchPopularDrinks({ limit: 4 }));
   }, [dispatch]);
 
   return (
