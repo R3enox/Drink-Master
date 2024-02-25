@@ -4,8 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectAuthUser } from '../../../redux/auth/authSelectors';
 import sprite from '../../../assets/sprite.svg';
 import { updateUserThunk } from '../../../redux/auth/authOperations';
+import { useTranslation } from 'react-i18next';
+import '../../../i18n';
 
 const UserLogo = ({ closeFnc }) => {
+  const { t, i18n } = useTranslation();
   const user = useSelector(selectAuthUser);
 
   const dispatch = useDispatch();
@@ -57,36 +60,28 @@ const UserLogo = ({ closeFnc }) => {
               alt="avatar"
               className="rounded-full sm:w-[80px] sm:h-[80px]  md:w-[100px] md:h-[100px] "
             />
-            {/* <img
-              className="w-[80px] h-[80px] rounded-full   "
-              src={preview}
-              alt="avatar"
-              srcSet={`${avatar}`}
-            /> */}
-
-            <svg className="stroke-primary-text-color sm:w-[22px] h-[22px] md:w-[28px] md:h-[28px] absolute top-[120px] md:top-[140px] rounded-[10px] bg-grey-text-color">
+            <svg className=" hover:bg-primary-text-color hover:stroke-primary-text-button-color stroke-primary-text-color sm:w-[28px] h-[28px] md:w-[32px] md:h-[32px] absolute top-[120px] md:top-[140px] rounded-full bg-icon-plus">
               <use href={sprite + '#icon-plus'}></use>
             </svg>
           </div>
         </label>
         <input
-          className="w-[285px] pl-[24px] md:w-[400px]   py-[18px] rounded-[200px] bg-transparent border-[1px]  border-border-color text-primary-text-color text-[16px] leading-[1.12] font-semibold hover:bg-primary-text-color hover:text-primary-text-button-color transition-colors md:text-[17px] md:py-[18px] md:leading-[1.56]"
+          className="w-[285px] pl-[24px] md:w-[400px]   py-[18px] rounded-[200px] bg-transparent border-[1px]  border-border-color text-primary-text-color text-[16px] leading-[1.12] font-semibold hover:bg-primary-text-color hover:text-primary-text-button-color transition-colors  md:py-[18px] "
           {...register('name', { required: true })}
           type="text"
-          placeholder="name"
+          placeholder={t('inputPlaceholder.SignUpForm.name')}
           autoComplete="off"
           onChange={handleChange}
           value={userName.name}
         />
-        <svg className="fill-primary-text-color w-[17px] h-[17px] absolute sm:top-[185px] md:top-[240px] sm:right-[60px] md:right-[80px]">
+        <svg className="fill-primary-text-color w-[17px] h-[17px] absolute sm:top-[185px] md:top-[240px] sm:right-[60px] md:right-[80px] rounded-[300px]">
           <use href={sprite + '#icon-pancil'}></use>
         </svg>
 
         <button
           className="w-[285px] md:w-full sm:mt-[18px] md:mt-[25px]  text-center py-[18px] rounded-[200px] bg-transparent border-[1px]  border-border-color text-primary-text-color text-[16px] leading-[1.12] font-semibold hover:bg-primary-text-color hover:text-primary-text-button-color transition-colors md:text-[17px] md:py-[18px] md:leading-[1.56]"
-          // type="submit"
         >
-          Save changes
+          {t('button.UserLogo.Save')}
         </button>
       </form>
     </>

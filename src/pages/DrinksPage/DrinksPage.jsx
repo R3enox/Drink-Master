@@ -5,7 +5,11 @@ import { DrinksSearch } from 'components/Drinks/DrinksSearch';
 import { Drinks } from 'components/Drinks/Drinks';
 import { scrollToTop } from 'helpers/scrollToTop';
 
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
+
 const DrinksPage = () => {
+  const { t, i18n } = useTranslation();
   useEffect(() => {
     scrollToTop();
   }, []);
@@ -16,7 +20,7 @@ const DrinksPage = () => {
     md:dark:bg-common-set-tablet lg:dark:bg-common-set-desktop bg-contain bg-no-repeat"
     >
       <div className="container mx-auto pb-[80px]">
-        <PageTitle title="Drinks" />
+        <PageTitle title={t('title.Drinks')} />
         <DrinksSearch />
         <Drinks />
       </div>

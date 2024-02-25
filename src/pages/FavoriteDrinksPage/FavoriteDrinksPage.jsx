@@ -21,7 +21,11 @@ import {
 import UniversalModal from '../../components/DrinksItem/UniversalModal';
 import ModalButtons from '../../components/DrinksItem/ModalButtons';
 
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
+
 const FavoriteDrinksPage = () => {
+  const { t, i18n } = useTranslation();
   const { page, per_page, countPagesOfPagination, setPage } =
     usePagination(FavoriteDrinksLimit);
 
@@ -59,9 +63,9 @@ const FavoriteDrinksPage = () => {
   return (
     <div className="dark:bg-favorites-set md:dark:bg-favorites-set-tablet lg:dark:bg-favorites-set-desktop bg-cover bg-no-repeat">
       <section className="pb-[80px] mb:pb-[140]">
-        <div className="container mx-auto">
-          {isError && toast.error(`Oops, something went wrong!!`)}
-          <PageTitle title={'Favorites'} />
+        <div className="container mx-auto ">
+          {isError && toast.error(t('toastError.Favorite'))}
+          <PageTitle title={t('title.Favorite')} />
           {isLoading && <Loader isStatic />}
           {!isLoading && totalCount > 0 && (
             <>
@@ -82,7 +86,7 @@ const FavoriteDrinksPage = () => {
           )}
           {drinksAreNotFinded && (
             <DrinkImageComponent
-              description={"You haven't added any favorite cocktails yet"}
+              description={t('DrinkImageComponent.Favorite')}
             />
           )}
           {isOpen && (

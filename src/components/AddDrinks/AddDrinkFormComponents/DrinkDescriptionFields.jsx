@@ -7,7 +7,12 @@ import { userAge } from '../../../helpers/userAge';
 import { createOptionsFromArrOfStr } from '../../../helpers/createCollectionOptions';
 import { useFilters } from '../../../hooks/useFilters';
 
+import { useTranslation } from 'react-i18next';
+import '../../../i18n';
+
 export const DrinkPageHero = () => {
+  const { t, i18n } = useTranslation();
+
   const { categories, glasses } = useFilters();
   const [preview, setPreview] = useState();
   const [age, setAge] = useState(0);
@@ -67,8 +72,8 @@ export const DrinkPageHero = () => {
                     <use href={spite + '#icon-plus'}></use>
                   </svg>
                 </button>
-                <p className="font-medium text-base leading-[125%]">
-                  Add image
+                <p className="font-medium text-center leading-[125%]">
+                  {t('serviceText.DrinkPageHero')}
                 </p>
               </div>
             ) : (
@@ -80,63 +85,55 @@ export const DrinkPageHero = () => {
           </div>
         </label>
       </div>
-      <div>
-        <div className="flex flex-col gap-[31px] mb-10 lg:gap-[40px]">
-          <input
-            type="text"
-            name="drink"
-            placeholder="Enter item title"
-            required
-            className="block pb-[14px] outline-none hover:placeholder-primary-text-color bg-transparent w-[335px] 
-             h-[34px] border-b border-grey-text-color focus:outline-none focus:border-primary-text-color hover:border-primary-text-color
-             placeholder-grey-text-color placeholder-font-normal placeholder-text-sm
-              transition ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms]
-              md:w-[352px] md:h-[41px] md:placeholder-text-base md:pb-[18px] lg:w-[393px]"
+      <div className="flex flex-col gap-[31px] mb-10 lg:gap-[40px]">
+        <input
+          type="text"
+          name="drink"
+          placeholder={t('inputPlaceholder.DrinkPageHero.itemTitle')}
+          required
+          className="block pb-[14px] outline-none hover:placeholder-primary-text-color bg-transparent w-[335px]  h-[34px] border-b border-grey-text-color focus:outline-none focus:border-primary-text-color hover:border-primary-text-color placeholder-grey-text-color placeholder-font-normal placeholder-text-sm transition-all ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms]"
+        />
+        <input
+          type="text"
+          name="description"
+          placeholder="Enter about recipe"
+          className="block pb-[14px] outline-none hover:placeholder-primary-text-color   bg-transparent w-[335px] h-[34px] border-b border-grey-text-color  focus:outline-none  focus:border-primary-text-color hover:border-primary-text-color placeholder-grey-text-color placeholder-font-normal placeholder-text-sm transition-colors ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms] md:w-[352px] md:h-[41px] md:placeholder-text-base md:pb-[18px] lg:w-[393px]"
+          required
+        />
+        <div className="relative">
+          <label
+            htmlFor="selectCategory"
+            className="absolute top-0 left-0 hover:text-primary-text-color text-grey-text-color font-normal text-base tracking-[-0.02em] leading-[1.2]  ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms]"
+          >
+            placeholder={t('inputPlaceholder.DrinkPageHero.recipeDescr')}
+          </label>
+          <Select
+            id="selectCategory"
+            classNamePrefix="custom_select"
+            options={categoriesOptions}
+            name="category"
+            defaultValue={categoriesOptions[0]}
+            isRequired={true}
           />
-          <input
-            type="text"
-            name="description"
-            placeholder="Enter about recipe"
-            className="block pb-[14px] outline-none hover:placeholder-primary-text-color   bg-transparent w-[335px] h-[34px] border-b
-             border-grey-text-color  focus:outline-none  focus:border-primary-text-color hover:border-primary-text-color
-              placeholder-grey-text-color placeholder-font-normal placeholder-text-sm transition ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms]
-               md:w-[352px] md:h-[41px] md:placeholder-text-base md:pb-[18px] lg:w-[393px]"
-            required
-          />
-          <div className="relative">
-            <label
-              htmlFor="selectCategory"
-              className="absolute top-0 left-0 hover:text-primary-text-color text-grey-text-color font-normal text-base tracking-[-0.02em] leading-[1.2]  ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms]"
-            >
-              Category
-            </label>
-            <Select
-              id="selectCategory"
-              classNamePrefix="custom_select"
-              options={categoriesOptions}
-              name="category"
-              defaultValue={categoriesOptions[0]}
-              isRequired={true}
-            />
-          </div>
-          <div className="relative">
-            <label
-              htmlFor="selectGlass"
-              className="absolute top-0 left-0 text-grey-text-color font-normal text-base tracking-[-0.02em] leading-[1.2]"
-            >
-              Glass
-            </label>
-            <Select
-              id="selectGlass"
-              classNamePrefix="custom_select"
-              options={glassesOptions}
-              name="glass"
-              defaultValue={glassesOptions[0]}
-              isRequired={true}
-            />
-          </div>
         </div>
-        <div className="mb-20 flex gap-x-3.5 md:mb-0">
+        <div className="relative">
+          <label
+            htmlFor="selectGlass"
+            className="absolute top-0 left-0 text-grey-text-color font-normal text-base tracking-[-0.02em] leading-[1.2]"
+          >
+            {t('label.DrinkPageHero.Glass')}
+          </label>
+          <Select
+            id="selectGlass"
+            classNamePrefix="custom_select"
+            options={glassesOptions}
+            name="glass"
+            defaultValue={glassesOptions[0]}
+            isRequired={true}
+          />
+        </div>
+
+        <div className="mb-20 flex gap-x-3.5  md:mb-0">
           {age >= 18 ? (
             <>
               <label className="relative flex items-center gap-x-1 cursor-pointer ">
@@ -151,7 +148,7 @@ export const DrinkPageHero = () => {
                 <div className=" w-4 h-4 p-0.5 border-grey-text-color cursor-pointer rounded-[50%] border-[1.30px] peer-checked:border-primary-text-color "></div>
                 <div className=" absolute  left-[3.6%] top-[28%;] w-2.5 h-2.5 bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
                 <span className="text-grey-text-color text-sm peer-checked:text-primary-text-color md:text-base">
-                  Alcoholic
+                  {t('cocktailType.alco')}
                 </span>
               </label>
               <label className="relative text-grey-text-color  flex items-center gap-x-1 cursor-pointer">
@@ -164,8 +161,8 @@ export const DrinkPageHero = () => {
                 />
                 <div className=" w-4 h-4 p-0.5 border-grey-text-color cursor-pointer rounded-[50%] border-[1.30px] peer-checked:border-primary-text-color "></div>
                 <div className=" absolute  left-[2.8%]  top-[28%;] w-2.5 h-2.5 bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
-                <span className="text-grey-text-color text-sm  peer-checked:text-primary-text-color  md:text-base">
-                  Non-alcoholic
+                <span className="text-grey-text-color  peer-checked:text-primary-text-color text-sm md:text-base ">
+                  {t('cocktailType.non')}
                 </span>
               </label>
             </>
@@ -185,14 +182,14 @@ export const DrinkPageHero = () => {
                   disabled={true}
                 />
                 <div
-                  className={` w-4 h-4 border-grey-text-color 
+                  className={` w-4 h-4 p-0.5 border-grey-text-color 
                 ${
                   age >= 18 ? 'cursor-pointer' : ''
                 }  rounded-[50%] border-[1.30px] peer-checked:border-primary-text-color `}
                 ></div>
                 <div className=" absolute  left-[3.5%] w-2.5 h-2.5 bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
                 <span className="text-grey-text-color  peer-checked:text-primary-text-color">
-                  Alcoholic
+                  {t('cocktailType.alco')}
                 </span>
               </label>
               <label className="relative text-grey-text-color  flex items-center gap-x-1 cursor-pointer">
@@ -204,10 +201,10 @@ export const DrinkPageHero = () => {
                   className="peer sr-only"
                   defaultChecked
                 />
-                <div className=" w-4 h-4 border-grey-text-color cursor-pointer rounded-[50%] border-[1.30px] peer-checked:border-primary-text-color "></div>
+                <div className=" w-4 h-4 p-0.5 border-grey-text-color cursor-pointer rounded-[50%] border-[1.30px] peer-checked:border-primary-text-color "></div>
                 <div className=" absolute  left-[2.8%] w-2.5 h-2.5 bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
                 <span className="text-grey-text-color  peer-checked:text-primary-text-color">
-                  Non-alcoholic
+                  {t('cocktailType.non')}
                 </span>
               </label>
             </>

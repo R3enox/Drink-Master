@@ -24,12 +24,12 @@ const HamburgerMenu = () => {
 
           <div className={isNavOpen ? 'showMenuNav' : 'hideMenuNav'}>
             <div className="bg-mobile-bg-commonpage ">
-              <nav className=" bg-primary-text-color dark:bg-button-hover-color  absolute flex flex-col h-[1000%] w-full z-[100] bg-mobile-bg-commonpage bg-no-repeat">
+              <nav className=" bg-primary-text-color dark:bg-button-hover-color  absolute flex flex-col h-[1000%] w-full z-[100] bg-mobile-bg-commonpage bg-no-repeat bg-header-left bg-right-top bg-[length:300px_1900px]">
                 <div className="container bg-mobile-bg-commonpage bg-[length:150px_1700px] bg-no-repeat   flex p-5 border-b  border-border-color text-primary-text-color justify-between md:pl-[32px] md:pr-[32px] lg:pt-[22px] lg:pb-[23px] lg:pl-[100px] lg:pr-[100px]">
                   <Logo />
                   <ThemeToggler className="mr-[62px]" />
                   <div
-                    className=" fixed sm:top-[-12px] md:top-[-5px] sm:right-[-10px] md:right-[0px] px-8 py-8"
+                    className=" absolute sm:top-[-12px] md:top-[-5px] sm:right-[-10px] md:right-[0px] px-8 py-8"
                     onClick={() => setIsNavOpen(false)}
                   >
                     <svg
@@ -52,10 +52,9 @@ const HamburgerMenu = () => {
                     <li
                       className=" text-primary-text-button-color dark:text-primary-text-color rounded-[200px] bg-transparent border-[1px] hover:text-primary-text-color hover:bg-primary-text-button-color border-border-color-for-light dark:border-border-color text-[14px] py-[8px] px-[16px] shadow-lg hover:shadow-primary-text-button-color/50 dark:hover:shadow-primary-text-color/50 transition-colors"
                       key={id}
+                      onClick={() => setIsNavOpen((prev) => !prev)}
                     >
-                      <NavLink onClick to={href}>
-                        {title}
-                      </NavLink>
+                      <NavLink to={href}>{title}</NavLink>
                     </li>
                   ))}
                 </ul>

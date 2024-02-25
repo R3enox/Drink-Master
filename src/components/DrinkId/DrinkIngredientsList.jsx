@@ -1,22 +1,24 @@
-const DrinkIngredientsList = ({ ingredients, currentIngred }) => {
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
+
+const DrinkIngredientsList = ({ ingredients }) => {
+  const { t, i18n } = useTranslation();
   return (
     <>
       <h2 className="mb-[42px] font-medium text-[16px] leading-[1.25] text-hover-border-color-search dark:text-grey-text-color md:mb-[24px] md:font-medium md:text-[16px] md:leading-[1.25]">
-        Ingredients
+        {t('title2.DrinkIngredientsList')}
       </h2>
       <div className="grid grid-cols-2 gap-[20px] md:grid-cols-3 md:lg:grid-cols-5  md:gap-[22px]">
         {ingredients &&
           ingredients.map(
-            (
-              {
-                _id,
-                title,
-                ingredientThumb,
-                'thumb-medium': thumbMedium,
-                'thumb-small': thumbSmall,
-              },
-              index
-            ) => {
+            ({
+              _id,
+              title,
+              ingredientThumb,
+              measure,
+              'thumb-medium': thumbMedium,
+              'thumb-small': thumbSmall,
+            }) => {
               return (
                 <div
                   key={_id}
@@ -41,7 +43,7 @@ const DrinkIngredientsList = ({ ingredients, currentIngred }) => {
                       {title}
                     </p>
                     <p className="mt-[8px] mb-[8px] text-hover-border-color-search dark:text-grey-text-color font-medium leading-[1.29px] text-[14px] md:font-medium md:text-base md:leading-[1.25] lg:text-base">
-                      {currentIngred[index].measure}
+                      {measure ? measure : 'to your taste'}
                     </p>
                   </div>
                 </div>

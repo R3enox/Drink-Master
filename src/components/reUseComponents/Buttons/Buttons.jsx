@@ -23,6 +23,19 @@ export const BtnDarkTheme = ({ children }) => {
     </button>
   );
 };
+export const ButtonComponent = ({ descr, btnFunction, id }) => {
+  return (
+    <button
+      className={css.button}
+      type="button"
+      onClick={() => btnFunction(id)}
+      disabled={!id}
+    >
+      <div className={css.dotsBorder}></div>
+      <span className={css.textButton}>{descr}</span>
+    </button>
+  );
+};
 
 // BUTTONS_LINKS: See more / Delete Button / Header Nav Links
 
@@ -75,26 +88,33 @@ export const BtnSubscribe = ({ children }) => {
   );
 };
 
-// Light Theme in Future:
+// Light Theme:
+// BUTTONS_LINKS: Add drink / Other drinks / Add / Add favorite drinks
 
-// export const LinkLightTheme = ({ children }) => {
-//   return (
-//     <Link className={`${css.btnTransparent} ${css.button}`}>
-//       <div className={`${css.dotsBorder} ${css.dotsBorderTransparent}`}></div>
-//       <span className={`${css.textBtnTransparent} ${css.textButton}`}>
-//         {children}
-//       </span>
-//     </Link>
-//   );
-// };
+export const LinkLightTheme = ({ children, to }) => {
+  return (
+    <div className="flex">
+      <Link to={to} className={`${css.btnTransparent} ${css.button}`}>
+        <div className={`${css.dotsBorder} ${css.dotsBorderTransparent}`}></div>
+        <span className={`${css.textBtnTransparent} ${css.textButton}`}>
+          {children}
+        </span>
+      </Link>
+    </div>
+  );
+};
 
-// export const BtnLightTheme = ({ children }) => {
-//   return (
-//     <Link className={`${css.btnTransparent} ${css.button}`}>
-//       <div className={`${css.dotsBorder} ${css.dotsBorderTransparent}`}></div>
-//       <span className={`${css.textBtnTransparent} ${css.textButton}`}>
-//         {children}
-//       </span>
-//     </Link>
-//   );
-// };
+export const BtnLightTheme = ({ children, to }) => {
+  return (
+    <button
+      type="submit"
+      to={to}
+      className={`${css.btnTransparent} ${css.button}`}
+    >
+      <div className={`${css.dotsBorder} ${css.dotsBorderTransparent}`}></div>
+      <span className={`${css.textBtnTransparent} ${css.textButton}`}>
+        {children}
+      </span>
+    </button>
+  );
+};

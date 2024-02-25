@@ -17,7 +17,12 @@ import {
 import { usePagination } from '../../hooks/usePagination';
 import { MyDrinksLimit } from '../../constants/paginationLimits';
 
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
+
 const MyDrinksPage = () => {
+  const { t, i18n } = useTranslation();
+
   const dispatch = useDispatch();
   const data = useSelector(selectMyDrinks);
   const isLoading = useSelector(selectMyDrinksLoading);
@@ -58,45 +63,49 @@ const MyDrinksPage = () => {
       className="pb-[80px] md:pb-[140px] dark:bg-common-set
     md:dark:bg-common-set-tablet lg:dark:bg-common-set-desktop bg-cover bg-no-repeat"
     >
-      <div className="container mx-auto">
-        <PageTitle title="My drinks" />
-        {isLoading && <Loader isStatic />}
-        {/* {isError && <Redirect to="error.message" />} */}
-        {totalCount > 0 && (
-          <>
-            <DrinksList
-              data={data}
-              openMyDrinkModal={openMyDrinkModal}
-              onChooseItem={setCurrentId}
+      <section className="pb-[80px] md:pb-[140px] ">
+        <div className="container mx-auto">
+          {isError && <h1>{isError}</h1>}
+          <PageTitle title={t('title.myDrinks')} />
+          {isLoading && <Loader isStatic />}
+          {totalCount > 0 && (
+            <>
+              <DrinksList
+                data={data}
+                openMyDrinkModal={openMyDrinkModal}
+                onChooseItem={setCurrentId}
+              />
+              <Paginator
+                totalCount={totalCount}
+                itemsPerPage={per_page}
+                setPage={setPage}
+                forcePage={page}
+                initialPage={page}
+                countPagesOfPagination={countPagesOfPagination}
+              />
+            </>
+          )}
+          {drinksAreNotFinded && (
+            <DrinkImageComponent
+              description={t('DrinkImageComponent.myDrinks')}
             />
-            <Paginator
-              totalCount={totalCount}
-              itemsPerPage={per_page}
-              setPage={setPage}
-              forcePage={page}
-              initialPage={page}
-              countPagesOfPagination={countPagesOfPagination}
-            />
-          </>
-        )}
-        {drinksAreNotFinded && (
-          <DrinkImageComponent description="You don't have your own drinks yet" />
-        )}
-        {isOpen && (
-          <UniversalModal
-            isOpen={isOpen}
-            closeFnc={closeMyDrinkModal}
-            content={'Are you sure you want to delete your drink?'}
-          >
-            <ModalButtons
-              closeMyDrinkModal={closeMyDrinkModal}
-              handleDeleteClick={() => handleDeleteClick(currentId)}
-              drinkId={data}
-            />
-          </UniversalModal>
-        )}
-      </div>
-    </section>
+          )}
+          {isOpen && (
+            <UniversalModal
+              isOpen={isOpen}
+              closeFnc={closeMyDrinkModal}
+              content={t('UniversalModal.myDrinks')}
+            >
+              <ModalButtons
+                closeMyDrinkModal={closeMyDrinkModal}
+                handleDeleteClick={() => handleDeleteClick(currentId)}
+                drinkId={data}
+              />
+            </UniversalModal>
+          )}
+        </div>
+      </section>
+    </div>
   );
 };
 

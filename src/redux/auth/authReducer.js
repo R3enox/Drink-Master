@@ -11,7 +11,6 @@ import {
   handlePending,
   handlePendingUpdateUser,
   handleRejected,
-  
   handleRejectedUpdateUser,
   handlePendingCurrentUser,
   handleRejectedCurrentUser,
