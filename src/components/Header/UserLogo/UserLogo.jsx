@@ -16,7 +16,7 @@ const UserLogo = ({closeFnc}) => {
  const dispatch = useDispatch();
  
 
-  const [preview, setPreview] = useState();
+  const [preview, setPreview] = useState(null);
   const [userName, setUserName] = useState({ name: user.name });
 
   const handleChange = (e) => {
@@ -32,14 +32,15 @@ const UserLogo = ({closeFnc}) => {
     setPreview(urlImage);
   };
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
+   
     const formData = new FormData();
     formData.append('avatar', data.avatar[0]);
     formData.append('name', data.name);
     console.log(data.avatar[0]);
     console.log(formData);
-     dispatch(updateUserThunk(formData));
-   
+     await dispatch(updateUserThunk(formData));
+   closeFnc()
     
   };
 
@@ -49,8 +50,8 @@ const UserLogo = ({closeFnc}) => {
     <>
       <form
         className="items-center flex flex-col   "
-        // onSubmit={handleSubmit(onSubmit)}
-        // onClick={closeFnc}
+        onSubmit={handleSubmit(onSubmit)}
+       
       >
         <label className=" items-center flex flex-col  ">
           <input
@@ -61,20 +62,21 @@ const UserLogo = ({closeFnc}) => {
           />
 
           <div className=" flex flex-col items-center pb-[34px] md:pb-[65px]">
-            {/* <img
-              src={preview}
-              srcSet={`${user.avatarURL}`}
-              alt="avatar"
-              width={44}
-              height={44}
-              className="rounded-full sm:w-[32px] sm:h-[32px]  md:w-[44px] md:h-[44px] lg:w-[39px] lg:h-[39px]"
-            /> */}
+          
             <img
+              src={preview}
+              srcSet={preview ?? user.avatarURL}
+              alt="avatar"
+              width={80}
+              height={80}
+              className="rounded-full sm:w-[32px] sm:h-[32px]  md:w-[44px] md:h-[44px] lg:w-[39px] lg:h-[39px]"
+            />
+            {/* <img
               className="w-[80px] h-[80px] rounded-full   "
               src={preview}
               alt="avatar"
               srcSet={`${avatar}`}
-            />
+            /> */}
 
             <svg className="stroke-primary-text-color sm:w-[22px] h-[22px] md:w-[28px] md:h-[28px] absolute top-[120px] rounded-[10px] bg-grey-text-color">
               <use href={sprite + '#icon-plus'}></use>
@@ -96,12 +98,7 @@ const UserLogo = ({closeFnc}) => {
 
         <button
           className="w-[285px] md:w-full sm:mt-[18px] md:mt-[25px]  text-center py-[18px] rounded-[200px] bg-transparent border-[1px]  border-border-color text-primary-text-color text-[16px] leading-[1.12] font-semibold hover:bg-primary-text-color hover:text-primary-text-button-color transition-colors md:text-[17px] md:py-[18px] md:leading-[1.56]"
-          type="submit"
-          // onClick={closeFnc}
-          onClick={() => {
-            onSubmit();
-            closeFnc;
-          }}
+          // type="submit"
         >
           Save changes
         </button>
