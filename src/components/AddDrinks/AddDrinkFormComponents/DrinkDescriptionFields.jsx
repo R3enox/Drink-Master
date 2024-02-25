@@ -89,7 +89,7 @@ export const DrinkPageHero = () => {
         <input
           type="text"
           name="drink"
-          placeholder={t('inputPlaceholder.DrinkPageHero.itemTitle')}
+          placeholder="Enter item title"
           required
           className="block pb-[14px] outline-none hover:placeholder-primary-text-color   bg-transparent w-[335px] h-[34px] border-b border-grey-text-color  focus:outline-none  focus:border-primary-text-color hover:border-primary-text-color placeholder-grey-text-color placeholder-font-normal placeholder-text-sm transition-colors ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms] md:w-[352px] md:h-[41px] md:placeholder-text-base md:pb-[18px] lg:w-[393px]"
         />
@@ -105,7 +105,7 @@ export const DrinkPageHero = () => {
             htmlFor="selectCategory"
             className="absolute top-0 left-0 hover:text-primary-text-color text-grey-text-color font-normal text-base tracking-[-0.02em] leading-[1.2]  ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms]"
           >
-            placeholder={t('inputPlaceholder.DrinkPageHero.recipeDescr')}
+            {t('inputPlaceholder.DrinkPageHero.recipeDescr')}
           </label>
           <Select
             id="selectCategory"
@@ -201,8 +201,10 @@ export const DrinkPageHero = () => {
                   className="peer sr-only"
                   defaultChecked
                 />
-                <div className=" w-4 h-4 p-0.5 border-grey-text-color cursor-pointer rounded-[50%] border-[1.30px] peer-checked:border-primary-text-color "></div>
-                <div className=" absolute  left-[2.8%] w-2.5 h-2.5 bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
+                <div className=" w-4 h-4 p-0.5 border-grey-text-color cursor-pointer rounded-[50%] border-[1.30px] peer-checked:border-primary-text-color ">
+                  <div className=" absolute  left-[50%] top-[50%] w-2.5 h-2.5 bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
+                </div>
+
                 <span className="text-grey-text-color  peer-checked:text-primary-text-color">
                   {t('cocktailType.non')}
                 </span>
