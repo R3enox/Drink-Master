@@ -137,7 +137,7 @@ const SignInForm = () => {
       <div className="btn-container">
         <div className="flex ">
           <Link
-            to="http://localhost:3000/api/auth/google"
+            to="https://drink-master-4fm6.onrender.com/api/auth/google"
             className="relative btn-google sign-google"
             type="submit"
           >

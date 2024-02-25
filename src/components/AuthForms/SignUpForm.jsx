@@ -192,7 +192,7 @@ const SignUpForm = () => {
       <div className="btn-container">
         <div className="flex ">
           <Link
-            to="http://localhost:3000/api/auth/google"
+            to="https://drink-master-4fm6.onrender.com/api/auth/google"
             className="relative btn-google sign-google"
             type="submit"
           >
@@ -201,7 +201,7 @@ const SignUpForm = () => {
             </svg>
           </Link>
           <button className="btn-up sign-btn signup-btn" type="submit">
-          {t('link.SignInForm.SignUp')}
+            {t('link.SignInForm.SignUp')}
           </button>
         </div>
         <Link className="sign-link-btn" to="/signin">
