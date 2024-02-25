@@ -14,6 +14,7 @@ i18n
     // saveMissing: true, // send not translated keys to endpoint
      backend: {
       loadPath: "frontend-drink-master/public/locales/en/{{en}}.json"
+     }
   });
 
 export default i18n;
