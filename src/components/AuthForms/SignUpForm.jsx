@@ -28,9 +28,9 @@ const SignUpForm = () => {
     register,
     handleSubmit,
     formState: { errors, dirtyFields },
-    reset,
   } = useForm({
     mode: 'onChange',
+    defaultValues: { ...(JSON.parse(localStorage.getItem('signUp')) ?? {}) },
   });
 
   const getDateOfBirth = (date) => {
@@ -39,13 +39,18 @@ const SignUpForm = () => {
 
   const onSubmit = (data) => {
     data.dateOfBirth = dateOfBirth;
+    localStorage.setItem(
+      'signUp',
+      JSON.stringify({
+        name: data?.name,
+        email: data?.email,
+      })
+    );
     dispatch(signUpThunk(data));
 
     if (token) {
       navigate('/home');
     }
-
-    reset();
   };
 
   if (isLoading) {

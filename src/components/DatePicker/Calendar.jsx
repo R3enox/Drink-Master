@@ -40,7 +40,7 @@ const Calendar = ({ getDateOfBirth }) => {
           />
         }
         onChange={handleDateChange}
-        dateFormat={t('inputPlaceholder.DatePicker.dateFormat')}
+        dateFormat={'dd/MM/yyyy'}
         calendarStartDay={1}
       />
       <CalendarGlobalStyles className="react-datepicker" />
