@@ -1,5 +1,5 @@
 import { Logo } from './Logo/Logo';
-import UserInfo from './UserInfo/UserInfo';
+// import UserInfo from './UserInfo/UserInfo';
 import { Navigation } from './Navigation/Navigation';
 import HamburgerMenu from './HamburgerMenu/HamburgerMenu';
 
@@ -14,9 +14,14 @@ export const Header = () => {
           <Logo />
           <Navigation />
           <div className="flex">
+<<<<<<< HEAD
             <UserInfo />
             {/* <HeaderBtn /> */}
             <HamburgerMenu />
+=======
+            {/* <UserInfo /> */}
+            <HeaderBtn />
+>>>>>>> main
           </div>
         </>
       </div>

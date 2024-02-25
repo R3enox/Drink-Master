@@ -3,10 +3,11 @@ import { useEffect } from 'react';
 import { PageTitle } from 'components/reUseComponents/PageTitle';
 import { DrinksSearch } from 'components/Drinks/DrinksSearch';
 import { Drinks } from 'components/Drinks/Drinks';
+import { scrollToTop } from 'helpers/scrollToTop';
 
 const DrinksPage = () => {
   useEffect(() => {
-    window.scrollTo(0, 0);
+    scrollToTop();
   }, []);
 
   return (

@@ -2,6 +2,7 @@
 export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
+<<<<<<< HEAD
     extend: {
       backgroundImage: {
         // Footer
@@ -42,6 +43,9 @@ export default {
           "url('assets/img/commonPages/desktop-bg-commonpage@2x.png')",
       },
     },
+=======
+    extend: {},
+>>>>>>> main
     container: {
       center: true,
       padding: {
