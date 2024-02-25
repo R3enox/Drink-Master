@@ -23,26 +23,26 @@ export const Drinks = () => {
 
   return (
     <div className="mt-[40px]">
-      {data?.paginatedResult?.length > 0 && (
-        <ul className="flex flex-wrap flex-col md:flex-row gap-[28px] md:gap-x-[20px] md:gap-y-[40px] lg:gap-y-[80px]">
-          {data?.paginatedResult?.map((drink) => (
-            <DrinkCardPreview key={drink._id} drink={drink} />
-          ))}
-        </ul>
+      {data?.totalCount > 0 && (
+        <>
+          <ul className="flex flex-wrap flex-col md:flex-row gap-[28px] md:gap-x-[20px] md:gap-y-[40px] lg:gap-y-[80px]">
+            {data.paginatedResult.map((drink) => (
+              <DrinkCardPreview key={drink._id} drink={drink} />
+            ))}
+          </ul>
+          <Paginator
+            totalCount={data?.totalCount}
+            itemsPerPage={per_page}
+            setPage={setPage}
+            forcePage={page}
+            initialPage={page}
+            countPagesOfPagination={countPagesOfPagination}
+          />
+        </>
       )}
       {drinksAreNotFinded && (
         <DrinkImageComponent
           description={'We did not find any drinks for you'}
-        />
-      )}
-      {data?.totalCount > 0 && (
-        <Paginator
-          totalCount={data?.totalCount}
-          itemsPerPage={per_page}
-          setPage={setPage}
-          forcePage={page}
-          initialPage={page}
-          countPagesOfPagination={countPagesOfPagination}
         />
       )}
       <br />
