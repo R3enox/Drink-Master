@@ -5,7 +5,12 @@ import { SubscribeForm } from './SubscribeForm';
 import { Link } from 'react-router-dom';
 import { FollowUs } from '../reUseComponents/FollowUs/FollowUs';
 
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
+
 export const Footer = () => {
+  const { t, i18n } = useTranslation();
+
   return (
     <footer
       className="container mx-auto w-[100vw] pt-[40px] pb-[18px] border-solid border-t-[1px]

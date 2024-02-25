@@ -8,7 +8,11 @@ import { createOptionsFromArrOfObjUsingId } from '../../helpers/createCollection
 import { BtnDarkTheme } from '../reUseComponents/Buttons/Buttons';
 import { addDrink } from '../../redux/addDrinks/addDrinkSlice';
 
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
+
 export const AddDrinkForm = () => {
+  const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
   const { ingredients } = useFilters();
   const addedIngredients = [];
@@ -65,7 +69,7 @@ export const AddDrinkForm = () => {
         >
           Add
         </button> */}
-        <BtnDarkTheme>Add</BtnDarkTheme>
+        <BtnDarkTheme>{t('button.AddDrink.Add')}</BtnDarkTheme>
       </form>
     </section>
   );

@@ -9,7 +9,12 @@ import {
 } from '../../helpers/createCollectionOptions';
 import sprite from '../../assets/sprite.svg';
 
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
+
 export const DrinksSearch = () => {
+  const { t, i18n } = useTranslation();
+
   const { categories, ingredients } = useFilters();
   const { search, category, ingredient, setDrinkFilter } = useDrinkFilters();
 
@@ -41,7 +46,7 @@ export const DrinksSearch = () => {
         <input
           className="bg-transparent w-full outline-none text-[14px] md:text-[17px] leading-[1.29] md:leading-[1.56]"
           type="text"
-          placeholder="Enter the text"
+          placeholder={t('inputPlaceholder.DrinksSearch.text')}
           onChange={(e) => {
             setValue('search', e.target.value);
           }}
@@ -71,7 +76,7 @@ export const DrinksSearch = () => {
       </form>
       <Select
         options={categoriesOptions}
-        placeholder={'All categories'}
+        placeholder={t('inputPlaceholder.DrinksSearch.SelectCategory')}
         classNamePrefix="searchSelect"
         isClearable={category && true}
         onChange={(selectedValue) =>
@@ -79,12 +84,12 @@ export const DrinksSearch = () => {
         }
         defaultValue={{
           value: category || '',
-          label: category || 'All categories',
+          label: category || t('inputPlaceholder.DrinksSearch.SelectCategory'),
         }}
       />
       <Select
         options={ingredientsOptions}
-        placeholder={'Ingredients'}
+        placeholder={t('inputPlaceholder.DrinksSearch.SelectIngredients')}
         classNamePrefix="searchSelect"
         isClearable={ingredient && true}
         onChange={(selectedValue) =>
@@ -92,7 +97,8 @@ export const DrinksSearch = () => {
         }
         defaultValue={{
           value: ingredient || '',
-          label: ingredient || 'Ingredients',
+          label:
+            ingredient || t('inputPlaceholder.DrinksSearch.SelectIngredients'),
         }}
       />
     </div>
