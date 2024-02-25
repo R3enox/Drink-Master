@@ -11,7 +11,6 @@ import { addDrink } from '../../redux/addDrinks/addDrinkSlice';
 export const AddDrinkForm = () => {
   const dispatch = useDispatch();
   const { ingredients } = useFilters();
-
   const addedIngredients = [];
 
   const ingredientsOptions = useMemo(

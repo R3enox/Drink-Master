@@ -13,7 +13,9 @@ export const handleRejected = (state, { payload }) => {
 export const handleFulfilledSignUp = (state, { payload }) => {
   state.isLoading = false;
   state.isLoggedIn = true;
-  state.token = payload.token;
+  state.isRefreshing = false;
+  state.accessToken = payload.accessToken;
+  state.refreshToken = payload.refreshToken;
   state.user = payload.user;
   state.error = null;
 };
@@ -21,24 +23,26 @@ export const handleFulfilledSignUp = (state, { payload }) => {
 export const handleFulfilledSignIn = (state, { payload }) => {
   state.isLoading = false;
   state.isLoggedIn = true;
-  state.token = payload.token;
+  state.isRefreshing = false;
+  state.accessToken = payload.accessToken;
+  state.refreshToken = payload.refreshToken;
   state.user = payload.user;
   state.error = null;
 };
 
-export const handlePendingRefreshUser = (state) => {
+export const handlePendingCurrentUser = (state) => {
   state.isRefreshing = true;
+  state.error = null;
 };
 
-export const handleFulfilledRefreshUser = (state, { payload }) => {
+export const handleFulfilledCurrentUser = (state, { payload }) => {
   state.isLoggedIn = true;
   state.isRefreshing = false;
   state.user = payload.user;
 };
 
-export const handleRejectedRefreshUser = (state) => {
+export const handleRejectedCurrentUser = (state) => {
   state.isRefreshing = false;
   state.isLoggedIn = false;
   state.user = initialState.user;
-  state.token = initialState.token;
 };

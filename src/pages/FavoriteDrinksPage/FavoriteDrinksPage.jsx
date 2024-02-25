@@ -101,39 +101,6 @@ const FavoriteDrinksPage = () => {
         </div>
       </section>
     </div>
-    // <div className="bg-favorites-set md:bg-favorites-set-tablet lg:bg-favorites-set-desktop bg-contain bg-no-repeat">
-    //   <section className="pb-[80px] mb:pb-[140]">
-    //     <div className="container mx-auto ">
-    //       {isLoading && <Loader />}
-    //       {isError && toast.error('Oops, something went wrong!!')}
-    //       <PageTitle title={'Favorites'} />
-    //       {data && data.length > 0 ? (
-    //         <DrinksList
-    //           data={data}
-    //           openMyDrinkModal={openFavoriteDrinkModal}
-    //           onChooseItem={setCurrentId}
-    //         />
-    //       ) : (
-    //         <DrinkImageComponent
-    //           description={"You haven't added any favorite cocktails yet"}
-    //         />
-    //       )}
-    //       {isOpen && (
-    //         <UniversalModal
-    //           isOpen={isOpen}
-    //           closeFnc={closeFavoriteDrinkModal}
-    //           content={'Are you sure you want to delete your drink?'}
-    //         >
-    //           <ModalButtons
-    //             closeMyDrinkModal={closeFavoriteDrinkModal}
-    //             handleDeleteClick={() => handleDeleteClick(currentId)}
-    //             drinkId={data}
-    //           />
-    //         </UniversalModal>
-    //       )}
-    //     </div>
-    //   </section>
-    // </div>
   );
 };
 
