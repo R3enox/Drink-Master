@@ -4,21 +4,22 @@ import storage from 'redux-persist/lib/storage';
 
 import { initialState } from './authInitialState';
 import {
-  handleFulfilledRefreshUser,
+  handleFulfilledCurrentUser,
   handleFulfilledSignIn,
   handleFulfilledSignUp,
+  handleFulfilledUpdateUser,
   handlePending,
-  handlePendingRefreshUser,
+  handlePendingUpdateUser,
   handleRejected,
-  handleRejectedRefreshUser,
+  
+  handleRejectedUpdateUser,
+  handlePendingCurrentUser,
+  handleRejectedCurrentUser,
+  
 } from './authFunctionsReducer';
 
-import {
-  refreshUserThunk,
-  signInThunk,
-  signOutThunk,
-  signUpThunk,
-} from './authOperations';
+
+import {  signInThunk, signOutThunk, signUpThunk, updateUserThunk, fetchCurrentThunk } from './authOperations';
 
 const STATUS = { PENDING: 'pending', REJECTED: 'rejected' };
 
@@ -28,6 +29,12 @@ const getActions = (type) =>
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    setTokens(state, { payload }) {
+      state.accessToken = payload.accessToken;
+      state.refreshToken = payload.refreshToken;
+    },
+  },
   extraReducers: (builder) => {
     const { PENDING, REJECTED } = STATUS;
     builder
@@ -36,9 +43,12 @@ const authSlice = createSlice({
       .addCase(signOutThunk.fulfilled, () => {
         return initialState;
       })
-      .addCase(refreshUserThunk.pending, handlePendingRefreshUser)
-      .addCase(refreshUserThunk.fulfilled, handleFulfilledRefreshUser)
-      .addCase(refreshUserThunk.rejected, handleRejectedRefreshUser)
+      .addCase(updateUserThunk.pending, handlePendingUpdateUser)
+      .addCase(updateUserThunk.fulfilled, handleFulfilledUpdateUser)
+      .addCase(updateUserThunk.rejected, handleRejectedUpdateUser)
+      .addCase(fetchCurrentThunk.pending, handlePendingCurrentUser)
+      .addCase(fetchCurrentThunk.fulfilled, handleFulfilledCurrentUser)
+      .addCase(fetchCurrentThunk.rejected, handleRejectedCurrentUser)
       .addMatcher(getActions(PENDING), handlePending)
       .addMatcher(getActions(REJECTED), handleRejected);
   },
@@ -47,7 +57,8 @@ const authSlice = createSlice({
 const authConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token'],
+  whitelist: ['accessToken', 'refreshToken'],
 };
 
+export const { setTokens } = authSlice.actions;
 export const authReducer = persistReducer(authConfig, authSlice.reducer);

@@ -3,6 +3,7 @@ import { HeaderSideMenu } from '../HeaderSideMenu/HeaderSideMenu';
 
 import sprite from '../../../assets/sprite.svg';
 
+
 export const HeaderBtn = () => {
   const [burger, setBurger] = useState(false);
 
@@ -12,6 +13,7 @@ export const HeaderBtn = () => {
 
   return (
     <>
+     
       <button
         className="ml-[14px] md:ml-[24px] lg:hidden"
         onClick={toogleModal}

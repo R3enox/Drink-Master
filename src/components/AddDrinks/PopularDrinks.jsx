@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchPopularDrinks } from '../../redux/popular/popularSlice';
-import { getPopularDrinks } from '../../redux/selectors';
+import { getPopularDrinks } from '../../redux/popular/selectors';
 
 export const PopularDrinks = () => {
   const dispatch = useDispatch();

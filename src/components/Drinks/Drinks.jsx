@@ -1,37 +1,51 @@
 import { DrinkCardPreview } from '../reUseComponents/DrinkCardPreview';
-import { useFilterDrinksQuery } from '../../redux/drinks/drinksAPI';
 import { Paginator } from '../reUseComponents/Paginator/Paginator';
 import { useDrinkFilters } from 'hooks/useDrinkFilters';
 import { usePagination } from 'hooks/usePagination';
 import { DrinksLimit } from 'constants/paginationLimits';
 import { DrinkImageComponent } from '../reUseComponents/DrinkImageComponent';
+import { useEffect } from 'react';
+import { filterDrinks } from '../../redux/drinks/drinksAPI';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  selectDrinks,
+  selectDrinksIsLoading,
+  selectTotalCount,
+} from '../../redux/drinks/drinksSelector';
 
 export const Drinks = () => {
+  const dispatch = useDispatch();
   const { page, per_page, countPagesOfPagination, setPage } =
     usePagination(DrinksLimit);
   const { search, category, ingredient } = useDrinkFilters();
 
-  const { data, isLoading } = useFilterDrinksQuery({
-    page,
-    per_page,
-    search,
-    category,
-    ingredient,
-  });
+  const data = useSelector(selectDrinks);
+  const totalCount = useSelector(selectTotalCount);
 
-  const drinksAreNotFinded = !isLoading && data.totalCount === 0;
+  const isLoading = useSelector(selectDrinksIsLoading);
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams({ page, per_page });
+    if (search) searchParams.set('search', search);
+    if (category) searchParams.set('category', category);
+    if (ingredient) searchParams.set('ingredient', ingredient);
+
+    dispatch(filterDrinks(searchParams));
+  }, [page, per_page, search, category, ingredient, dispatch]);
+
+  const drinksAreNotFinded = !isLoading && totalCount === 0;
 
   return (
     <div className="mt-[40px]">
-      {data?.totalCount > 0 && (
+      {totalCount > 0 && (
         <>
           <ul className="flex flex-wrap flex-col md:flex-row gap-[28px] md:gap-x-[20px] md:gap-y-[40px] lg:gap-y-[80px]">
-            {data.paginatedResult.map((drink) => (
+            {data.map((drink) => (
               <DrinkCardPreview key={drink._id} drink={drink} />
             ))}
           </ul>
           <Paginator
-            totalCount={data?.totalCount}
+            totalCount={totalCount}
             itemsPerPage={per_page}
             setPage={setPage}
             forcePage={page}

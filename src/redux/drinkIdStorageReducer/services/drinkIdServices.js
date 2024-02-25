@@ -8,7 +8,6 @@ export const fetchCocktailsById = createAsyncThunk(
       const { data } = await API.get(`/drinks/${id}`);
       return data;
     } catch (err) {
-      //   Notify.failure('Not connected to the server');
       return thunkApi.rejectWithValue(err.message);
     }
   }

@@ -1,40 +1,42 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createSlice } from '@reduxjs/toolkit';
+import { deleteMyDrink, getMyDrinks } from './myDrinksAPI';
 
-import instance from '../../services/axios';
-const baseURL = instance.defaults.baseURL;
-
-export const myDrinksApi = createApi({
-  reducerPath: 'myDrinksApi',
-  baseQuery: fetchBaseQuery({
-    baseUrl: `${baseURL}`,
-    prepareHeaders: (headers, { getState }) => {
-      const token = getState().auth.token;
-
-      if (token) {
-        headers.set('authorization', `Bearer ${token}`);
-      }
-
-      return headers;
-    },
-  }),
-
-  tagTypes: ['myDrinks'],
-  endpoints: (build) => ({
-    fetchMyDrinks: build.query({
-      query: ({ page, per_page }) => {
-        const queryParams = new URLSearchParams({ page, per_page });
-        return { url: `/drinks/own?${queryParams}`, method: 'get' };
-      },
-      providesTags: ['myDrinks'],
-    }),
-    deleteMyDrink: build.mutation({
-      query: (id) => ({
-        url: `/drinks/own/remove/${id}`,
-        method: 'delete',
-      }),
-      invalidatesTags: ['myDrinks'],
-    }),
-  }),
+export const myDrinksSlice = createSlice({
+  name: 'myDrinks',
+  initialState: {
+    myDrinks: [],
+    totalCount: null,
+    isLoading: false,
+    error: null,
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getMyDrinks.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(getMyDrinks.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.myDrinks = payload.paginatedResult;
+        state.totalCount = payload.totalCount;
+      })
+      .addCase(getMyDrinks.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message;
+      })
+      .addCase(deleteMyDrink.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(deleteMyDrink.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.myDrinks = state.myDrinks.filter(({ _id: id }) => id !== payload);
+      })
+      .addCase(deleteMyDrink.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message;
+      });
+  },
 });
 
-export const { useFetchMyDrinksQuery, useDeleteMyDrinkMutation } = myDrinksApi;
+export const myDrinksReducer = myDrinksSlice.reducer;
