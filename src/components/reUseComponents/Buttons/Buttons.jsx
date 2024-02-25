@@ -53,14 +53,26 @@ export const DeleteBtn = ({ children, onClick }) => {
   );
 };
 
-export const LinkHeaderNav = ({ children }) => {
+export const LinkHeaderNav = ({ children, to }) => {
   return (
     <Link
+      to={to}
       className="transition shadow-lg hover:shadow-primary-text-color/50 bg-transparent hover:bg-primary-text-button-color
       text-primary-text-color  py-[8px] px-[16px] rounded-[40px] border-[1px] border-border-color text-[14px] leading-[1.6] font-medium"
     >
       {children}
     </Link>
+  );
+};
+
+export const BtnSubscribe = ({ children }) => {
+  return (
+    <button
+      type="submit"
+      className="transition shadow-lg hover:shadow-primary-text-color/50 bg-transparentw-full text-center py-[18px] rounded-[200px] bg-transparent border-[1px]  border-border-color text-primary-text-color text-[16px] leading-[1.12] font-semibold hover:bg-primary-text-color hover:text-primary-text-button-color md:text-[17px] md:py-[14px] md:leading-[1.56]"
+    >
+      {children}
+    </button>
   );
 };
 

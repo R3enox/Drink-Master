@@ -11,19 +11,7 @@ import sprite from '../../assets/sprite.svg';
 
 export const DrinksSearch = () => {
   const { categories, ingredients } = useFilters();
-  const { keyName, category, ingredient, setDrinkFilter } = useDrinkFilters();
-
-  const createCategoriesOptions = (collection) =>
-    collection.map((title) => ({
-      value: title,
-      label: title,
-    }));
-
-  const createIngredientsOptions = (collection) =>
-    collection.map(({ title }) => ({
-      value: title,
-      label: title,
-    }));
+  const { search, category, ingredient, setDrinkFilter } = useDrinkFilters();
 
   const categoriesOptions = useMemo(
     () => createOptionsFromArrOfStr(categories ?? []),
@@ -36,12 +24,12 @@ export const DrinksSearch = () => {
   );
   const { handleSubmit, setValue, watch } = useForm({
     defaultValues: {
-      keyName: keyName || '',
+      search: search || '',
     },
   });
 
   const onSubmit = (values) => {
-    setDrinkFilter('keyName', values.keyName);
+    setDrinkFilter('search', values.search);
   };
 
   return (
@@ -55,20 +43,20 @@ export const DrinksSearch = () => {
           type="text"
           placeholder="Enter the text"
           onChange={(e) => {
-            setValue('keyName', e.target.value);
+            setValue('search', e.target.value);
           }}
-          value={watch('keyName' || '')}
+          value={watch('search' || '')}
         />
         <div className="flex items-center">
           <button
             type="reset"
             onClick={() => {
-              setValue('keyName', '');
-              setDrinkFilter('keyName', '');
+              setValue('search', '');
+              setDrinkFilter('search', '');
             }}
             className="w-[10px] h-[10px] md:w-[15px] md:h-[15px]"
           >
-            {watch('keyName') && (
+            {watch('search') && (
               <svg className=" stroke-primary-text-color w-[10px] h-[10px] md:w-[15px] md:h-[15px]">
                 <use href={sprite + '#icon-cross'}></use>
               </svg>

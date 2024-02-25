@@ -1,38 +1,36 @@
 import { configureStore } from '@reduxjs/toolkit';
-import {
-  persistStore,
-  persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from 'redux-persist';
-
-import storage from 'redux-persist/lib/storage';
+import { userApi } from './auth/usersOperations';
 import { drinksApi } from '../redux/drinks/drinksAPI';
 import { authReducer } from './auth/authReducer';
 import { filtersReducer } from './filters/slice';
 import { drinkIdApi } from './drinkIdStorageReducer/drinkIdStorageReducer';
+import {
+  FLUSH,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+  REHYDRATE,
+} from 'redux-persist';
+import persistStore from 'redux-persist/es/persistStore';
 import { myDrinksApi } from './myDrinks/myDrinksSlice';
 import { favoriteApi } from './favorites/favoriteSlice';
-
-const authConfig = {
-  key: 'auth',
-  storage,
-  witelist: ['token'],
-};
+import { popularDrinksReducer } from './popular/popularSlice';
+import { addDrinkReducer } from './addDrinks/addDrinkSlice';
 
 export const store = configureStore({
   reducer: {
-    auth: persistReducer(authConfig, authReducer),
+    auth: authReducer,
+    popular: popularDrinksReducer,
+    addDrink: addDrinkReducer,
+    [userApi.reducerPath]: userApi.reducer,
     [drinksApi.reducerPath]: drinksApi.reducer,
     filters: filtersReducer,
     [drinkIdApi.reducerPath]: drinkIdApi.reducer,
     [myDrinksApi.reducerPath]: myDrinksApi.reducer,
     [favoriteApi.reducerPath]: favoriteApi.reducer,
   },
+
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {

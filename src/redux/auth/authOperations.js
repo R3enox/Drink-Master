@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import toast from 'react-hot-toast';
-
+import { toast } from 'react-toastify';
 import API, { setAuthToken } from 'services/axios';
 
 export const signUpThunk = createAsyncThunk(
@@ -32,6 +31,18 @@ export const signInThunk = createAsyncThunk(
   }
 );
 
+export const signOutThunk = createAsyncThunk(
+  'auth/signout',
+  async (_, thunkApi) => {
+    try {
+      const { data } = await API.post('/auth/signout');
+
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+
+    }})
+    
 export const refreshUserThunk = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {

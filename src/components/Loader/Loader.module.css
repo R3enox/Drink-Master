@@ -4,6 +4,15 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.staticContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 200px;
+}
+
 .spinner {
   height: 50px;
   width: max-content;
@@ -47,6 +56,7 @@
 }
 
 @keyframes loading6454 {
+
   0%,
   100% {
     transform: translateY(0);
