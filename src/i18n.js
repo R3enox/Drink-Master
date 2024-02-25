@@ -8,12 +8,10 @@ i18n
   .use(backend)
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
-    debug: true,
+    debug: false,
     whitelist: ['en', 'ua'],
     fallbackLng: 'ua', // use en if detected lng is not available
     // saveMissing: true, // send not translated keys to endpoint
-    loadPath: '/Locales/{{lng}}/{{ns}}.json',
-  addPath: 'Locales/add/{{lng}}/{{ns}}',
   });
 
 export default i18n;
