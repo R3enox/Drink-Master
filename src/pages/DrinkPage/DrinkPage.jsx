@@ -1,20 +1,21 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import Loader from '../../components/Loader/Loader.jsx';
 
 import DrinkPageHero from 'components/DrinkPageHero/DrinkPageHero';
 import DrinkIngredientsList from 'components/DrinkIngredientsList/DrinkIngredientsList';
 import RecipePreparation from 'components/RecipePreparation/RecipePreparation';
+import Loader from 'components/Loader/Loader.jsx';
 
 import {
   selectGetCurrentCocktail,
   selectIsLoading,
 } from '../../redux/drinkIdStorageReducer/drinkIdStorageReducer.selectors';
 import { fetchCocktailsById } from '../../redux/drinkIdStorageReducer/services/drinkIdServices';
-import { getIdIngredients, scrollToTop } from './services.js';
-import { useFilters } from 'hooks/useFilters.js';
 import { selectAuthError } from '../../redux/auth/authSelectors.js';
+import { mapIngredientsOfCocktail } from 'helpers/createIngredientsCollection.js';
+import { scrollToTop } from 'helpers/scrollToTop.js';
+import { useFilters } from 'hooks/useFilters.js';
 
 const DrinkPage = () => {
   const currentCocktail = useSelector(selectGetCurrentCocktail);
@@ -24,7 +25,7 @@ const DrinkPage = () => {
   const { drinkId } = useParams();
   const { ingredients } = useFilters();
 
-  const ingIds = getIdIngredients(currentCocktail);
+  const ingIds = mapIngredientsOfCocktail(currentCocktail);
 
   const ingredByFilter =
     ingredients &&

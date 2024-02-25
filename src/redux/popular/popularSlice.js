@@ -2,13 +2,10 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import instance from '../../services/axios';
 
 export const fetchPopularDrinks = createAsyncThunk(
-  '/drinks/popular?page=1&limit=4',
-  async ({ page, limit }, { rejectWithValue }) => {
+  'drinks/getPopular',
+  async ({ limit }, { rejectWithValue }) => {
     try {
-      const { data } = await instance.get(
-        `/drinks/popular?page=${page}&limit=${limit}`
-      );
-
+      const { data } = await instance.get(`/drinks/popular?limit=${limit}`);
       return data;
     } catch (err) {
       return rejectWithValue(err.data);

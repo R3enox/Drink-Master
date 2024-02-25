@@ -1,15 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchPopularDrinks } from '../../redux/popular/popularSlice';
-import { getPopularDrinks } from '../../redux/selectors';
+import { getPopularDrinks } from '../../redux/popular/selectors';
 
 export const PopularDrinks = () => {
   const dispatch = useDispatch();
   const popularDrinks = useSelector(getPopularDrinks);
-  console.log(popularDrinks);
 
   useEffect(() => {
-    dispatch(fetchPopularDrinks({ page: 1, limit: 4 }));
+    dispatch(fetchPopularDrinks({ limit: 4 }));
   }, [dispatch]);
 
   return (

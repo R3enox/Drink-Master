@@ -11,7 +11,6 @@ import { addDrink } from '../../redux/addDrinks/addDrinkSlice';
 export const AddDrinkForm = () => {
   const dispatch = useDispatch();
   const { ingredients } = useFilters();
-
   const addedIngredients = [];
 
   const ingredientsOptions = useMemo(
@@ -24,8 +23,6 @@ export const AddDrinkForm = () => {
     addedIngredients.length = 0;
 
     const formData = new FormData(e.currentTarget);
-
-    console.log(formData);
 
     formData.getAll('ingredientId').forEach((ingredientId, index) => {
       const measure = formData.getAll('measure')[index];
@@ -52,12 +49,6 @@ export const AddDrinkForm = () => {
         addedIngredient.ingredientId
       );
     });
-
-    formData.forEach((value, name) => {
-      console.log('name: ', name);
-      console.log('value: ', value);
-    });
-    console.log(formData);
 
     dispatch(addDrink(formData));
   };

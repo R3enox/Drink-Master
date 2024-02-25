@@ -6,9 +6,12 @@ export const initialState = {
     dateOfBirth: null,
     avatarURL: null,
   },
+   isUpdateUserLoading: false,
+    isUpdateUserError: null,
   isLoading: false,
   isLoggedIn: false,
   isRefreshing: false,
   error: null,
-  token: null,
+  accessToken: null,
+  refreshToken: null,
 };
