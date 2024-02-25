@@ -30,6 +30,10 @@ This app will allow you to easily find and add your favorite cocktail recipes an
 
 ✔️**Intuitive user interface**: the easy-to-use interface makes it effortless to add, create, and find out more information without any extra effort.
 
+✔️**Google authorization**: secure and convenient authorization and login to your account.
+
+✔️**Security**: the refresh + access token scheme is used. A reliable mechanism for controlling users' "sensitive information".
+
 ✔️**Dark/Light mode**: you can switch the theme from light to dark and vice versa. The data on the theme selected by the user is saved even after leaving the application.
 
 ## 🔧Stack technology

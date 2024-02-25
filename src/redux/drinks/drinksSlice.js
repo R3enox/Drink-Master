@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 
 import { filterDrinks, getDrinks } from './drinksAPI';
 
@@ -29,10 +29,15 @@ const drinksSlice = createSlice({
           state.isLoading = false;
         }
       )
+      .addMatcher(isAnyOf(getDrinks.pending, filterDrinks.pending), (state) => {
+        state.isLoading = true;
+        state.isError = null;
+      })
       .addMatcher(
-        (action) => action.type.endsWith('/pending'),
-        (state) => {
-          state.isLoading = true;
+        isAnyOf(getDrinks.rejected, filterDrinks.rejected),
+        (state, { payload }) => {
+          state.isLoading = false;
+          state.isError = payload;
         }
       );
   },

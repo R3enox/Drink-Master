@@ -38,11 +38,10 @@ export const PreviewDrinks = () => {
     categories &&
     popularCategories.filter((category) => categories.includes(category));
 
-  return isLoading ? (
-    <Loader isStatic />
-  ) : (
-    data && (
-      <div className="container m-auto conflex flex-col gap-[60px] pb-[80px] md:gap-[80px] pt-[56px] md:pt-[61px] md:pb-[140px] lg:pt-[80px]">
+  return (
+    <div className="container m-auto conflex flex-col gap-[60px] pb-[80px] md:gap-[80px] pt-[56px] md:pt-[61px] md:pb-[140px] lg:pt-[80px]">
+      {isLoading && <Loader isStatic />}
+      {data.length > 0 && !isLoading && (
         <ul className="flex flex-col gap-[40px] mb-[60px] md:gap-[80px] md:mb-[80px]">
           {filteredCategories.map((category) => (
             <li key={category}>
@@ -59,12 +58,12 @@ export const PreviewDrinks = () => {
             </li>
           ))}
         </ul>
+      )}
         <div className="flex justify-center ">
           <LinkDarkTheme to="/drinks">
             {t('link.PreviewDrinks.SignUp')}
           </LinkDarkTheme>
         </div>
-      </div>
-    )
+    </div>
   );
 };
