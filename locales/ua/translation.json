@@ -1,0 +1,162 @@
+{
+  "title": {
+    "myDrinks": "Мої напої",
+    "AddDrink": "Додати напій",
+    "Drinks": "Напої",
+    "Favorite": "Улюблене",
+    "Welcome": "Ласкаво просимо до додатку!",
+    "AddDrinkRecepy": "Рецепт Приготування",
+    "SignInForm": "Увійти",
+    "SignUpForm": "Зареєструватися"
+  },
+
+  "title2": {
+    "FolowUs": "Слідкуйте за нами",
+    "PopularDrinks": "Популярні напої",
+    "AddDrink": "Інгредієнти",
+    "DrinkIngredientsList": "Інгредієнти"
+  },
+
+  "Privacy": {
+    "date": "©2023 Drink Master. Всі права захищені.",
+    "Policy": "Політика конфіденційності",
+    "Term": "Умови надання послуг"
+  },
+
+  "DrinkImageComponent": {
+    "myDrinks": "У вас ще немає власних напоїв",
+    "Favorite": "Ви ще не додали жодного улюбленого напою",
+    "Drinks": "Ми не знайшли для вас напоїв"
+  },
+  "UniversalModal": {
+    "myDrinks": "Ви впевнені, що хочете видалити свій напій?",
+    "useSelector": "Ви впевнені, що хочете вийти?"
+  },
+
+  "toastError": {
+    "Favorite": "Ой, щось пішло не так!!",
+    "DrinkPageHeroDel": "Напій видалено з улюблених!",
+    "DrinkPageHeroAdd": "Напій додано до улюблених!"
+  },
+  "Hero": {
+    "text": " Розкрийте свійу собі міксолога за допомогою Drink Master - єдиного місця для вивчення, створення та освоєння найкращих світових напоїв."
+  },
+
+  "UserLogoPopup": {
+    "text": "Редагувати"
+  },
+
+  "SubscribeForm": {
+    "text": "Підпишіться на нашу розсилку. Будьте в курсі останніх новин та спеціальних пропозицій, тощо."
+  },
+
+  "pageText": {
+    "Welcome": "Ця програма пропонує більше, ніж просто колекцію рецептів – вона створена як ваша власна цифрова кулінарна книга. Ви можете легко створювати та зберігати власні рецепти в будь-який час."
+  },
+
+  "serviceText": {
+    "DrinkPageHero": "Додати зображення"
+  },
+
+  "label": {
+    "DrinkPageHero": {
+      "Category": "Категорія",
+      "Glass": "Посуд"
+    }
+  },
+
+  "inputPlaceholder": {
+    "DrinkPageHero": {
+      "itemTitle": "Введіть назву коктейлю",
+      "recipeDescr": "Додайте опис рецепту",
+      "recipe": "Введіть рецепт"
+    },
+    "SignInForm": {
+      "email": "Електронна пошта",
+      "emailValid": "Електронна пошта обов'язкова",
+      "emailPatternError": "НЕКОРЕКТНИЙ формат електронної пошта",
+      "emailPatternCorrect": "КОРЕКТНА електронна пошта",
+      "password": "Пароль",
+      "passwordValid": "Пароль обов'язковий",
+      "passwordPatternErrorLength": "Пароль повинен містити щонайменше 6 символів",
+      "passwordPatternError": "НЕКОРЕКТНИЙ формат паролю",
+      "passwordPatternCorrect": "КОРЕКТНИЙ пароль"
+    },
+    "SignUpForm": {
+      "name": "Ім'я",
+      "namelValid": "Ім'я обов'язкове",
+      "namePatternError": "НЕКОРЕКТНИЙ формат імені",
+      "namePatternCorrect": "КОРЕКТНИЙ формат імені",
+      "email": "Електронна пошта"
+    },
+    "DatePicker": {
+      "dateFormat": "дд/мм/рррр"
+    },
+    "DrinksSearch": {
+      "text": "Введіть текст",
+      "SelectCategory": "Всі категорії",
+      "SelectIngredients": "Інгредієнти"
+    },
+    "SubscribeForm": {
+      "email": "Введіть електронну пошту"
+    }
+  },
+
+  "cocktailType": {
+    "alco": "Алкогольний",
+    "non": "Безалкогольний"
+  },
+
+  "button": {
+    "AddDrink": {
+      "Add": "Додати"
+    },
+    "SignInForm": {
+      "SignIn": "Увійти"
+    },
+    "SignUpForm": {
+      "SignUp": "Зареєструватися"
+    },
+    "toggleFavorite": {
+      "ButtonComponentDel": "Видалити з улюбленого",
+      "ButtonComponentAdd": "Додати до улюблених напоїв"
+    },
+    "SubscribeForm": {
+      "BtnSubscribe": "Підписатись"
+    },
+    "LogOutModal": {
+      "LogOut": "Вийти",
+      "Cancel": "Відміна"
+    },
+    "UserLogo": {
+      "Save": "Зберегти зміни"
+    }
+  },
+
+  "link": {
+    "SignInForm": {
+      "SignUp": "Зареєструватися"
+    },
+    "PreviewDrinks": {
+      "SignUp": "Інші напої"
+    },
+    "DrinksItem": {
+      "SeeMore": "Побачити більше"
+    },
+    "Nav": {
+      "Drinks": "Напої",
+      "AddDrink": "Додати напій",
+      "MyDrinks": "Мої напої",
+      "FavoritesDrinks": "Улюблені напої"
+    }
+  },
+  "Loader": {
+    "L": "В",
+    "O": "А",
+    "A": "Н",
+    "D": "Т",
+    "I": "А",
+    "N": "Ж",
+    "G": "У"
+  }
+}
