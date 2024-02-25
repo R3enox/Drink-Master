@@ -14,9 +14,9 @@ import {
 } from 'redux-persist';
 import persistStore from 'redux-persist/es/persistStore';
 import { myDrinksApi } from './myDrinks/myDrinksSlice';
-import { favoriteApi } from './favorites/favoriteSlice';
 import { popularDrinksReducer } from './popular/popularSlice';
 import { addDrinkReducer } from './addDrinks/addDrinkSlice';
+import { favoritesReducer } from './favorites/favoriteSlice';
 
 export const store = configureStore({
   reducer: {
@@ -28,7 +28,7 @@ export const store = configureStore({
     filters: filtersReducer,
     drinkIdStorage: drinkIdStorageReducer,
     [myDrinksApi.reducerPath]: myDrinksApi.reducer,
-    [favoriteApi.reducerPath]: favoriteApi.reducer,
+    favorites: favoritesReducer,
   },
 
   middleware: (getDefaultMiddleware) =>
@@ -36,11 +36,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(
-      drinksApi.middleware,
-      myDrinksApi.middleware,
-      favoriteApi.middleware
-    ),
+    }).concat(drinksApi.middleware, myDrinksApi.middleware),
 });
 
 export const persistor = persistStore(store);
