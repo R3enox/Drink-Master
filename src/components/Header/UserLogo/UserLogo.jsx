@@ -4,8 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectAuthUser } from '../../../redux/auth/authSelectors';
 import sprite from '../../../assets/sprite.svg';
 import { updateUserThunk } from '../../../redux/auth/authOperations';
+import { useTranslation } from 'react-i18next';
+import '../../../i18n';
 
 const UserLogo = ({ closeFnc }) => {
+  const { t, i18n } = useTranslation();
   const user = useSelector(selectAuthUser);
 
   const dispatch = useDispatch();
@@ -73,7 +76,7 @@ const UserLogo = ({ closeFnc }) => {
           className="w-[285px] pl-[24px] md:w-[400px]   py-[18px] rounded-[200px] bg-transparent border-[1px]  border-border-color text-primary-text-color text-[16px] leading-[1.12] font-semibold hover:bg-primary-text-color hover:text-primary-text-button-color transition-colors md:text-[17px] md:py-[18px] md:leading-[1.56]"
           {...register('name', { required: true })}
           type="text"
-          placeholder="name"
+          placeholder={t('inputPlaceholder.SignUpForm.name')}
           autoComplete="off"
           onChange={handleChange}
           value={userName.name}
@@ -86,7 +89,7 @@ const UserLogo = ({ closeFnc }) => {
           className="w-[285px] md:w-full sm:mt-[18px] md:mt-[25px]  text-center py-[18px] rounded-[200px] bg-transparent border-[1px]  border-border-color text-primary-text-color text-[16px] leading-[1.12] font-semibold hover:bg-primary-text-color hover:text-primary-text-button-color transition-colors md:text-[17px] md:py-[18px] md:leading-[1.56]"
           // type="submit"
         >
-          Save changes
+          {t('button.UserLogo.Save')}
         </button>
       </form>
     </>

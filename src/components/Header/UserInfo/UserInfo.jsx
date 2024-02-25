@@ -8,7 +8,12 @@ import { useSelector } from 'react-redux';
 import UniversalModal from '../../reUseComponents/ UniversalModal/ UniversalModal';
 import HeaderModal from '../HeaderModal/HeaderModal';
 
+import { useTranslation } from 'react-i18next';
+import '../../../i18n';
+
 const UserInfo = () => {
+  const { t, i18n } = useTranslation();
+
   const [openEl, setOpenEl] = useState(null);
   const [popUpIsOpen, setPopUpIsOpen] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -63,7 +68,7 @@ const UserInfo = () => {
         <UniversalModal
           isOpen={isOpenLogOutModal}
           closeFnc={toogleLogOutModal}
-          content={'Are you sure you want to log out?'}
+          content={t('UniversalModal.useSelector')}
           hidden={`hidden`}
         >
           <LogOutModal closeFnc={toogleLogOutModal} />

@@ -5,7 +5,12 @@ import { ButtonComponent } from '../reUseComponents/ButtonComponent';
 import { toast } from 'react-toastify';
 import { addFavorite, deleteFavorite } from '../../redux/favorites/favoriteAPI';
 
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
+
 const DrinkPageHero = ({ cocktail }) => {
+  const { t, i18n } = useTranslation();
+
   const dispatch = useDispatch();
   const user = useSelector(selectAuthUser);
   const [isFirstRender, setIsFirstRender] = useState(true);
@@ -48,19 +53,21 @@ const DrinkPageHero = ({ cocktail }) => {
         <div className="pt-10 pb-20">
           {isFav ? (
             <ButtonComponent
-              descr={'Remove from favorites'}
+              descr={t('button.toggleFavorite.ButtonComponentDel')}
               btnFunction={() => {
                 toggleFavorite(_id);
-                toast('Drink removed from favorites !');
+                toast(`${t('toastError.DrinkPageHeroDel')}`);
               }}
               id={_id}
             />
           ) : (
             <ButtonComponent
-              descr={'Add to favorite drinks'}
+              descr={t('button.toggleFavorite.ButtonComponentDel')}
               btnFunction={() => {
                 toggleFavorite(_id);
-                toast.success('Drink added to favorites !', { icon: false });
+                toast.success(`${t('toastError.DrinkPageHeroAdd')}`, {
+                  icon: false,
+                });
               }}
               id={_id}
             />
