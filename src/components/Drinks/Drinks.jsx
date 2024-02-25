@@ -19,7 +19,7 @@ export const Drinks = () => {
     ingredient,
   });
 
-  const drinksAreNotFinded = !isLoading && data?.totalCount === 0;
+  const drinksAreNotFinded = !isLoading && data.totalCount === 0;
 
   return (
     <div className="mt-[40px]">
@@ -30,15 +30,17 @@ export const Drinks = () => {
           ))}
         </ul>
       )}
-      {drinksAreNotFinded ? (
+      {drinksAreNotFinded && (
         <DrinkImageComponent
           description={'We did not find any drinks for you'}
         />
-      ) : (
+      )}
+      {data?.totalCount && (
         <Paginator
           totalCount={data?.totalCount}
           itemsPerPage={per_page}
           setPage={setPage}
+          forcePage={page}
           initialPage={page}
           countPagesOfPagination={countPagesOfPagination}
         />

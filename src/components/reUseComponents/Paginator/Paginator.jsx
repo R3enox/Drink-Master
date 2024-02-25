@@ -18,13 +18,16 @@ export const Paginator = ({
     scrollToTop();
   };
 
+  const totalPages = Math.ceil(totalCount / itemsPerPage);
+  const checkInitialPage = initialPage > totalPages ? 1 : initialPage;
+
   return (
     <ReactPaginate
       containerClassName={'pagination-list'}
       pageRangeDisplayed={countPagesOfPagination - 4}
       marginPagesDisplayed={1}
-      pageCount={Math.ceil(totalCount / itemsPerPage)}
-      initialPage={initialPage - 1}
+      pageCount={totalPages}
+      initialPage={checkInitialPage - 1}
       forcePage={forcePage - 1}
       onPageChange={handlePageChange}
       previousLabel={
