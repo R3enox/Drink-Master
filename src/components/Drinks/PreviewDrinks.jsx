@@ -12,6 +12,9 @@ import {
   selectDrinksIsLoading,
 } from '../../redux/drinks/drinksSelector';
 
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
+
 const popularCategories = [
   'Ordinary Drink',
   'Cocktail',
@@ -20,6 +23,8 @@ const popularCategories = [
 ];
 
 export const PreviewDrinks = () => {
+  const { t, i18n } = useTranslation();
+
   const data = useSelector(selectDrinks);
   const isLoading = useSelector(selectDrinksIsLoading);
   const dispatch = useDispatch();
@@ -55,7 +60,9 @@ export const PreviewDrinks = () => {
           ))}
         </ul>
         <div className="flex justify-center ">
-          <LinkDarkTheme to="/drinks">Other drinks</LinkDarkTheme>
+          <LinkDarkTheme to="/drinks">
+            {t('link.PreviewDrinks.SignUp')}
+          </LinkDarkTheme>
         </div>
       </div>
     )

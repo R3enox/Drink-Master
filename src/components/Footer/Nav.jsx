@@ -1,19 +1,24 @@
 import { Link } from 'react-router-dom';
 
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
+
 export const Nav = () => {
+  const { t, i18n } = useTranslation();
+
   return (
     <ul className="flex flex-col gap-y-[14px] font-medium text-[14px] leading-[1.6] text-primary-text-color md:gap-y-[20px]">
       <li className="hover:text-hover-text-color transition-colors">
-        <Link to={'/drinks'}>Drinks</Link>
+        <Link to={'/drinks'}>{t('link.Nav.Drinks')}</Link>
       </li>
       <li className="hover:text-hover-text-color transition-colors">
-        <Link to={'/add'}>Add drink</Link>
+        <Link to={'/add'}>{t('link.Nav.AddDrink')}</Link>
       </li>
       <li className="hover:text-hover-text-color transition-colors">
-        <Link to={'/my'}>My drinks</Link>
+        <Link to={'/my'}>{t('link.Nav.MyDrinks')}</Link>
       </li>
       <li className="hover:text-hover-text-color transition-colors">
-        <Link to={'/favorites'}>Favorites drinks</Link>
+        <Link to={'/favorites'}>{t('link.Nav.FavoritesDrinks')}</Link>
       </li>
     </ul>
   );
