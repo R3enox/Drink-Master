@@ -46,7 +46,9 @@ const UserInfo = () => {
               className="rounded-full sm:w-[32px] sm:h-[32px]  md:w-[44px] md:h-[44px] lg:w-[44px] lg:h-[39px]"
             />
           </div>
-          <p className="">{user.name}</p>
+          <p className="text-primary-text-button-color dark:text-primary-text-color">
+            {user.name}
+          </p>
         </div>
 
         {popUpIsOpen && (
@@ -74,7 +76,6 @@ const UserInfo = () => {
           isOpen={modalIsOpen}
           closeFnc={togleModal}
           content={``}
-        
         >
           <UserLogo />
         </UniversalModal>
@@ -84,5 +85,3 @@ const UserInfo = () => {
 };
 
 export default UserInfo;
-
- 

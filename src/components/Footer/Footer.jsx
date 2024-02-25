@@ -9,7 +9,7 @@ export const Footer = () => {
   return (
     <footer
       className="container mx-auto w-[100vw] pt-[40px] pb-[18px] border-solid border-t-[1px]
-     border-border-color bg-footer-set bg-bottom h-full bg-containe bg-no-repeat
+     border-border-color bg-dark-theme-bg-color bg-footer-set bg-bottom h-full bg-containe bg-no-repeat
      md:pb-[24px] md:pt-[80px] md:bg-footer-set-tablet lg:bg-footer-set-desktop"
     >
       <div className="flex flex-wrap md:flex-nowrap md:gap-x-[251px]">

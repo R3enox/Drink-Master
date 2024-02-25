@@ -7,14 +7,14 @@ export const HeaderSideMenu = ({ toogleModal, burger }) => {
   return (
     <div className="bg-mobile-bg-commonpage">
       <nav
-        className={`bg-button-hover-color overflow-hidden absolute flex flex-col h-[1000%] w-full z-[100] bg-mobile-bg-commonpage bg-no-repeat  ${
+        className={`bg-light-theme-bg-color dark:bg-dark-theme-bg-color overflow-hidden absolute flex flex-col h-[1000%] w-full z-[100] bg-mobile-bg-commonpage bg-no-repeat  ${
           burger ? 'open top-[75px] left-0' : 'close top-[-100px] left-0'
         }`}
       >
         <ul className="flex flex-col mt-[160px] font-medium items-center gap-[16px] -[1.12] ">
           {mainNav.map(({ id, href, title }) => (
             <li
-              className="rounded-[200px] bg-transparent border-[1px]  border-border-color text-primary-text-color text-[14px] py-[8px] px-[16px] hover:bg-primary-text-button-color transition-colors"
+              className="rounded-[200px] bg-transparent border-[1px] border-border-color-for-ligh dark:border-border-color text-primary-text-button-color dark:text-primary-text-color text-[14px] py-[8px] px-[16px] hover:bg-primary-text-button-color hover:text-primary-text-color transition-colors"
               key={id}
             >
               <NavLink onClick={toogleModal} to={href}>

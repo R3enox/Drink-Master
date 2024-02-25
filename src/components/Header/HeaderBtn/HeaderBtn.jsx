@@ -16,7 +16,7 @@ export const HeaderBtn = () => {
         className="ml-[14px] md:ml-[24px] lg:hidden"
         onClick={toogleModal}
       >
-        <svg className="stroke-primary-text-color sm:w-[22px] h-[22px] md:w-[28px] md:h-[28px]">
+        <svg className=" stroke-primary-text-button-color dark:stroke-primary-text-color sm:w-[22px] h-[22px] md:w-[28px] md:h-[28px]">
           <use href={sprite + '#icon-burger'}></use>
         </svg>
       </button>

@@ -11,8 +11,8 @@ const DrinksPage = () => {
 
   return (
     <div
-      className="bg-common-set
-    md:bg-common-set-tablet lg:bg-common-set-desktop bg-contain bg-no-repeat"
+      className=" dark:bg-common-set
+    md:dark:bg-common-set-tablet lg:dark:bg-common-set-desktop bg-contain bg-no-repeat"
     >
       <div className="container mx-auto pb-[80px]">
         <PageTitle title="Drinks" />

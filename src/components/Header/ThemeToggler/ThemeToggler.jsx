@@ -9,11 +9,7 @@ const ThemeToggler = () => {
 
   useEffect(() => {
     localStorage.setItem('theme', isDarkTheme ? 'dark' : 'light');
-    if (
-      isDarkTheme ||
-      (!('theme' in localStorage) &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
+    if (isDarkTheme) {
       document.documentElement.classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark');
