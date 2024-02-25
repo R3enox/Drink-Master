@@ -3,7 +3,12 @@ import { addFavorite, deleteFavorite, getFavorites } from './favoriteAPI';
 
 const favoritesSlice = createSlice({
   name: 'favorites',
-  initialState: { favorites: [], isLoading: false, error: null },
+  initialState: {
+    favorites: [],
+    totalCount: null,
+    isLoading: false,
+    error: null,
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getFavorites.pending, (state) => {
@@ -12,7 +17,8 @@ const favoritesSlice = createSlice({
       })
       .addCase(getFavorites.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.favorites = payload;
+        state.favorites = payload.paginatedResult;
+        state.totalCount = payload.totalCount;
       })
       .addCase(getFavorites.rejected, (state, { payload }) => {
         state.isLoading = false;

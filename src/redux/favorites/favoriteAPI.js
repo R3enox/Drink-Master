@@ -3,9 +3,10 @@ import API from '../../services/axios';
 
 export const getFavorites = createAsyncThunk(
   'favorites/getFavorites',
-  async (_, thunkApi) => {
+  async ({ page, per_page }, thunkApi) => {
     try {
-      const { data } = await API.get('drinks/favorite');
+      const queryParams = new URLSearchParams({ page, per_page });
+      const { data } = await API.get(`drinks/favorite?${queryParams}`);
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);

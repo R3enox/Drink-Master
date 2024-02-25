@@ -21,7 +21,7 @@ export const FollowUs = () => {
         </svg>
       </span>
       <ul>
-        <li>
+        <li className="border-transparent p-[7px] hover:border-[1px] rounded-[10px] hover:border-grey-text-color">
           <a
             href="https://www.facebook.com/goITclub/"
             target="_blank"
@@ -32,7 +32,7 @@ export const FollowUs = () => {
             </svg>
           </a>
         </li>
-        <li>
+        <li className="border-transparent p-[10px] hover:border-[1px] rounded-[10px] hover:border-grey-text-color">
           <a
             href="https://www.instagram.com/goitclub/"
             target="_blank"
@@ -43,13 +43,13 @@ export const FollowUs = () => {
             </svg>
           </a>
         </li>
-        <li>
+        <li className="border-transparent p-[7px] hover:border-[1px] rounded-[10px] hover:border-grey-text-color">
           <a
             href="https://www.youtube.com/c/GoIT"
             target="_blank"
             rel="noreferrer noopener"
           >
-            <svg className="fill-primary-text-color opacity-80 sm:w-[22px] h-[22px] md:w-[28px] md:h-[28px] hover:opacity-100">
+            <svg className="icon fill-primary-text-color opacity-80 sm:w-[22px] h-[22px] md:w-[28px] md:h-[28px] hover:opacity-100">
               <use href={sprite + '#icon-youtube'}></use>
             </svg>
           </a>

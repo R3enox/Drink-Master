@@ -4,6 +4,7 @@ import { DrinkImageComponent } from '../../components/reUseComponents/DrinkImage
 import Loader from '../../components/Loader/Loader';
 import { useEffect, useState } from 'react';
 import UniversalModal from '../../components/DrinksItem/UniversalModal';
+import { Paginator } from '../../components/reUseComponents/Paginator/Paginator';
 import ModalButtons from '../../components/DrinksItem/ModalButtons';
 import { deleteMyDrink, getMyDrinks } from '../../redux/myDrinks/myDrinksAPI';
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,6 +19,8 @@ const MyDrinksPage = () => {
   const data = useSelector(selectMyDrinks);
   const isLoading = useSelector(selectMyDrinksLoading);
   const isError = useSelector(selectMyDrinksError);
+  const { page, per_page, countPagesOfPagination, setPage } =
+    usePagination(MyDrinksLimit);
 
   useEffect(() => {
     dispatch(getMyDrinks());
@@ -43,6 +46,8 @@ const MyDrinksPage = () => {
     }
   };
 
+  const drinksAreNotFinded = !isFetching && data?.totalCount === 0;
+
   return (
     <div
       className="bg-common-set
@@ -53,13 +58,24 @@ const MyDrinksPage = () => {
           <PageTitle title="My drinks" />
           {isLoading && <Loader isStatic />}
           {/* {isError && <Redirect to="error.message" />} */}
-          {data && data.length > 0 ? (
-            <DrinksList
-              data={data}
-              openMyDrinkModal={openMyDrinkModal}
-              onChooseItem={setCurrentId}
-            />
-          ) : (
+          {totalCount > 0 && (
+            <>
+              <DrinksList
+                data={data}
+                openMyDrinkModal={openMyDrinkModal}
+                onChooseItem={setCurrentId}
+              />
+              <Paginator
+                totalCount={totalCount}
+                itemsPerPage={per_page}
+                setPage={setPage}
+                forcePage={page}
+                initialPage={page}
+                countPagesOfPagination={countPagesOfPagination}
+              />
+            </>
+          )}
+          {drinksAreNotFinded && (
             <DrinkImageComponent description="You don't have your own drinks yet" />
           )}
           {isOpen && (

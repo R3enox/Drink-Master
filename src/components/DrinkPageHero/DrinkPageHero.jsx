@@ -60,7 +60,7 @@ const DrinkPageHero = ({ cocktail }) => {
               descr={'Add to favorite drinks'}
               btnFunction={() => {
                 toggleFavorite(_id);
-                toast('Drink added to favorites !');
+                toast.success('Drink added to favorites !', { icon: false });
               }}
               id={_id}
             />

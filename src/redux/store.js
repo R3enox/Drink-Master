@@ -19,7 +19,7 @@ import persistStore from 'redux-persist/es/persistStore';
 export const store = configureStore({
   reducer: {
     auth: authReducer,
-    drinks: drinksReducer,
+    popular: popularDrinksReducer,
     [userApi.reducerPath]: userApi.reducer,
     filters: filtersReducer,
     drinkIdStorage: drinkIdStorageReducer,
