@@ -56,7 +56,12 @@ export const AddDrinkForm = () => {
       );
     });
 
-    dispatch(addDrink(formData));
+    try {
+      await dispatch(addDrink(formData));
+      navigate('/my');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
