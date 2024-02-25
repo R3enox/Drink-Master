@@ -23,6 +23,19 @@ export const BtnDarkTheme = ({ children }) => {
     </button>
   );
 };
+export const ButtonComponent = ({ descr, btnFunction, id }) => {
+  return (
+    <button
+      className={css.button}
+      type="button"
+      onClick={() => btnFunction(id)}
+      disabled={!id}
+    >
+      <div className={css.dotsBorder}></div>
+      <span className={css.textButton}>{descr}</span>
+    </button>
+  );
+};
 
 // BUTTONS_LINKS: See more / Delete Button / Header Nav Links
 
