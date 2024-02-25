@@ -1,17 +1,26 @@
-import {
-  useDeleteMyDrinkMutation,
-  useFetchMyDrinksQuery,
-} from '../../redux/myDrinks/myDrinksSlice';
+import { useState } from 'react';
+
 import DrinksList from '../../components/DrinksList/DrinksList';
 import { PageTitle } from '../../components/reUseComponents/PageTitle';
 import { DrinkImageComponent } from '../../components/reUseComponents/DrinkImageComponent';
 import Loader from '../../components/Loader/Loader';
-import { useState } from 'react';
 import UniversalModal from '../../components/DrinksItem/UniversalModal';
+import { Paginator } from '../../components/reUseComponents/Paginator/Paginator';
 import ModalButtons from '../../components/DrinksItem/ModalButtons';
+import {
+  useDeleteMyDrinkMutation,
+  useFetchMyDrinksQuery,
+} from '../../redux/myDrinks/myDrinksSlice';
+import { MyDrinksLimit } from 'constants/paginationLimits';
+import { usePagination } from 'hooks/usePagination';
 
 const MyDrinksPage = () => {
-  const { data, error, isFetching, isError } = useFetchMyDrinksQuery();
+  const { page, per_page, countPagesOfPagination, setPage } =
+    usePagination(MyDrinksLimit);
+  const { data, error, isFetching, isError } = useFetchMyDrinksQuery({
+    page,
+    per_page,
+  });
   console.log(data);
 
   const [deleteMyDrink] = useDeleteMyDrinkMutation();
@@ -35,6 +44,8 @@ const MyDrinksPage = () => {
     }
   };
 
+  const drinksAreNotFinded = !isFetching && data?.totalCount === 0;
+
   return (
     <div
       className="bg-common-set
@@ -45,13 +56,24 @@ const MyDrinksPage = () => {
           <PageTitle title="My drinks" />
           {isFetching && <Loader isStatic />}
           {/* {error && <Redirect to="error.message" />} */}
-          {data && data.length > 0 ? (
-            <DrinksList
-              data={data}
-              openMyDrinkModal={openMyDrinkModal}
-              onChooseItem={setCurrentId}
-            />
-          ) : (
+          {data?.totalCount > 0 && (
+            <>
+              <DrinksList
+                data={data.paginatedResult}
+                openMyDrinkModal={openMyDrinkModal}
+                onChooseItem={setCurrentId}
+              />
+              <Paginator
+                totalCount={data?.totalCount}
+                itemsPerPage={per_page}
+                setPage={setPage}
+                forcePage={page}
+                initialPage={page}
+                countPagesOfPagination={countPagesOfPagination}
+              />
+            </>
+          )}
+          {drinksAreNotFinded && (
             <DrinkImageComponent description="You don't have your own drinks yet" />
           )}
           {isOpen && (
