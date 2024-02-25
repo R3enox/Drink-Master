@@ -46,3 +46,20 @@ export const handleRejectedCurrentUser = (state) => {
   state.isLoggedIn = false;
   state.user = initialState.user;
 };
+
+export const handlePendingUpdateUser = (state) => {
+  state.isUpdateUserLoading = true;
+  state.isUpdateUserError = null;
+};
+
+export const handleFulfilledUpdateUser = (state, { payload }) => {
+  state.isUpdateUserLoading = false;
+  state.isUpdateUserError = null;
+  state.user.name = payload.user.name;
+  state.user.avatarURL = payload.user.avatarURL;
+};
+
+export const handleRejectedUpdateUser = (state, payload) => {
+  state.isUpdateUserLoading = false;
+  state.isUpdateUserError = payload;
+};
