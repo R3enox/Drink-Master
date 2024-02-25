@@ -12,6 +12,10 @@ i18n
     whitelist: ['en', 'ua'],
     fallbackLng: 'ua', // use en if detected lng is not available
     // saveMissing: true, // send not translated keys to endpoint
+    backend: {
+      
+      loadPath: '/frontend-drink-master/locales/{{lng}}/{{ns}}.json',
+    },
   });
 
 export default i18n;
