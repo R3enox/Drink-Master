@@ -11,22 +11,14 @@ const DrinkIngredientsList = ({ ingredients }) => {
       <div className="grid grid-cols-2 gap-[20px] md:grid-cols-3 md:lg:grid-cols-5  md:gap-[22px]">
         {ingredients &&
           ingredients.map(
-            (
-              {
-                _id,
-                title,
-                ingredientThumb,
-                measure,
-                'thumb-medium': thumbMedium,
-                'thumb-small': thumbSmall,
-              }
-              
-            ) => {
-            
-            
-            
-          
-            
+            ({
+              _id,
+              title,
+              ingredientThumb,
+              measure,
+              'thumb-medium': thumbMedium,
+              'thumb-small': thumbSmall,
+            }) => {
               return (
                 <div
                   key={_id}
@@ -50,9 +42,9 @@ const DrinkIngredientsList = ({ ingredients }) => {
                     <p className="font-medium leading-[1.29px] text-[14px] md:text-lg md:leading-6 lg:font-medium lg:text-base lg:leading-[1.33333] ">
                       {title}
                     </p>
-                  
+
                     <p className="mt-[8px] mb-[8px] text-grey-text-color font-medium leading-[1.29px] text-[14px] md:font-medium md:text-base md:leading-[1.25] lg:text-base">
-                      {measure}
+                      {measure ? measure : "to your taste"}
                     </p>
                   </div>
                 </div>

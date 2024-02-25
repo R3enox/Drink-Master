@@ -1,29 +1,40 @@
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { fetchCocktailsById } from './services/drinkIdServices';
 
+const initialState = {
+  currentCocktails: null,
+  isLoading: false,
+  isError: null,
+};
 
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import instance from '../../services/axios';
-const baseURL = instance.defaults.baseURL;
-
-export const drinkIdApi = createApi({
-  reducerPath: 'cocktail',
-  baseQuery: fetchBaseQuery({
-    baseUrl: `${baseURL}`,
-    prepareHeaders: (headers, { getState }) => {
-      const token = getState().auth.token;
-      if (token) {
-        headers.set('authorization', `Bearer ${token}`);
-      }
-      return headers;
+const cocktailSlice = createSlice({
+  name: 'Cocktail',
+  initialState,
+  reducers: {
+    getCocktailForId(state) {
+      return state.currentCocktails;
     },
-  }),
-  tagTypes: ['cocktail'],
-  endpoints: (builder) => ({
-    getCocktailForId: builder.query({
-      query: (id) => `/drink/${id}`,
-      providesTags: ['cocktail']
-    }),
-  }),
-})
+  },
+  extraReducers: (builder) =>
+    builder
+      .addCase(fetchCocktailsById.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.isError = null;
+        state.currentCocktails = payload;
+      })
+      .addMatcher(isAnyOf(fetchCocktailsById.pending), (state) => {
+        state.isLoading = true;
+        state.isError = null;
+      })
+      .addMatcher(
+        isAnyOf(fetchCocktailsById.rejected),
+        (state, { payload }) => {
+          state.isLoading = false;
+          state.isError = payload;
+        }
+      ),
+});
 
+export const { getCocktailForId } = cocktailSlice.actions;
 
-export  const { useGetCocktailForIdQuery } = drinkIdApi
+export const drinkIdStorageReducer = cocktailSlice.reducer;
