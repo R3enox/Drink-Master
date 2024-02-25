@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAuthUser } from '../../redux/auth/authSelectors';
 import { useState } from 'react';
-import { ButtonComponent } from '../reUseComponents/ButtonComponent';
 import { toast } from 'react-toastify';
 import { addFavorite, deleteFavorite } from '../../redux/favorites/favoriteAPI';
+import { ButtonComponent } from '../reUseComponents/Buttons/Buttons';
 
 const DrinkPageHero = ({ cocktail }) => {
   const dispatch = useDispatch();
