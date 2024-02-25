@@ -1,14 +1,10 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAuthUser} from '../../../redux/auth/authSelectors';
 import sprite from '../../../assets/sprite.svg';
 import { updateUserThunk } from '../../../redux/auth/authOperations';
 
-
-// import "./styles.css"
-import avatar from "../../../assets/img/header/user.png"
 
 const UserLogo = ({closeFnc}) => {
   const user = useSelector(selectAuthUser);
@@ -67,9 +63,7 @@ const UserLogo = ({closeFnc}) => {
               src={preview}
               srcSet={preview ?? user.avatarURL}
               alt="avatar"
-              width={80}
-              height={80}
-              className="rounded-full sm:w-[32px] sm:h-[32px]  md:w-[44px] md:h-[44px] lg:w-[39px] lg:h-[39px]"
+              className="rounded-full sm:w-[80px] sm:h-[80px]  md:w-[100px] md:h-[100px] "
             />
             {/* <img
               className="w-[80px] h-[80px] rounded-full   "
@@ -78,7 +72,7 @@ const UserLogo = ({closeFnc}) => {
               srcSet={`${avatar}`}
             /> */}
 
-            <svg className="stroke-primary-text-color sm:w-[22px] h-[22px] md:w-[28px] md:h-[28px] absolute top-[120px] rounded-[10px] bg-grey-text-color">
+            <svg className="stroke-primary-text-color sm:w-[22px] h-[22px] md:w-[28px] md:h-[28px] absolute top-[120px] md:top-[140px] rounded-[10px] bg-grey-text-color">
               <use href={sprite + '#icon-plus'}></use>
             </svg>
           </div>
@@ -92,7 +86,7 @@ const UserLogo = ({closeFnc}) => {
           onChange={handleChange}
           value={userName.name}
         />
-        <svg className="fill-primary-text-color w-[17px] h-[17px] absolute sm:top-[185px] md:top-[220px] sm:right-[60px] md:right-[80px]">
+        <svg className="fill-primary-text-color w-[17px] h-[17px] absolute sm:top-[185px] md:top-[240px] sm:right-[60px] md:right-[80px]">
           <use href={sprite + '#icon-pancil'}></use>
         </svg>
 
