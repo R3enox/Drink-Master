@@ -714,3 +714,26 @@ html.dark .searchSelect__option:hover {
 .not-found-page-title {
   @apply font-semibold text-center text-[120px] md:text-[150px] lg:text-[200px] leading-[1.025] md:leading-[0.82] lg:leading-none dark:text-dark-404-text-color text-light-404-text-color;
 }
+/* Not Found Page */
+
+/* Paginator */
+.pagination-list {
+  @apply flex justify-center items-center gap-[14px] mt-[40px] md:mt-[80px] list-none;
+}
+
+.pagination-list-item {
+  @apply flex justify-center items-center h-[28px] w-[28px] rounded-[50%];
+}
+
+.pagination-list-selected-item {
+  @apply bg-light-bg-selected-page dark:bg-dark-bg-selected-page;
+}
+
+.pagination-list-link {
+  @apply flex justify-center items-center w-[100%] h-[100%] font-medium text-[12px] text-center cursor-pointer text-dark-theme-bg-color dark:text-primary-text-color;
+}
+
+.pagination-icon-arrow {
+  @apply w-[9px] h-[15px] fill-light-icon-arrow-fill dark:fill-dark-icon-arrow-fill;
+}
+/* Paginator */
