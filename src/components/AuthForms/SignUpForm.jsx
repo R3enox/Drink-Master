@@ -48,9 +48,7 @@ const SignUpForm = () => {
     );
     dispatch(signUpThunk(data));
 
-    if (token) {
-      navigate('/home');
-    }
+    navigate('/home');
   };
 
   if (isLoading) {
@@ -158,8 +156,6 @@ const SignUpForm = () => {
               },
             })}
           />
-          {/* background-color: antiquewhite; stroke: black; fill: none;
-              border-radius: 50%; */}
           {showPassword ? (
             <svg
               onClick={() => {

@@ -3,7 +3,6 @@ import { selectAuthUser } from '../../redux/auth/authSelectors';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { addFavorite, deleteFavorite } from '../../redux/favorites/favoriteAPI';
-// import { ButtonComponent } from '../reUseComponents/Buttons/Buttons';
 
 import { useTranslation } from 'react-i18next';
 import '../../i18n';
@@ -77,7 +76,7 @@ const DrinkPageHero = ({ cocktail }) => {
       </div>
       <div>
         <img
-          className="mb-[18px] w-[335px] rounded-xl md:mb-[80px] md:w-[704px] md:object-cover lg:w-[400px] lg:mb-[100px] "
+          className="max-h-[400px] mb-[18px] w-[335px] rounded-xl  md:mb-[80px] md:w-[704px] md:object-cover lg:w-[400px] lg:mb-[100px] "
           src={drinkThumb}
           alt="poster cocktail"
         />

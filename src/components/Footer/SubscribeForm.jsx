@@ -6,6 +6,7 @@ import sprite from '../../assets/sprite.svg';
 
 import { useTranslation } from 'react-i18next';
 import '../../i18n';
+import { toast } from 'react-toastify';
 
 export const SubscribeForm = () => {
   const dispatch = useDispatch();
@@ -19,9 +20,9 @@ export const SubscribeForm = () => {
   } = useForm({ mode: 'onChange' });
   const onSubmit = ({ email }) => {
     dispatch(subscribeUserThunk({ email }));
+    toast.info('Thanks for subscribing', { icon: false });
     reset();
   };
-  console.log(dirtyFields);
   return (
     <div className="md:flex flex-col lg:w-[309px]">
       <p className="text-[14px] leading-[1.43] text-primary-text-color mb-[24px] md:text-[18px] md:leading-[1.33]">

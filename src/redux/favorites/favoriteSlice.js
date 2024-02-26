@@ -7,6 +7,7 @@ const favoritesSlice = createSlice({
     favorites: [],
     totalCount: null,
     isLoading: false,
+    isRemoveLoading: false,
     error: null,
   },
   extraReducers: (builder) => {
@@ -17,25 +18,26 @@ const favoritesSlice = createSlice({
       })
       .addCase(getFavorites.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.favorites = payload.paginatedResult;
-        state.totalCount = payload.totalCount;
+        state.favorites = payload;
+        state.totalCount = payload.length;
       })
       .addCase(getFavorites.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       })
       .addCase(deleteFavorite.pending, (state) => {
-        state.isLoading = true;
+        state.isRemoveLoading = true;
         state.error = null;
       })
       .addCase(deleteFavorite.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
+        state.isRemoveLoading = false;
         state.favorites = state.favorites.filter(
           ({ _id: id }) => id !== payload
         );
+        state.totalCount -= 1;
       })
       .addCase(deleteFavorite.rejected, (state, { payload }) => {
-        state.isLoading = false;
+        state.isRemoveLoading = false;
         state.error = payload;
       })
       .addCase(addFavorite.pending, (state) => {
@@ -45,6 +47,7 @@ const favoritesSlice = createSlice({
       .addCase(addFavorite.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.favorites.push(payload);
+        state.totalCount += 1;
       })
       .addCase(addFavorite.rejected, (state, { payload }) => {
         state.isLoading = false;

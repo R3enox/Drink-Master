@@ -2,7 +2,6 @@ import DrinksItem from '../DrinksItem/DrinksItem';
 
 const DrinksList = ({ data, openMyDrinkModal, onChooseItem }) => {
   return (
-    // <div>
     <ul className="flex flex-col gap-y-[40px] md:flex-row md:flex-wrap md:gap-x-[20px] md:gap-y-[80px]">
       {data &&
         data.map((drink) => (
@@ -14,7 +13,6 @@ const DrinksList = ({ data, openMyDrinkModal, onChooseItem }) => {
           />
         ))}
     </ul>
-    // </div>
   );
 };
 
