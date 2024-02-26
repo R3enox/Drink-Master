@@ -59,7 +59,7 @@ const FavoriteDrinksPage = () => {
     }
   };
 
-  const drinksAreNotFinded = !isLoading && data?.length === 0;
+  const drinksAreNotFinded = !isLoading && totalCount === 0;
   const startIndex = (page - 1) * per_page;
 
   return (
