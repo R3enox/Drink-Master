@@ -13,7 +13,7 @@ import { useTranslation } from 'react-i18next';
 import '../../i18n';
 
 export const AddDrinkForm = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { ingredients } = useFilters();
@@ -56,11 +56,14 @@ export const AddDrinkForm = () => {
       );
     });
 
-    dispatch(addDrink(formData));
+    const result = await dispatch(addDrink(formData));
+    if (result.meta.requestStatus === 'fulfilled') {
+      navigate('/my');
+    }
   };
 
   return (
-    <section className="margin pb-20 lg:pb-[140px]">
+    <section className="pb-20 lg:pb-[140px]">
       <form onSubmit={onSubmit}>
         <DrinkPageHero />
         <DrinkIngredientsFields ingredientsOptions={ingredientsOptions} />

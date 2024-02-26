@@ -162,5 +162,47 @@
       "FavoritesDrinks": "Улюблені напої"
     },
     "DrinkCardPreview": "Детальніше"
+  },
+  "GlassType": {
+    "Highball glass": "Великий коктейльний склянка",
+    "Cocktail glass": "Коктейльне скло",
+    "Old-fashioned glass": "Старомодне скло",
+    "Whiskey Glass": "Скло для віскі",
+    "Collins glass": "Скло Коллінза",
+    "Pousse cafe glass": "Скло для пузьє-кафе",
+    "Champagne flute": "Шампанське флейта",
+    "Whiskey sour glass": "Скло для віскі сауер",
+    "Cordial glass": "Лікерне скло",
+    "Brandy snifter": "Бокал для бренді",
+    "White wine glass": "Біле винне скло",
+    "Nick and Nora Glass": "Скло Ніка та Нори",
+    "Hurricane glass": "Скло Гаррікейн",
+    "Coffee mug": "Кавовий кухоль",
+    "Shot glass": "Шот-скло",
+    "Jar": "Банка",
+    "Irish coffee cup": "Ірландська кавова чашка",
+    "Punch bowl": "Панч-склянка",
+    "Pitcher": "Кувшин",
+    "Pint glass": "Пінта скло",
+    "Copper Mug": "Мідний кухоль",
+    "Wine Glass": "Винне скло",
+    "Beer mug": "Пивний кухоль",
+    "Margarita/Coupette glass": "Скло для маргаріти/купетта",
+    "Beer pilsner": "Пивний пільзнер",
+    "Beer Glass": "Пивне скло",
+    "Parfait glass": "Парфе скло",
+    "Mason jar": "Банка Мейсона",
+    "Margarita glass": "Скло для маргаріти",
+    "Martini Glass": "Скло для мартіні",
+    "Balloon Glass": "Балонне скло",
+    "Coupe Glass": "Скло купе"
+  },
+
+  "Header": {
+    "Home": "Головна",
+    "Drinks": "Напої",
+    "Add drink": "Додати напій",
+    "My drinks": "Мої напої",
+    "Favorites": "Улюблені"
   }
 }

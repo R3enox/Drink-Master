@@ -8,6 +8,8 @@ export const createOptionsFromArrOfObj = (collection) =>
   collection.map(({ title }) => ({
     value: title,
     label: title,
+    // label: t(`GlassType.${title}`),
+    // label: t(`GlassType.${title}`, { returnObjects: true }),
   }));
 
 export const createOptionsFromArrOfObjUsingId = (collection) =>

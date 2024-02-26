@@ -164,5 +164,47 @@
       "FavoritesDrinks": "Favorites drinks"
     },
     "DrinkCardPreview": "See more"
+  },
+  "GlassType": {
+    "Highball glass": "Highball Glass",
+    "Cocktail glass": "Cocktail Glass",
+    "Old-fashioned glass": "Old-fashioned Glass",
+    "Whiskey Glass": "Whiskey Glass",
+    "Collins glass": "Collins Glass",
+    "Pousse cafe glass": "Pousse Cafe Glass",
+    "Champagne flute": "Champagne Flute",
+    "Whiskey sour glass": "Whiskey Sour Glass",
+    "Cordial glass": "Cordial Glass",
+    "Brandy snifter": "Brandy Snifter",
+    "White wine glass": "White Wine Glass",
+    "Nick and Nora Glass": "Nick and Nora Glass",
+    "Hurricane glass": "Hurricane Glass",
+    "Coffee mug": "Coffee Mug",
+    "Shot glass": "Shot Glass",
+    "Jar": "Jar",
+    "Irish coffee cup": "Irish Coffee Cup",
+    "Punch bowl": "Punch Bowl",
+    "Pitcher": "Pitcher",
+    "Pint glass": "Pint Glass",
+    "Copper Mug": "Copper Mug",
+    "Wine Glass": "Wine Glass",
+    "Beer mug": "Beer Mug",
+    "Margarita/Coupette glass": "Margarita/Coupette Glass",
+    "Beer pilsner": "Beer Pilsner",
+    "Beer Glass": "Beer Glass",
+    "Parfait glass": "Parfait Glass",
+    "Mason jar": "Mason Jar",
+    "Margarita glass": "Margarita Glass",
+    "Martini Glass": "Martini Glass",
+    "Balloon Glass": "Balloon Glass",
+    "Coupe Glass": "Coupe Glass"
+  },
+
+  "Header": {
+    "Home": "Home",
+    "Drinks": "Drinks",
+    "Add drink": "Add drink",
+    "My drinks": "My drinks",
+    "Favorites": "Favorites"
   }
 }

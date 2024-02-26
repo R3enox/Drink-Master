@@ -2,8 +2,13 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useMainNav } from '../../../../hooks/useMainNav';
 import { Logo } from '../Logo/Logo';
+import { useTranslation } from 'react-i18next';
+import '../../../i18n';
 
 const HamburgerMenu = () => {
+  const { t, i18n } = useTranslation();
+  const currentLang = i18n.language;
+  console.log(currentLang);
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   const mainNav = useMainNav();
@@ -26,6 +31,16 @@ const HamburgerMenu = () => {
               <nav className="bg-button-hover-color  absolute flex flex-col h-[1000%] w-full z-[100] bg-mobile-bg-commonpage bg-no-repeat">
                 <div className="container bg-mobile-bg-commonpage bg-[length:150px_1700px] bg-no-repeat   flex p-5 border-b  border-border-color text-primary-text-color justify-between md:pl-[32px] md:pr-[32px] lg:pt-[22px] lg:pb-[23px] lg:pl-[100px] lg:pr-[100px]">
                   <Logo />
+                  <div className=" flex mr-[60px]">
+                    <button onClick={() => i18n.changeLanguage('en')}>
+                      EN
+                    </button>
+                    <span className="language-divider">|</span>
+                    <button onClick={() => i18n.changeLanguage('uk')}>
+                      UK
+                    </button>
+                  </div>
+
                   <div
                     className=" fixed sm:top-[-12px] md:top-[-5px] sm:right-[-10px] md:right-[0px] px-8 py-8"
                     onClick={() => setIsNavOpen(false)}
@@ -52,7 +67,7 @@ const HamburgerMenu = () => {
                       key={id}
                       onClick={() => setIsNavOpen((prev) => !prev)}
                     >
-                      <NavLink to={href}>{title}</NavLink>
+                      <NavLink to={href}>{t(`Header.${title}`)}</NavLink>
                     </li>
                   ))}
                 </ul>
