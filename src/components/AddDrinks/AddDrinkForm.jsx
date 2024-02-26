@@ -5,12 +5,12 @@ import { useDispatch } from 'react-redux';
 import { useMemo } from 'react';
 import { useFilters } from '../../hooks/useFilters';
 import { createOptionsFromArrOfObjUsingId } from '../../helpers/createCollectionOptions';
-import { BtnDarkTheme } from '../reUseComponents/Buttons/Buttons';
 import { addDrink } from '../../redux/addDrinks/addDrinkSlice';
 import { useNavigate } from 'react-router-dom';
 
 import { useTranslation } from 'react-i18next';
 import '../../i18n';
+import { BtnThemeChange } from '../reUseComponents/Buttons/ButtonThemeChange';
 
 export const AddDrinkForm = () => {
   const { t, i18n } = useTranslation();
@@ -68,7 +68,7 @@ export const AddDrinkForm = () => {
         <DrinkPageHero />
         <DrinkIngredientsFields ingredientsOptions={ingredientsOptions} />
         <RecipePreparation />
-        <BtnDarkTheme>{t('button.AddDrink.Add')}</BtnDarkTheme>
+        <BtnThemeChange title={t('button.AddDrink.Add')}></BtnThemeChange>
       </form>
     </section>
   );

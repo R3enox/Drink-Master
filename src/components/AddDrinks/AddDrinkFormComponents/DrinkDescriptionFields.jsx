@@ -58,11 +58,11 @@ export const DrinkPageHero = () => {
         <label htmlFor="fileInput" className="cursor-pointer">
           <div
             className="containerPhoto flex justify-center items-center w-[335px] h-[320px]  rounded-lg
-           bg-primary-text-button-color bg-opacity-50
+           bg-primary-text-button-color dark:bg-opacity-50
            md:w-[320px]  lg:w-[400px] lg:h-[400px]"
           >
             {preview === undefined ? (
-              <div className="flex flex-col pointer-events-none items-center w-20 h-[88px] ">
+              <div className="flex flex-col pointer-events-none items-center ">
                 <button
                   tabIndex="-1"
                   type="button"
@@ -72,7 +72,7 @@ export const DrinkPageHero = () => {
                     <use href={spite + '#icon-plus'}></use>
                   </svg>
                 </button>
-                <p className="font-medium text-center leading-[125%]">
+                <p className="font-medium text-center leading-[125%] text-primary-text-color">
                   {t('serviceText.DrinkPageHero')}
                 </p>
               </div>
@@ -91,19 +91,19 @@ export const DrinkPageHero = () => {
           name="drink"
           placeholder="Enter item title"
           required
-          className="block pb-[14px] outline-none hover:placeholder-primary-text-color   bg-transparent w-[335px] h-[34px] border-b border-grey-text-color  focus:outline-none  focus:border-primary-text-color hover:border-primary-text-color placeholder-grey-text-color placeholder-font-normal placeholder-text-sm transition-colors ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms] md:w-[352px] md:h-[41px] md:placeholder-text-base md:pb-[18px] lg:w-[393px]"
+          className="block pb-[14px] outline-none hover:placeholder-button-hover-color/70 dark:hover:placeholder-primary-text-color   bg-transparent w-[335px] h-[34px] border-b border-border-color-search dark:border-grey-text-color  focus:outline-none focus:border-border-color-search/100 dark:focus:border-primary-text-color hover:border-border-color-search/100 dark:hover:border-primary-text-color placeholder-button-hover-color/50 dark:placeholder-grey-text-color placeholder-font-normal placeholder-text-sm transition-colors ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms] md:w-[352px] md:h-[41px] md:placeholder-text-base md:pb-[18px] lg:w-[393px]"
         />
         <input
           type="text"
           name="description"
           placeholder="Enter about recipe"
-          className="block pb-[14px] outline-none hover:placeholder-primary-text-color   bg-transparent w-[335px] h-[34px] border-b border-grey-text-color  focus:outline-none  focus:border-primary-text-color hover:border-primary-text-color placeholder-grey-text-color placeholder-font-normal placeholder-text-sm transition-colors ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms] md:w-[352px] md:h-[41px] md:placeholder-text-base md:pb-[18px] lg:w-[393px]"
+          className="block pb-[14px] outline-none hover:placeholder-button-hover-color/70 dark:hover:placeholder-primary-text-color   bg-transparent w-[335px] h-[34px] border-b border-hover-border-color-search dark:border-grey-text-color  focus:outline-none  focus:border-border-color-search/100 dark:focus:border-primary-text-color hover:border-border-color-search/100 dark:hover:border-primary-text-color placeholder-button-hover-color/50 dark:placeholder-grey-text-color placeholder-font-normal placeholder-text-sm transition-colors ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms] md:w-[352px] md:h-[41px] md:placeholder-text-base md:pb-[18px] lg:w-[393px]"
           required
         />
         <div className="relative">
           <label
             htmlFor="selectCategory"
-            className="absolute top-0 left-0 hover:text-primary-text-color text-grey-text-color font-normal text-base tracking-[-0.02em] leading-[1.2]  ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms]"
+            className="absolute top-0 left-0 text-hover-border-color-search dark:text-grey-text-color font-normal text-base tracking-[-0.02em] leading-[1.2]  ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms]"
           >
             {t('inputPlaceholder.DrinkPageHero.recipeDescr')}
           </label>
@@ -119,7 +119,7 @@ export const DrinkPageHero = () => {
         <div className="relative">
           <label
             htmlFor="selectGlass"
-            className="absolute top-0 left-0 text-grey-text-color font-normal text-base tracking-[-0.02em] leading-[1.2]"
+            className="absolute top-0 left-0 text-hover-border-color-search dark:text-grey-text-color font-normal text-base tracking-[-0.02em] leading-[1.2]"
           >
             {t('label.DrinkPageHero.Glass')}
           </label>
@@ -146,14 +146,14 @@ export const DrinkPageHero = () => {
                     className="peer sr-only"
                     defaultChecked
                   />
-                  <div className="absolute left-1/2 top-1/2  transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 border-grey-text-color cursor-pointer rounded-[50%] border-[1.30px] peer-checked:border-primary-text-color "></div>
-                  <div className=" absolute left-1/2 top-1/2  transform -translate-x-1/2 -translate-y-1/2  w-2.5 h-2.5 bg-primary-text-color rounded-[5px] opacity-0 peer-checked:opacity-100"></div>
+                  <div className="absolute left-1/2 top-1/2  transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 border-hover-border-color-search dark:border-grey-text-color cursor-pointer rounded-[50%] border-[1.30px] peer-checked:border-button-hover-color dark:peer-checked:border-primary-text-color "></div>
+                  <div className=" absolute left-1/2 top-1/2  transform -translate-x-1/2 -translate-y-1/2  w-2.5 h-2.5 bg-button-hover-color dark:bg-primary-text-color rounded-[5px] opacity-0 peer-checked:opacity-100"></div>
                 </div>
-                <span className="text-grey-text-color text-sm peer-checked:text-primary-text-color md:text-base">
+                <span className="text-hover-border-color-search dark:text-grey-text-color text-sm peer-checked:text-button-hover-color dark:peer-checked:text-primary-text-color md:text-base">
                   {t('cocktailType.alco')}
                 </span>
               </label>
-              <label className="text-grey-text-color  flex items-center gap-x-1 cursor-pointer">
+              <label className="flex items-center gap-x-1 cursor-pointer">
                 <div className="relative  w-[20px] h-[20px]">
                   <input
                     type="radio"
@@ -162,10 +162,10 @@ export const DrinkPageHero = () => {
                     required
                     className="peer sr-only"
                   />
-                  <div className="absolute left-1/2 top-1/2  transform -translate-x-1/2 -translate-y-1/2 w-4 h-4  border-grey-text-color cursor-pointer rounded-[50%] border-[1.30px] peer-checked:border-primary-text-color "></div>
-                  <div className=" absolute  left-1/2 top-1/2  transform -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
+                  <div className="absolute left-1/2 top-1/2  transform -translate-x-1/2 -translate-y-1/2 w-4 h-4  border-hover-border-color-search dark:border-grey-text-color cursor-pointer rounded-[50%] border-[1.30px] peer-checked:border-button-hover-color dark:peer-checked:border-primary-text-color  "></div>
+                  <div className=" absolute  left-1/2 top-1/2  transform -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-button-hover-color dark:bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
                 </div>
-                <span className="text-grey-text-color  peer-checked:text-primary-text-color text-sm md:text-base ">
+                <span className="text-hover-border-color-search dark:text-grey-text-color peer-checked:text-button-hover-color dark:peer-checked:text-primary-text-color text-sm md:text-base ">
                   {t('cocktailType.non')}
                 </span>
               </label>
@@ -189,14 +189,14 @@ export const DrinkPageHero = () => {
                   className={` w-4 h-4 p-0.5 border-grey-text-color 
                 ${
                   age >= 18 ? 'cursor-pointer' : ''
-                }  rounded-[50%] border-[1.30px] peer-checked:border-primary-text-color `}
+                }  rounded-[50%] border-[1.30px] peer-checked:border-button-hover-color dark:peer-checked:border-primary-text-color `}
                 ></div>
-                <div className=" absolute  left-[3.5%] w-2.5 h-2.5 bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
-                <span className="text-grey-text-color  peer-checked:text-primary-text-color">
+                <div className=" absolute  left-[3.5%] w-2.5 h-2.5 bg-button-hover-color dark:bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
+                <span className="text-hover-border-color-search dark:text-grey-text-color  peer-checked:text-primary-text-color">
                   {t('cocktailType.alco')}
                 </span>
               </label>
-              <label className="relative text-grey-text-color  flex items-center gap-x-1 cursor-pointer">
+              <label className="relative text-hover-border-color-search dark:text-grey-text-color  flex items-center gap-x-1 cursor-pointer">
                 <div className="relative  w-[20px] h-[20px]">
                   <input
                     type="radio"
@@ -206,10 +206,10 @@ export const DrinkPageHero = () => {
                     className="peer sr-only"
                     defaultChecked
                   />
-                  <div className=" absolute w-4 h-4 left-1/2 top-1/2  transform -translate-x-1/2 -translate-y-1/2   border-grey-text-color cursor-pointer rounded-[50%] border-[1.30px] peer-checked:border-primary-text-color "></div>
-                  <div className=" absolute  left-1/2 top-1/2  transform -translate-x-1/2 -translate-y-1/2  w-2.5 h-2.5 bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
+                  <div className=" absolute w-4 h-4 left-1/2 top-1/2  transform -translate-x-1/2 -translate-y-1/2   border-hover-border-color-search dark:border-grey-text-color cursor-pointer rounded-[50%] border-[1.30px] peer-checked:border-primary-text-color "></div>
+                  <div className=" absolute  left-1/2 top-1/2  transform -translate-x-1/2 -translate-y-1/2  w-2.5 h-2.5 bg-button-hover-color dark:bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
                 </div>
-                <span className="text-grey-text-color  peer-checked:text-primary-text-color">
+                <span className="text-hover-border-color-search dark:text-grey-text-color peer-checked:text-button-hover-color dark:peer-checked:text-primary-text-color ">
                   {t('cocktailType.non')}
                 </span>
               </label>

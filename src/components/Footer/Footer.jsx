@@ -19,7 +19,7 @@ export const Footer = () => {
      md:pb-[24px] md:pt-[80px]"
       >
         <div className="flex flex-wrap md:flex-nowrap md:gap-x-[251px]">
-          <div className="flex gap-x-[90px] mb-[40px] md:flex-col gap-y-[40px] lg:flex-row lg:gap-x-[400px]">
+          <div className="flex gap-x-[90px] mb-[40px] md:flex-col gap-y-[40px] lg:flex-row lg:gap-x-[411px]">
             <div className="flex flex-col  gap-y-[20px] lg:gap-y-[43px]">
               <div className="flex gap-x-[14px] items-center ">
                 <Link to={'/'}>
