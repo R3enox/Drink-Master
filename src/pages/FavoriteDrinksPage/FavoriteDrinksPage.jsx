@@ -100,7 +100,10 @@ const FavoriteDrinksPage = () => {
             >
               <ModalButtons
                 closeMyDrinkModal={closeFavoriteDrinkModal}
-                handleDeleteClick={() => handleDeleteClick(currentId)}
+                handleDeleteClick={() => {
+                  handleDeleteClick(currentId);
+                  toast('Cocktail removed from favorites!', { icon: false });
+                }}
                 drinkId={data}
               />
             </UniversalModal>
