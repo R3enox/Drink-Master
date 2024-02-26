@@ -262,6 +262,7 @@ body {
     );
   }
   .bg-home-set {
+    background-size: 100vw;
     background-image: image-set(
       url('assets/img/homePage/mobile-bg-homepage.png') 1x,
       url('assets/img/homePage/mobile-bg-homepage@2x.png') 2x
@@ -284,6 +285,7 @@ body {
 /* Common Pages */
 @layer base {
   .bg-common-set {
+    background-size: 100vw;
     background-image: image-set(
       url('assets/img/commonPages/mobile-bg-commonpage.png') 1x,
       url('assets/img/commonPages/mobile-bg-commonpage@2x.png') 2x
@@ -305,6 +307,7 @@ body {
 /* Favorites Page */
 @layer base {
   .bg-favorites-set {
+    background-size: 100vw;
     background-image: image-set(
       url('assets/img/favoritesPage/mobile-bg-favorite.png') 1x,
       url('assets/img/favoritesPage/mobile-bg-favorite@2x.png') 2x
