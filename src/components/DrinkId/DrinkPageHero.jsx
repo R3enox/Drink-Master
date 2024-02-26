@@ -22,7 +22,6 @@ const DrinkPageHero = ({ cocktail }) => {
   const isFavoriteFirstRender = favorite?.includes(user.id);
   const [isFavorite, setIsFavorite] = useState(isFavoriteFirstRender);
   const isFav = isFirstRender ? isFavoriteFirstRender : isFavorite;
-  
 
   return (
     <div className=" lg:flex justify-between">
@@ -41,7 +40,17 @@ const DrinkPageHero = ({ cocktail }) => {
             <ButtonComponent
               descr={t('button.toggleFavorite.ButtonComponentDel')}
               btnFunction={() => {
-                toggleFavorite(_id,isFav,dispatch,deleteFavorite,setIsFavorite,addFavorite,setIsFavorite,setIsFirstRender,toast)
+                toggleFavorite(
+                  _id,
+                  isFav,
+                  dispatch,
+                  deleteFavorite,
+                  setIsFavorite,
+                  addFavorite,
+                  setIsFavorite,
+                  setIsFirstRender,
+                  toast
+                );
                 toast(`${t('toastError.DrinkPageHeroDel')}`);
               }}
               id={_id}
@@ -50,8 +59,18 @@ const DrinkPageHero = ({ cocktail }) => {
             <ButtonComponent
               descr={t('button.toggleFavorite.ButtonComponentAdd')}
               btnFunction={() => {
-                toggleFavorite(_id,isFav,dispatch,deleteFavorite,setIsFavorite,addFavorite,setIsFavorite,setIsFirstRender,toast)
-                toast.success(`${('toastError.DrinkPageHeroAdd')}`, {
+                toggleFavorite(
+                  _id,
+                  isFav,
+                  dispatch,
+                  deleteFavorite,
+                  setIsFavorite,
+                  addFavorite,
+                  setIsFavorite,
+                  setIsFirstRender,
+                  toast
+                );
+                toast.success(`${t('toastError.DrinkPageHeroAdd')}`, {
                   icon: false,
                 });
               }}
