@@ -63,7 +63,7 @@ const FavoriteDrinksPage = () => {
   const startIndex = (page - 1) * per_page;
 
   return (
-    <div className="dark:bg-favorites-set md:dark:bg-favorites-set-tablet lg:dark:bg-favorites-set-desktop bg-cover bg-no-repeat">
+    <div>
       <section className="pb-[80px] mb:pb-[140]">
         <div className="container mx-auto ">
           {isError && toast.error(t('toastError.Favorite'))}
