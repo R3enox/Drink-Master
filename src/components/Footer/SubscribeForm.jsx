@@ -6,6 +6,7 @@ import sprite from '../../assets/sprite.svg';
 
 import { useTranslation } from 'react-i18next';
 import '../../i18n';
+import { toast } from 'react-toastify';
 
 export const SubscribeForm = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ export const SubscribeForm = () => {
   } = useForm({ mode: 'onChange' });
   const onSubmit = ({ email }) => {
     dispatch(subscribeUserThunk({ email }));
+    toast.info('Thanks for subscribing', { icon: false });
     reset();
   };
   return (
