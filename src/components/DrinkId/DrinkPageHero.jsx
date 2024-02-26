@@ -7,7 +7,6 @@ import { addFavorite, deleteFavorite } from '../../redux/favorites/favoriteAPI';
 
 import { useTranslation } from 'react-i18next';
 import '../../i18n';
-import { toggleFavorite } from './toggleFavorite';
 import { ButtonComponentThemeChange } from '../reUseComponents/Buttons/ButtonThemeChange';
 
 const DrinkPageHero = ({ cocktail }) => {
@@ -23,6 +22,22 @@ const DrinkPageHero = ({ cocktail }) => {
   const isFavoriteFirstRender = favorite?.includes(user.id);
   const [isFavorite, setIsFavorite] = useState(isFavoriteFirstRender);
   const isFav = isFirstRender ? isFavoriteFirstRender : isFavorite;
+
+  const toggleFavorite = async (id) => {
+    try {
+      if (isFav) {
+        await dispatch(deleteFavorite(id));
+        setIsFavorite(false);
+      } else {
+        await dispatch(addFavorite(id));
+        setIsFavorite(true);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    } finally {
+      setIsFirstRender(false);
+    }
+  };
 
   return (
     <div className=" lg:flex justify-between">
@@ -41,16 +56,7 @@ const DrinkPageHero = ({ cocktail }) => {
             <ButtonComponentThemeChange
               descr={t('button.toggleFavorite.ButtonComponentDel')}
               btnFunction={() => {
-                toggleFavorite(
-                  _id,
-                  isFav,
-                  dispatch,
-                  deleteFavorite,
-                  setIsFavorite,
-                  addFavorite,
-                  setIsFirstRender,
-                  toast
-                );
+                toggleFavorite(_id);
                 toast(`${t('toastError.DrinkPageHeroDel')}`);
               }}
               id={_id}
@@ -59,16 +65,7 @@ const DrinkPageHero = ({ cocktail }) => {
             <ButtonComponentThemeChange
               descr={t('button.toggleFavorite.ButtonComponentAdd')}
               btnFunction={() => {
-                toggleFavorite(
-                  _id,
-                  isFav,
-                  dispatch,
-                  deleteFavorite,
-                  setIsFavorite,
-                  addFavorite,
-                  setIsFirstRender,
-                  toast
-                );
+                toggleFavorite(_id);
                 toast.success(`${t('toastError.DrinkPageHeroAdd')}`, {
                   icon: false,
                 });
