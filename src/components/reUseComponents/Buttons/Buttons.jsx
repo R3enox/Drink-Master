@@ -15,9 +15,9 @@ export const LinkDarkTheme = ({ children, to }) => {
   );
 };
 
-export const BtnDarkTheme = ({ children }) => {
+export const BtnDarkTheme = ({ children, name }) => {
   return (
-    <button type="submit" className={css.button}>
+    <button type="submit" name={name} className={css.button}>
       <div className={css.dotsBorder}></div>
       <span className={css.textButton}>{children}</span>
     </button>
