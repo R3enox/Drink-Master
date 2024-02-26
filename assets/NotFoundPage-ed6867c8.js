@@ -1,4 +1,4 @@
-import{j as e}from"./index-f2730f5c.js";import{u as n}from"./styled-components.browser.esm-c2cde299.js";import"./emotion-memoize.esm-f5713a00.js";const i=n.div`
+import{j as e}from"./index-00d08b2c.js";import{u as n}from"./styled-components.browser.esm-4434c45a.js";import"./emotion-memoize.esm-f5713a00.js";const i=n.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -88,12 +88,11 @@ import{j as e}from"./index-f2730f5c.js";import{u as n}from"./styled-components.b
       }
     }
   }
-`,a=n.h1`
+`,d=n.h1`
   font-weight: 600;
   font-size: 120px;
   line-height: 1.025;
   text-align: center;
-  /* color: black; */
   color: rgba(243, 243, 243, 0.1);
 
   @media screen and (min-width: 768px) {
@@ -109,4 +108,4 @@ import{j as e}from"./index-f2730f5c.js";import{u as n}from"./styled-components.b
       line-height: 1;
     }
   }
-`,r=()=>e.jsx(i,{children:e.jsx(a,{children:"4   4"})});export{r as default};
+`,r=()=>e.jsx(i,{children:e.jsx(d,{children:"4   4"})});export{r as default};
