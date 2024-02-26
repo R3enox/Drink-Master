@@ -3,7 +3,7 @@ import sprite from '../../assets/sprite.svg';
 export const FolowUs = () => {
   return (
     <ul className="flex gap-x-[14px] md:gap-x-[16px]">
-      <li className="follow-us-btn">
+      <li className="follow-us-btn ">
         <a
           href="https://www.facebook.com/goITclub/"
           target="_blank"
