@@ -158,8 +158,6 @@ const SignUpForm = () => {
               },
             })}
           />
-          {/* background-color: antiquewhite; stroke: black; fill: none;
-              border-radius: 50%; */}
           {showPassword ? (
             <svg
               onClick={() => {
