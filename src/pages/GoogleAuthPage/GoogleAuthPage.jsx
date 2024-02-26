@@ -10,6 +10,7 @@ const GoogleAuthPage = () => {
   const refreshToken = searchParams.get('refreshToken');
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  console.log('1', accessToken, '2', refreshToken);
 
   useEffect(() => {
     dispatch(setTokens({ accessToken, refreshToken }));
