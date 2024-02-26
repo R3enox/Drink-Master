@@ -1,35 +1,50 @@
+import { useEffect, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import '../../../i18n';
+
+import styles from "./LanguageToggler.module.css"
 
 const LanguageToggler = () => {
-const { i18n } = useTranslation();
-const currentLang = i18n.language;
-    
-    const switchLanguage = () => {
-        if (currentLang === 'en') {
-            i18n.changeLanguage('uk')
-        } 
-        i18n.changeLanguage('en')
-    }
+  const { i18n } = useTranslation();
+  const storedLang = localStorage.getItem('selectedLanguage') || i18n.language;
+  const [activeButton, setActiveButton] = useState(storedLang);
 
-    return (
-        <>
-            <button
-                className="text-[14px] hover:text-grey-text-color focus:text-grey-text-color transition-colors focus:outline-none"
-                disabled={currentLang === 'en'}
-                onClick={() => switchLanguage()}
-            >
-                EN
-            </button>
-            <button
-                className="text-[14px] hover:text-grey-text-color focus:text-grey-text-color transition-colors focus:outline-none"
-                disabled={currentLang === 'uk'}
-                onClick={() => switchLanguage()}
-            >
-                UK
-            </button>
-        </>  
-    );
+  useEffect(() => {
+    setActiveButton(storedLang);
+  }, [storedLang]);
+
+  const switchLanguage = useCallback((language) => {
+    i18n.changeLanguage(language);
+    setActiveButton(language);
+    localStorage.setItem('selectedLanguage', language);
+  }, [i18n]);
+
+  const switchToEnglish = () => {
+    switchLanguage('en');
+  }
+
+  const switchToUkrainian = () => {
+    switchLanguage('uk');
+  }
+
+  return (
+    <div className={styles['flex-container']}>
+      <button
+        className={`${styles.button} ${activeButton === 'en' ? styles.active : ''}`}
+        disabled={activeButton === 'en'}
+        onClick={switchToEnglish}
+      >
+        EN
+      </button>
+      <button
+        className={`${styles.button} ${activeButton === 'uk' ? styles.active : ''}`}
+        disabled={activeButton === 'uk'}
+        onClick={switchToUkrainian}
+      >
+        UK
+      </button>
+    </div>
+  );
 };
+
 export default LanguageToggler;
 

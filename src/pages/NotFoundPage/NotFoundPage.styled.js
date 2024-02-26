@@ -97,7 +97,6 @@ export const NotFoundPageTitle = styled.h1`
   font-size: 120px;
   line-height: 1.025;
   text-align: center;
-  /* color: black; */
   color: rgba(243, 243, 243, 0.1);
 
   @media screen and (min-width: 768px) {

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useMainNav } from '../../../../hooks/useMainNav';
 import { Logo } from '../Logo/Logo';
@@ -6,53 +6,50 @@ import ThemeToggler from '../ThemeToggler/ThemeToggler';
 
 import { useTranslation } from 'react-i18next';
 import '../../../i18n';
+import LanguageToggler from '../LanguageToggler/LanguageToggler';
 
 const HamburgerMenu = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const { t, i18n } = useTranslation();
-  const currentLang = i18n.language;
+  const { t} = useTranslation();
+
+  const openNav = () => {
+    setIsNavOpen(!isNavOpen);
+  };
+
+  useEffect(() => {
+    isNavOpen
+      ? (document.body.style.overflow = 'hidden')
+      : (document.body.style.overflow = 'auto');
+  }, [isNavOpen]);
 
   const mainNav = useMainNav();
 
   return (
     <div className=" flex items-center justify-between  border-gray-400 pl-[14px]">
       <nav>
-        <section className=" MOBILE-MENU flex lg:hidden">
+        <section className=" MOBILE-MENU flex lg:hidden ">
           <div
-            className="HAMBURGER-ICON space-y-2"
-            onClick={() => setIsNavOpen((prev) => !prev)}
+            className="HAMBURGER-ICON space-y-2 animate-pulse animate-infinite "
+            onClick={openNav}
           >
-            <span className="block h-0.5 w-8 animate-pulse bg-primary-text-button-color dark:bg-primary-text-color"></span>
-            <span className="block h-0.5 w-8 animate-pulse bg-primary-text-button-color dark:bg-primary-text-color"></span>
-            <span className="block h-0.5 w-8 animate-pulse bg-primary-text-button-color dark:bg-primary-text-color"></span>
+            <span className="block h-0.5 w-8 bg-primary-text-button-color dark:bg-primary-text-color"></span>
+            <span className="block h-0.5 w-8 bg-primary-text-button-color dark:bg-primary-text-color"></span>
+            <span className="block h-0.5 w-8 bg-primary-text-button-color dark:bg-primary-text-color"></span>
           </div>
 
           <div className={isNavOpen ? 'showMenuNav' : 'hideMenuNav'}>
-            <div className="bg-mobile-bg-commonpage ">
-              <nav className=" bg-primary-text-color dark:bg-button-hover-color  absolute flex flex-col h-[1000%] w-full z-[100] bg-mobile-bg-commonpage bg-no-repeat bg-header-left bg-right-top bg-[length:300px_1900px]">
-                <div className="container bg-mobile-bg-commonpage bg-[length:150px_1700px] bg-no-repeat   flex p-5 border-b  border-border-color text-primary-text-color justify-between md:pl-[32px] md:pr-[32px] lg:pt-[22px] lg:pb-[23px] lg:pl-[100px] lg:pr-[100px]">
+            <div className=" ">
+              <nav className="bg-button-hover-color dark:bg-button-hover-color transition-transform sm:bg-mobile-burger-menu  md:bg-desktop-burger-menu bg-no-repeat  fixed flex flex-col h-[100%] w-full z-[100] ">
+                <div className="relative container flex p-5 border-b  border-border-color text-primary-text-color justify-between md:pl-[32px] md:pr-[32px] lg:pt-[22px] lg:pb-[23px] lg:pl-[100px] lg:pr-[100px]">
                   <Logo />
                   <div className=" language-divider flex mr-[5px] md:mr-[40px] gap-[10px]">
-                    <button
-                      className="text-[14px] hover:text-grey-text-color focus:text-grey-text-color transition-colors focus:outline-none"
-                      disabled={currentLang === 'en'}
-                      onClick={() => i18n.changeLanguage('en')}
-                    >
-                      EN
-                    </button>
-                    <button
-                      className="text-[14px] hover:text-grey-text-color focus:text-grey-text-color transition-colors focus:outline-none"
-                      disabled={currentLang === 'uk'}
-                      onClick={() => i18n.changeLanguage('uk')}
-                    >
-                      UK
-                    </button>
+                   <LanguageToggler/>
                   </div>
 
                   <ThemeToggler className="mr-[62px]" />
                   <div
-                    className=" absolute sm:top-[-12px] md:top-[-5px] sm:right-[-10px] md:right-[0px] px-8 py-8"
-                    onClick={() => setIsNavOpen(false)}
+                    className=" absolute sm:top-[-12px] md:top-[-5px] sm:right-[-10px] md:right-[0px] px-8 py-8 animate-pulse animate-infinite "
+                    onClick={openNav}
                   >
                     <svg
                       className="h-8 w-8 text-primary-text-button-color dark:text-primary-text-color"
@@ -98,11 +95,7 @@ const HamburgerMenu = () => {
         left: 0;
        
         overflow-hidden
-        z-index: 10;
-      
-   
-      
-     
+        z-index: 10;   
       }
     `}</style>
     </div>

@@ -16,25 +16,26 @@ import {
 } from '../../redux/myDrinks/myDrinksSelector';
 import { usePagination } from '../../hooks/usePagination';
 import { MyDrinksLimit } from '../../constants/paginationLimits';
+import { toast } from 'react-toastify';
 
 import { useTranslation } from 'react-i18next';
 import '../../i18n';
 
 const MyDrinksPage = () => {
-  const { t, i18n } = useTranslation();
+  const { t} = useTranslation();
 
   const dispatch = useDispatch();
   const data = useSelector(selectMyDrinks);
   const isLoading = useSelector(selectMyDrinksLoading);
   const isError = useSelector(selectMyDrinksError);
+  const totalCount = useSelector(selectMyDrinksTotalCount);
 
   const { page, per_page, countPagesOfPagination, setPage } =
     usePagination(MyDrinksLimit);
-  const totalCount = useSelector(selectMyDrinksTotalCount);
 
   useEffect(() => {
-    dispatch(getMyDrinks({ page, per_page }));
-  }, [dispatch, page, per_page]);
+    dispatch(getMyDrinks());
+  }, [dispatch]);
 
   const [isOpen, setIsOpen] = useState(false);
   const [currentId, setCurrentId] = useState(null);
@@ -57,6 +58,7 @@ const MyDrinksPage = () => {
   };
 
   const drinksAreNotFinded = !isLoading && totalCount === 0;
+  const startIndex = (page - 1) * per_page;
 
   return (
     <section
@@ -70,7 +72,7 @@ const MyDrinksPage = () => {
         {totalCount > 0 && (
           <>
             <DrinksList
-              data={data}
+              data={data.slice(startIndex, startIndex + per_page)}
               openMyDrinkModal={openMyDrinkModal}
               onChooseItem={setCurrentId}
             />
@@ -79,6 +81,7 @@ const MyDrinksPage = () => {
               itemsPerPage={per_page}
               setPage={setPage}
               forcePage={page}
+              page={page}
               initialPage={page}
               countPagesOfPagination={countPagesOfPagination}
             />
@@ -97,7 +100,10 @@ const MyDrinksPage = () => {
           >
             <ModalButtons
               closeMyDrinkModal={closeMyDrinkModal}
-              handleDeleteClick={() => handleDeleteClick(currentId)}
+              handleDeleteClick={() => {
+                handleDeleteClick(currentId);
+                toast('Cocktail removed!', { icon: false });
+              }}
               drinkId={data}
             />
           </UniversalModal>

@@ -19,7 +19,7 @@ export const PrivacyPolicy = () => {
   const closeFooterModal = () => {
     setIsOpen(false);
   };
-  const { t, i18n } = useTranslation();
+  const { t} = useTranslation();
 
 
   return (
@@ -36,7 +36,8 @@ export const PrivacyPolicy = () => {
               setOnPolicyClick(true);
             }}
           >
-            <p>Private Policy</p>
+            <p>{t('Privacy.Policy')}</p>
+            
           </Link>
         </li>
         <li>
@@ -45,7 +46,7 @@ export const PrivacyPolicy = () => {
               openFooterModal();
             }}
           >
-            <p>Terms of Service</p>
+            <p>{t('Privacy.Term')}</p>
 
           </Link>
         </li>

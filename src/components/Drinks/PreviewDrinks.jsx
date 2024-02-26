@@ -23,7 +23,7 @@ const popularCategories = [
 ];
 
 export const PreviewDrinks = () => {
-  const { t, i18n } = useTranslation();
+  const { t} = useTranslation();
 
   const data = useSelector(selectDrinks);
   const isLoading = useSelector(selectDrinksIsLoading);
@@ -46,7 +46,7 @@ export const PreviewDrinks = () => {
           {filteredCategories.map((category) => (
             <li key={category}>
               <p className="font-semibold text-[28px] md:text-[40px] leading-[1.14] md:leading-[1.1] pb-[24px] md:pb-[40px]">
-                {category}
+               {t(`categories.${category}`)}
               </p>
               <ul className="flex flex-wrap flex-row md:gap-[20px] overflow-hidden h-[392px] md:h-[398px] lg:h-[438px]">
                 {data

@@ -1,6 +1,5 @@
 .btnCssbuttons {
   font-family: 'Manrope', sans-serif;
-  /* --btn-color: #161f37; */
   --btn-color: transparent;
   position: relative;
   padding: 14px 22px;
@@ -14,7 +13,6 @@
   outline: none;
   overflow: hidden;
   cursor: pointer;
-  /* filter: drop-shadow(0 2px 8px rgba(249, 250, 250, 0.32)); */
   transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
@@ -74,10 +72,6 @@
   transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
-/* .btnCssbuttons ul li a:hover {
-  opacity: 0.5;
-} */
-
 .btnCssbuttons:hover::before {
   transform: scale(1.2);
 }
@@ -106,7 +100,6 @@
 @media screen and (min-width: 768px) {
   .btnCssbuttons {
     width: 180px;
-    /* padding: 2px 2px; */
     font-weight: 400;
     font-size: 17px;
     line-height: 1.56;

@@ -3,10 +3,9 @@ import API from '../../services/axios';
 
 export const getMyDrinks = createAsyncThunk(
   'myDrinks/fetchMyDrinks',
-  async ({ page, per_page }, thunkApi) => {
+  async (_, thunkApi) => {
     try {
-      const queryParams = new URLSearchParams({ page, per_page });
-      const { data } = await API.get(`/drinks/own?${queryParams}`);
+      const { data } = await API.get('/drinks/own');
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);

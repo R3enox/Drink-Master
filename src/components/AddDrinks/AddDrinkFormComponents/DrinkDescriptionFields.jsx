@@ -89,14 +89,14 @@ export const DrinkPageHero = () => {
         <input
           type="text"
           name="drink"
-          placeholder="Enter item title"
+          placeholder={t('inputPlaceholder.DrinkPageHero.itemTitle')}
           required
           className="block pb-[14px] outline-none hover:placeholder-primary-text-color   bg-transparent w-[335px] h-[34px] border-b border-grey-text-color  focus:outline-none  focus:border-primary-text-color hover:border-primary-text-color placeholder-grey-text-color placeholder-font-normal placeholder-text-sm transition-colors ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms] md:w-[352px] md:h-[41px] md:placeholder-text-base md:pb-[18px] lg:w-[393px]"
         />
         <input
           type="text"
           name="description"
-          placeholder="Enter about recipe"
+          placeholder={t('inputPlaceholder.DrinkPageHero.recipeDescr')}
           className="block pb-[14px] outline-none hover:placeholder-primary-text-color   bg-transparent w-[335px] h-[34px] border-b border-grey-text-color  focus:outline-none  focus:border-primary-text-color hover:border-primary-text-color placeholder-grey-text-color placeholder-font-normal placeholder-text-sm transition-colors ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms] md:w-[352px] md:h-[41px] md:placeholder-text-base md:pb-[18px] lg:w-[393px]"
           required
         />
