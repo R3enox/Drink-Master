@@ -1,5 +1,7 @@
 import { useCallback, useEffect } from 'react';
 import sprite from '../../../assets/sprite.svg';
+import { useTranslation } from 'react-i18next';
+import '../../../i18n';
 
 const UserLogoPopup = ({
   openPopUpFnc,
@@ -7,6 +9,7 @@ const UserLogoPopup = ({
   openModal,
   openLogOutModal,
 }) => {
+  const { t, i18n } = useTranslation();
   const closePopUp = useCallback(
     (e) => {
       if (e.target !== openEl) {
@@ -32,17 +35,17 @@ const UserLogoPopup = ({
       >
         <div onClick={openModal}>
           <div className="flex justify-between mb-[28px]">
-            <p>Edit profile</p>
+            <p>{t('UserLogoPopup.text')}</p>
             <svg className="fill-primary-text-color w-[17px] h-[17px] ">
               <use href={sprite + '#icon-pancil'}></use>
             </svg>
           </div>
         </div>
         <button
-          className="w-full text-center pt-[12px] pb-[12px] pl-[45] pr-[45] rounded-[200px] bg-transparent border-[1px]  border-border-color "
+          className="w-full text-center pt-[12px] pb-[12px] pl-[45] pr-[45] rounded-[200px] bg-primary-text-color  text-primary-text-button-color transition shadow-lg hover:shadow-primary-text-color/50 "
           onClick={openLogOutModal}
         >
-          Log out
+          {t('button.LogOutModal.LogOut')}
         </button>
       </div>
     </>

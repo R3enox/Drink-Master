@@ -126,7 +126,7 @@
 }
 
 /* === BtnLightTheme ==== */
-/* 
+
 .btnTransparent::before {
   background-color: #161f37;
 }
@@ -148,4 +148,4 @@
     font-size: 16px;
     line-height: 112%;
   }
-} */
+}

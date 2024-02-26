@@ -7,7 +7,12 @@ import 'react-datepicker/dist/react-datepicker.css';
 import MaskedInput from 'react-text-mask';
 import { CalendarGlobalStyles } from './Calendar.styled';
 
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
+
 const Calendar = ({ getDateOfBirth }) => {
+  const { t, i18n } = useTranslation();
+
   const [startDate, setStartDate] = useState(null);
 
   const handleDateChange = (date) => {
@@ -20,7 +25,7 @@ const Calendar = ({ getDateOfBirth }) => {
     <>
       <DatePicker
         selected={startDate}
-        placeholderText="dd/mm/yyyy"
+        placeholderText={t('inputPlaceholder.DatePicker.dateFormat')}
         showIcon
         toggleCalendarOnIconClick
         icon={

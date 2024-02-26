@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import ReactPaginate from 'react-paginate';
 
 import { scrollToTop } from 'helpers/scrollToTop';
@@ -11,15 +12,24 @@ export const Paginator = ({
   itemsPerPage,
   setPage,
   forcePage,
+  page,
   countPagesOfPagination,
 }) => {
+  useEffect(() => {
+    const totalPages = Math.ceil(totalCount / itemsPerPage);
+    if (totalPages < page) setPage(totalPages);
+  }, [page, itemsPerPage, setPage, totalCount]);
+
   const handlePageChange = (e) => {
     setPage(e.selected + 1);
     scrollToTop();
   };
 
   const totalPages = Math.ceil(totalCount / itemsPerPage);
-  const checkInitialPage = initialPage > totalPages ? 1 : initialPage;
+  const checkInitialPage =
+    isNaN(parseInt(page)) || page <= 0 || initialPage > totalPages
+      ? 1
+      : initialPage;
 
   return (
     <ReactPaginate

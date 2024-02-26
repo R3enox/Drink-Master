@@ -8,7 +8,12 @@ import { useSelector } from 'react-redux';
 import UniversalModal from '../../reUseComponents/ UniversalModal/ UniversalModal';
 import HeaderModal from '../HeaderModal/HeaderModal';
 
+import { useTranslation } from 'react-i18next';
+import '../../../i18n';
+
 const UserInfo = () => {
+  const { t, i18n } = useTranslation();
+
   const [openEl, setOpenEl] = useState(null);
   const [popUpIsOpen, setPopUpIsOpen] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -47,7 +52,9 @@ const UserInfo = () => {
               className="rounded-full sm:w-[32px] sm:h-[32px]  md:w-[44px] md:h-[44px] lg:w-[39px] lg:h-[39px]"
             />
           </div>
-          <p className="">{user.name}</p>
+          <p className="text-primary-text-button-color dark:text-primary-text-color">
+            {user.name}
+          </p>
         </div>
 
         {popUpIsOpen && (
@@ -63,7 +70,7 @@ const UserInfo = () => {
         <UniversalModal
           isOpen={isOpenLogOutModal}
           closeFnc={toogleLogOutModal}
-          content={'Are you sure you want to log out?'}
+          content={t('UniversalModal.useSelector')}
           hidden={`hidden`}
         >
           <LogOutModal closeFnc={toogleLogOutModal} />

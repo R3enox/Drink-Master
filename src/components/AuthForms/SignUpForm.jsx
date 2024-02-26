@@ -11,7 +11,12 @@ import { useState } from 'react';
 import Loader from '../Loader/Loader';
 import sprite from '../../assets/sprite.svg';
 
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
+
 const SignUpForm = () => {
+  const { t, i18n } = useTranslation();
+
   const isLoading = useSelector(selectAuthIsLoading);
   const dispatch = useDispatch();
   const token = useSelector(selectAuthAccessToken);
@@ -23,9 +28,9 @@ const SignUpForm = () => {
     register,
     handleSubmit,
     formState: { errors, dirtyFields },
-    reset,
   } = useForm({
     mode: 'onChange',
+    defaultValues: { ...(JSON.parse(localStorage.getItem('signUp')) ?? {}) },
   });
 
   const getDateOfBirth = (date) => {
@@ -34,14 +39,18 @@ const SignUpForm = () => {
 
   const onSubmit = (data) => {
     data.dateOfBirth = dateOfBirth;
+    localStorage.setItem(
+      'signUp',
+      JSON.stringify({
+        name: data?.name,
+        email: data?.email,
+      })
+    );
     dispatch(signUpThunk(data));
-    console.log('first');
+
     if (token) {
-      console.log('second');
       navigate('/home');
     }
-
-    reset();
   };
 
   if (isLoading) {
@@ -54,7 +63,7 @@ const SignUpForm = () => {
       onSubmit={handleSubmit(onSubmit)}
       noValidate
     >
-      <h1 className="form-title">Sign Up</h1>
+      <h1 className="form-title">{t('title.SignUpForm')}</h1>
       <div className="input-container">
         <div>
           <input
@@ -62,22 +71,27 @@ const SignUpForm = () => {
               dirtyFields.name && !errors.name && 'correct'
             }`}
             type="text"
-            placeholder="Name"
+            placeholder={t('inputPlaceholder.SignUpForm.name')}
             autoComplete="off"
             {...register('name', {
-              required: { value: true, message: 'Name is required' },
+              required: {
+                value: true,
+                message: `${t('inputPlaceholder.SignUpForm.namelValid')}`,
+              },
               min: 2,
               maxLength: 20,
               pattern: {
                 value:
                   /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/i,
-                message: 'This is an ERROR name',
+                message: `${t('inputPlaceholder.SignUpForm.namePatternError')}`,
               },
             })}
           />
           {errors?.name && <p className="errorMsg">{errors.name.message}</p>}
           {dirtyFields.name && !errors.name && (
-            <p className="correctMsg">This is a CORRECT name</p>
+            <p className="correctMsg">
+              {t('inputPlaceholder.SignUpForm.namePatternCorrect')}
+            </p>
           )}
         </div>
         <div>
@@ -89,13 +103,15 @@ const SignUpForm = () => {
               dirtyFields.email && !errors.email && 'correct'
             }`}
             type="email"
-            placeholder="Email"
+            placeholder={t('inputPlaceholder.SignInForm.email')}
             autoComplete="off"
             {...register('email', {
-              required: 'Email is required',
+              required: `${t('inputPlaceholder.SignInForm.emailValid')}`,
               pattern: {
                 value: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/,
-                message: 'This is an ERROR email',
+                message: `${t(
+                  'inputPlaceholder.SignInForm.emailPatternError'
+                )}`,
               },
             })}
           />
@@ -112,7 +128,9 @@ const SignUpForm = () => {
               <svg className="absolute w-[20px] h-[20px] top-[18px] right-[18px] fill-correct-color stroke-correct-color">
                 <use href={sprite + '#icon-done'}></use>
               </svg>
-              <p className="correctMsg">This is a CORRECT email</p>
+              <p className="correctMsg">
+                {t('inputPlaceholder.SignInForm.emailPatternCorrect')}
+              </p>
             </>
           )}
         </div>
@@ -122,17 +140,21 @@ const SignUpForm = () => {
               dirtyFields.password && !errors.password && 'correct'
             }`}
             type={showPassword ? 'text' : 'password'}
-            placeholder="Password"
+            placeholder={t('inputPlaceholder.SignInForm.password')}
             autoComplete="off"
             {...register('password', {
-              required: 'Password is required',
+              required: `${t('inputPlaceholder.SignInForm.passwordValid')}`,
               minLength: {
                 value: 6,
-                message: 'Password has to be at least 6 characters',
+                message: `${t(
+                  'inputPlaceholder.SignInForm.passwordPatternErrorLength'
+                )}`,
               },
               pattern: {
                 value: '/^(?=.*[a-z])(?=.*[A-Z])(?=.*d)[a-zA-Zd]{8,}$/i',
-                message: 'This is an ERROR password',
+                message: `${t(
+                  'inputPlaceholder.SignInForm.passwordPatternError'
+                )}`,
               },
             })}
           />
@@ -161,16 +183,29 @@ const SignUpForm = () => {
             <p className="errorMsg">{errors.password.message}</p>
           )}
           {dirtyFields.password && !errors.password && (
-            <p className="correctMsg">This is a CORRECT password</p>
+            <p className="correctMsg">
+              {t('inputPlaceholder.SignInForm.passwordPatternCorrect')}
+            </p>
           )}
         </div>
       </div>
       <div className="btn-container">
-        <button className="btn-up sign-btn" type="submit">
-          Sign Up
-        </button>
+        <div className="flex ">
+          <Link
+            to="https://drink-master-4fm6.onrender.com/api/auth/google"
+            className="relative btn-google sign-google"
+            type="submit"
+          >
+            <svg className="w-[28px] h-[28px] fill-none stroke-primary-text-color cursor-pointer  rounded-full">
+              <use href={sprite + '#icon-google'}></use>
+            </svg>
+          </Link>
+          <button className="btn-up sign-btn signup-btn" type="submit">
+            {t('link.SignInForm.SignUp')}
+          </button>
+        </div>
         <Link className="sign-link-btn" to="/signin">
-          Sign in
+          {t('button.SignInForm.SignIn')}
         </Link>
       </div>
     </form>

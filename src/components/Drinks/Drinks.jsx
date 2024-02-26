@@ -13,7 +13,12 @@ import {
   selectTotalCount,
 } from '../../redux/drinks/drinksSelector';
 
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
+
 export const Drinks = () => {
+  const { t, i18n } = useTranslation();
+
   const dispatch = useDispatch();
   const { page, per_page, countPagesOfPagination, setPage } =
     usePagination(DrinksLimit);
@@ -25,7 +30,10 @@ export const Drinks = () => {
   const isLoading = useSelector(selectDrinksIsLoading);
 
   useEffect(() => {
-    const searchParams = new URLSearchParams({ page, per_page });
+    let validPage = page;
+    if (isNaN(parseInt(page)) || page <= 0) validPage = 1;
+
+    const searchParams = new URLSearchParams({ page: validPage, per_page });
     if (search) searchParams.set('search', search);
     if (category) searchParams.set('category', category);
     if (ingredient) searchParams.set('ingredient', ingredient);
@@ -55,9 +63,7 @@ export const Drinks = () => {
         </>
       )}
       {drinksAreNotFinded && (
-        <DrinkImageComponent
-          description={'We did not find any drinks for you'}
-        />
+        <DrinkImageComponent description={t('DrinkImageComponent.Drinks')} />
       )}
       <br />
     </div>

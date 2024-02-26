@@ -2,9 +2,6 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import DrinkPageHero from 'components/DrinkPageHero/DrinkPageHero';
-import DrinkIngredientsList from 'components/DrinkIngredientsList/DrinkIngredientsList';
-import RecipePreparation from 'components/RecipePreparation/RecipePreparation';
 import Loader from 'components/Loader/Loader.jsx';
 
 import {
@@ -16,6 +13,9 @@ import { selectAuthError } from '../../redux/auth/authSelectors.js';
 import { mapIngredientsOfCocktail } from 'helpers/createIngredientsCollection.js';
 import { scrollToTop } from 'helpers/scrollToTop.js';
 import { useFilters } from 'hooks/useFilters.js';
+import DrinkIngredientsList from '../../components/DrinkId/DrinkIngredientsList.jsx';
+import RecipePreparation from '../../components/DrinkId/RecipePreparation.jsx';
+import DrinkPageHero from '../../components/DrinkId/DrinkPageHero.jsx';
 
 const DrinkPage = () => {
   const currentCocktail = useSelector(selectGetCurrentCocktail);
@@ -33,6 +33,19 @@ const DrinkPage = () => {
       ingIds.find(({ ingredientId }) => ingredientId === ingr._id)
     );
 
+  const mergedIngred = ingredByFilter.map((ingredient) => {
+    const correspondingMeasure = ingIds.find(
+      (item) => item.ingredientId === ingredient._id
+    );
+    const measure = correspondingMeasure
+      ? correspondingMeasure.measure
+      : 'Unknown';
+    return {
+      ...ingredient,
+      measure: measure,
+    };
+  });
+
   useEffect(() => {
     dispatch(fetchCocktailsById(drinkId));
     scrollToTop();
@@ -45,10 +58,7 @@ const DrinkPage = () => {
       {currentCocktail && (
         <div className="container mx-auto ">
           <DrinkPageHero cocktail={currentCocktail} />
-          <DrinkIngredientsList
-            ingredients={ingredByFilter}
-            currentIngred={ingIds}
-          />
+          <DrinkIngredientsList ingredients={mergedIngred} />
           <RecipePreparation description={currentCocktail} />
         </div>
       )}

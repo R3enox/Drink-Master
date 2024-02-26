@@ -4,7 +4,12 @@ import { AddDrinkTitle } from './AddDrinkTitle';
 import Select from 'react-select';
 import { nanoid } from 'nanoid';
 
+import { useTranslation } from 'react-i18next';
+import '../../../i18n';
+
 export const DrinkIngredientsFields = ({ ingredientsOptions }) => {
+  const { t, i18n } = useTranslation();
+
   const [ingredientsCount, setIngredientsCount] = useState(3);
   const [ingredientInputs, setIngredientInputs] = useState([]);
 
@@ -96,7 +101,7 @@ export const DrinkIngredientsFields = ({ ingredientsOptions }) => {
   };
 
   const handleDec = () => {
-    if (ingredientsCount <= 3) {
+    if (ingredientsCount <= 0) {
       return;
     }
     const newCount = ingredientsCount - 1;
@@ -114,13 +119,17 @@ export const DrinkIngredientsFields = ({ ingredientsOptions }) => {
   return (
     <>
       <div className="flex justify-between lg:w-[540px]">
-        <AddDrinkTitle text="Ingredients" className="inline-block" />
+        <AddDrinkTitle text={t('title2.AddDrink')} className="inline-block" />
         <div
           id="counter"
           className="w-[104px] h-[38px] md:w-[114px] md:h-[44px]  flex justify-around items-center border-solid border-grey-text-color border-[1px] rounded-3xl"
         >
           <button type="button" data-action="decrement" onClick={handleDec}>
-            <svg width="16" height="16" className="stroke-primary-text-color ">
+            <svg
+              width="16"
+              height="16"
+              className=" stroke-primary-text-color   hover:stroke-[#848080] focus:stroke-[#848080] ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms] "
+            >
               <use href={`${sprite}#icon-minus`} />
             </svg>
           </button>
@@ -128,7 +137,11 @@ export const DrinkIngredientsFields = ({ ingredientsOptions }) => {
             {ingredientsCount}
           </span>
           <button type="button" data-action="increment" onClick={handleInc}>
-            <svg width="16" height="16" className="stroke-primary-text-color">
+            <svg
+              width="16"
+              height="16"
+              className=" stroke-primary-text-color   hover:stroke-[#848080] focus:stroke-[#848080] ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms] "
+            >
               <use href={`${sprite}#icon-plus`} />
             </svg>
           </button>
