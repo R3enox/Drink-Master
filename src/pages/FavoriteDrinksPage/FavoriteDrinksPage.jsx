@@ -36,8 +36,8 @@ const FavoriteDrinksPage = () => {
   const isError = useSelector(selectFavoritesError);
 
   useEffect(() => {
-    dispatch(getFavorites({ page, per_page }));
-  }, [dispatch, page, per_page]);
+    dispatch(getFavorites());
+  }, [dispatch]);
 
   const [isOpen, setIsOpen] = useState(false);
   const [currentId, setCurrentId] = useState(null);
@@ -59,7 +59,9 @@ const FavoriteDrinksPage = () => {
     }
   };
 
-  const drinksAreNotFinded = !isLoading && totalCount === 0;
+  const drinksAreNotFinded = !isLoading && data?.length === 0;
+  const startIndex = (page - 1) * per_page;
+
   return (
     <div className="dark:bg-favorites-set md:dark:bg-favorites-set-tablet lg:dark:bg-favorites-set-desktop bg-cover bg-no-repeat">
       <section className="pb-[80px] mb:pb-[140]">
@@ -67,10 +69,10 @@ const FavoriteDrinksPage = () => {
           {isError && toast.error(t('toastError.Favorite'))}
           <PageTitle title={t('title.Favorite')} />
           {isLoading && <Loader isStatic />}
-          {!isLoading && totalCount > 0 && (
+          {totalCount > 0 && (
             <>
               <DrinksList
-                data={data}
+                data={data.slice(startIndex, startIndex + per_page)}
                 openMyDrinkModal={openFavoriteDrinkModal}
                 onChooseItem={setCurrentId}
               />
@@ -79,6 +81,7 @@ const FavoriteDrinksPage = () => {
                 itemsPerPage={per_page}
                 setPage={setPage}
                 forcePage={page}
+                page={page}
                 initialPage={page}
                 countPagesOfPagination={countPagesOfPagination}
               />
