@@ -53,17 +53,17 @@ body {
 
 /* Header Burger Menu */
 @layer base {
-  .bg-header-burger {
+  .bg-desktop-burger-menu {
     background-image: image-set(
-      url('assets/img/header/bg-header-burger.png') 1x,
-      url('assets/img/header/bg-header-burger.png') 2x
+      url('assets/img/header/desktop-burger-menu.png') 1x,
+      url('assets/img/header/desktop-burger-menu@2x.png') 2x
     );
   }
 
-  .bg-header-left {
+  .bg-mobile-burger-menu {
     background-image: image-set(
-      url('assets/img/header/bg-header-left.png') 1x,
-      url('assets/img/header/bg-header-left.png') 2x
+      url('assets/img/header/mobile-burger-menu.png') 1x,
+      url('assets/img/header/mobile-burger-menu.@2x.png') 2x
     );
   }
 }
