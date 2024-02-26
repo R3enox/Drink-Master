@@ -40,15 +40,15 @@ on a variety of devices, including computers, tablets, and smartphones.
 ✔️**Intuitive user interface**: the easy-to-use interface makes it effortless to
 add, create, and find out more information without any extra effort.
 
-✔️**Google authorization**: secure and convenient authorization and login to
-your account.
+✔️**Google authorization**: secure and convenient registration and authorization.
 
 ✔️**Security**: the refresh + access token scheme is used. A reliable mechanism
-for controlling users' "sensitive information".
+for controlling users' "sensitive data".
 
-✔️**Dark/Light mode**: you can switch the theme from light to dark and vice
-versa. The data on the theme selected by the user is saved even after leaving
-the application.
+✔️**Dark/Light mode**: you can switch the theme from dark by default
+to light and vice versa. Data on the theme selected by the user is saved even after you exit the application.
+
+✔️**Two languages**: the ability to change the language in the application, switching the default English language to Ukrainian.
 
 ## 🔧Stack technology
 
@@ -66,6 +66,7 @@ the application.
 <p align="left"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="70" height="60"/>
 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg" alt="mongodb" width="60" height="50"/>
 <img src="https://raw.githubusercontent.com/swagger-api/swagger.io/wordpress/images/assets/SW-logo-clr.png" height="50">
+<img src="/public/readme/google.png" height="40">
 <img src="https://github.com/MarioTerron/logo-images/blob/master/logos/expressjs.png" height="30">
 <img src="https://cloudinary-res.cloudinary.com/image/upload/c_scale,w_300/v1/logo/for_white_bg/cloudinary_logo_for_white_bg.svg" height="30"></p>
 
@@ -86,3 +87,31 @@ system. Once you have successfully logged in, enjoy the app's features 😎
 [Backend Repo](https://github.com/R3enox/backend-drink-master)
 
 [Swagger Docs](https://drink-master-4fm6.onrender.com/api-docs)
+
+## 😎 Our team
+
+- **Mykyta Yeremenko** - Team Lead vs Fullstack [Github][1]
+- **Natalia Mahera** - Scrum Master vs Fullstack [Github][2]
+- **Yakiv Hrubskyi** - Fullstack [Github][3]
+- **Mykola Pavlovych** - Fullstack [Github][4]
+- **Kateryna Mala** - Fullstack [Github][5]
+- **Vadym Bobyrenko** - Fullstack [Github][6]
+- **Serhii Lutsenko** - Fullstack [Github][7]
+- **Alex Prokopiev** - Fullstack [Github][11]
+- **Karina Ahadzhanian** - Fullstack [Github][8]
+- **Eduard Sorokolietov** - Fullstack [Github][9]
+- **Angelina Smaluch** - Fullstack [Github][10]
+
+[1]: https://github.com/R3enox
+[2]: https://github.com/NataliaMahera
+[3]: https://github.com/y-hrubskyi
+[4]: https://github.com/Mykola1612
+[5]: https://github.com/malaya1855
+[6]: https://github.com/wadimcka
+[7]: https://github.com/SergeyLu89
+[8]: https://github.com/KarinaCor
+[9]: https://github.com/soroked
+[10]: https://github.com/AngelinaCholak
+[11]: https://github.com/AlexProkopev
+
+
