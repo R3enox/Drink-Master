@@ -8,9 +8,8 @@ import { updateUserThunk } from '../../../redux/auth/authOperations';
 
 const UserLogo = ({closeFnc}) => {
   const user = useSelector(selectAuthUser);
-  
- const dispatch = useDispatch();
- 
+
+  const dispatch = useDispatch();
 
   const [preview, setPreview] = useState(null);
   const [userName, setUserName] = useState({ name: user.name });
@@ -29,7 +28,6 @@ const UserLogo = ({closeFnc}) => {
   };
 
   const onSubmit = async (data) => {
-   
     const formData = new FormData();
     formData.append('avatar', data.avatar[0]);
     formData.append('name', data.name);
@@ -37,8 +35,10 @@ const UserLogo = ({closeFnc}) => {
     console.log(formData);
      await dispatch(updateUserThunk(formData));
    closeFnc()
-    
+
   };
+
+
 
   const { register, handleSubmit } = useForm();
 
@@ -47,18 +47,16 @@ const UserLogo = ({closeFnc}) => {
       <form
         className="items-center flex flex-col   "
         onSubmit={handleSubmit(onSubmit)}
-       
       >
         <label className=" items-center flex flex-col  ">
           <input
             className="w-[20px] h-[2px] opacity-0"
             type="file"
-            {...register('avatar', { required: true })}
+            {...register('avatar')}
             onChange={handleUploadedFile}
           />
 
           <div className=" flex flex-col items-center pb-[34px] md:pb-[65px]">
-          
             <img
               src={preview}
               srcSet={preview ?? user.avatarURL}
@@ -66,14 +64,13 @@ const UserLogo = ({closeFnc}) => {
               className="rounded-full sm:w-[80px] sm:h-[80px]  md:w-[100px] md:h-[100px] "
             />
             <svg className=" hover:bg-primary-text-color hover:stroke-primary-text-button-color stroke-primary-text-color sm:w-[28px] h-[28px] md:w-[32px] md:h-[32px] absolute top-[120px] md:top-[140px] rounded-full bg-icon-plus">
-              <use  href={sprite + '#icon-plus'} 
-             ></use>
+              <use href={sprite + '#icon-plus'}></use>
             </svg>
           </div>
         </label>
         <input
           className="w-[285px] pl-[24px] md:w-[400px]   py-[18px] rounded-[200px] bg-transparent border-[1px]  border-border-color text-primary-text-color text-[16px] leading-[1.12] font-semibold hover:bg-primary-text-color hover:text-primary-text-button-color transition-colors  md:py-[18px] "
-          {...register('name', { required: true })}
+          {...register('name')}
           type="text"
           placeholder="name"
           autoComplete="off"
@@ -84,9 +81,7 @@ const UserLogo = ({closeFnc}) => {
           <use href={sprite + '#icon-pancil'}></use>
         </svg>
 
-        <button
-          className="w-[285px] md:w-full sm:mt-[18px] md:mt-[25px]  text-center py-[18px] rounded-[200px] bg-transparent border-[1px]  border-border-color text-primary-text-color text-[16px] leading-[1.12] font-semibold hover:bg-primary-text-color hover:text-primary-text-button-color transition-colors  md:py-[18px] "
-        >
+        <button className="w-[285px] md:w-full sm:mt-[18px] md:mt-[25px]  text-center py-[18px] rounded-[200px] bg-transparent border-[1px]  border-border-color text-primary-text-color text-[16px] leading-[1.12] font-semibold hover:bg-primary-text-color hover:text-primary-text-button-color transition-colors  md:py-[18px] ">
           Save changes
         </button>
       </form>
@@ -95,3 +90,6 @@ const UserLogo = ({closeFnc}) => {
 };
 
 export default UserLogo;
+
+
+
