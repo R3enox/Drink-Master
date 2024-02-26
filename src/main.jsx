@@ -9,7 +9,6 @@ import './index.css';
 import './i18n.js';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  // <React.StrictMode>
   <BrowserRouter basename="/frontend-drink-master">
     <Provider store={store}>
       <PersistGate persistor={persistor}>
@@ -17,5 +16,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       </PersistGate>
     </Provider>
   </BrowserRouter>
-  // </React.StrictMode>
 );

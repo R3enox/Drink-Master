@@ -1,7 +1,6 @@
 import { Logo } from './Logo/Logo';
 import UserInfo from './UserInfo/UserInfo';
 import { Navigation } from './Navigation/Navigation';
-// import { HeaderBtn } from './HeaderBtn/HeaderBtn';
 import ThemeToggler from './ThemeToggler/ThemeToggler';
 import HamburgerMenu from './HamburgerMenu/HamburgerMenu';
 
