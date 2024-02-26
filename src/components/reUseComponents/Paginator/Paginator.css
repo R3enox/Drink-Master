@@ -33,21 +33,32 @@
   font-weight: 500;
   font-size: 12px;
   text-align: center;
-  color: #f3f3f3;
+  color: #0a0a11;
 
   cursor: pointer;
 }
+html.dark .pagination-list a {
+  color: #f3f3f3;
+}
 
+.pagination-list .selected a {
+  color: #f3f3f3;
+}
 .pagination-list .selected {
+  background-color: rgb(64, 112, 205);
+}
+html.dark .pagination-list .selected {
   background-color: rgba(64, 112, 205, 0.5);
 }
 
-.pagination-list svg {
+.pagination-list a svg {
   width: 9px;
   height: 15px;
+  fill: rgba(10, 10, 17, 0.3);
+}
+html.dark .pagination-list a svg {
   fill: rgba(243, 243, 243, 0.3);
 }
-
 .pagination-list .next svg {
   rotate: 180deg;
 }

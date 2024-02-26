@@ -3,11 +3,12 @@ import { selectAuthUser } from '../../redux/auth/authSelectors';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { addFavorite, deleteFavorite } from '../../redux/favorites/favoriteAPI';
-import { ButtonComponent } from '../reUseComponents/Buttons/Buttons';
+// import { ButtonComponent } from '../reUseComponents/Buttons/Buttons';
 
 import { useTranslation } from 'react-i18next';
 import '../../i18n';
 import { toggleFavorite } from './toggleFavorite';
+import { ButtonComponentThemeChange } from '../reUseComponents/Buttons/ButtonThemeChange';
 
 const DrinkPageHero = ({ cocktail }) => {
   const { t, i18n } = useTranslation();
@@ -37,7 +38,7 @@ const DrinkPageHero = ({ cocktail }) => {
         </p>
         <div className="pt-10 pb-20">
           {isFav ? (
-            <ButtonComponent
+            <ButtonComponentThemeChange
               descr={t('button.toggleFavorite.ButtonComponentDel')}
               btnFunction={() => {
                 toggleFavorite(
@@ -47,7 +48,6 @@ const DrinkPageHero = ({ cocktail }) => {
                   deleteFavorite,
                   setIsFavorite,
                   addFavorite,
-                  setIsFavorite,
                   setIsFirstRender,
                   toast
                 );
@@ -56,7 +56,7 @@ const DrinkPageHero = ({ cocktail }) => {
               id={_id}
             />
           ) : (
-            <ButtonComponent
+            <ButtonComponentThemeChange
               descr={t('button.toggleFavorite.ButtonComponentAdd')}
               btnFunction={() => {
                 toggleFavorite(
@@ -66,7 +66,6 @@ const DrinkPageHero = ({ cocktail }) => {
                   deleteFavorite,
                   setIsFavorite,
                   addFavorite,
-                  setIsFavorite,
                   setIsFirstRender,
                   toast
                 );

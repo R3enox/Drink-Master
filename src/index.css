@@ -13,7 +13,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 100%;
+  max-height: 100%;
 }
 
 /* add flexibility for pages */
@@ -21,6 +21,10 @@ body {
 :root {
   font-family: 'Manrope', sans-serif;
   font-weight: 400;
+  background-color: #f3f3f3;
+  color: #0a0a11;
+}
+.dark {
   background-color: #0a0a11;
   color: #f3f3f3;
 }
@@ -249,6 +253,14 @@ body {
 }
 /* Home-Page */
 @layer base {
+  .bg-light {
+    background-image: image-set(
+      url('assets/template-step-1.png') 1x,
+      url('assets/template-step-1.png') 2x,
+
+      /* url('assets/img/homePage/mobile-bg-homepage@2x.png') 2x */
+    );
+  }
   .bg-home-set {
     background-image: image-set(
       url('assets/img/homePage/mobile-bg-homepage.png') 1x,
@@ -329,8 +341,8 @@ body {
 }
 
 .searchSelect__menu {
-  background-color: #161f37 !important;
-  color: rgba(243, 243, 243, 0.4) !important;
+  background-color: #fff !important;
+  color: rgba(10, 10, 17, 0.2) !important;
   border-radius: 20px !important;
   width: 335px !important;
   padding: 18px 24px;
@@ -338,6 +350,11 @@ body {
   font-weight: 400 !important;
   font-size: 14px !important;
   line-height: 129% !important;
+}
+
+html.dark .searchSelect__menu {
+  background-color: #161f37 !important;
+  color: rgba(243, 243, 243, 0.4) !important;
 }
 @media screen and (min-width: 768px) {
   .searchSelect__control {
@@ -378,6 +395,9 @@ body {
   margin-bottom: 8px !important;
 }
 .searchSelect__option:hover {
+  color: #0a0a11 !important;
+}
+html.dark .searchSelect__option:hover {
   color: #f3f3f3 !important;
 }
 
