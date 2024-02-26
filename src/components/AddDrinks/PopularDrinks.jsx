@@ -16,7 +16,7 @@ export const PopularDrinks = () => {
   }, [dispatch]);
 
   return (
-    <section>
+    <section className="pb-[80px] md:pb-[140px] lg:pb-0">
       <h2 className="font-medium text-lg text-primary-text-color mb-5  md:text-2xl md:mb-6 ">
         {t('title2.PopularDrinks')}
       </h2>

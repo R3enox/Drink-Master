@@ -145,13 +145,14 @@ export const DrinkPageHero = () => {
                   className="peer sr-only"
                   defaultChecked
                 />
-                <div className=" w-4 h-4 p-0.5 border-grey-text-color cursor-pointer rounded-[50%] border-[1.30px] peer-checked:border-primary-text-color "></div>
-                <div className=" absolute  left-[3.6%] top-[28%;] w-2.5 h-2.5 bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
+                <div className="relative w-4 h-4 p-0.5 border-grey-text-color cursor-pointer rounded-[10px] border-[1.30px] peer-checked:border-primary-text-color ">
+                  <div className=" absolute  left-[50%]  top-[50%]  w-2.5 h-2.5 bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
+                </div>
                 <span className="text-grey-text-color text-sm peer-checked:text-primary-text-color md:text-base">
                   {t('cocktailType.alco')}
                 </span>
               </label>
-              <label className="relative text-grey-text-color  flex items-center gap-x-1 cursor-pointer">
+              <label className="text-grey-text-color  flex items-center gap-x-1 cursor-pointer">
                 <input
                   type="radio"
                   name="alcoholic"
@@ -159,8 +160,10 @@ export const DrinkPageHero = () => {
                   required
                   className="peer sr-only"
                 />
-                <div className=" w-4 h-4 p-0.5 border-grey-text-color cursor-pointer rounded-[50%] border-[1.30px] peer-checked:border-primary-text-color "></div>
-                <div className=" absolute  left-[2.8%]  top-[28%;] w-2.5 h-2.5 bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
+                <div className="relative w-4 h-4 p-0.5 border-grey-text-color cursor-pointer rounded-[10px] border-[1.30px] peer-checked:border-primary-text-color ">
+                  <div className=" absolute  left-[50%]  top-[50%] w-2.5 h-2.5 bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
+                </div>
+
                 <span className="text-grey-text-color  peer-checked:text-primary-text-color text-sm md:text-base ">
                   {t('cocktailType.non')}
                 </span>
@@ -201,10 +204,8 @@ export const DrinkPageHero = () => {
                   className="peer sr-only"
                   defaultChecked
                 />
-                <div className=" w-4 h-4 p-0.5 border-grey-text-color cursor-pointer rounded-[50%] border-[1.30px] peer-checked:border-primary-text-color ">
-                  <div className=" absolute  left-[50%] top-[50%] w-2.5 h-2.5 bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
-                </div>
-
+                <div className=" w-4 h-4 p-0.5 border-grey-text-color cursor-pointer rounded-[50%] border-[1.30px] peer-checked:border-primary-text-color "></div>
+                <div className=" absolute  left-[2.8%] w-2.5 h-2.5 bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
                 <span className="text-grey-text-color  peer-checked:text-primary-text-color">
                   {t('cocktailType.non')}
                 </span>
