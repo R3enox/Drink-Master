@@ -16,6 +16,7 @@ import {
 } from '../../redux/myDrinks/myDrinksSelector';
 import { usePagination } from '../../hooks/usePagination';
 import { MyDrinksLimit } from '../../constants/paginationLimits';
+import { toast } from 'react-toastify';
 
 import { useTranslation } from 'react-i18next';
 import '../../i18n';
@@ -99,7 +100,10 @@ const MyDrinksPage = () => {
           >
             <ModalButtons
               closeMyDrinkModal={closeMyDrinkModal}
-              handleDeleteClick={() => handleDeleteClick(currentId)}
+              handleDeleteClick={() => {
+                handleDeleteClick(currentId);
+                toast('Cocktail removed!', { icon: false });
+              }}
               drinkId={data}
             />
           </UniversalModal>
