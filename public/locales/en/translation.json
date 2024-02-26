@@ -39,7 +39,11 @@
   "toastError": {
     "Favorite": "Oops, something went wrong!!",
     "DrinkPageHeroDel": "Drink removed from favorites!",
-    "DrinkPageHeroAdd": "Drink added to favorites!"
+    "DrinkPageHeroAdd": "Drink added to favorites!",
+    "AddDrinkForm": "Cocktail created !",
+    "MyDrinksPage":"Cocktail removed!",
+    "FavoriteRemove": "Cocktail removed from favorites!",
+    "SubscribeForm":"Thanks for subscribing"
   },
   "Hero": {
     "text": "Unlock your inner mixologist with Drink Master, your one-stop destination for exploring, crafting, and mastering the world's finest beverages."
@@ -117,7 +121,8 @@
 
   "button": {
     "AddDrink": {
-      "Add": "Add"
+      "Add": "Add",
+      "Creating":"creating..."
     },
     "SignInForm": {
       "SignIn": "Sign In"

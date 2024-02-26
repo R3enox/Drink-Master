@@ -10,7 +10,7 @@ import LanguageToggler from '../LanguageToggler/LanguageToggler';
 
 const HamburgerMenu = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const { t} = useTranslation();
+  const { t } = useTranslation();
 
   const openNav = () => {
     setIsNavOpen(!isNavOpen);
@@ -42,6 +42,7 @@ const HamburgerMenu = () => {
               <nav className="bg-button-hover-color dark:bg-button-hover-color transition-transform sm:bg-mobile-burger-menu  md:bg-desktop-burger-menu bg-no-repeat  fixed flex flex-col h-[100%] w-full z-[100] ">
                 <div className="relative container flex p-5 border-b  border-border-color text-primary-text-color justify-between md:pl-[32px] md:pr-[32px] lg:pt-[22px] lg:pb-[23px] lg:pl-[100px] lg:pr-[100px]">
                   <Logo />
+                  
                   <div className=" language-divider flex mr-[5px] md:mr-[40px] gap-[10px]">
                    <LanguageToggler/>
                   </div>
@@ -68,12 +69,20 @@ const HamburgerMenu = () => {
 
                 <ul className="flex flex-col mt-[160px] font-medium items-center gap-[16px] -[1.12] ">
                   {mainNav.map(({ id, href, title }) => (
-                    <li
-                      className=" text-primary-text-button-color dark:text-primary-text-color rounded-[200px] bg-transparent border-[1px] hover:text-primary-text-color hover:bg-primary-text-button-color border-border-color-for-light dark:border-border-color text-[14px] py-[8px] px-[16px] shadow-lg hover:shadow-primary-text-button-color/50 dark:hover:shadow-primary-text-color/50 transition-colors"
-                      key={id}
-                      onClick={() => setIsNavOpen((prev) => !prev)}
-                    >
-                      <NavLink to={href}>{t(`Header.${title}`)}</NavLink>
+                    <li key={id} onClick={() => setIsNavOpen((prev) => !prev)}>
+                      <NavLink
+                        className={({ isActive }) => {
+                          return (
+                            'py-[8px] px-[16px] rounded-[200px] border-[1px] text-[14px] leading-[1.6] font-medium dark:border-border-color border-border-color-for-light ' +
+                            (!isActive
+                              ? 'text-primary-text-button-color dark:text-primary-text-color bg-transparent'
+                              : 'text-primary-text-color bg-primary-text-button-color transition shadow-lg shadow-primary-text-button-color/50 dark:shadow-primary-text-color/50 ')
+                          );
+                        }}
+                        to={href}
+                      >
+                        {title}
+                      </NavLink>
                     </li>
                   ))}
                 </ul>

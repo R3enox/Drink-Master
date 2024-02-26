@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import '../../i18n';
 
 export const TermsServiceDescription = () => {
-  const { t} = useTranslation();
+  const { t } = useTranslation();
   return (
     <div className="text-[14px] leading-[1.43] mt-[16px] mb-[32px] md:text-[18px] md:leading-[1.33] md:mt-[28px] md:w-[619px] lg:mb-[40px] lg:w-[500px]">
       <h3 className=" mb-[12px] text-[18px] md:text-[24px] font-[500] leading-[1.33] text-ellipsis  line-clamp-1">

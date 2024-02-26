@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import '../../i18n';
 
 const RecipePreparation = ({ description }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <div className="lg:relative mt-[80px] lg:mt-[100px]  lg:flex  lg:pt-[60px] lg:gap-[60px]">

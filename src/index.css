@@ -54,6 +54,7 @@ body {
 }
 
 /* Welcome-SignIn-SignUp-Pages */
+
 @layer base {
   .bg-image-set {
     background-image: image-set(

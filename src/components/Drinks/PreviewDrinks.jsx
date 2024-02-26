@@ -23,7 +23,7 @@ const popularCategories = [
 ];
 
 export const PreviewDrinks = () => {
-  const { t} = useTranslation();
+  const { t } = useTranslation();
 
   const data = useSelector(selectDrinks);
   const isLoading = useSelector(selectDrinksIsLoading);

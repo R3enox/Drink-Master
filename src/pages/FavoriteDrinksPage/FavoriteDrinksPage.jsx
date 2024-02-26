@@ -102,7 +102,7 @@ const FavoriteDrinksPage = () => {
                 closeMyDrinkModal={closeFavoriteDrinkModal}
                 handleDeleteClick={() => {
                   handleDeleteClick(currentId);
-                  toast('Cocktail removed from favorites!', { icon: false });
+                  toast(t('toastError.FavoriteRemove'), { icon: false });
                 }}
                 drinkId={data}
               />

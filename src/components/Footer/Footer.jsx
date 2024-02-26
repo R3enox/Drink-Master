@@ -5,12 +5,9 @@ import { SubscribeForm } from './SubscribeForm';
 import { Link } from 'react-router-dom';
 import { FollowUs } from '../reUseComponents/FollowUs/FollowUs';
 
-import { useTranslation } from 'react-i18next';
-import '../../i18n';
 
-export const Footer = () => {
-  const { t, i18n } = useTranslation();
 
+export const Footer = () => { 
   return (
     <div className="bg-footer-set  md:bg-footer-set-tablet lg:bg-footer-set-desktop bg-contain bg-no-repeat bg-bottom mb-0">
       <footer

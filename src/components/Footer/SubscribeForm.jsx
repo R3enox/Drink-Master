@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 
 export const SubscribeForm = () => {
   const dispatch = useDispatch();
-  const { t} = useTranslation();
+  const { t } = useTranslation();
 
   const {
     register,
@@ -20,7 +20,7 @@ export const SubscribeForm = () => {
   } = useForm({ mode: 'onChange' });
   const onSubmit = ({ email }) => {
     dispatch(subscribeUserThunk({ email }));
-    toast.info('Thanks for subscribing', { icon: false });
+    toast.info(t('toastError.SubscribeForm'), { icon: false });
     reset();
   };
   return (

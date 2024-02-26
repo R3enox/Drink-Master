@@ -53,7 +53,7 @@ const MyDrinksPage = () => {
       await dispatch(deleteMyDrink(_id));
       closeMyDrinkModal();
     } catch (error) {
-      console.error('Помилка видалення: ', error);
+      console.error(error.message);
     }
   };
 
@@ -102,7 +102,7 @@ const MyDrinksPage = () => {
               closeMyDrinkModal={closeMyDrinkModal}
               handleDeleteClick={() => {
                 handleDeleteClick(currentId);
-                toast('Cocktail removed!', { icon: false });
+                toast(t('toastError.MyDrinksPage'), { icon: false });
               }}
               drinkId={data}
             />
