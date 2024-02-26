@@ -21,7 +21,6 @@ export const SubscribeForm = () => {
     dispatch(subscribeUserThunk({ email }));
     reset();
   };
-  console.log(dirtyFields);
   return (
     <div className="md:flex flex-col lg:w-[309px]">
       <p className="text-[14px] leading-[1.43] text-primary-text-color mb-[24px] md:text-[18px] md:leading-[1.33]">
