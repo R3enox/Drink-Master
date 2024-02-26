@@ -60,10 +60,12 @@ export const PreviewDrinks = () => {
         </ul>
       )}
       <div className="flex justify-center ">
+
         <ButtonThemeChange
           title={t('link.PreviewDrinks.LinkDarkTheme')}
           to={'/drinks'}
         />
+
       </div>
     </div>
   );

@@ -135,9 +135,20 @@ const SignInForm = () => {
         </div>
       </div>
       <div className="btn-container">
-        <button className="btn-up sign-btn" type="submit">
-          {t('button.SignInForm.SignIn')}
-        </button>
+        <div className="flex ">
+          <Link
+            to="https://drink-master-4fm6.onrender.com/api/auth/google"
+            className="relative btn-google sign-google"
+            type="submit"
+          >
+            <svg className="w-[28px] h-[28px] fill-none stroke-primary-text-color cursor-pointer  rounded-full">
+              <use href={sprite + '#icon-google'}></use>
+            </svg>
+          </Link>
+          <button className="btn-up sign-btn" type="submit">
+            {t('button.SignInForm.SignIn')}
+          </button>
+        </div>
         <Link className="sign-link-btn" to="/signup">
           {t('link.SignInForm.SignUp')}
         </Link>

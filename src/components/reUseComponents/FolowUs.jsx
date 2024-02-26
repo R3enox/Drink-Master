@@ -3,7 +3,7 @@ import sprite from '../../assets/sprite.svg';
 export const FolowUs = () => {
   return (
     <ul className="flex gap-x-[14px] md:gap-x-[16px]">
-      <li className="p-[7px] border-[1px] rounded-[10px] border-border-color hover:border-grey-text-color">
+      <li className="p-[7px] border-[1px] rounded-[10px]  border-border-color hover:border-grey-text-color">
         <a
           href="https://www.facebook.com/goITclub/"
           target="_blank"
