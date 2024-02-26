@@ -48,9 +48,7 @@ const SignUpForm = () => {
     );
     dispatch(signUpThunk(data));
 
-    if (token) {
-      navigate('/home');
-    }
+    navigate('/home');
   };
 
   if (isLoading) {

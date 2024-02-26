@@ -3,6 +3,9 @@ export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   darkMode: 'class',
   theme: {
+    backgroundPosition: {
+      'top-right': 'right top 8rem',
+    },
     extend: {},
     container: {
       center: true,
@@ -44,7 +47,7 @@ export default {
 
       'error-color': '#da1414',
       'correct-color': '#3cbc81',
-      'icon-plus': 'rgb(71 85 105)'
+      'icon-plus': 'rgb(71 85 105)',
     },
   },
   plugins: [],

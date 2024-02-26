@@ -9,16 +9,13 @@ const HamburgerMenu = () => {
 
   const openNav = () => {
     setIsNavOpen(!isNavOpen);
-    !isNavOpen
-      ? (document.body.style.overflow = 'hidden')
-      : (document.body.style.overflow = 'scroll');
   };
 
   useEffect(() => {
-    return () => {
-      document.body.style.overflow = 'scroll';
-    };
-  }, []);
+    isNavOpen
+      ? (document.body.style.overflow = 'hidden')
+      : (document.body.style.overflow = 'auto');
+  }, [isNavOpen]);
 
   const mainNav = useMainNav();
 
@@ -37,7 +34,7 @@ const HamburgerMenu = () => {
 
           <div className={isNavOpen ? 'showMenuNav' : 'hideMenuNav'}>
             <div className=" ">
-              <nav className="bg-button-hover-color dark:bg-button-hover-color transition-transform sm:bg-mobile-burger-menu sm:bg-[length:400px_1000px] md:bg-desktop-burger-menu bg-no-repeat md:bg-[length:800px_1000px] fixed flex flex-col h-[1000%] w-full z-[100] ">
+              <nav className="bg-button-hover-color dark:bg-button-hover-color transition-transform sm:bg-mobile-burger-menu  md:bg-desktop-burger-menu bg-no-repeat  fixed flex flex-col h-[100%] w-full z-[100] ">
                 <div className="relative container flex p-5 border-b  border-border-color text-primary-text-color justify-between md:pl-[32px] md:pr-[32px] lg:pt-[22px] lg:pb-[23px] lg:pl-[100px] lg:pr-[100px]">
                   <Logo />
                   <ThemeToggler className="mr-[62px]" />
