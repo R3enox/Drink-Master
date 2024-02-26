@@ -678,3 +678,39 @@ html.dark .searchSelect__option:hover {
     width: 316px !important;
   }
 }
+
+/* Not Found Page */
+.not-found-page-wrapper {
+  @apply bg-no-repeat flex flex-col items-center justify-center min-h-[604px] md:min-h-[571px] lg:min-h-[540px];
+}
+
+@layer base {
+  .bg-page-404-mobile {
+    background-size: 123px 156px;
+    background-position: center;
+    background-image: image-set(
+      url('assets/img/notFound/mobile_not-found.png') 1x,
+      url('assets/img/notFound/mobile_not-found@2x.png') 2x
+    );
+  }
+  .bg-page-404-tablet {
+    background-size: 158px 201px;
+    background-position: center;
+    background-image: image-set(
+      url('assets/img/notFound/tablet_not-found.png') 1x,
+      url('assets/img/notFound/tablet_not-found@2x.png') 2x
+    );
+  }
+  .bg-page-404-desktop {
+    background-size: 158px 201px;
+    background-position: center;
+    background-image: image-set(
+      url('assets/img/notFound/desktop_not-found.png') 1x,
+      url('assets/img/notFound/desktop_not-found@2x.png') 2x
+    );
+  }
+}
+
+.not-found-page-title {
+  @apply font-semibold text-center text-[120px] md:text-[150px] lg:text-[200px] leading-[1.025] md:leading-[0.82] lg:leading-none dark:text-dark-404-text-color text-light-404-text-color;
+}

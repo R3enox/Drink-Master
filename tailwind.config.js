@@ -29,6 +29,8 @@ export default {
       'pagination-button-color': '#4070CD',
       'button-hover-color': '#0A0A11',
       'welcome-text-color': '#FAFAFA',
+      'dark-404-text-color': 'rgba(243, 243, 243, 0.1)',
+      'light-404-text-color': 'rgba(64, 112, 205, 0.1)',
       'filter-scroll-text': '#434D67',
       'hover-text-color': '#253d6f',
       'border-color': 'rgba(243, 243, 243, 0.2)',
