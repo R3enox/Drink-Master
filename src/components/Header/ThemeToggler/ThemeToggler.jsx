@@ -2,32 +2,32 @@ import { useState, useEffect } from 'react';
 import styles from './ThemeToggler.module.css';
 
 const ThemeToggler = () => {
-  const [isDarkTheme, setIsDarkTheme] = useState(() => {
+  const [isLightTheme, setIsLightTheme] = useState(() => {
     const storedTheme = localStorage.getItem('theme');
-    return storedTheme === 'dark';
+    return storedTheme === 'light';
   });
 
   useEffect(() => {
-    localStorage.setItem('theme', isDarkTheme ? 'dark' : 'light');
-    if (isDarkTheme) {
-      document.documentElement.classList.add('dark');
-    } else {
+    localStorage.setItem('theme', isLightTheme ? 'light' : 'dark');
+    if (isLightTheme) {
       document.documentElement.classList.remove('dark');
+    } else {
+      document.documentElement.classList.add('dark');
     }
-  }, [isDarkTheme]);
+  }, [isLightTheme]);
 
   const toggleTheme = () => {
-    setIsDarkTheme((prevTheme) => !prevTheme);
+    setIsLightTheme((prevTheme) => !prevTheme);
   };
 
   return (
     <div
       className={`${styles.ThemeToggler} ${
-        isDarkTheme ? '' : styles['light-theme']
+        isLightTheme ? styles['light-theme'] : ''
       }`}
     >
       <label className={styles['theme-switch']}>
-        <input type="checkbox" checked={isDarkTheme} onChange={toggleTheme} />
+        <input type="checkbox" checked={!isLightTheme} onChange={toggleTheme} />
         <span className={`${styles.slider} ${styles.round}`}></span>
       </label>
     </div>

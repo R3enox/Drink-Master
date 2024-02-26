@@ -24,7 +24,7 @@ export const Hero = () => {
         <p className="text-[14px] leading-[1.43] mt-[16px] mb-[32px] md:text-[18px] md:leading-[1.33] md:mt-[28px] md:w-[619px] lg:mb-[40px] lg:w-[500px]">
           {t('Hero.text')}
         </p>
-        <ButtonThemeChange title={t('title.AddDrink')} />
+        <ButtonThemeChange title={t('title.AddDrink')} to={'/add'} />
       </div>
       <picture className="flex justify-center items-center">
         <source
