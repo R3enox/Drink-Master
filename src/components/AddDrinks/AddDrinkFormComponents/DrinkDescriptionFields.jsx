@@ -136,34 +136,35 @@ export const DrinkPageHero = () => {
         <div className="mb-20 flex gap-x-3.5  md:mb-0">
           {age >= 18 ? (
             <>
-              <label className="relative flex items-center gap-x-1 cursor-pointer ">
-                <input
-                  type="radio"
-                  name="alcoholic"
-                  value="Alcoholic"
-                  required
-                  className="peer sr-only"
-                  defaultChecked
-                />
-                <div className="relative w-4 h-4 p-0.5 border-grey-text-color cursor-pointer rounded-[10px] border-[1.30px] peer-checked:border-primary-text-color ">
-                  <div className=" absolute  left-[50%]  top-[50%]  w-2.5 h-2.5 bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
+              <label className="flex items-center gap-x-1 cursor-pointer ">
+                <div className="relative  w-[20px] h-[20px]">
+                  <input
+                    type="radio"
+                    name="alcoholic"
+                    value="Alcoholic"
+                    required
+                    className="peer sr-only"
+                    defaultChecked
+                  />
+                  <div className="absolute left-1/2 top-1/2  transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 border-grey-text-color cursor-pointer rounded-[50%] border-[1.30px] peer-checked:border-primary-text-color "></div>
+                  <div className=" absolute left-1/2 top-1/2  transform -translate-x-1/2 -translate-y-1/2  w-2.5 h-2.5 bg-primary-text-color rounded-[5px] opacity-0 peer-checked:opacity-100"></div>
                 </div>
                 <span className="text-grey-text-color text-sm peer-checked:text-primary-text-color md:text-base">
                   {t('cocktailType.alco')}
                 </span>
               </label>
               <label className="text-grey-text-color  flex items-center gap-x-1 cursor-pointer">
-                <input
-                  type="radio"
-                  name="alcoholic"
-                  value="Non-alcoholic"
-                  required
-                  className="peer sr-only"
-                />
-                <div className="relative w-4 h-4 p-0.5 border-grey-text-color cursor-pointer rounded-[10px] border-[1.30px] peer-checked:border-primary-text-color ">
-                  <div className=" absolute  left-[50%]  top-[50%] w-2.5 h-2.5 bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
+                <div className="relative  w-[20px] h-[20px]">
+                  <input
+                    type="radio"
+                    name="alcoholic"
+                    value="Non-alcoholic"
+                    required
+                    className="peer sr-only"
+                  />
+                  <div className="absolute left-1/2 top-1/2  transform -translate-x-1/2 -translate-y-1/2 w-4 h-4  border-grey-text-color cursor-pointer rounded-[50%] border-[1.30px] peer-checked:border-primary-text-color "></div>
+                  <div className=" absolute  left-1/2 top-1/2  transform -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
                 </div>
-
                 <span className="text-grey-text-color  peer-checked:text-primary-text-color text-sm md:text-base ">
                   {t('cocktailType.non')}
                 </span>
@@ -196,16 +197,18 @@ export const DrinkPageHero = () => {
                 </span>
               </label>
               <label className="relative text-grey-text-color  flex items-center gap-x-1 cursor-pointer">
-                <input
-                  type="radio"
-                  name="alcoholic"
-                  value="Non-alcoholic"
-                  required
-                  className="peer sr-only"
-                  defaultChecked
-                />
-                <div className=" w-4 h-4 p-0.5 border-grey-text-color cursor-pointer rounded-[50%] border-[1.30px] peer-checked:border-primary-text-color "></div>
-                <div className=" absolute  left-[2.8%] w-2.5 h-2.5 bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
+                <div className="relative  w-[20px] h-[20px]">
+                  <input
+                    type="radio"
+                    name="alcoholic"
+                    value="Non-alcoholic"
+                    required
+                    className="peer sr-only"
+                    defaultChecked
+                  />
+                  <div className=" absolute w-4 h-4 left-1/2 top-1/2  transform -translate-x-1/2 -translate-y-1/2   border-grey-text-color cursor-pointer rounded-[50%] border-[1.30px] peer-checked:border-primary-text-color "></div>
+                  <div className=" absolute  left-1/2 top-1/2  transform -translate-x-1/2 -translate-y-1/2  w-2.5 h-2.5 bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
+                </div>
                 <span className="text-grey-text-color  peer-checked:text-primary-text-color">
                   {t('cocktailType.non')}
                 </span>
