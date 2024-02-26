@@ -79,7 +79,7 @@ export const DrinkPageHero = () => {
             ) : (
               <img
                 src={preview}
-                className="block  w-[335px] h-[320px] rounded-[8px] "
+                className="block  w-[335px] h-[320px] rounded-[8px]  md:w-[320px]  lg:w-[400px] lg:h-[400px]"
               />
             )}
           </div>

@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { useTranslation } from 'react-i18next';
 import '../../i18n';
+import { toast } from 'react-toastify';
 
 export const AddDrinkForm = () => {
   const { t, i18n } = useTranslation();
@@ -56,7 +57,18 @@ export const AddDrinkForm = () => {
       );
     });
 
+    if (addedIngredients.length === 0) {
+      toast.error('Choose at least one ingredient');
+      setTimeout(() => {
+        toast.dismiss();
+      }, 5000);
+      return;
+    }
+
+    toast.loading('Wait for a response from the server');
     const result = await dispatch(addDrink(formData));
+    toast.dismiss();
+
     if (result.meta.requestStatus === 'fulfilled') {
       navigate('/my');
     }
