@@ -15,12 +15,15 @@ const DrinksItem = ({ myDrink, openMyDrinkModal, onChooseItem }) => {
   };
 
   return (
-    <li key={_id} className="md:w-[342px] lg:w-[400px]">
-      <Link to={`/drink/${_id}`} className="overflow-hidden rounded-[8px]">
+    <li
+      key={_id}
+      className="flex flex-col gap-[18px] md:gap-[24px] w-[335px] md:w-[342px] lg:w-[400px]"
+    >
+      <Link to={`../drink/${_id}`} className="overflow-hidden rounded-[8px]">
         <img
           src={drinkThumb || 'placeholderImage'}
           alt={drink}
-          className="w-[335px] h-[360px] mb:w-[342px] mb:h-[360px] lg:w-[400px] lg:h-[400px] rounded-[8px] mb-[18px] md:mb-[24px] object-cover scale-100 ease-in-out duration-300  hover:scale-[1.035] hover:contrast-[0.9]"
+          className="w-[335px] h-[360px] mb:w-[342px] mb:h-[360px] lg:w-[400px] lg:h-[400px] rounded-[8px] object-cover scale-100 ease-in-out duration-300  hover:scale-[1.035] hover:contrast-[0.9]"
         />
       </Link>
 
