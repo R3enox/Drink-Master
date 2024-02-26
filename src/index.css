@@ -16,7 +16,9 @@ body {
   min-height: 100vh;
   background-repeat: no-repeat;
   background-size: 100vw;
+}
 
+html.dark #root {
   background-image: image-set(
     url('assets/img/bg-page/mobile-bg.png') 1x,
     url('assets/img/bg-page/mobile-bg@2x.png') 2x
@@ -313,6 +315,7 @@ body {
   align-content: center;
   font-size: 14px !important;
   line-height: 129% !important;
+  cursor: pointer !important;
 }
 
 .searchSelect__menu {
