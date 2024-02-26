@@ -56,11 +56,9 @@ export const AddDrinkForm = () => {
       );
     });
 
-    try {
-      await dispatch(addDrink(formData));
+    const result = await dispatch(addDrink(formData));
+    if (result.meta.requestStatus === 'fulfilled') {
       navigate('/my');
-    } catch (error) {
-      console.log(error);
     }
   };
 
