@@ -112,7 +112,7 @@
 
   "cocktailType": {
     "alco": "Alcoholic",
-    "non": "Alcoholic"
+    "non": "Non-alcoholic "
   },
 
   "button": {
@@ -206,5 +206,18 @@
     "Add drink": "Add drink",
     "My drinks": "My drinks",
     "Favorites": "Favorites"
+  },
+  "categories": {
+    "ordinaryDrink": "Ordinary Drink",
+    "cocktail": "Cocktail",
+    "shake": "Shake",
+    "otherUnknown": "Other/Unknown",
+    "cocoa": "Cocoa",
+    "shot": "Shot",
+    "coffeeTea": "Coffee/Tea",
+    "homemadeLiqueur": "Homemade Liqueur",
+    "punchPartyDrink": "Punch/Party Drink",
+    "beer": "Beer",
+    "softDrink": "Soft Drink"
   }
 }

@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import '../../i18n';
 
 const ModalButtons = ({ handleDeleteClick, closeMyDrinkModal, drinkId }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <div className="flex flex-row items-center space-x-2">
       <button

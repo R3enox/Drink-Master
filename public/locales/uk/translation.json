@@ -159,7 +159,7 @@
       "Drinks": "Напої",
       "AddDrink": "Додати напій",
       "MyDrinks": "Мої напої",
-      "FavoritesDrinks": "Улюблені напої"
+      "FavoritesDrinks": "Обрані напої"
     },
     "DrinkCardPreview": "Детальніше"
   },
@@ -203,6 +203,19 @@
     "Drinks": "Напої",
     "Add drink": "Додати напій",
     "My drinks": "Мої напої",
-    "Favorites": "Улюблені"
+    "Favorites": "Обрані"
+  },
+  "categories": {
+    "ordinaryDrink": "Звичайний напій",
+    "cocktail": "Коктейль",
+    "shake": "Шейк",
+    "otherUnknown": "Інше/Невідомо",
+    "cocoa": "Какао",
+    "shot": "Шот",
+    "coffeeTea": "Кава/Чай",
+    "homemadeLiqueur": "Домашній лікер",
+    "punchPartyDrink": "Панч/Вечірка",
+    "beer": "Пиво",
+    "softDrink": "Газований напій"
   }
 }

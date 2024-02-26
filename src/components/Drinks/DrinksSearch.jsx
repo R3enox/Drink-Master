@@ -41,10 +41,10 @@ export const DrinksSearch = () => {
     <div className="flex flex-col items-center md:flex-row gap-[14px] md:gap-[8px] mt-[40px] md:mt-[60px] lg:mt-[80px]">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-row w-full justify-between items-center md:w-[264px] hover:border-grey-text-color hover:color-transparent bg-transparent h-[54px] rounded-[200px] border-[1px] border-border-color  placeholder-border-color py-[18px] md:py-[14px] px-[24px]"
+        className="flex flex-row w-full justify-between items-center md:w-[264px] border-border-color-search dark:border-border-color hover:border-hover-border-color-search dark:hover:border-grey-text-color hover:color-transparent bg-transparent h-[54px] rounded-[200px] border-[1px] py-[18px] md:py-[14px] px-[24px]"
       >
         <input
-          className="bg-transparent w-full outline-none text-[14px] md:text-[17px] leading-[1.29] md:leading-[1.56]"
+          className="bg-transparent w-full outline-none text-[14px] md:text-[17px] leading-[1.29] md:leading-[1.56]  placeholder:text-dark-theme-bg-color dark:placeholder:text-primary-text-color"
           type="text"
           placeholder={t('inputPlaceholder.DrinksSearch.text')}
           onChange={(e) => {
@@ -62,13 +62,13 @@ export const DrinksSearch = () => {
             className="w-[10px] h-[10px] md:w-[15px] md:h-[15px]"
           >
             {watch('search') && (
-              <svg className=" stroke-primary-text-color w-[10px] h-[10px] md:w-[15px] md:h-[15px]">
+              <svg className="stroke-primary-text-button-color fill-none dark:stroke-primary-text-color w-[10px] h-[10px] md:w-[15px] md:h-[15px]">
                 <use href={sprite + '#icon-cross'}></use>
               </svg>
             )}
           </button>
           <button type="submit">
-            <svg className="stroke-primary-text-color ml-[10px] sm:w-[22px] h-[22px] md:w-[28px] md:h-[28px]">
+            <svg className="stroke-primary-text-button-color fill-none dark:stroke-primary-text-color ml-[10px] sm:w-[22px] h-[22px] md:w-[28px] md:h-[28px]">
               <use href={sprite + '#icon-search'}></use>
             </svg>
           </button>

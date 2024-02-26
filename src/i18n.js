@@ -14,6 +14,7 @@ i18n
     // saveMissing: true, // send not translated keys to
 
     backend: {
+      // loadPath: '/frontend-drink-master/locales/{{lng}}/{{ns}}.json',
       loadPath: 'locales/{{lng}}/{{ns}}.json',
     },
     // backend: {

@@ -52,7 +52,9 @@ const UserInfo = () => {
               className="rounded-full sm:w-[32px] sm:h-[32px]  md:w-[44px] md:h-[44px] lg:w-[39px] lg:h-[39px]"
             />
           </div>
-          <p className="">{user.name}</p>
+          <p className="text-primary-text-button-color dark:text-primary-text-color">
+            {user.name}
+          </p>
         </div>
 
         {popUpIsOpen && (

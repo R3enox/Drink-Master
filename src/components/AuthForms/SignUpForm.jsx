@@ -28,9 +28,9 @@ const SignUpForm = () => {
     register,
     handleSubmit,
     formState: { errors, dirtyFields },
-    reset,
   } = useForm({
     mode: 'onChange',
+    defaultValues: { ...(JSON.parse(localStorage.getItem('signUp')) ?? {}) },
   });
 
   const getDateOfBirth = (date) => {
@@ -39,13 +39,18 @@ const SignUpForm = () => {
 
   const onSubmit = (data) => {
     data.dateOfBirth = dateOfBirth;
+    localStorage.setItem(
+      'signUp',
+      JSON.stringify({
+        name: data?.name,
+        email: data?.email,
+      })
+    );
     dispatch(signUpThunk(data));
 
     if (token) {
       navigate('/home');
     }
-
-    reset();
   };
 
   if (isLoading) {
@@ -185,9 +190,20 @@ const SignUpForm = () => {
         </div>
       </div>
       <div className="btn-container">
-        <button className="btn-up sign-btn" type="submit">
-          {t('link.SignInForm.SignUp')}
-        </button>
+        <div className="flex ">
+          <Link
+            to="https://drink-master-4fm6.onrender.com/api/auth/google"
+            className="relative btn-google sign-google"
+            type="submit"
+          >
+            <svg className="w-[28px] h-[28px] fill-none stroke-primary-text-color cursor-pointer  rounded-full">
+              <use href={sprite + '#icon-google'}></use>
+            </svg>
+          </Link>
+          <button className="btn-up sign-btn signup-btn" type="submit">
+            {t('link.SignInForm.SignUp')}
+          </button>
+        </div>
         <Link className="sign-link-btn" to="/signin">
           {t('button.SignInForm.SignIn')}
         </Link>

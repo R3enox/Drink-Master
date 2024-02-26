@@ -13,7 +13,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 100%;
+  max-height: 100%;
 }
 
 /* add flexibility for pages */
@@ -21,6 +21,10 @@ body {
 :root {
   font-family: 'Manrope', sans-serif;
   font-weight: 400;
+  background-color: #f3f3f3;
+  color: #0a0a11;
+}
+.dark {
   background-color: #0a0a11;
   color: #f3f3f3;
 }
@@ -43,6 +47,23 @@ body {
     background-image: image-set(
       url('assets/img/welcomePage/desktop-bg-welcome.png') 1x,
       url('assets/img/welcomePage/desktop-bg-welcome@2x.png') 2x
+    );
+  }
+}
+
+/* Header Burger Menu */
+@layer base {
+  .bg-header-burger {
+    background-image: image-set(
+      url('assets/img/header/bg-header-burger.png') 1x,
+      url('assets/img/header/bg-header-burger.png') 2x
+    );
+  }
+
+  .bg-header-left {
+    background-image: image-set(
+      url('assets/img/header/bg-header-left.png') 1x,
+      url('assets/img/header/bg-header-left.png') 2x
     );
   }
 }
@@ -103,8 +124,15 @@ body {
   @apply flex flex-col gap-[14px] mt-[28px] md:mt-[40px] md:w-[400px];
 }
 .sign-btn {
-  @apply bg-primary-text-color text-primary-text-button-color font-semibold py-[18px] rounded-[42px] text-[14px] leading-[1.29] md:text-[16px] md:leading-[1.1] md:py-[18px];
+  @apply bg-primary-text-color  text-primary-text-button-color font-semibold pr-[64px] rounded-r-[42px] text-[14px] leading-[1.29] w-[285px] md:text-[16px] md:leading-[1.1] md:py-[18px] md:h-[56px] md:w-[335px];
 }
+.signup-btn {
+  @apply pr-[54px];
+}
+.sign-google {
+  @apply bg-primary-text-color py-[12px] px-[22px] rounded-l-[42px] max-w-[65px] md:py-[12px] md:h-[56px];
+}
+
 .sign-link-btn {
   @apply transition hover:decoration-primary-text-color outline-none underline decoration-grey-text-color font-semibold text-center text-primary-text-color text-[12px] leading-[1.33] md:text-[14px] md:leading-[1.29];
 }
@@ -125,6 +153,19 @@ body {
   background-color: rgba(243, 243, 243, 0.5);
 }
 .btn-up:hover {
+  background-color: #434d67;
+  color: #f3f3f3;
+}
+
+.btn-google {
+  border: 1px solid rgb(255, 255, 255);
+  border-right: none;
+  filter: drop-shadow(0px 0px 10px rgb(255, 255, 255));
+  animation: flickering 1.5ms linear infinite both;
+  background-color: rgba(243, 243, 243, 0.5);
+}
+
+.btn-google:hover {
   background-color: #434d67;
   color: #f3f3f3;
 }
@@ -212,6 +253,14 @@ body {
 }
 /* Home-Page */
 @layer base {
+  .bg-light {
+    background-image: image-set(
+      url('assets/template-step-1.png') 1x,
+      url('assets/template-step-1.png') 2x,
+
+      /* url('assets/img/homePage/mobile-bg-homepage@2x.png') 2x */
+    );
+  }
   .bg-home-set {
     background-image: image-set(
       url('assets/img/homePage/mobile-bg-homepage.png') 1x,
@@ -292,8 +341,8 @@ body {
 }
 
 .searchSelect__menu {
-  background-color: #161f37 !important;
-  color: rgba(243, 243, 243, 0.4) !important;
+  background-color: #fff !important;
+  color: rgba(10, 10, 17, 0.2) !important;
   border-radius: 20px !important;
   width: 335px !important;
   padding: 18px 24px;
@@ -301,6 +350,11 @@ body {
   font-weight: 400 !important;
   font-size: 14px !important;
   line-height: 129% !important;
+}
+
+html.dark .searchSelect__menu {
+  background-color: #161f37 !important;
+  color: rgba(243, 243, 243, 0.4) !important;
 }
 @media screen and (min-width: 768px) {
   .searchSelect__control {
@@ -341,6 +395,9 @@ body {
   margin-bottom: 8px !important;
 }
 .searchSelect__option:hover {
+  color: #0a0a11 !important;
+}
+html.dark .searchSelect__option:hover {
   color: #f3f3f3 !important;
 }
 
