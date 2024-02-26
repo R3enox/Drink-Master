@@ -7,7 +7,6 @@ import { ButtonComponent } from '../reUseComponents/Buttons/Buttons';
 
 import { useTranslation } from 'react-i18next';
 import '../../i18n';
-import { toggleFavorite } from './toggleFavorite';
 
 const DrinkPageHero = ({ cocktail }) => {
   const { t, i18n } = useTranslation();
@@ -22,7 +21,22 @@ const DrinkPageHero = ({ cocktail }) => {
   const isFavoriteFirstRender = favorite?.includes(user.id);
   const [isFavorite, setIsFavorite] = useState(isFavoriteFirstRender);
   const isFav = isFirstRender ? isFavoriteFirstRender : isFavorite;
-  
+
+  const toggleFavorite = async (id) => {
+    try {
+      if (isFav) {
+        await dispatch(deleteFavorite(id));
+        setIsFavorite(false);
+      } else {
+        await dispatch(addFavorite(id));
+        setIsFavorite(true);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    } finally {
+      setIsFirstRender(false);
+    }
+  };
 
   return (
     <div className=" lg:flex justify-between">
@@ -41,7 +55,7 @@ const DrinkPageHero = ({ cocktail }) => {
             <ButtonComponent
               descr={t('button.toggleFavorite.ButtonComponentDel')}
               btnFunction={() => {
-                toggleFavorite(_id,isFav,dispatch,deleteFavorite,setIsFavorite,addFavorite,setIsFavorite,setIsFirstRender,toast)
+                toggleFavorite(_id);
                 toast(`${t('toastError.DrinkPageHeroDel')}`);
               }}
               id={_id}
@@ -50,8 +64,8 @@ const DrinkPageHero = ({ cocktail }) => {
             <ButtonComponent
               descr={t('button.toggleFavorite.ButtonComponentAdd')}
               btnFunction={() => {
-                toggleFavorite(_id,isFav,dispatch,deleteFavorite,setIsFavorite,addFavorite,setIsFavorite,setIsFirstRender,toast)
-                toast.success(`${('toastError.DrinkPageHeroAdd')}`, {
+                toggleFavorite(_id);
+                toast.success(`${t('toastError.DrinkPageHeroAdd')}`, {
                   icon: false,
                 });
               }}
