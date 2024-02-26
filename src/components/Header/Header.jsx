@@ -4,8 +4,12 @@ import { Navigation } from './Navigation/Navigation';
 // import { HeaderBtn } from './HeaderBtn/HeaderBtn';
 import ThemeToggler from './ThemeToggler/ThemeToggler';
 import HamburgerMenu from './HamburgerMenu/HamburgerMenu';
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
 
 export const Header = () => {
+  const { i18n } = useTranslation();
+  const currentLang = i18n.language;
   return (
     <>
       <div className="dark:bg-home-set bg-[length:150px_1700px] lg:bg-[length:200px_1700px] bg-no-repeat">
@@ -13,7 +17,24 @@ export const Header = () => {
           <>
             <Logo />
             <Navigation />
+
             <div className="flex">
+              <div className=" hidden lg:flex lg:mr-[25px] lg:gap-[10px]">
+                <button
+                  className="text-[14px] hover:text-grey-text-color focus:text-grey-text-color transition-colors focus:outline-none"
+                  disabled={currentLang === 'en'}
+                  onClick={() => i18n.changeLanguage('en')}
+                >
+                  EN
+                </button>
+                <button
+                  className="text-[14px] hover:text-grey-text-color focus:text-grey-text-color transition-colors focus:outline-none"
+                  disabled={currentLang === 'uk'}
+                  onClick={() => i18n.changeLanguage('uk')}
+                >
+                  UK
+                </button>
+              </div>
               <div className="hidden lg:flex lg:items-center">
                 <ThemeToggler />
               </div>

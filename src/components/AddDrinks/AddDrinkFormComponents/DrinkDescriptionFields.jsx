@@ -11,20 +11,20 @@ import { useTranslation } from 'react-i18next';
 import '../../../i18n';
 
 export const DrinkPageHero = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const { categories, glasses } = useFilters();
   const [preview, setPreview] = useState();
   const [age, setAge] = useState(0);
 
   const categoriesOptions = useMemo(
-    () => createOptionsFromArrOfStr(categories ?? []),
-    [categories]
+    () => createOptionsFromArrOfStr(categories ?? [], t, 'categories'),
+    [categories, t]
   );
 
   const glassesOptions = useMemo(
-    () => createOptionsFromArrOfStr(glasses ?? []),
-    [glasses]
+    () => createOptionsFromArrOfStr(glasses ?? [], t, 'GlassType'),
+    [glasses, t]
   );
 
   const user = useSelector(selectAuthUser);

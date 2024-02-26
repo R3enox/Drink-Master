@@ -8,7 +8,7 @@ i18n
   .use(backend)
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
-    debug: true,
+    debug: false,
     whitelist: ['en', 'uk'],
     fallbackLng: 'uk', // use en if detected lng is not available
     // saveMissing: true, // send not translated keys to

@@ -40,7 +40,6 @@ const HamburgerMenu = () => {
                     >
                       EN
                     </button>
-                    {/* <span className="language-divider after:content-['|'] ml-[5px] mr-[5px] after:h-[120px] after:transform after:translate-y-1"></span> */}
                     <button
                       className="text-[14px] hover:text-grey-text-color focus:text-grey-text-color transition-colors focus:outline-none"
                       disabled={currentLang === 'uk'}

@@ -4,7 +4,7 @@ const CURSOR_CLASS_NAME = 'custom-type-animation-cursor';
 import '../../../i18n';
 
 const TypingText = () => {
-  const { t, i18n } = useTranslation();
+  const { t} = useTranslation();
   return (
     <TypeAnimation
       sequence={[

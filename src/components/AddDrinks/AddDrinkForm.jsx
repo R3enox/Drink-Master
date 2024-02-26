@@ -20,8 +20,8 @@ export const AddDrinkForm = () => {
   const addedIngredients = [];
 
   const ingredientsOptions = useMemo(
-    () => createOptionsFromArrOfObjUsingId(ingredients ?? []),
-    [ingredients]
+    () => createOptionsFromArrOfObjUsingId(ingredients ?? [], t, 'ingredients'),
+    [ingredients, t]
   );
 
   const onSubmit = async (e) => {
