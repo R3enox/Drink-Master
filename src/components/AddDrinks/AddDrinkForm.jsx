@@ -1,13 +1,17 @@
 import { DrinkPageHero } from './AddDrinkFormComponents/DrinkDescriptionFields';
 import { DrinkIngredientsFields } from './AddDrinkFormComponents/DrinkIngredientsFields';
 import { RecipePreparation } from './AddDrinkFormComponents/RecipePreparation';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useMemo } from 'react';
 import { useFilters } from '../../hooks/useFilters';
 import { createOptionsFromArrOfObjUsingId } from '../../helpers/createCollectionOptions';
 import { BtnDarkTheme } from '../reUseComponents/Buttons/Buttons';
-import { addDrink } from '../../redux/addDrinks/addDrinkSlice';
+import {
+  addDrink,
+  selectAddDrinkIsLoading,
+} from '../../redux/addDrinks/addDrinkSlice';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import { useTranslation } from 'react-i18next';
 import '../../i18n';
@@ -17,6 +21,7 @@ export const AddDrinkForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { ingredients } = useFilters();
+  const isloading = useSelector(selectAddDrinkIsLoading);
   const addedIngredients = [];
 
   const ingredientsOptions = useMemo(
@@ -26,6 +31,8 @@ export const AddDrinkForm = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    e.target.elements.submit.disabled = true;
+    console.log('e.currentTarget: ', e.currentTarget);
     addedIngredients.length = 0;
 
     const formData = new FormData(e.currentTarget);
@@ -57,7 +64,11 @@ export const AddDrinkForm = () => {
     });
 
     const result = await dispatch(addDrink(formData));
+
+    e.target.elements.submit.disabled = false;
+
     if (result.meta.requestStatus === 'fulfilled') {
+      toast.success('Coctail created !');
       navigate('/my');
     }
   };
@@ -68,7 +79,9 @@ export const AddDrinkForm = () => {
         <DrinkPageHero />
         <DrinkIngredientsFields ingredientsOptions={ingredientsOptions} />
         <RecipePreparation />
-        <BtnDarkTheme>{t('button.AddDrink.Add')}</BtnDarkTheme>
+        <BtnDarkTheme name="submit">
+          {isloading ? 'creating...' : t('button.AddDrink.Add')}
+        </BtnDarkTheme>
       </form>
     </section>
   );
