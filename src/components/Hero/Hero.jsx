@@ -1,12 +1,14 @@
 import * as imgHero from '../../assets/img/hero/index.js';
-import { LinkDarkTheme } from '../reUseComponents/Buttons/Buttons.jsx';
+
 import TypingText from '../reUseComponents/TypingTextAnimation/TypingText.jsx';
 
 import { useTranslation } from 'react-i18next';
 import '../../i18n';
+import { ButtonThemeChange } from '../reUseComponents/Buttons/ButtonThemeChange.jsx';
 
 export const Hero = () => {
   const { t, i18n } = useTranslation();
+
   return (
     <section className="container flex-wrap m-auto pt-[80px] pb-[56px] md:pt-[120px] md:pb-[61px] lg:pt-[128px] lg:flex lg:pb-[80px] lg:gap-x-[130px]">
       <div className="mb-[47px] md:mb-[54px]">
@@ -22,7 +24,7 @@ export const Hero = () => {
         <p className="text-[14px] leading-[1.43] mt-[16px] mb-[32px] md:text-[18px] md:leading-[1.33] md:mt-[28px] md:w-[619px] lg:mb-[40px] lg:w-[500px]">
           {t('Hero.text')}
         </p>
-        <LinkDarkTheme to="/add">{t('title.AddDrink')}</LinkDarkTheme>
+        <ButtonThemeChange title={t('title.AddDrink')} />
       </div>
       <picture className="flex justify-center items-center">
         <source

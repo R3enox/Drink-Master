@@ -42,7 +42,7 @@ const UserLogoPopup = ({
           </div>
         </div>
         <button
-          className="w-full text-center pt-[12px] pb-[12px] pl-[45] pr-[45] rounded-[200px] bg-transparent border-[1px]  border-border-color "
+          className="w-full text-center pt-[12px] pb-[12px] pl-[45] pr-[45] rounded-[200px] bg-primary-text-color  text-primary-text-button-color transition shadow-lg hover:shadow-primary-text-color/50 "
           onClick={openLogOutModal}
         >
           {t('button.LogOutModal.LogOut')}

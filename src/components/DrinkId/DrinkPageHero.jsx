@@ -3,11 +3,12 @@ import { selectAuthUser } from '../../redux/auth/authSelectors';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { addFavorite, deleteFavorite } from '../../redux/favorites/favoriteAPI';
-import { ButtonComponent } from '../reUseComponents/Buttons/Buttons';
+// import { ButtonComponent } from '../reUseComponents/Buttons/Buttons';
 
 import { useTranslation } from 'react-i18next';
 import '../../i18n';
 import { toggleFavorite } from './toggleFavorite';
+import { ButtonComponentThemeChange } from '../reUseComponents/Buttons/ButtonThemeChange';
 
 const DrinkPageHero = ({ cocktail }) => {
   const { t, i18n } = useTranslation();
@@ -22,7 +23,6 @@ const DrinkPageHero = ({ cocktail }) => {
   const isFavoriteFirstRender = favorite?.includes(user.id);
   const [isFavorite, setIsFavorite] = useState(isFavoriteFirstRender);
   const isFav = isFirstRender ? isFavoriteFirstRender : isFavorite;
-  
 
   return (
     <div className=" lg:flex justify-between">
@@ -38,20 +38,38 @@ const DrinkPageHero = ({ cocktail }) => {
         </p>
         <div className="pt-10 pb-20">
           {isFav ? (
-            <ButtonComponent
+            <ButtonComponentThemeChange
               descr={t('button.toggleFavorite.ButtonComponentDel')}
               btnFunction={() => {
-                toggleFavorite(_id,isFav,dispatch,deleteFavorite,setIsFavorite,addFavorite,setIsFavorite,setIsFirstRender,toast)
+                toggleFavorite(
+                  _id,
+                  isFav,
+                  dispatch,
+                  deleteFavorite,
+                  setIsFavorite,
+                  addFavorite,
+                  setIsFirstRender,
+                  toast
+                );
                 toast(`${t('toastError.DrinkPageHeroDel')}`);
               }}
               id={_id}
             />
           ) : (
-            <ButtonComponent
+            <ButtonComponentThemeChange
               descr={t('button.toggleFavorite.ButtonComponentAdd')}
               btnFunction={() => {
-                toggleFavorite(_id,isFav,dispatch,deleteFavorite,setIsFavorite,addFavorite,setIsFavorite,setIsFirstRender,toast)
-                toast.success(`${('toastError.DrinkPageHeroAdd')}`, {
+                toggleFavorite(
+                  _id,
+                  isFav,
+                  dispatch,
+                  deleteFavorite,
+                  setIsFavorite,
+                  addFavorite,
+                  setIsFirstRender,
+                  toast
+                );
+                toast.success(`${t('toastError.DrinkPageHeroAdd')}`, {
                   icon: false,
                 });
               }}

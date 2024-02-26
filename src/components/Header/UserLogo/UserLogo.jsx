@@ -78,9 +78,7 @@ const UserLogo = ({ closeFnc }) => {
           <use href={sprite + '#icon-pancil'}></use>
         </svg>
 
-        <button
-          className="w-[285px] md:w-full sm:mt-[18px] md:mt-[25px]  text-center py-[18px] rounded-[200px] bg-transparent border-[1px]  border-border-color text-primary-text-color text-[16px] leading-[1.12] font-semibold hover:bg-primary-text-color hover:text-primary-text-button-color transition-colors md:text-[17px] md:py-[18px] md:leading-[1.56]"
-        >
+        <button className="w-[285px] md:w-full sm:mt-[18px] md:mt-[25px]  text-center py-[18px] rounded-[200px] text-[16px] leading-[1.12] bg-primary-text-color  text-primary-text-button-color transition shadow-lg hover:shadow-primary-text-color/50 transition-colors md:text-[17px] md:py-[18px] md:leading-[1.56]">
           {t('button.UserLogo.Save')}
         </button>
       </form>

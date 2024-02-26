@@ -23,7 +23,7 @@ export const BtnDarkTheme = ({ children }) => {
     </button>
   );
 };
-export const ButtonComponent = ({ descr, btnFunction, id }) => {
+export const ButtonComponentDarkTheme = ({ descr, btnFunction, id }) => {
   return (
     <button
       className={css.button}
@@ -33,6 +33,22 @@ export const ButtonComponent = ({ descr, btnFunction, id }) => {
     >
       <div className={css.dotsBorder}></div>
       <span className={css.textButton}>{descr}</span>
+    </button>
+  );
+};
+
+export const ButtonComponentLightTheme = ({ descr, btnFunction, id }) => {
+  return (
+    <button
+      className={`${css.btnTransparent} ${css.button}`}
+      type="button"
+      onClick={() => btnFunction(id)}
+      disabled={!id}
+    >
+      <div className={`${css.dotsBorder} ${css.dotsBorderTransparent}`}></div>
+      <span className={`${css.textBtnTransparent} ${css.textButton}`}>
+        {descr}
+      </span>
     </button>
   );
 };
