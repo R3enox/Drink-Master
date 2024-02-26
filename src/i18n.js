@@ -10,7 +10,7 @@ i18n
   .init({
     debug: false,
     whitelist: ['en', 'ua'],
-    fallbackLng: 'en', // use en if detected lng is not available
+    fallbackLng: 'ua', // use en if detected lng is not available
     // saveMissing: true, // send not translated keys to endpoint
     backend: {
       loadPath: '/frontend-drink-master/locales/{{lng}}/{{ns}}.json',
