@@ -37,9 +37,13 @@ const HamburgerMenu = () => {
             <span className="block h-0.5 w-8 bg-primary-text-button-color dark:bg-primary-text-color"></span>
           </div>
 
-          <div className={isNavOpen ? 'showMenuNav' : 'hideMenuNav'}>
-            <div className=" ">
-              <nav className="bg-button-hover-color dark:bg-button-hover-color transition-transform sm:bg-mobile-burger-menu  md:bg-desktop-burger-menu bg-no-repeat  fixed flex flex-col h-[100%] w-full z-[100] ">
+          <div
+            className={`fixed inset-0 ${
+              isNavOpen ? 'absolute top-0 left-0' : 'hidden'
+            }`}
+          >
+            <div className="">
+              <nav className=" bg-button-hover-color dark:bg-button-hover-color transition-transform sm:bg-mobile-burger-menu  md:bg-desktop-burger-menu bg-no-repeat  fixed flex flex-col h-[100%] w-full z-[100] ">
                 <div className="relative container flex p-5 border-b  border-border-color text-primary-text-color justify-between md:pl-[32px] md:pr-[32px] lg:pt-[22px] lg:pb-[23px] lg:pl-[100px] lg:pr-[100px]">
                   <Logo />
                   
@@ -91,22 +95,6 @@ const HamburgerMenu = () => {
           </div>
         </section>
       </nav>
-      <style>{`
-      .hideMenuNav {
-        display: none;
-      }
-      .showMenuNav {
-        display: block;
-        position: absolute;
-        width: 100%;
-        height: 100vh;
-        top: 0px;
-        left: 0;
-       
-        overflow-hidden
-        z-index: 10;   
-      }
-    `}</style>
     </div>
   );
 };

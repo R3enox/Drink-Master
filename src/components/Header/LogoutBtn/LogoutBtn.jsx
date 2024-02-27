@@ -5,7 +5,7 @@ import { signOutThunk } from '../../../redux/auth/authOperations';
 import { useTranslation } from 'react-i18next';
 import '../../../i18n';
 
-const LogOutModal = ({ closeFnc }) => {
+const LogoutBtn = ({ closeFnc }) => {
   const { t, i18n } = useTranslation();
 
   const dispatch = useDispatch();
@@ -30,4 +30,4 @@ const LogOutModal = ({ closeFnc }) => {
   );
 };
 
-export default LogOutModal;
+export default LogoutBtn;
