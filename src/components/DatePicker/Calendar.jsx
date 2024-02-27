@@ -11,7 +11,7 @@ import { useTranslation } from 'react-i18next';
 import '../../i18n';
 
 const Calendar = ({ getDateOfBirth }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const [startDate, setStartDate] = useState(null);
 

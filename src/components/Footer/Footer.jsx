@@ -9,8 +9,6 @@ import { FollowUs } from '../reUseComponents/FollowUs/FollowUs';
 import '../../i18n';
 
 export const Footer = () => {
-  // const { t, i18n } = useTranslation();
-
   return (
     <div className="bg-footer-set bg-button-hover-color md:bg-footer-set-tablet lg:bg-footer-set-desktop bg-contain bg-no-repeat bg-bottom mb-0">
       <footer

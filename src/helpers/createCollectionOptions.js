@@ -1,17 +1,21 @@
-export const createOptionsFromArrOfStr = (collection) =>
+export const createOptionsFromArrOfStr = (collection, t, collectionName) =>
   collection.map((title) => ({
     value: title,
-    label: title,
+    label: t(`${collectionName}.${title}`),
   }));
 
-export const createOptionsFromArrOfObj = (collection) =>
+export const createOptionsFromArrOfObj = (collection, t, collectionName) =>
   collection.map(({ title }) => ({
     value: title,
-    label: title,
+    label: t(`${collectionName}.${title}`),
   }));
 
-export const createOptionsFromArrOfObjUsingId = (collection) =>
+export const createOptionsFromArrOfObjUsingId = (
+  collection,
+  t,
+  collectionName
+) =>
   collection.map(({ title, _id }) => ({
     value: _id,
-    label: title,
+    label: t(`${collectionName}.${title}`),
   }));

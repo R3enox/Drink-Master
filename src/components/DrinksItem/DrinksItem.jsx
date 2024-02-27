@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import '../../i18n';
 
 const DrinksItem = ({ myDrink, openMyDrinkModal, onChooseItem }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const { _id, drink, drinkThumb, alcoholic, description } = myDrink;
   const openModal = () => {

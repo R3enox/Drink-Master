@@ -9,7 +9,7 @@ import '../../i18n';
 export const PopularDrinks = () => {
   const dispatch = useDispatch();
   const popularDrinks = useSelector(getPopularDrinks);
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(fetchPopularDrinks({ limit: 4 }));

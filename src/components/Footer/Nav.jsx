@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import '../../i18n';
 
 export const Nav = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <ul className="flex flex-col gap-y-[14px] font-medium text-[14px] leading-[1.6] text-primary-text-color md:gap-y-[20px]">

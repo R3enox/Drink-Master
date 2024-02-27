@@ -15,7 +15,7 @@ import { useTranslation } from 'react-i18next';
 import '../../i18n';
 
 const SignUpForm = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const isLoading = useSelector(selectAuthIsLoading);
   const dispatch = useDispatch();

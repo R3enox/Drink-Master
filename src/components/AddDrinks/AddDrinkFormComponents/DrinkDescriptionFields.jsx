@@ -11,20 +11,20 @@ import { useTranslation } from 'react-i18next';
 import '../../../i18n';
 
 export const DrinkPageHero = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const { categories, glasses } = useFilters();
   const [preview, setPreview] = useState();
   const [age, setAge] = useState(0);
 
   const categoriesOptions = useMemo(
-    () => createOptionsFromArrOfStr(categories ?? []),
-    [categories]
+    () => createOptionsFromArrOfStr(categories ?? [], t, 'categories'),
+    [categories, t]
   );
 
   const glassesOptions = useMemo(
-    () => createOptionsFromArrOfStr(glasses ?? []),
-    [glasses]
+    () => createOptionsFromArrOfStr(glasses ?? [], t, 'GlassType'),
+    [glasses, t]
   );
 
   const user = useSelector(selectAuthUser);
@@ -89,15 +89,15 @@ export const DrinkPageHero = () => {
         <input
           type="text"
           name="drink"
-          placeholder="Enter item title"
+          placeholder={t('inputPlaceholder.DrinkPageHero.itemTitle')}
           required
           className="block pb-[14px] outline-none hover:placeholder-button-hover-color/70 dark:hover:placeholder-primary-text-color   bg-transparent w-[335px] h-[34px] border-b border-border-color-search dark:border-grey-text-color  focus:outline-none focus:border-border-color-search/100 dark:focus:border-primary-text-color hover:border-border-color-search/100 dark:hover:border-primary-text-color placeholder-button-hover-color/50 dark:placeholder-grey-text-color placeholder-font-normal placeholder-text-sm transition-colors ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms] md:w-[352px] md:h-[41px] md:placeholder-text-base md:pb-[18px] lg:w-[393px]"
         />
         <input
           type="text"
           name="description"
-          placeholder="Enter about recipe"
           className="block pb-[14px] outline-none hover:placeholder-button-hover-color/70 dark:hover:placeholder-primary-text-color   bg-transparent w-[335px] h-[34px] border-b border-hover-border-color-search dark:border-grey-text-color  focus:outline-none  focus:border-border-color-search/100 dark:focus:border-primary-text-color hover:border-border-color-search/100 dark:hover:border-primary-text-color placeholder-button-hover-color/50 dark:placeholder-grey-text-color placeholder-font-normal placeholder-text-sm transition-colors ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms] md:w-[352px] md:h-[41px] md:placeholder-text-base md:pb-[18px] lg:w-[393px]"
+          placeholder={t('inputPlaceholder.DrinkPageHero.recipeDescr')}
           required
         />
         <div className="relative">
@@ -158,7 +158,7 @@ export const DrinkPageHero = () => {
                   <input
                     type="radio"
                     name="alcoholic"
-                    value="Non-alcoholic"
+                    value="Non alcoholic"
                     required
                     className="peer sr-only"
                   />
@@ -203,7 +203,7 @@ export const DrinkPageHero = () => {
                   <input
                     type="radio"
                     name="alcoholic"
-                    value="Non-alcoholic"
+                    value="Non alcoholic"
                     required
                     className="peer sr-only"
                     defaultChecked

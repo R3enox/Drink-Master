@@ -17,7 +17,7 @@ import '../../i18n';
 import { BtnThemeChange } from '../reUseComponents/Buttons/ButtonThemeChange';
 
 export const AddDrinkForm = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { ingredients } = useFilters();
@@ -25,8 +25,8 @@ export const AddDrinkForm = () => {
   const addedIngredients = [];
 
   const ingredientsOptions = useMemo(
-    () => createOptionsFromArrOfObjUsingId(ingredients ?? []),
-    [ingredients]
+    () => createOptionsFromArrOfObjUsingId(ingredients ?? [], t, 'ingredients'),
+    [ingredients, t]
   );
 
   const onSubmit = async (e) => {
@@ -68,7 +68,7 @@ export const AddDrinkForm = () => {
     e.target.elements.submit.disabled = false;
 
     if (result.meta.requestStatus === 'fulfilled') {
-      toast.success('Coctail created !');
+      toast.success(t('toastError.AddDrinkForm'));
       navigate('/my');
     }
   };
@@ -79,10 +79,9 @@ export const AddDrinkForm = () => {
         <DrinkPageHero />
         <DrinkIngredientsFields ingredientsOptions={ingredientsOptions} />
         <RecipePreparation />
-        <BtnThemeChange
-          name="submit"
-          title={isloading ? 'creating...' : t('button.AddDrink.Add')}
-        ></BtnThemeChange>
+        <BtnThemeChange name="submit">
+          {isloading ? t('button.AddDrink.Creating') : t('button.AddDrink.Add')}
+        </BtnThemeChange>
       </form>
     </section>
   );

@@ -9,7 +9,7 @@ import '../../i18n';
 import { ButtonComponentThemeChange } from '../reUseComponents/Buttons/ButtonThemeChange';
 
 const DrinkPageHero = ({ cocktail }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const dispatch = useDispatch();
   const user = useSelector(selectAuthUser);
@@ -45,7 +45,7 @@ const DrinkPageHero = ({ cocktail }) => {
           {drink}
         </h2>
         <p className="text-[12px] leading-[1.17] text-grey-text-color mb-[20px] md:text-[16px] md:leading-[1.25]">
-          {category}/{alcoholic}
+         {t(`categories.${category}`)}/{t(`cocktailDiscr.${alcoholic}`)}
         </p>
         <p className="text-[14px] leading-[1.29] mb-[40px] text-gray-100 md:text-[16px] md:leading-[1.37] md:max-w-[593px]">
           {description}

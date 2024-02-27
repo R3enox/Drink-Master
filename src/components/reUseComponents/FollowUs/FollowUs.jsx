@@ -1,10 +1,14 @@
+import { useTranslation } from 'react-i18next';
 import sprite from '../../../assets/sprite.svg';
 import css from './FollowUs.module.css';
 
+import '../../../i18n';
+
 export const FollowUs = () => {
+  const { t, i18n } = useTranslation();
   return (
     <button className={css.btnCssbuttons}>
-      <span>Follow Us</span>
+      <span>{t('button.FollowUs')}</span>
       <span>
         <svg height="18" width="18" className={css.icon}>
           <use href={sprite + '#icon-follow-us'}></use>
