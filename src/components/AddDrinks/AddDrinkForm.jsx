@@ -31,8 +31,10 @@ export const AddDrinkForm = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+
+    console.log('e.currentTarget: ', e.target);
     e.target.elements.submit.disabled = true;
-    console.log('e.currentTarget: ', e.currentTarget);
+
     addedIngredients.length = 0;
 
     const formData = new FormData(e.currentTarget);

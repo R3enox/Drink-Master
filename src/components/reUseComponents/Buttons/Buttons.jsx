@@ -133,9 +133,10 @@ export const LinkLightTheme = ({ children, to }) => {
   );
 };
 
-export const BtnLightTheme = ({ children, to }) => {
+export const BtnLightTheme = ({ children, to, name }) => {
   return (
     <button
+      name={name}
       type="submit"
       to={to}
       className={`dark:btn-white btn-black ${css.button}`}
