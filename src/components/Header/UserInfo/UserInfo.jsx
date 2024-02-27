@@ -12,7 +12,7 @@ import { useTranslation } from 'react-i18next';
 import '../../../i18n';
 
 const UserInfo = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const [openEl, setOpenEl] = useState(null);
   const [popUpIsOpen, setPopUpIsOpen] = useState(false);

@@ -2,7 +2,7 @@ import { DrinkPageHero } from './AddDrinkFormComponents/DrinkDescriptionFields';
 import { DrinkIngredientsFields } from './AddDrinkFormComponents/DrinkIngredientsFields';
 import { RecipePreparation } from './AddDrinkFormComponents/RecipePreparation';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { useFilters } from '../../hooks/useFilters';
 import { createOptionsFromArrOfObjUsingId } from '../../helpers/createCollectionOptions';
 import {
@@ -79,9 +79,12 @@ export const AddDrinkForm = () => {
         <DrinkPageHero />
         <DrinkIngredientsFields ingredientsOptions={ingredientsOptions} />
         <RecipePreparation />
-        <BtnThemeChange name="submit">
-          {isloading ? t('button.AddDrink.Creating') : t('button.AddDrink.Add')}
-        </BtnThemeChange>
+        <BtnThemeChange
+          name="submit"
+          title={
+            isloading ? t('button.AddDrink.Creating') : t('button.AddDrink.Add')
+          }
+        ></BtnThemeChange>
       </form>
     </section>
   );
