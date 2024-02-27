@@ -1,1 +1,0 @@
-import{j as e}from"./index-f36b0235.js";const t=()=>e.jsx("div",{className:"bg-page-404-mobile md:bg-page-404-tablet lg:bg-page-404-desktop not-found-page-wrapper",children:e.jsx("p",{className:"not-found-page-title",children:"4   4"})});export{t as default};
