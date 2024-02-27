@@ -1,1 +1,0 @@
-import{d as o,b as r,z as n,r as h,V as u,W as f}from"./index-24147aa9.js";const m=()=>{const[s,g]=o(),a=s.get("accessToken"),t=s.get("refreshToken"),e=r(),c=n();h.useEffect(()=>{e(u({accessToken:a,refreshToken:t})),e(f()),c("/home")},[a,t,e,c])};export{m as default};
