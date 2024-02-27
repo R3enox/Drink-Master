@@ -52,7 +52,7 @@ const UserLogo = ({ closeFnc }) => {
           onChange={handleUploadedFile}
         />
 
-        <div className=" flex flex-col items-center pb-[34px] md:pb-[65px]">
+        <div className=" flex flex-col items-center pb-[34px] md:pb-[65px] cursor-pointer ">
           <img
             src={preview}
             srcSet={preview ?? user.avatarURL}
