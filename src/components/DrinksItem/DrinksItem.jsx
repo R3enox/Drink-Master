@@ -7,8 +7,10 @@ import '../../i18n';
 
 const DrinksItem = ({ myDrink, openMyDrinkModal, onChooseItem }) => {
   const { t } = useTranslation();
+  
 
   const { _id, drink, drinkThumb, alcoholic, description } = myDrink;
+ 
   const openModal = () => {
     openMyDrinkModal();
     onChooseItem(_id);

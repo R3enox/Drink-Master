@@ -8,12 +8,12 @@ i18n
   .use(backend)
   .use(initReactI18next)
   .init({
-    debug: true,
+    debug: false,
     whitelist: ['en', 'uk'],
     fallbackLng: 'en',
     backend: {
       // loadPath: '/frontend-drink-master/locales/{{lng}}/{{ns}}.json',
-      loadPath: 'locales/{{lng}}/{{ns}}.json',
+      loadPath: '/locales/{{lng}}/{{ns}}.json',
     },
   });
 
