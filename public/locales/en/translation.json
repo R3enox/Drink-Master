@@ -122,7 +122,7 @@
   "button": {
     "AddDrink": {
       "Add": "Add",
-      "Creating":"creating..."
+      "Creating":"Adding..."
     },
     "SignInForm": {
       "SignIn": "Sign In"
