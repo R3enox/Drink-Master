@@ -15,6 +15,7 @@ import {
 } from 'redux-persist';
 import persistStore from 'redux-persist/es/persistStore';
 import { popularDrinksReducer } from './popular/popularSlice';
+import { addDrinkReducer } from './addDrinks/addDrinkSlice';
 
 export const store = configureStore({
   reducer: {
@@ -25,6 +26,7 @@ export const store = configureStore({
     drinkIdStorage: drinkIdStorageReducer,
     myDrinks: myDrinksReducer,
     favorites: favoritesReducer,
+    addDrink: addDrinkReducer,
   },
 
   middleware: (getDefaultMiddleware) =>

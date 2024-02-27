@@ -3,11 +3,10 @@ import { selectAuthUser } from '../../redux/auth/authSelectors';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { addFavorite, deleteFavorite } from '../../redux/favorites/favoriteAPI';
-import { ButtonComponent } from '../reUseComponents/Buttons/Buttons';
 
 import { useTranslation } from 'react-i18next';
 import '../../i18n';
-import { toggleFavorite } from './toggleFavorite';
+import { ButtonComponentThemeChange } from '../reUseComponents/Buttons/ButtonThemeChange';
 
 const DrinkPageHero = ({ cocktail }) => {
   const { t, i18n } = useTranslation();
@@ -23,6 +22,22 @@ const DrinkPageHero = ({ cocktail }) => {
   const [isFavorite, setIsFavorite] = useState(isFavoriteFirstRender);
   const isFav = isFirstRender ? isFavoriteFirstRender : isFavorite;
 
+  const toggleFavorite = async (id) => {
+    try {
+      if (isFav) {
+        await dispatch(deleteFavorite(id));
+        setIsFavorite(false);
+      } else {
+        await dispatch(addFavorite(id));
+        setIsFavorite(true);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    } finally {
+      setIsFirstRender(false);
+    }
+  };
+
   return (
     <div className=" lg:flex justify-between">
       <div>
@@ -37,39 +52,19 @@ const DrinkPageHero = ({ cocktail }) => {
         </p>
         <div className="pt-10 pb-20">
           {isFav ? (
-            <ButtonComponent
+            <ButtonComponentThemeChange
               descr={t('button.toggleFavorite.ButtonComponentDel')}
               btnFunction={() => {
-                toggleFavorite(
-                  _id,
-                  isFav,
-                  dispatch,
-                  deleteFavorite,
-                  setIsFavorite,
-                  addFavorite,
-                  setIsFavorite,
-                  setIsFirstRender,
-                  toast
-                );
+                toggleFavorite(_id);
                 toast(`${t('toastError.DrinkPageHeroDel')}`);
               }}
               id={_id}
             />
           ) : (
-            <ButtonComponent
+            <ButtonComponentThemeChange
               descr={t('button.toggleFavorite.ButtonComponentAdd')}
               btnFunction={() => {
-                toggleFavorite(
-                  _id,
-                  isFav,
-                  dispatch,
-                  deleteFavorite,
-                  setIsFavorite,
-                  addFavorite,
-                  setIsFavorite,
-                  setIsFirstRender,
-                  toast
-                );
+                toggleFavorite(_id);
                 toast.success(`${t('toastError.DrinkPageHeroAdd')}`, {
                   icon: false,
                 });
@@ -81,7 +76,7 @@ const DrinkPageHero = ({ cocktail }) => {
       </div>
       <div>
         <img
-          className="mb-[18px] w-[335px] rounded-xl md:mb-[80px] md:w-[704px] md:object-cover lg:w-[400px] lg:mb-[100px] "
+          className="max-h-[400px] mb-[18px] w-[335px] rounded-xl  md:mb-[80px] md:w-[704px] md:object-cover lg:w-[400px] lg:mb-[100px] "
           src={drinkThumb}
           alt="poster cocktail"
         />

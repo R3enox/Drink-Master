@@ -2,14 +2,13 @@ import { lazy } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import RestrictedSharedLayout from '../components/SharedLayout/RestrictedSharedLayout';
-import GoogleAuthPage from '../pages/GoogleAuthPage/GoogleAuthPage';
 
 const WelcomePage = lazy(() => import('pages/WelcomePage/WelcomePage'));
 const SignUpPage = lazy(() => import('pages/SignUpPage/SignUpPage'));
 const SignInPage = lazy(() => import('pages/SignInPage/SignInPage'));
-// const GoogleAuthPage = lazy(() =>
-//   import('pages/GoogleAuthPage/GoogleAuthPage')
-// );
+const GoogleAuthPage = lazy(() =>
+  import('pages/GoogleAuthPage/GoogleAuthPage')
+);
 
 const RestrictedRoutes = () => {
   return (
