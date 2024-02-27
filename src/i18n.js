@@ -10,7 +10,7 @@ i18n
   .init({
     debug: true,
     whitelist: ['en', 'uk'],
-    fallbackLng: 'uk', 
+    fallbackLng: 'en', 
     backend: {
       // loadPath: '/frontend-drink-master/locales/{{lng}}/{{ns}}.json',
       loadPath: 'locales/{{lng}}/{{ns}}.json',
