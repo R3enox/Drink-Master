@@ -4,13 +4,11 @@ import { useMainNav } from '../../../../hooks/useMainNav';
 import { Logo } from '../Logo/Logo';
 import ThemeToggler from '../ThemeToggler/ThemeToggler';
 
-import { useTranslation } from 'react-i18next';
 import '../../../i18n';
 import LanguageToggler from '../LanguageToggler/LanguageToggler';
 
 const HamburgerMenu = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const { t } = useTranslation();
 
   const openNav = () => {
     setIsNavOpen(!isNavOpen);
