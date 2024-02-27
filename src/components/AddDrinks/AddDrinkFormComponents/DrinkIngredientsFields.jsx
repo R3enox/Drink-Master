@@ -39,7 +39,8 @@ export const DrinkIngredientsFields = ({ ingredientsOptions }) => {
               placeholder="1  cl"
               name="measure"
               required
-              className="text-primary-text-button-color dark:text-primary-text-color placeholder-hover-border-color-search dark:placeholder-grey-text-color hover:placeholder-button-hover-color/70 dark:hover:placeholder-primary-text-color bg-transparent w-[100px] md:w-[150px]  h-[50px] md:h-[56px] border-border-color-search dark:border-grey-text-color border-[1px] rounded-[200px] pl-[18px] md:pl-[24px] focus:border-border-color-search/100 dark:focus:border-primary-text-color hover:border-border-color-search/100 dark:hover:border-primary-text-color outline-none ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms]  "
+              autoComplete="off"
+              className="text-primary-text-button-color dark:text-primary-text-color placeholder-hover-border-color-search dark:placeholder-grey-text-color hover:placeholder-button-hover-color/70 dark:hover:placeholder-primary-text-color bg-transparent  w-[100px] md:w-[150px]  h-[50px] md:h-[56px] border-border-color-search dark:border-grey-text-color border-[1px] rounded-[200px] pl-[18px] md:pl-[24px] focus:border-border-color-search/100 dark:focus:border-primary-text-color hover:border-border-color-search/100 dark:hover:border-primary-text-color outline-none ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms]  "
             />
           </label>
           <button

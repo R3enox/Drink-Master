@@ -89,9 +89,10 @@ export const DrinkPageHero = () => {
         <input
           type="text"
           name="drink"
+          className="block pb-[14px] outline-none hover:placeholder-button-hover-color/70 dark:hover:placeholder-primary-text-color   bg-transparent  w-[335px] h-[34px] border-b border-border-color-search dark:border-grey-text-color  focus:outline-none focus:border-border-color-search/100 dark:focus:border-primary-text-color hover:border-border-color-search/100 dark:hover:border-primary-text-color placeholder-button-hover-color/50 dark:placeholder-grey-text-color placeholder-font-normal placeholder-text-sm transition-colors ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms] md:w-[352px] md:h-[41px] md:placeholder-text-base md:pb-[18px] lg:w-[393px]"
           placeholder={t('inputPlaceholder.DrinkPageHero.itemTitle')}
           required
-          className="block pb-[14px] outline-none hover:placeholder-button-hover-color/70 dark:hover:placeholder-primary-text-color   bg-transparent w-[335px] h-[34px] border-b border-border-color-search dark:border-grey-text-color  focus:outline-none focus:border-border-color-search/100 dark:focus:border-primary-text-color hover:border-border-color-search/100 dark:hover:border-primary-text-color placeholder-button-hover-color/50 dark:placeholder-grey-text-color placeholder-font-normal placeholder-text-sm transition-colors ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms] md:w-[352px] md:h-[41px] md:placeholder-text-base md:pb-[18px] lg:w-[393px]"
+          autoComplete="off"
         />
         <input
           type="text"
@@ -99,6 +100,7 @@ export const DrinkPageHero = () => {
           className="block pb-[14px] outline-none hover:placeholder-button-hover-color/70 dark:hover:placeholder-primary-text-color   bg-transparent w-[335px] h-[34px] border-b border-hover-border-color-search dark:border-grey-text-color  focus:outline-none  focus:border-border-color-search/100 dark:focus:border-primary-text-color hover:border-border-color-search/100 dark:hover:border-primary-text-color placeholder-button-hover-color/50 dark:placeholder-grey-text-color placeholder-font-normal placeholder-text-sm transition-colors ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms] md:w-[352px] md:h-[41px] md:placeholder-text-base md:pb-[18px] lg:w-[393px]"
           placeholder={t('inputPlaceholder.DrinkPageHero.recipeDescr')}
           required
+          autoComplete="off"
         />
         <div className="relative">
           <label
@@ -148,9 +150,9 @@ export const DrinkPageHero = () => {
                   />
                   <div className=" absolute left-1/2 top-1/2  transform -translate-x-1/2 -translate-y-1/2  w-2.5 h-2.5 bg-button-hover-color dark:bg-primary-text-color rounded-[5px] opacity-0 peer-checked:opacity-100"></div>
                   <div className="absolute left-1/2 top-1/2  transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 border-hover-border-color-search dark:border-grey-text-color cursor-pointer rounded-[50%] border-[1.30px] peer-checked:border-button-hover-color dark:peer-checked:border-primary-text-color "></div>
-                  <span className="ml-[22px] text-hover-border-color-search dark:text-grey-text-color text-sm peer-checked:text-button-hover-color dark:peer-checked:text-primary-text-color md:text-base whitespace-nowrap">
+                  <p className="ml-[22px] text-hover-border-color-search dark:text-grey-text-color text-sm peer-checked:text-button-hover-color dark:peer-checked:text-primary-text-color md:text-base whitespace-nowrap">
                     {t('cocktailType.alco')}
-                  </span>
+                  </p>
                 </div>
               </label>
               <label className="flex items-center gap-x-[8px] cursor-pointer">
@@ -164,9 +166,9 @@ export const DrinkPageHero = () => {
                   />
                   <div className="absolute  left-1/2 top-1/2  transform -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-button-hover-color dark:bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
                   <div className="absolute left-1/2 top-1/2  transform -translate-x-1/2 -translate-y-1/2 w-4 h-4  border-hover-border-color-search dark:border-grey-text-color cursor-pointer rounded-[50%] border-[1.30px] peer-checked:border-button-hover-color dark:peer-checked:border-primary-text-color  "></div>
-                  <span className="ml-[22px] text-hover-border-color-search dark:text-grey-text-color peer-checked:text-button-hover-color dark:peer-checked:text-primary-text-color whitespace-nowrap text-sm md:text-base ">
+                  <p className="ml-[22px] text-hover-border-color-search dark:text-grey-text-color peer-checked:text-button-hover-color dark:peer-checked:text-primary-text-color whitespace-nowrap text-sm md:text-base ">
                     {t('cocktailType.non')}
-                  </span>
+                  </p>
                 </div>
               </label>
             </>
@@ -193,9 +195,9 @@ export const DrinkPageHero = () => {
                 }  rounded-[50%] border-[1.30px]  `}
                   ></div>
                   <div className=" absolute  left-[3.5%] w-2.5 h-2.5 bg-button-hover-color dark:bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
-                  <span className=" ml-[22px] text-hover-border-color-search/20 dark:text-grey-text-color/20 whitespace-nowrap">
+                  <p className=" ml-[22px] text-hover-border-color-search/20 dark:text-grey-text-color/20 whitespace-nowrap">
                     {t('cocktailType.alco')}
-                  </span>
+                  </p>
                 </div>
               </label>
               <label className="relative flex items-center gap-x-[8px]">
@@ -210,9 +212,9 @@ export const DrinkPageHero = () => {
                   />
                   <div className=" absolute w-4 h-4 left-1/2 top-1/2  transform -translate-x-1/2 -translate-y-1/2  border-hover-border-color-search dark:border-grey-text-color cursor-pointer rounded-[50%] border-[1.30px] peer-checked:border-button-hover-color dark:peer-checked:border-primary-text-color"></div>
                   <div className=" absolute  left-1/2 top-1/2  transform -translate-x-1/2 -translate-y-1/2  w-2.5 h-2.5 bg-button-hover-color dark:bg-primary-text-color rounded-[50%] opacity-0 peer-checked:opacity-100"></div>
-                  <span className=" ml-[22px] text-hover-border-color-search dark:text-grey-text-color peer-checked:text-button-hover-color dark:peer-checked:text-primary-text-color whitespace-nowrap">
+                  <p className=" ml-[22px] text-hover-border-color-search dark:text-grey-text-color peer-checked:text-button-hover-color dark:peer-checked:text-primary-text-color whitespace-nowrap">
                     {t('cocktailType.non')}
-                  </span>
+                  </p>
                 </div>
               </label>
             </>
