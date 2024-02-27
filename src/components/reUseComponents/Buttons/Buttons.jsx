@@ -138,10 +138,12 @@ export const BtnLightTheme = ({ children, to }) => {
     <button
       type="submit"
       to={to}
-      className={`${css.btnTransparent} ${css.button}`}
+      className={`dark:btn-white btn-black ${css.button}`}
     >
       <div className={`${css.dotsBorder} ${css.dotsBorderTransparent}`}></div>
-      <span className={`${css.textBtnTransparent} ${css.textButton}`}>
+      <span
+        className={`text-primary-text-color dark:text-primary-text-button-color ${css.textButton}`}
+      >
         {children}
       </span>
     </button>
