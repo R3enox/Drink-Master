@@ -16,12 +16,13 @@ body {
   min-height: 100vh;
   background-repeat: no-repeat;
   background-size: 100vw;
+}
 
+html.dark #root {
   background-image: image-set(
     url('assets/img/bg-page/mobile-bg.png') 1x,
     url('assets/img/bg-page/mobile-bg@2x.png') 2x
   );
-
   @media screen and (min-width: 768px) {
     & {
       background-image: image-set(
@@ -96,7 +97,7 @@ body {
 }
 
 .restricted-page-container {
-  @apply bg-image-set bg-cover min-h-[100vh] md:bg-image-set-tablet lg:bg-image-set-desktop lg:bg-background-color flex justify-start items-center py-[20px] px-[20px] md:px-[64px] lg:px-[100px];
+  @apply bg-button-hover-color bg-image-set bg-cover min-h-[100vh] md:bg-image-set-tablet lg:bg-image-set-desktop lg:bg-background-color flex justify-start items-center py-[20px] px-[20px] md:px-[64px] lg:px-[100px];
 }
 .input-form {
   @apply w-full bg-transparent h-[54px] rounded-[42px] bg-contain border-[1px] border-border-color hover:border-grey-text-color transition-colors hover:placeholder-grey-text-color text-[14px] leading-[1.29] placeholder-border-color py-[18px] px-[24px] outline-none md:text-[17px] md:pt-[14px] md:pb-[15px];
@@ -126,7 +127,7 @@ body {
   @apply container py-[259px] m-auto md:pl-[32px] md:py-[350px] lg:py-[223px] lg:pl-[100px];
 }
 .input-form {
-  @apply w-full bg-transparent h-[54px] rounded-[42px] bg-contain border-[1px] border-border-color hover:border-grey-text-color transition-colors hover:placeholder-primary-text-color text-[14px] leading-[1.29] placeholder-border-color py-[18px] px-[24px] outline-none md:text-[17px]  md:pt-[14px] md:pb-[15px];
+  @apply w-full bg-transparent h-[54px] rounded-[42px] bg-contain border-[1px] border-border-color hover:border-grey-text-color transition-colors hover:placeholder-primary-text-color text-[14px] leading-[1.29] placeholder-border-color py-[18px] px-[24px] outline-none md:text-[17px]  md:pt-[14px] md:pb-[15px] text-primary-text-color;
 }
 .input-container {
   @apply flex flex-col gap-[14px] md:w-[400px];
@@ -160,6 +161,14 @@ body {
   @apply transition hover:decoration-primary-text-color outline-none underline decoration-grey-text-color font-semibold text-center text-primary-text-color text-[12px] leading-[1.33] md:text-[14px] md:leading-[1.29];
 }
 
+.follow-us-btn {
+  @apply p-[7px] border-[1px] rounded-[10px]  border-border-color-for-light dark:border-border-color hover:border-ingredients-card-bg dark:hover:border-grey-text-color cursor-pointer;
+}
+
+.follow-us-icon {
+  @apply fill-primary-text-button-color dark:fill-primary-text-color opacity-80 sm:w-[22px] h-[22px] md:w-[28px] md:h-[28px] hover:opacity-100;
+}
+
 /* Buttons Welcome Page */
 .welcome-sign-in-link {
   @apply transition shadow-lg hover:shadow-primary-text-color/50 hover:bg-primary-text-button-color  text-primary-text-color  py-[14px] px-[40px] rounded-[42px] border-[1px] border-border-color text-[14px] leading-[1.29] 
@@ -170,10 +179,10 @@ body {
   md:py-[18px] md:px-[44px] md:text-[16px] md:leading-[1.12];
 }
 .btn-up {
-  border: 1px solid rgb(255, 255, 255);
+  /* border: 1px solid rgb(255, 255, 255); */
   filter: drop-shadow(0px 0px 10px rgb(255, 255, 255));
   animation: flickering 1.5ms linear infinite both;
-  background-color: rgba(243, 243, 243, 0.5);
+  background-color: #f3f3f3;
 }
 .btn-up:hover {
   background-color: #434d67;
@@ -181,11 +190,11 @@ body {
 }
 
 .btn-google {
-  border: 1px solid rgb(255, 255, 255);
+  /* border: 1px solid rgb(255, 255, 255); */
   border-right: none;
   filter: drop-shadow(0px 0px 10px rgb(255, 255, 255));
   animation: flickering 1.5ms linear infinite both;
-  background-color: rgba(243, 243, 243, 0.5);
+  background-color: #f3f3f3;
 }
 
 .btn-google:hover {
@@ -305,6 +314,7 @@ body {
   align-content: center;
   font-size: 14px !important;
   line-height: 129% !important;
+  cursor: pointer !important;
 }
 
 .searchSelect__menu {
@@ -338,7 +348,7 @@ html.dark .searchSelect__menu {
   }
 }
 .searchSelect__placeholder {
-  color: rgba(243, 243, 243, 0.4) !important;
+  color: #f3f3f3 !important;
   font-size: 17px !important;
 }
 .searchSelect__control:hover {
@@ -374,7 +384,13 @@ html.dark .searchSelect__option:hover {
 .searchSelect__indicator:hover {
   color: #f3f3f3 !important;
 }
+::-webkit-scrollbar {
+  width: 8px !important;
+}
 
+::-webkit-scrollbar-track {
+  background: transparent !important;
+}
 .searchSelect__indicator-separator {
   display: none !important;
 }
@@ -427,7 +443,7 @@ html.dark .searchSelect__option:hover {
   min-height: 34px !important;
   width: 335px !important;
   height: 34px !important;
-  border-bottom: 1px solid rgba(243, 243, 243, 0.5) !important;
+  border-bottom: 1px solid rgba(10, 10, 17, 0.2) !important;
   box-shadow: none !important;
   cursor: pointer !important;
   justify-content: end !important;
@@ -435,8 +451,13 @@ html.dark .searchSelect__option:hover {
   align-items: flex-start !important;
   transition: border-bottom 250ms cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
-
+html.dark .custom_select__control {
+  border-bottom: 1px solid rgba(243, 243, 243, 0.5) !important;
+}
 .custom_select__control:hover {
+  border-bottom: 1px solid #0a0a11 !important;
+}
+html.dark .custom_select__control:hover {
   border-bottom: 1px solid #f3f3f3 !important;
 }
 
@@ -465,8 +486,8 @@ html.dark .searchSelect__option:hover {
   top: 100% !important;
   right: 0 !important;
   z-index: 999 !important;
-  background-color: #161f37 !important;
-  color: rgba(243, 243, 243, 0.4) !important;
+  background-color: #fff !important;
+  color: rgba(10, 10, 17, 0.4) !important;
   border-radius: 12px !important;
   width: 131px !important;
   max-height: 286px !important;
@@ -477,6 +498,10 @@ html.dark .searchSelect__option:hover {
   font-size: 12px !important;
   line-height: 133% !important;
   animation: selectMenu 400ms ease-out !important;
+}
+html.dark .custom_select__menu {
+  background-color: #161f37 !important;
+  color: rgba(243, 243, 243, 0.4) !important;
 }
 
 .custom_select__value-container--has-value {
@@ -495,13 +520,15 @@ html.dark .searchSelect__option:hover {
   margin: 0 !important;
   padding: 0 !important;
 }
-
 .custom_select__input {
+  color: #0a0a11 !important;
+}
+html.dark .custom_select__input {
   color: #f3f3f3 !important;
 }
 
 .custom_select__single-value {
-  color: #f3f3f3 !important;
+  color: #0a0a11 !important;
   text-align: end !important;
   font-weight: 400 !important;
   font-size: 14px !important;
@@ -509,8 +536,13 @@ html.dark .searchSelect__option:hover {
   width: fit-content !important;
   margin-left: auto !important;
 }
-
+html.dark .custom_select__single-value {
+  color: #f3f3f3 !important;
+}
 .custom_select__input::placeholder {
+  color: rgba(10, 10, 17, 0.5) !important;
+}
+html.dark .custom_select__input::placeholder {
   color: rgba(243, 243, 243, 0.5) !important;
 }
 
@@ -521,8 +553,11 @@ html.dark .searchSelect__option:hover {
 .custom_select__indicator {
   padding: 0 !important;
   cursor: pointer;
-  color: #f3f3f3 !important;
+  color: #0a0a11 !important;
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+html.dark .custom_select__indicator {
+  color: #f3f3f3 !important;
 }
 
 .custom_select__indicator:hover {
@@ -535,7 +570,19 @@ html.dark .searchSelect__option:hover {
   padding: 0 !important;
   margin-bottom: 6px !important;
 }
+.custom_select__option--is-selected {
+  color: #0a0a11 !important;
+}
+html.dark .custom_select__option--is-selected {
+  color: #f3f3f3 !important;
+}
 
+.custom_select__option:hover {
+  color: #0a0a11 !important;
+}
+html.dark .custom_select__option:hover {
+  color: #f3f3f3 !important;
+}
 .custom_select__indicator .css-tj5bde-Svg {
   transition: transform 0.3s ease-in-out !important;
 }
@@ -575,7 +622,7 @@ html.dark .searchSelect__option:hover {
 .ingredientsSelect__control {
   background-color: transparent !important;
   border: none !important;
-  border: 1px solid rgba(243, 243, 243, 0.5) !important;
+  border: 1px solid rgba(10, 10, 17, 0.2) !important;
   border-radius: 200px !important;
   width: 200px !important;
   height: 50px !important;
@@ -585,18 +632,23 @@ html.dark .searchSelect__option:hover {
   transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
+html.dark .ingredientsSelect__control {
+  border: 1px solid rgba(243, 243, 243, 0.5) !important;
+}
 .ingredientsSelect__control:hover {
+  border: 1px solid #0a0a11 !important;
+}
+html.dark .ingredientsSelect__control:hover {
   border: 1px solid #f3f3f3 !important;
 }
-
 .ingredientsSelect__menu {
-  background-color: #161f37 !important;
-  color: rgba(243, 243, 243, 0.4) !important;
-  border-radius: 12px !important;
+  background-color: #fff !important;
+  color: rgba(10, 10, 17, 0.4) !important;
   width: 200px !important;
   height: 286px !important;
   overflow: hidden !important;
   padding: 10px !important;
+  border-radius: 20px !important;
 
   font-weight: 400 !important;
   font-size: 12px !important;
@@ -604,17 +656,29 @@ html.dark .searchSelect__option:hover {
   animation: selectMenu 400ms ease-out !important;
 }
 
-.ingredientsSelect__input {
-  color: #f3f3f3 !important;
-  text-align: end !important;
+html.dark .ingredientsSelect__menu {
+  background-color: #161f37 !important;
+  color: rgba(243, 243, 243, 0.4) !important;
 }
 
-.ingredientsSelect__placeholder {
+.ingredientsSelect__input {
+  color: #0a0a11 !important;
+}
+
+html.dark .ingredientsSelect__input {
+  color: #f3f3f3 !important;
+}
+.ingredientsSelect__input::placeholder {
+  color: rgba(10, 10, 17, 0.5) !important;
+}
+html.dark ingredientsSelect__input::placeholder {
   color: rgba(243, 243, 243, 0.5) !important;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 .ingredientsSelect__control:hover .ingredientsSelect__placeholder {
+  color: #0a0a11 !important;
+}
+html.dark .ingredientsSelect__control:hover .ingredientsSelect__placeholder {
   color: #f3f3f3 !important;
 }
 
@@ -633,6 +697,20 @@ html.dark .searchSelect__option:hover {
   margin-bottom: 6px !important;
 }
 
+.ingredientsSelect__option--is-selected {
+  color: #0a0a11 !important;
+}
+html.dark .ingredientsSelect__option--is-selected {
+  color: #f3f3f3 !important;
+}
+
+.ingredientsSelect__option:hover {
+  color: #0a0a11 !important;
+}
+html.dark .ingredientsSelect__option:hover {
+  color: #f3f3f3 !important;
+}
+
 .ingredientsSelect__indicator .css-tj5bde-Svg {
   transition: transform 0.5s ease-in-out !important;
 }
@@ -643,13 +721,12 @@ html.dark .searchSelect__option:hover {
 
 .ingredientsSelect__indicator {
   cursor: pointer;
-  color: #f3f3f3 !important;
+  color: #0a0a11 !important;
   padding: 0 !important;
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
-
-.ingredientsSelect__control:hover .ingredientsSelect__indicator {
-  color: #848080 !important;
+html.dark .ingredientsSelect__indicator {
+  color: #f3f3f3 !important;
 }
 
 .ingredientsSelect__value-container {
@@ -659,6 +736,9 @@ html.dark .searchSelect__option:hover {
 
 .ingredientsSelect__single-value {
   margin: 0 !important;
+  color: #0a0a11 !important;
+}
+html.dark .ingredientsSelect__single-value {
   color: #f3f3f3 !important;
 }
 
@@ -680,6 +760,69 @@ html.dark .searchSelect__option:hover {
   }
 }
 
+/* ThemeToggler */
+.ThemeToggler {
+  display: block;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  margin-right: 62px;
+}
+@media screen and (min-width: 1440px) {
+  .ThemeToggler {
+    margin-right: 28px;
+  }
+}
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+.theme-switch input {
+  display: none;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.4s;
+  border-radius: 34px;
+  width: 40px;
+  height: 20px;
+}
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 1px;
+  background-color: #161f37;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: white;
+}
+input:checked + .slider:before {
+  transform: translateX(17px);
+}
+.round {
+  background-color: #161f37;
+}
+
+.light-theme .slider:before {
+  background-color: white;
+}
+
+.light-theme .slider {
+  background-color: #161f37;
+}
 /* Not Found Page */
 .not-found-page-wrapper {
   @apply bg-no-repeat flex flex-col items-center justify-center min-h-[604px] md:min-h-[571px] lg:min-h-[540px];
@@ -727,13 +870,15 @@ html.dark .searchSelect__option:hover {
 }
 
 .pagination-list-selected-item {
-  @apply bg-light-bg-selected-page dark:bg-dark-bg-selected-page;
+  @apply bg-light-bg-selected-page dark:bg-dark-bg-selected-page text-primary-text-color;
 }
 
 .pagination-list-link {
   @apply flex justify-center items-center w-[100%] h-[100%] font-medium text-[12px] text-center cursor-pointer text-dark-theme-bg-color dark:text-primary-text-color;
 }
-
+.pagination-list-selected-item .pagination-list-link {
+  @apply text-primary-text-color;
+}
 .pagination-icon-arrow {
   @apply w-[9px] h-[15px] fill-light-icon-arrow-fill dark:fill-dark-icon-arrow-fill;
 }

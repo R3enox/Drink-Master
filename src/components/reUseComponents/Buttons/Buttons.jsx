@@ -90,10 +90,10 @@ export const LinkHeaderNav = ({ children, to }) => {
       to={to}
       className={({ isActive }) => {
         return (
-          'py-[8px] px-[16px] rounded-[40px] border-[1px] text-[14px] leading-[1.6] font-medium dark:border-border-color border-border-color-for-light ' +
+          'py-[8px] px-[16px] rounded-[40px] border-[1px] text-[14px] leading-[1.6] font-medium border-border-color-for-light dark:border-border-color transition-shadow shadow-lg hover:shadow-primary-text-button-color/50 dark:hover:shadow-primary-text-color/50' +
           (!isActive
-            ? 'text-primary-text-button-color dark:text-primary-text-color bg-transparent'
-            : 'text-primary-text-color bg-primary-text-button-color transition shadow-lg shadow-primary-text-button-color/50 dark:shadow-primary-text-color/50 ')
+            ? ' text-primary-text-button-color dark:text-primary-text-color bg-transparent'
+            : ' text-primary-text-color bg-primary-text-button-color transition shadow-lg shadow-primary-text-button-color/50 dark:shadow-primary-text-color/50 ')
         );
       }}
     >

@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useMemo } from 'react';
 import { useFilters } from '../../hooks/useFilters';
 import { createOptionsFromArrOfObjUsingId } from '../../helpers/createCollectionOptions';
-import { BtnDarkTheme } from '../reUseComponents/Buttons/Buttons';
 import {
   addDrink,
   selectAddDrinkIsLoading,
@@ -15,6 +14,7 @@ import { toast } from 'react-toastify';
 
 import { useTranslation } from 'react-i18next';
 import '../../i18n';
+import { BtnThemeChange } from '../reUseComponents/Buttons/ButtonThemeChange';
 
 export const AddDrinkForm = () => {
   const { t } = useTranslation();
@@ -79,9 +79,12 @@ export const AddDrinkForm = () => {
         <DrinkPageHero />
         <DrinkIngredientsFields ingredientsOptions={ingredientsOptions} />
         <RecipePreparation />
-        <BtnDarkTheme name="submit">
-          {isloading ? t('button.AddDrink.Creating') : t('button.AddDrink.Add')}
-        </BtnDarkTheme>
+        <BtnThemeChange
+          name="submit"
+          title={
+            isloading ? t('button.AddDrink.Creating') : t('button.AddDrink.Add')
+          }
+        ></BtnThemeChange>
       </form>
     </section>
   );

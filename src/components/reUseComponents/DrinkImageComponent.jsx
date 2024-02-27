@@ -32,7 +32,7 @@ export const DrinkImageComponent = ({ description }) => {
         <img srcSet={drinkImage.drinkMobilePng} alt="Cocktail" />
       </picture>
 
-      <p className="text-primary-text-color font-medium block mx-auto text-center w-[205px] text-[14px] leading-[1.28] md:w-[236px] md:text-[16px] md:leading-[1.4]">
+      <p className=" font-medium block mx-auto text-center w-[205px] text-[14px] leading-[1.28] md:w-[236px] md:text-[16px] md:leading-[1.4]">
         {description}
       </p>
     </div>

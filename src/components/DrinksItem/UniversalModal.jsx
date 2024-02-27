@@ -35,10 +35,10 @@ const UniversalModal = ({ children, isOpen, closeFnc, content }) => {
     >
       <div className="absolute max-h-[90vh] min-w-[335px]  overflow-y-auto pointer-events-auto bg-primary-text-button-color top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] rounded-[24px] items-center flex flex-col py-[50px] px-[25px] md:p-[50px] ">
         <button
-          className="absolute items-center flex justify-center top-[18px] right-[18px] rounded-[58px] hover:bg-primary-text-color transition-colors"
+          className="absolute items-center flex justify-center top-[18px] right-[18px] rounded-[58px]"
           onClick={closeOnClick}
         >
-          <svg className="stroke-primary-text-color w-[24px] h-[24px] md:w-[32px] md:h-[32px] hover:stroke-primary-text-button-color transition-colors">
+          <svg className="stroke-primary-text-color w-[24px] h-[24px] md:w-[32px] md:h-[32px] hover:stroke-primary-text-color/50 transition-colors">
             <use href={sprite + '#icon-cross'}></use>
           </svg>
         </button>
