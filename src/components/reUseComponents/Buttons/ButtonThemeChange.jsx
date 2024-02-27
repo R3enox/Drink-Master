@@ -28,7 +28,7 @@ export const LinkThemeChange = ({ title, to }) => {
   );
 };
 
-export const BtnThemeChange = ({ title }) => {
+export const BtnThemeChange = ({ title, name }) => {
   const storTheme = localStorage.getItem('theme');
 
   const [theme, setTheme] = useState(() => storTheme === 'dark');
@@ -40,9 +40,9 @@ export const BtnThemeChange = ({ title }) => {
   return (
     <div>
       {theme ? (
-        <BtnDarkTheme>{title}</BtnDarkTheme>
+        <BtnDarkTheme name={name}>{title}</BtnDarkTheme>
       ) : (
-        <BtnLightTheme>{title}</BtnLightTheme>
+        <BtnLightTheme name={name}>{title}</BtnLightTheme>
       )}
     </div>
   );

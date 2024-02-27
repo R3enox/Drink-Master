@@ -80,6 +80,7 @@ export const AddDrinkForm = () => {
         <DrinkIngredientsFields ingredientsOptions={ingredientsOptions} />
         <RecipePreparation />
         <BtnThemeChange
+          name="submit"
           title={isloading ? 'creating...' : t('button.AddDrink.Add')}
         ></BtnThemeChange>
       </form>
