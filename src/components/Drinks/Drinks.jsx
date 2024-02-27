@@ -23,6 +23,7 @@ export const Drinks = () => {
   const { page, per_page, countPagesOfPagination, setPage } =
     usePagination(DrinksLimit);
   const { search, category, ingredient } = useDrinkFilters();
+  
 
   const data = useSelector(selectDrinks);
   const totalCount = useSelector(selectTotalCount);

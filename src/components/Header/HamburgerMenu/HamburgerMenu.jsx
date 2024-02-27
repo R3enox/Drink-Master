@@ -81,7 +81,7 @@ const HamburgerMenu = () => {
                         }}
                         to={href}
                       >
-                        {title}
+                        {t(`Header.${title}`)}
                       </NavLink>
                     </li>
                   ))}
