@@ -13,7 +13,7 @@ import '../../../i18n';
 import LogoutBtn from '../LogoutBtn/LogoutBtn';
 
 const UserInfo = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const [openEl, setOpenEl] = useState(null);
   const [popUpIsOpen, setPopUpIsOpen] = useState(false);

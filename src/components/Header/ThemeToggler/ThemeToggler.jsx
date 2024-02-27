@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import styles from './ThemeToggler.module.css';
 
 const ThemeToggler = () => {
   const [isLightTheme, setIsLightTheme] = useState(() => {
@@ -21,14 +20,10 @@ const ThemeToggler = () => {
   };
 
   return (
-    <div
-      className={`${styles.ThemeToggler} ${
-        isLightTheme ? styles['light-theme'] : ''
-      }`}
-    >
-      <label className={styles['theme-switch']}>
+    <div className={`ThemeToggler ${isLightTheme ? 'light-theme' : ''}`}>
+      <label className={'theme-switch'}>
         <input type="checkbox" checked={!isLightTheme} onChange={toggleTheme} />
-        <span className={`${styles.slider} ${styles.round}`}></span>
+        <span className={'slider round'}></span>
       </label>
     </div>
   );

@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import {
+  BtnDarkTheme,
+  BtnLightTheme,
   ButtonComponentDarkTheme,
   ButtonComponentLightTheme,
   LinkDarkTheme,
   LinkLightTheme,
 } from './Buttons';
 
-export const ButtonThemeChange = ({ title, to }) => {
+export const LinkThemeChange = ({ title, to }) => {
   const storTheme = localStorage.getItem('theme');
 
   const [theme, setTheme] = useState(() => storTheme === 'dark');
@@ -21,6 +23,26 @@ export const ButtonThemeChange = ({ title, to }) => {
         <LinkDarkTheme to={to}>{title}</LinkDarkTheme>
       ) : (
         <LinkLightTheme to={to}>{title}</LinkLightTheme>
+      )}
+    </div>
+  );
+};
+
+export const BtnThemeChange = ({ title, name }) => {
+  const storTheme = localStorage.getItem('theme');
+
+  const [theme, setTheme] = useState(() => storTheme === 'dark');
+
+  useEffect(() => {
+    const updatedTheme = localStorage.getItem('theme');
+    setTheme(updatedTheme === 'dark');
+  }, [theme]);
+  return (
+    <div>
+      {theme ? (
+        <BtnDarkTheme name={name}>{title}</BtnDarkTheme>
+      ) : (
+        <BtnLightTheme name={name}>{title}</BtnLightTheme>
       )}
     </div>
   );
