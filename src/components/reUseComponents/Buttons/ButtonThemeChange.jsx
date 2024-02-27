@@ -15,17 +15,10 @@ export const LinkThemeChange = ({ title, to }) => {
 
   useEffect(() => {
     const updatedTheme = localStorage.getItem('theme');
+
     setTheme(updatedTheme === 'dark');
   }, [theme]);
-  return (
-    <div>
-      {theme ? (
-        <LinkDarkTheme to={to}>{title}</LinkDarkTheme>
-      ) : (
-        <LinkLightTheme to={to}>{title}</LinkLightTheme>
-      )}
-    </div>
-  );
+  return <LinkLightTheme to={to}>{title}</LinkLightTheme>;
 };
 
 export const BtnThemeChange = ({ title, name }) => {

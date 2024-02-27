@@ -9,9 +9,7 @@ export const Nav = () => {
   return (
     <ul className="flex flex-col gap-y-[14px] font-medium text-[14px] leading-[1.6] text-primary-text-color md:gap-y-[20px]">
       <li className=" hover:text-grey-text-color transition-colors">
-        <a>
-          <Link to={'/drinks'}>{t('link.Nav.Drinks')}</Link>
-        </a>
+        <Link to={'/drinks'}>{t('link.Nav.Drinks')}</Link>
       </li>
       <li className="hover:text-grey-text-color transition-colors">
         <Link to={'/add'}>{t('link.Nav.AddDrink')}</Link>

@@ -9,7 +9,7 @@ export const LinkDarkTheme = ({ children, to }) => {
     <div className="flex">
       <Link to={to} className={css.button}>
         <div className={css.dotsBorder}></div>
-        <span className={css.textButton}>{children}</span>
+        <span className="">{children}</span>
       </Link>
     </div>
   );
@@ -119,9 +119,11 @@ export const BtnSubscribe = ({ children }) => {
 export const LinkLightTheme = ({ children, to }) => {
   return (
     <div className="flex">
-      <Link to={to} className={`${css.btnTransparent} ${css.button}`}>
+      <Link to={to} className={`dark:btn-white btn-black   ${css.button}`}>
         <div className={`${css.dotsBorder} ${css.dotsBorderTransparent}`}></div>
-        <span className={`${css.textBtnTransparent} ${css.textButton}`}>
+        <span
+          className={`text-primary-text-color dark:text-primary-text-button-color ${css.textButton}`}
+        >
           {children}
         </span>
       </Link>
