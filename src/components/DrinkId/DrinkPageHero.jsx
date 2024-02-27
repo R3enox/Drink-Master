@@ -9,13 +9,14 @@ import '../../i18n';
 import { ButtonComponentThemeChange } from '../reUseComponents/Buttons/ButtonThemeChange';
 
 const DrinkPageHero = ({ cocktail }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const currentLng = i18n.language; 
 
   const dispatch = useDispatch();
   const user = useSelector(selectAuthUser);
   const [isFirstRender, setIsFirstRender] = useState(true);
 
-  const { _id, drink, category, alcoholic, description, drinkThumb, favorite } =
+  const { _id, drink, category, alcoholic, description,descriptionUK, drinkThumb, favorite } =
     cocktail;
 
   const isFavoriteFirstRender = favorite?.includes(user.id);
@@ -48,7 +49,8 @@ const DrinkPageHero = ({ cocktail }) => {
          {t(`categories.${category}`)}/{t(`cocktailDiscr.${alcoholic}`)}
         </p>
         <p className="text-[14px] leading-[1.29] mb-[40px] text-gray-100 md:text-[16px] md:leading-[1.37] md:max-w-[593px]">
-          {description}
+          {/* {description} */}
+          {currentLng === "uk" ? descriptionUK : description}
         </p>
         <div className="pt-10 pb-20">
           {isFav ? (
