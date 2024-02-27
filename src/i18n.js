@@ -6,14 +6,14 @@ import { initReactI18next } from 'react-i18next';
 i18n
   .use(detector)
   .use(backend)
-  .use(initReactI18next) // passes i18n down to react-i18next
+  .use(initReactI18next)
   .init({
     debug: false,
-    whitelist: ['en', 'ua'],
-    fallbackLng: 'en', // use en if detected lng is not available
-    // saveMissing: true, // send not translated keys to endpoint
+    whitelist: ['en', 'uk'],
+    fallbackLng: 'en',
     backend: {
       loadPath: '/frontend-drink-master/locales/{{lng}}/{{ns}}.json',
+      // loadPath: '/locales/{{lng}}/{{ns}}.json',
     },
   });
 

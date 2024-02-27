@@ -1,31 +1,38 @@
 import { DrinkPageHero } from './AddDrinkFormComponents/DrinkDescriptionFields';
 import { DrinkIngredientsFields } from './AddDrinkFormComponents/DrinkIngredientsFields';
 import { RecipePreparation } from './AddDrinkFormComponents/RecipePreparation';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useMemo } from 'react';
 import { useFilters } from '../../hooks/useFilters';
 import { createOptionsFromArrOfObjUsingId } from '../../helpers/createCollectionOptions';
-import { BtnDarkTheme } from '../reUseComponents/Buttons/Buttons';
-import { addDrink } from '../../redux/addDrinks/addDrinkSlice';
+import {
+  addDrink,
+  selectAddDrinkIsLoading,
+} from '../../redux/addDrinks/addDrinkSlice';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import { useTranslation } from 'react-i18next';
 import '../../i18n';
+import { BtnThemeChange } from '../reUseComponents/Buttons/ButtonThemeChange';
 
 export const AddDrinkForm = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { ingredients } = useFilters();
+  const isloading = useSelector(selectAddDrinkIsLoading);
   const addedIngredients = [];
 
   const ingredientsOptions = useMemo(
-    () => createOptionsFromArrOfObjUsingId(ingredients ?? []),
-    [ingredients]
+    () => createOptionsFromArrOfObjUsingId(ingredients ?? [], t, 'ingredients'),
+    [ingredients, t]
   );
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    e.target.elements.submit.disabled = true;
+    console.log('e.currentTarget: ', e.currentTarget);
     addedIngredients.length = 0;
 
     const formData = new FormData(e.currentTarget);
@@ -57,7 +64,11 @@ export const AddDrinkForm = () => {
     });
 
     const result = await dispatch(addDrink(formData));
+
+    e.target.elements.submit.disabled = false;
+
     if (result.meta.requestStatus === 'fulfilled') {
+      toast.success(t('toastError.AddDrinkForm'));
       navigate('/my');
     }
   };
@@ -68,7 +79,12 @@ export const AddDrinkForm = () => {
         <DrinkPageHero />
         <DrinkIngredientsFields ingredientsOptions={ingredientsOptions} />
         <RecipePreparation />
-        <BtnDarkTheme>{t('button.AddDrink.Add')}</BtnDarkTheme>
+        <BtnThemeChange
+          name="submit"
+          title={
+            isloading ? t('button.AddDrink.Creating') : t('button.AddDrink.Add')
+          }
+        ></BtnThemeChange>
       </form>
     </section>
   );

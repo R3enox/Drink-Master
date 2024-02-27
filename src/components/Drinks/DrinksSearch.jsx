@@ -17,15 +17,17 @@ export const DrinksSearch = () => {
 
   const { categories, ingredients } = useFilters();
   const { search, category, ingredient, setDrinkFilter } = useDrinkFilters();
+  const currentLang = i18n.language;
+
 
   const categoriesOptions = useMemo(
-    () => createOptionsFromArrOfStr(categories ?? []),
-    [categories]
+    () => createOptionsFromArrOfStr(categories ?? [], t, 'categories'),
+    [categories, t]
   );
 
   const ingredientsOptions = useMemo(
-    () => createOptionsFromArrOfObj(ingredients ?? []),
-    [ingredients]
+    () => createOptionsFromArrOfObj(ingredients ?? [], t, 'ingredients'),
+    [ingredients, t]
   );
   const { handleSubmit, setValue, watch } = useForm({
     defaultValues: {
@@ -36,6 +38,9 @@ export const DrinksSearch = () => {
   const onSubmit = (values) => {
     setDrinkFilter('search', values.search);
   };
+
+  const defaultCategory = category && t(`categories.${category}`) || t('inputPlaceholder.DrinksSearch.SelectCategory');
+  const defaultIngredient = ingredient && t(`ingredients.${ingredient}`) || t('inputPlaceholder.DrinksSearch.SelectIngredients');
 
   return (
     <div className="flex flex-col items-center md:flex-row gap-[14px] md:gap-[8px] mt-[40px] md:mt-[60px] lg:mt-[80px]">
@@ -74,7 +79,7 @@ export const DrinksSearch = () => {
           </button>
         </div>
       </form>
-      <Select
+      <Select key={`${currentLang}cat`}
         options={categoriesOptions}
         placeholder={t('inputPlaceholder.DrinksSearch.SelectCategory')}
         classNamePrefix="searchSelect"
@@ -84,10 +89,10 @@ export const DrinksSearch = () => {
         }
         defaultValue={{
           value: category || '',
-          label: category || t('inputPlaceholder.DrinksSearch.SelectCategory'),
+          label:  defaultCategory,
         }}
       />
-      <Select
+      <Select key={`${currentLang}ing`}
         options={ingredientsOptions}
         placeholder={t('inputPlaceholder.DrinksSearch.SelectIngredients')}
         classNamePrefix="searchSelect"
@@ -97,8 +102,7 @@ export const DrinksSearch = () => {
         }
         defaultValue={{
           value: ingredient || '',
-          label:
-            ingredient || t('inputPlaceholder.DrinksSearch.SelectIngredients'),
+          label:defaultIngredient,
         }}
       />
     </div>

@@ -9,15 +9,15 @@ export const LinkDarkTheme = ({ children, to }) => {
     <div className="flex">
       <Link to={to} className={css.button}>
         <div className={css.dotsBorder}></div>
-        <span className={css.textButton}>{children}</span>
+        <span className="">{children}</span>
       </Link>
     </div>
   );
 };
 
-export const BtnDarkTheme = ({ children }) => {
+export const BtnDarkTheme = ({ children, name }) => {
   return (
-    <button type="submit" className={css.button}>
+    <button type="submit" name={name} className={css.button}>
       <div className={css.dotsBorder}></div>
       <span className={css.textButton}>{children}</span>
     </button>
@@ -90,10 +90,10 @@ export const LinkHeaderNav = ({ children, to }) => {
       to={to}
       className={({ isActive }) => {
         return (
-          'py-[8px] px-[16px] rounded-[40px] border-[1px] text-[14px] leading-[1.6] font-medium dark:border-border-color border-border-color-for-light ' +
+          'py-[8px] px-[16px] rounded-[40px] border-[1px] text-[14px] leading-[1.6] font-medium border-border-color-for-light dark:border-border-color transition-shadow shadow-lg hover:shadow-primary-text-button-color/50 dark:hover:shadow-primary-text-color/50' +
           (!isActive
-            ? 'text-primary-text-button-color dark:text-primary-text-color bg-transparent'
-            : 'text-primary-text-color bg-primary-text-button-color transition shadow-lg shadow-primary-text-button-color/50 dark:shadow-primary-text-color/50 ')
+            ? ' text-primary-text-button-color dark:text-primary-text-color bg-transparent'
+            : ' text-primary-text-color bg-primary-text-button-color transition shadow-lg shadow-primary-text-button-color/50 dark:shadow-primary-text-color/50 ')
         );
       }}
     >
@@ -119,9 +119,11 @@ export const BtnSubscribe = ({ children }) => {
 export const LinkLightTheme = ({ children, to }) => {
   return (
     <div className="flex">
-      <Link to={to} className={`${css.btnTransparent} ${css.button}`}>
+      <Link to={to} className={`dark:btn-white btn-black   ${css.button}`}>
         <div className={`${css.dotsBorder} ${css.dotsBorderTransparent}`}></div>
-        <span className={`${css.textBtnTransparent} ${css.textButton}`}>
+        <span
+          className={`text-primary-text-color dark:text-primary-text-button-color ${css.textButton}`}
+        >
           {children}
         </span>
       </Link>

@@ -1,10 +1,8 @@
-import { NotFoundPageTitle, NotFoundPageWrapper } from './NotFoundPage.styled';
-
 const NotFoundPage = () => {
   return (
-    <NotFoundPageWrapper>
-      <NotFoundPageTitle>4&nbsp;&nbsp;&nbsp;4</NotFoundPageTitle>
-    </NotFoundPageWrapper>
+    <div className="bg-page-404-mobile md:bg-page-404-tablet lg:bg-page-404-desktop not-found-page-wrapper">
+      <p className="not-found-page-title">4&nbsp;&nbsp;&nbsp;4</p>
+    </div>
   );
 };
 

@@ -11,7 +11,7 @@ import { useTranslation } from 'react-i18next';
 import '../../i18n';
 
 const Calendar = ({ getDateOfBirth }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const [startDate, setStartDate] = useState(null);
 
@@ -35,7 +35,7 @@ const Calendar = ({ getDateOfBirth }) => {
         }
         customInput={
           <MaskedInput
-            className="w-full bg-transparent h-[54px] rounded-[42px] border-[1px] border-border-color  hover:border-grey-text-color hover:placeholder-primary-text-color text-[14px] md:text-[17px] leading-[1.29] placeholder-border-color py-[18px] px-[24px] outline-none"
+            className="w-full bg-transparent text-primary-text-color  h-[54px] rounded-[42px] border-[1px] border-border-color  hover:border-grey-text-color hover:placeholder-primary-text-color text-[14px] md:text-[17px] leading-[1.29] placeholder-border-color py-[18px] px-[24px] outline-none"
             mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
           />
         }

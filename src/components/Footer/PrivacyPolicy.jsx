@@ -8,7 +8,6 @@ import { useTranslation } from 'react-i18next';
 import '../../i18n';
 
 export const PrivacyPolicy = () => {
-
   const [isOpen, setIsOpen] = useState(false);
   const [onPolicyClick, setOnPolicyClick] = useState(false);
 
@@ -19,34 +18,31 @@ export const PrivacyPolicy = () => {
   const closeFooterModal = () => {
     setIsOpen(false);
   };
-  const { t, i18n } = useTranslation();
-
+  const { t } = useTranslation();
 
   return (
-    <div className="flex flex-wrap gap-x-[153px] lg:gap-x-[689px]">
+    <div className="flex  flex-wrap md:flex-nowrap md:justify-between">
       <p className="text-grey-text-color text-[12px] leading-[1.33] mb-[8px] md: top-[443px] left-[32px] md:text-[14px] md:leading-[1.29] lg:-[388px]">
         {t('Privacy.date')}
       </p>
       <ul className="flex gap-x-[14px] text-grey-text-color text-[12px] leading-[1.33] md:text-[14px] md:leading-[1.29]">
-        <li>
-
+        <li className="hover:text-primary-text-color">
           <Link
             onClick={() => {
               openFooterModal();
               setOnPolicyClick(true);
             }}
           >
-            <p>Private Policy</p>
+            <p>{t('Privacy.Policy')}</p>
           </Link>
         </li>
-        <li>
+        <li className="hover:text-primary-text-color">
           <Link
             onClick={() => {
               openFooterModal();
             }}
           >
-            <p>Terms of Service</p>
-
+            <p>{t('Privacy.Term')}</p>
           </Link>
         </li>
       </ul>

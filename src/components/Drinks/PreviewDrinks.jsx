@@ -13,7 +13,7 @@ import {
 
 import { useTranslation } from 'react-i18next';
 import '../../i18n';
-import { ButtonThemeChange } from '../reUseComponents/Buttons/ButtonThemeChange';
+import { LinkThemeChange } from '../reUseComponents/Buttons/ButtonThemeChange';
 
 const popularCategories = [
   'Ordinary Drink',
@@ -23,7 +23,7 @@ const popularCategories = [
 ];
 
 export const PreviewDrinks = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const data = useSelector(selectDrinks);
   const isLoading = useSelector(selectDrinksIsLoading);
@@ -32,7 +32,6 @@ export const PreviewDrinks = () => {
   useEffect(() => {
     dispatch(getDrinks(HomeDrinksLimit[getDeviceType()]));
   }, [dispatch]);
-
   const { categories } = useFilters();
   const filteredCategories =
     categories &&
@@ -42,11 +41,11 @@ export const PreviewDrinks = () => {
     <div className="container m-auto conflex flex-col gap-[60px] pb-[80px] md:gap-[80px] pt-[56px] md:pt-[61px] md:pb-[140px] lg:pt-[80px]">
       {isLoading && <Loader isStatic />}
       {data.length > 0 && !isLoading && (
-        <ul className="flex flex-col gap-[40px] mb-[60px] md:gap-[80px] md:mb-[80px]">
+        <ul className="flex flex-col gap-[40px] mb-[60px]  md:gap-[80px] md:mb-[80px]">
           {filteredCategories.map((category) => (
             <li key={category}>
               <p className="font-semibold text-[28px] md:text-[40px] leading-[1.14] md:leading-[1.1] pb-[24px] md:pb-[40px]">
-                {category}
+                {t(`categories.${category}`)}
               </p>
               <ul className="flex flex-wrap flex-row md:gap-[20px] overflow-hidden h-[392px] md:h-[398px] lg:h-[438px]">
                 {data
@@ -60,7 +59,7 @@ export const PreviewDrinks = () => {
         </ul>
       )}
       <div className="flex justify-center ">
-        <ButtonThemeChange
+        <LinkThemeChange
           title={t('link.PreviewDrinks.LinkDarkTheme')}
           to={'/drinks'}
         />

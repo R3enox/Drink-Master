@@ -10,12 +10,13 @@ import { ButtonComponentThemeChange } from '../reUseComponents/Buttons/ButtonThe
 
 const DrinkPageHero = ({ cocktail }) => {
   const { t, i18n } = useTranslation();
+  const currentLng = i18n.language; 
 
   const dispatch = useDispatch();
   const user = useSelector(selectAuthUser);
   const [isFirstRender, setIsFirstRender] = useState(true);
 
-  const { _id, drink, category, alcoholic, description, drinkThumb, favorite } =
+  const { _id, drink, category, alcoholic, description,descriptionUK, drinkThumb, favorite } =
     cocktail;
 
   const isFavoriteFirstRender = favorite?.includes(user.id);
@@ -45,10 +46,11 @@ const DrinkPageHero = ({ cocktail }) => {
           {drink}
         </h2>
         <p className="text-[12px] leading-[1.17] text-grey-text-color mb-[20px] md:text-[16px] md:leading-[1.25]">
-          {category}/{alcoholic}
+         {t(`categories.${category}`)}/{t(`cocktailDiscr.${alcoholic}`)}
         </p>
         <p className="text-[14px] leading-[1.29] mb-[40px] text-gray-100 md:text-[16px] md:leading-[1.37] md:max-w-[593px]">
-          {description}
+          {/* {description} */}
+          {currentLng === "uk" ? descriptionUK : description}
         </p>
         <div className="pt-10 pb-20">
           {isFav ? (
@@ -76,7 +78,7 @@ const DrinkPageHero = ({ cocktail }) => {
       </div>
       <div>
         <img
-          className="mb-[18px] w-[335px] rounded-xl md:mb-[80px] md:w-[704px] md:object-cover lg:w-[400px] lg:mb-[100px] "
+          className="max-h-[400px] mb-[18px] w-[335px] rounded-xl  md:mb-[80px] md:w-[704px] md:object-cover lg:w-[400px] lg:mb-[100px] "
           src={drinkThumb}
           alt="poster cocktail"
         />

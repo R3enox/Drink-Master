@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 
 export const SubscribeForm = () => {
   const dispatch = useDispatch();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const {
     register,
@@ -20,7 +20,7 @@ export const SubscribeForm = () => {
   } = useForm({ mode: 'onChange' });
   const onSubmit = ({ email }) => {
     dispatch(subscribeUserThunk({ email }));
-    toast.info('Thanks for subscribing', { icon: false });
+    toast.info(t('toastError.SubscribeForm'), { icon: false });
     reset();
   };
   return (
@@ -33,7 +33,7 @@ export const SubscribeForm = () => {
         onSubmit={handleSubmit(onSubmit)}
       >
         <input
-          className={` w-full pl-[24px] py-[18px] rounded-[200px] bg-transparent border-[1px]  border-border-color text-primary-text-color placeholder:text-primary-text-color outline-0 text-[14px] leading-[1.29] md:text-[17px] md:py-[14px] md:leading-[1.56]  ${
+          className={` w-full pl-[24px] py-[18px] rounded-[200px] bg-transparent border-[1px]  border-border-color text-primary-text-color hover:border-primary-text-color hover:placeholder:text-primary-text-color placeholder:text-grey-text-color outline-0 text-[14px] leading-[1.29] md:text-[17px] md:py-[14px] md:leading-[1.56]  ${
             errors?.email && 'error'
           } ${dirtyFields?.email && !errors.email && 'correct'}`}
           type="email"
@@ -60,7 +60,7 @@ export const SubscribeForm = () => {
             </svg>
           </>
         )}
-        <BtnSubscribe>Subscribe</BtnSubscribe>
+        <BtnSubscribe>{t('button.SubscribeForm.BtnSubscribe')}</BtnSubscribe>
       </form>
     </div>
   );
