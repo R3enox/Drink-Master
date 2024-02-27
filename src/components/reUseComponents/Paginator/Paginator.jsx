@@ -26,7 +26,7 @@ export const Paginator = ({
 
   const totalPages = Math.ceil(totalCount / itemsPerPage);
   const checkInitialPage =
-    isNaN(parseInt(page)) || page <= 0 || initialPage > totalPages
+    isNaN(parseInt(initialPage)) || initialPage <= 0 || initialPage > totalPages
       ? 1
       : initialPage;
 
