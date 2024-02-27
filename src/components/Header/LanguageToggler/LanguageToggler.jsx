@@ -31,9 +31,9 @@ const LanguageToggler = () => {
   return (
     <div className={'flex gap-[10px] items-center'}>
       <button
-        className={`text-[14px] font-medium  transition-color-[0.3s] outline-none text-hover-border-color-search dark:text-grey-text-color ${
+        className={`text-[14px] font-semibold  transition-color-[0.3s] outline-none text-button-hover-color  dark:text-primary-text-color ${
           activeButton === 'en'
-            ? 'font-semibold text-button-hover-color dark:text-primary-text-color'
+            ? ' font-medium text-hover-border-color-search dark:text-primary-text-color/50'
             : ''
         }`}
         disabled={activeButton === 'en'}
@@ -43,9 +43,9 @@ const LanguageToggler = () => {
       </button>
       <span className="border-r-[1px] h-[20px] border-hover-border-color-search dark:border-grey-text-color"></span>
       <button
-        className={`text-[14px] font-medium  transition-color-[0.3s] outline-none text-hover-border-color-search dark:text-grey-text-color ${
+        className={`text-[14px] font-semibold  transition-color-[0.3s] outline-none text-button-hover-color dark:text-primary-text-color ${
           activeButton === 'uk'
-            ? 'font-semibold text-button-hover-color dark:text-primary-text-color'
+            ? ' font-medium text-hover-border-color-search dark:text-primary-text-color/50'
             : ''
         }`}
         disabled={activeButton === 'uk'}

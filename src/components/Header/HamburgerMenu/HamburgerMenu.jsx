@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useMainNav } from '../../../../hooks/useMainNav';
 import { Logo } from '../Logo/Logo';
 import ThemeToggler from '../ThemeToggler/ThemeToggler';
+import sprite from '../../../assets/sprite.svg';
 
 import '../../../i18n';
 import LanguageToggler from '../LanguageToggler/LanguageToggler';
@@ -54,17 +55,8 @@ const HamburgerMenu = () => {
                     className=" absolute sm:top-[-12px] md:top-[-5px] sm:right-[-10px] md:right-[0px] px-8 py-8 animate-pulse animate-infinite "
                     onClick={openNav}
                   >
-                    <svg
-                      className="h-8 w-8 text-primary-text-button-color dark:text-primary-text-color"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <line x1="18" y1="6" x2="6" y2="18" />
-                      <line x1="6" y1="6" x2="18" y2="18" />
+                    <svg className=" stroke-primary-text-button-color dark:stroke-primary-text-color w-[24px] h-[24px] md:w-[32px] md:h-[32px] hover:stroke-primary-text-button-color/50 dark:hover:stroke-primary-text-color/50">
+                      <use href={sprite + '#icon-cross'}></use>
                     </svg>
                   </div>
                 </div>
