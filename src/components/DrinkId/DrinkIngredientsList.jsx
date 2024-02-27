@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import '../../i18n';
 
 const DrinkIngredientsList = ({ ingredients }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <>
       <h2 className="mb-[42px] font-medium text-[16px] leading-[1.25] text-hover-border-color-search dark:text-grey-text-color md:mb-[24px] md:font-medium md:text-[16px] md:leading-[1.25]">
@@ -40,7 +40,7 @@ const DrinkIngredientsList = ({ ingredients }) => {
                   </div>
                   <div className=" flex justify-between items-center md:mt-[14px] ">
                     <p className="font-medium leading-[1.29px] text-[14px] md:text-lg md:leading-6 lg:font-medium lg:text-base lg:leading-[1.33333] ">
-                      {title}
+                      {t(`ingredients.${title}`)}
                     </p>
                     <p className="mt-[8px] mb-[8px] text-hover-border-color-search dark:text-grey-text-color font-medium leading-[1.29px] text-[14px] md:font-medium md:text-base md:leading-[1.25] lg:text-base">
                       {measure ? measure : 'to your taste'}

@@ -7,7 +7,7 @@ import '../../i18n';
 import { ButtonThemeChange } from '../reUseComponents/Buttons/ButtonThemeChange.jsx';
 
 export const Hero = () => {
-  const { t, i18n } = useTranslation();
+  const { t} = useTranslation();
 
   return (
     <section className="container flex-wrap m-auto pt-[80px] pb-[56px] md:pt-[120px] md:pb-[61px] lg:pt-[128px] lg:flex lg:pb-[80px] lg:gap-x-[130px]">

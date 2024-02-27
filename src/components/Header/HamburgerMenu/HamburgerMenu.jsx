@@ -4,8 +4,13 @@ import { useMainNav } from '../../../../hooks/useMainNav';
 import { Logo } from '../Logo/Logo';
 import ThemeToggler from '../ThemeToggler/ThemeToggler';
 
+import { useTranslation } from 'react-i18next';
+import '../../../i18n';
+import LanguageToggler from '../LanguageToggler/LanguageToggler';
+
 const HamburgerMenu = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const { t } = useTranslation();
 
   const openNav = () => {
     setIsNavOpen(!isNavOpen);
@@ -37,6 +42,11 @@ const HamburgerMenu = () => {
               <nav className="bg-button-hover-color dark:bg-button-hover-color transition-transform sm:bg-mobile-burger-menu  md:bg-desktop-burger-menu bg-no-repeat  fixed flex flex-col h-[100%] w-full z-[100] ">
                 <div className="relative container flex p-5 border-b  border-border-color text-primary-text-color justify-between md:pl-[32px] md:pr-[32px] lg:pt-[22px] lg:pb-[23px] lg:pl-[100px] lg:pr-[100px]">
                   <Logo />
+                  
+                  <div className=" language-divider flex mr-[5px] md:mr-[40px] gap-[10px]">
+                   <LanguageToggler/>
+                  </div>
+
                   <ThemeToggler className="mr-[62px]" />
                   <div
                     className=" absolute sm:top-[-12px] md:top-[-5px] sm:right-[-10px] md:right-[0px] px-8 py-8 animate-pulse animate-infinite "

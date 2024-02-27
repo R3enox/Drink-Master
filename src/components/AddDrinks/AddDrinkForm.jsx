@@ -17,7 +17,7 @@ import { useTranslation } from 'react-i18next';
 import '../../i18n';
 
 export const AddDrinkForm = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { ingredients } = useFilters();
@@ -25,8 +25,8 @@ export const AddDrinkForm = () => {
   const addedIngredients = [];
 
   const ingredientsOptions = useMemo(
-    () => createOptionsFromArrOfObjUsingId(ingredients ?? []),
-    [ingredients]
+    () => createOptionsFromArrOfObjUsingId(ingredients ?? [], t, 'ingredients'),
+    [ingredients, t]
   );
 
   const onSubmit = async (e) => {
@@ -68,7 +68,7 @@ export const AddDrinkForm = () => {
     e.target.elements.submit.disabled = false;
 
     if (result.meta.requestStatus === 'fulfilled') {
-      toast.success('Coctail created !');
+      toast.success(t('toastError.AddDrinkForm'));
       navigate('/my');
     }
   };
@@ -80,7 +80,7 @@ export const AddDrinkForm = () => {
         <DrinkIngredientsFields ingredientsOptions={ingredientsOptions} />
         <RecipePreparation />
         <BtnDarkTheme name="submit">
-          {isloading ? 'creating...' : t('button.AddDrink.Add')}
+          {isloading ? t('button.AddDrink.Creating') : t('button.AddDrink.Add')}
         </BtnDarkTheme>
       </form>
     </section>

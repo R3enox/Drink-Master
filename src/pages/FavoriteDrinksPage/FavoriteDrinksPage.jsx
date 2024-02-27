@@ -96,13 +96,13 @@ const FavoriteDrinksPage = () => {
             <UniversalModal
               isOpen={isOpen}
               closeFnc={closeFavoriteDrinkModal}
-              content={'Are you sure you want to delete your drink?'}
+              content={t('UniversalModal.Favorite')}
             >
               <ModalButtons
                 closeMyDrinkModal={closeFavoriteDrinkModal}
                 handleDeleteClick={() => {
                   handleDeleteClick(currentId);
-                  toast('Cocktail removed from favorites!', { icon: false });
+                  toast(t('toastError.FavoriteRemove'), { icon: false });
                 }}
                 drinkId={data}
               />

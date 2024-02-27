@@ -13,19 +13,19 @@ import { useTranslation } from 'react-i18next';
 import '../../i18n';
 
 export const DrinksSearch = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const { categories, ingredients } = useFilters();
   const { search, category, ingredient, setDrinkFilter } = useDrinkFilters();
 
   const categoriesOptions = useMemo(
-    () => createOptionsFromArrOfStr(categories ?? []),
-    [categories]
+    () => createOptionsFromArrOfStr(categories ?? [], t, 'categories'),
+    [categories, t]
   );
 
   const ingredientsOptions = useMemo(
-    () => createOptionsFromArrOfObj(ingredients ?? []),
-    [ingredients]
+    () => createOptionsFromArrOfObj(ingredients ?? [], t, 'ingredients'),
+    [ingredients, t]
   );
   const { handleSubmit, setValue, watch } = useForm({
     defaultValues: {
