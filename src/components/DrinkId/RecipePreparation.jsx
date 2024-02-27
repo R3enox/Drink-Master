@@ -4,7 +4,7 @@ import '../../i18n';
 
 const RecipePreparation = ({ description }) => {
   const { t, i18n } = useTranslation();
-  const currentLng = i18n.language; 
+  const currentLng = i18n.language;
 
   return (
     <div className="lg:relative mt-[80px] lg:mt-[100px]  lg:flex  lg:pt-[60px] lg:gap-[60px]">
@@ -16,10 +16,9 @@ const RecipePreparation = ({ description }) => {
           {t('title2.RecipePreparation')}
         </h2>
         <p className="mb-[40px] text-[14px] leading-[1.29] md:text-[16px] md:leading-[1.37] lg:w-[594px] ">
-
-          {/* {description && description.instructions} */}
-
-          {currentLng === "uk" ? description && description.instructionsUK: description && description.instructions}
+          {currentLng === 'uk'
+            ? description && description.instructionsUK
+            : description && description.instructions}
         </p>
       </div>
       <picture className="flex justify-center items-center">

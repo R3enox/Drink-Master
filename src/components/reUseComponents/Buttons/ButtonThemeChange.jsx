@@ -52,19 +52,11 @@ export const ButtonComponentThemeChange = ({ descr, btnFunction, id }) => {
   }, [theme]);
   return (
     <div>
-      {theme ? (
-        <ButtonComponentDarkTheme
-          descr={descr}
-          btnFunction={btnFunction}
-          id={id}
-        />
-      ) : (
-        <ButtonComponentLightTheme
-          descr={descr}
-          btnFunction={btnFunction}
-          id={id}
-        />
-      )}
+      <ButtonComponentLightTheme
+        descr={descr}
+        btnFunction={btnFunction}
+        id={id}
+      />
     </div>
   );
 };
