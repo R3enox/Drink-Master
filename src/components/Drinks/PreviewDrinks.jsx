@@ -13,7 +13,7 @@ import {
 
 import { useTranslation } from 'react-i18next';
 import '../../i18n';
-import { ButtonThemeChange } from '../reUseComponents/Buttons/ButtonThemeChange';
+import { LinkThemeChange } from '../reUseComponents/Buttons/ButtonThemeChange';
 
 const popularCategories = [
   'Ordinary Drink',
@@ -60,7 +60,7 @@ export const PreviewDrinks = () => {
         </ul>
       )}
       <div className="flex justify-center ">
-        <ButtonThemeChange
+        <LinkThemeChange
           title={t('link.PreviewDrinks.LinkDarkTheme')}
           to={'/drinks'}
         />

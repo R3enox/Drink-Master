@@ -34,7 +34,7 @@ const HamburgerMenu = () => {
 
           <div className={isNavOpen ? 'showMenuNav' : 'hideMenuNav'}>
             <div className=" ">
-              <nav className="bg-button-hover-color dark:bg-button-hover-color transition-transform sm:bg-mobile-burger-menu  md:bg-desktop-burger-menu bg-no-repeat  fixed flex flex-col h-[100%] w-full z-[100] ">
+              <nav className="bg-primary-text-color dark:bg-button-hover-color transition-transform sm:dark:bg-mobile-burger-menu  md:dark:bg-desktop-burger-menu bg-no-repeat  fixed flex flex-col h-[100%] w-full z-[100] ">
                 <div className="relative container flex p-5 border-b  border-border-color text-primary-text-color justify-between md:pl-[32px] md:pr-[32px] lg:pt-[22px] lg:pb-[23px] lg:pl-[100px] lg:pr-[100px]">
                   <Logo />
                   <ThemeToggler className="mr-[62px]" />

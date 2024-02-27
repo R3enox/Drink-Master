@@ -23,7 +23,6 @@ html.dark #root {
     url('assets/img/bg-page/mobile-bg.png') 1x,
     url('assets/img/bg-page/mobile-bg@2x.png') 2x
   );
-
   @media screen and (min-width: 768px) {
     & {
       background-image: image-set(
@@ -128,7 +127,7 @@ html.dark #root {
   @apply container py-[259px] m-auto md:pl-[32px] md:py-[350px] lg:py-[223px] lg:pl-[100px];
 }
 .input-form {
-  @apply w-full bg-transparent h-[54px] rounded-[42px] bg-contain border-[1px] border-border-color hover:border-grey-text-color transition-colors hover:placeholder-primary-text-color text-[14px] leading-[1.29] placeholder-border-color py-[18px] px-[24px] outline-none md:text-[17px]  md:pt-[14px] md:pb-[15px];
+  @apply w-full bg-transparent h-[54px] rounded-[42px] bg-contain border-[1px] border-border-color hover:border-grey-text-color transition-colors hover:placeholder-primary-text-color text-[14px] leading-[1.29] placeholder-border-color py-[18px] px-[24px] outline-none md:text-[17px]  md:pt-[14px] md:pb-[15px] text-primary-text-color;
 }
 .input-container {
   @apply flex flex-col gap-[14px] md:w-[400px];
@@ -180,10 +179,10 @@ html.dark #root {
   md:py-[18px] md:px-[44px] md:text-[16px] md:leading-[1.12];
 }
 .btn-up {
-  border: 1px solid rgb(255, 255, 255);
+  /* border: 1px solid rgb(255, 255, 255); */
   filter: drop-shadow(0px 0px 10px rgb(255, 255, 255));
   animation: flickering 1.5ms linear infinite both;
-  background-color: rgba(243, 243, 243, 0.5);
+  background-color: #f3f3f3;
 }
 .btn-up:hover {
   background-color: #434d67;
@@ -191,11 +190,11 @@ html.dark #root {
 }
 
 .btn-google {
-  border: 1px solid rgb(255, 255, 255);
+  /* border: 1px solid rgb(255, 255, 255); */
   border-right: none;
   filter: drop-shadow(0px 0px 10px rgb(255, 255, 255));
   animation: flickering 1.5ms linear infinite both;
-  background-color: rgba(243, 243, 243, 0.5);
+  background-color: #f3f3f3;
 }
 
 .btn-google:hover {

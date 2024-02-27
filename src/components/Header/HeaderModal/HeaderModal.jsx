@@ -39,7 +39,7 @@ const HeaderModal = ({ children, isOpen, closeFnc }) => {
           className="absolute items-center flex justify-center top-[18px] right-[18px] rounded-[58px] hover:bg-primary-text-color transition-colors"
           onClick={closeOnClick}
         >
-          <svg className="stroke-primary-text-color w-[24px] h-[24px] md:w-[32px] md:h-[32px] hover:stroke-primary-text-button-color transition-colors">
+          <svg className="stroke-primary-text-color w-[24px] h-[24px] md:w-[32px] md:h-[32px] ">
             <use href={sprite + '#icon-cross'}></use>
           </svg>
         </button>
