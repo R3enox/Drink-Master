@@ -5,7 +5,7 @@ const DrinksItem = ({ myDrink, onDelete }) => {
     <li>
       <img src={drinkThumb || 'placeholderImage'} alt={drink} />
       <h2>{drink}</h2>
-      <p>{alcoholic ? 'Alcoholic' : 'Non-alcoholic'}</p>
+      <p>{alcoholic ? 'Alcoholic' : 'Non alcoholic'}</p>
       <p>{description}</p>
       <Link to={`/drink/${_id}`}>See more</Link>
       <button onClick={() => onDelete(_id)}>Видалити</button>

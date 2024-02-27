@@ -158,7 +158,7 @@ export const DrinkPageHero = () => {
                   <input
                     type="radio"
                     name="alcoholic"
-                    value="Non-alcoholic"
+                    value="Non alcoholic"
                     required
                     className="peer sr-only"
                   />
@@ -201,7 +201,7 @@ export const DrinkPageHero = () => {
                   <input
                     type="radio"
                     name="alcoholic"
-                    value="Non-alcoholic"
+                    value="Non alcoholic"
                     required
                     className="peer sr-only"
                     defaultChecked
