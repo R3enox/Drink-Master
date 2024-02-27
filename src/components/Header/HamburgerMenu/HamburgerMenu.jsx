@@ -4,6 +4,8 @@ import { useMainNav } from '../../../../hooks/useMainNav';
 import { Logo } from '../Logo/Logo';
 import ThemeToggler from '../ThemeToggler/ThemeToggler';
 
+
+
 const HamburgerMenu = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
@@ -33,8 +35,8 @@ const HamburgerMenu = () => {
           </div>
 
           <div
-            className={`fixed inset-0 ${
-              isNavOpen ? 'absolute top-0 left-0' : 'hidden'
+            className={`fixed inset-0 transition-all duration-1000 ${
+              isNavOpen ? 'absolute top-0 left-0' : ' left-[1000px] '
             }`}
           >
             <div className="">
