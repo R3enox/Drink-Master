@@ -96,6 +96,13 @@ html.dark #root {
   }
 }
 
+.btn-black:before {
+  @apply bg-primary-text-button-color dark:bg-primary-text-color;
+}
+
+.btn-white:before {
+  @apply bg-primary-text-color;
+}
 .restricted-page-container {
   @apply bg-button-hover-color bg-image-set bg-cover min-h-[100vh] md:bg-image-set-tablet lg:bg-image-set-desktop lg:bg-background-color flex justify-start items-center py-[20px] px-[20px] md:px-[64px] lg:px-[100px];
 }

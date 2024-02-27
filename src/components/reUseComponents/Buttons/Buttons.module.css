@@ -109,7 +109,7 @@
   position: relative;
   z-index: 10;
   font-size: 14px;
-  color: #161f37;
+  /* color: #161f37; */
   font-weight: 600;
   line-height: 129%;
 }
@@ -127,16 +127,8 @@
 
 /* === BtnLightTheme ==== */
 
-.btnTransparent::before {
-  background-color: #161f37;
-}
-
 .btnTransparent .dotsBorderTransparent::before {
   background-color: transparent;
-}
-
-.btnTransparent .textBtnTransparent {
-  color: #f3f3f3;
 }
 
 @media screen and (min-width: 768px) {
