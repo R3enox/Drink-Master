@@ -52,7 +52,7 @@ const UserLogo = ({ closeFnc }) => {
           onChange={handleUploadedFile}
         />
 
-        <div className=" flex flex-col items-center pb-[34px] md:pb-[65px]">
+        <div className=" flex flex-col items-center pb-[34px] md:pb-[65px] cursor-pointer ">
           <img
             src={preview}
             srcSet={preview ?? user.avatarURL}
@@ -64,20 +64,22 @@ const UserLogo = ({ closeFnc }) => {
           </svg>
         </div>
       </label>
-      <input
-        className="w-[285px] pl-[24px] md:w-[400px]   py-[18px] rounded-[200px] bg-transparent border-[1px]  border-border-color text-primary-text-color text-[16px] leading-[1.12] font-semibold hover:bg-primary-text-color hover:text-primary-text-button-color transition-colors  md:py-[18px] "
-        {...register('name')}
-        type="text"
-        placeholder={t('inputPlaceholder.SignUpForm.name')}
-        autoComplete="off"
-        onChange={handleChange}
-        value={userName.name}
-      />
-      <svg className="fill-primary-text-color w-[17px] h-[17px] absolute sm:top-[185px] md:top-[240px] sm:right-[60px] md:right-[80px] rounded-[300px]">
-        <use href={sprite + '#icon-pancil'}></use>
-      </svg>
+      <div className="flex justify-between w-[285px] px-[24px] py-[18px] md:py-[14px] md:w-[400px] rounded-[200px] border-[1px]  border-grey-text-color hover:border-primary-text-color focus:border-primary-text-color  transition">
+        <input
+          className="bg-transparent text-primary-text-color text-[16px] leading-[1.12] font-semibold  transition-colors focus:outline-none"
+          {...register('name')}
+          type="text"
+          placeholder={t('inputPlaceholder.SignUpForm.name')}
+          autoComplete="off"
+          onChange={handleChange}
+          value={userName.name}
+        />
+        <svg className="stroke-primary-text-color w-[16px] h-[16px] md:w-[20px] md:h-[20px] ">
+          <use href={sprite + '#icon-pancil'}></use>
+        </svg>
+      </div>
 
-      <button className="w-[285px] md:w-full sm:mt-[18px] md:mt-[25px]  text-center py-[18px] rounded-[200px] bg-transparent border-[1px]  border-border-color text-primary-text-color text-[16px] leading-[1.12] font-semibold hover:bg-primary-text-color hover:text-primary-text-button-color transition-colors  md:py-[18px] ">
+      <button className="w-[285px] md:w-full sm:mt-[18px] md:mt-[25px]  text-center py-[18px] rounded-[200px] bg-primary-text-color border-[1px]  border-border-color text-primary-text-button-color text-[16px] leading-[1.12] font-semibold transition shadow-lg hover:shadow-primary-text-color/50 md:py-[18px] ">
         {t('button.UserLogo.Save')}
       </button>
     </form>

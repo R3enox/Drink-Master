@@ -3,14 +3,13 @@ import { NavLink } from 'react-router-dom';
 import { useMainNav } from '../../../../hooks/useMainNav';
 import { Logo } from '../Logo/Logo';
 import ThemeToggler from '../ThemeToggler/ThemeToggler';
+import sprite from '../../../assets/sprite.svg';
 
-import { useTranslation } from 'react-i18next';
 import '../../../i18n';
 import LanguageToggler from '../LanguageToggler/LanguageToggler';
 
 const HamburgerMenu = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const { t } = useTranslation();
 
   const openNav = () => {
     setIsNavOpen(!isNavOpen);
@@ -37,14 +36,18 @@ const HamburgerMenu = () => {
             <span className="block h-0.5 w-8 bg-primary-text-button-color dark:bg-primary-text-color"></span>
           </div>
 
-          <div className={isNavOpen ? 'showMenuNav' : 'hideMenuNav'}>
-            <div className=" ">
-              <nav className="bg-button-hover-color dark:bg-button-hover-color transition-transform sm:bg-mobile-burger-menu  md:bg-desktop-burger-menu bg-no-repeat  fixed flex flex-col h-[100%] w-full z-[100] ">
+          <div
+            className={`fixed inset-0 ${
+              isNavOpen ? 'absolute top-0 left-0' : 'hidden'
+            }`}
+          >
+            <div className="">
+              <nav className="bg-primary-text-color dark:bg-button-hover-color transition-transform sm:dark:bg-mobile-burger-menu  md:dark:bg-desktop-burger-menu bg-no-repeat  fixed flex flex-col h-[100%] w-full z-[100] ">
                 <div className="relative container flex p-5 border-b  border-border-color text-primary-text-color justify-between md:pl-[32px] md:pr-[32px] lg:pt-[22px] lg:pb-[23px] lg:pl-[100px] lg:pr-[100px]">
                   <Logo />
-                  
+
                   <div className=" language-divider flex mr-[5px] md:mr-[40px] gap-[10px]">
-                   <LanguageToggler/>
+                    <LanguageToggler />
                   </div>
 
                   <ThemeToggler className="mr-[62px]" />
@@ -52,17 +55,8 @@ const HamburgerMenu = () => {
                     className=" absolute sm:top-[-12px] md:top-[-5px] sm:right-[-10px] md:right-[0px] px-8 py-8 animate-pulse animate-infinite "
                     onClick={openNav}
                   >
-                    <svg
-                      className="h-8 w-8 text-primary-text-button-color dark:text-primary-text-color"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <line x1="18" y1="6" x2="6" y2="18" />
-                      <line x1="6" y1="6" x2="18" y2="18" />
+                    <svg className=" stroke-primary-text-button-color dark:stroke-primary-text-color w-[24px] h-[24px] md:w-[32px] md:h-[32px] hover:stroke-primary-text-button-color/50 dark:hover:stroke-primary-text-color/50">
+                      <use href={sprite + '#icon-cross'}></use>
                     </svg>
                   </div>
                 </div>
@@ -91,22 +85,6 @@ const HamburgerMenu = () => {
           </div>
         </section>
       </nav>
-      <style>{`
-      .hideMenuNav {
-        display: none;
-      }
-      .showMenuNav {
-        display: block;
-        position: absolute;
-        width: 100%;
-        height: 100vh;
-        top: 0px;
-        left: 0;
-       
-        overflow-hidden
-        z-index: 10;   
-      }
-    `}</style>
     </div>
   );
 };

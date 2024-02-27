@@ -2,10 +2,7 @@ import { useForm } from 'react-hook-form';
 import { signUpThunk } from '../../redux/auth/authOperations';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import {
-  selectAuthIsLoading,
-  selectAuthAccessToken,
-} from '../../redux/auth/authSelectors';
+import { selectAuthIsLoading } from '../../redux/auth/authSelectors';
 import Calendar from '../DatePicker/Calendar';
 import { useState } from 'react';
 import Loader from '../Loader/Loader';
@@ -19,7 +16,6 @@ const SignUpForm = () => {
 
   const isLoading = useSelector(selectAuthIsLoading);
   const dispatch = useDispatch();
-  const token = useSelector(selectAuthAccessToken);
   const navigate = useNavigate();
   const [dateOfBirth, setDateOfBirth] = useState(null);
   const [showPassword, setShowPassword] = useState(false);

@@ -4,7 +4,6 @@ import ReactPaginate from 'react-paginate';
 import { scrollToTop } from 'helpers/scrollToTop';
 
 import sprite from 'assets/sprite.svg';
-import './Paginator.css';
 
 export const Paginator = ({
   initialPage,
@@ -27,13 +26,18 @@ export const Paginator = ({
 
   const totalPages = Math.ceil(totalCount / itemsPerPage);
   const checkInitialPage =
-    isNaN(parseInt(page)) || page <= 0 || initialPage > totalPages
+    isNaN(parseInt(initialPage)) || initialPage <= 0 || initialPage > totalPages
       ? 1
       : initialPage;
 
   return (
     <ReactPaginate
       containerClassName={'pagination-list'}
+      pageClassName={'pagination-list-item'}
+      previousClassName={'pagination-list-item mr-[20px]'}
+      nextClassName={'pagination-list-item ml-[20px]'}
+      activeClassName={'pagination-list-selected-item'}
+      pageLinkClassName={'pagination-list-link'}
       pageRangeDisplayed={countPagesOfPagination - 4}
       marginPagesDisplayed={1}
       pageCount={totalPages}
@@ -41,12 +45,12 @@ export const Paginator = ({
       forcePage={forcePage - 1}
       onPageChange={handlePageChange}
       previousLabel={
-        <svg>
+        <svg className="pagination-icon-arrow">
           <use href={sprite + '#icon-pagination-arrow'}></use>
         </svg>
       }
       nextLabel={
-        <svg>
+        <svg className="pagination-icon-arrow rotate-180">
           <use href={sprite + '#icon-pagination-arrow'}></use>
         </svg>
       }

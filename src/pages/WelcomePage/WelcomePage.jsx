@@ -5,7 +5,7 @@ import '../../i18n';
 const WelcomePage = () => {
   const { t, i18n } = useTranslation();
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col ">
       <div className="flex flex-col items-center md:items-start mb-[40px]">
         <div className="typing-container">
           <h1 className="typed welcome-title">{t('title.Welcome')}</h1>

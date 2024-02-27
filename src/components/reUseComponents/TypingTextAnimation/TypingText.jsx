@@ -5,10 +5,12 @@ import '../../../i18n';
 
 const TypingText = () => {
   const { t } = useTranslation();
+  const currentText = t('TypingText');
   return (
     <TypeAnimation
+      key={currentText}
       sequence={[
-        t('TypingText'),
+        currentText,
         2000,
         (el) => el.classList.remove(CURSOR_CLASS_NAME),
         6000,

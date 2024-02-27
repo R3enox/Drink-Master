@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import UserLogoPopup from '../UserLogoPopup/UserLogoPopup';
-import LogOutModal from '../LogOutModal/LogOutModal';
+
 
 import UserLogo from '../UserLogo/UserLogo';
 import { selectAuthUser } from '../../../redux/auth/authSelectors';
@@ -10,9 +10,10 @@ import HeaderModal from '../HeaderModal/HeaderModal';
 
 import { useTranslation } from 'react-i18next';
 import '../../../i18n';
+import LogoutBtn from '../LogoutBtn/LogoutBtn';
 
 const UserInfo = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const [openEl, setOpenEl] = useState(null);
   const [popUpIsOpen, setPopUpIsOpen] = useState(false);
@@ -73,7 +74,7 @@ const UserInfo = () => {
           content={t('UniversalModal.useSelector')}
           hidden={`hidden`}
         >
-          <LogOutModal closeFnc={toogleLogOutModal} />
+          <LogoutBtn closeFnc={toogleLogOutModal} />
         </UniversalModal>
       )}
 

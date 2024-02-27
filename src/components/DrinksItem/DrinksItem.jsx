@@ -33,10 +33,8 @@ const DrinksItem = ({ myDrink, openMyDrinkModal, onChooseItem }) => {
         {drink}
       </h3>
 
-      <p className="mb-[18px] text-[14px] md:mb-[24px] leading-[1.29] text-grey-text-color">
-        {alcoholic === 'Alcoholic'
-          ? t('cocktailType.alco')
-          : t('cocktailType.non')}
+      <p className="mb-[18px] text-[14px] md:mb-[24px] leading-[1.29] hover-border-color-search dark:text-grey-text-color">
+        {alcoholic ? t('cocktailType.alco') : t('cocktailType.non')}
       </p>
       <p className="h-[75px] mb-[18px] md:mb-[24px]  md:h-[110px]  lg:h-[90px] text-ellipsis  line-clamp-4 md:line-clamp-5 lg:line-clamp-4 text-[14px] md:text-[16px] leading-[1.29] md:leading-[1.38]">
         {description}

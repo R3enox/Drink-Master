@@ -6,16 +6,15 @@ import { initReactI18next } from 'react-i18next';
 i18n
   .use(detector)
   .use(backend)
-  .use(initReactI18next) 
+  .use(initReactI18next)
   .init({
     debug: true,
     whitelist: ['en', 'uk'],
-    fallbackLng: 'uk', 
+    fallbackLng: 'en',
     backend: {
       // loadPath: '/frontend-drink-master/locales/{{lng}}/{{ns}}.json',
       loadPath: '/locales/{{lng}}/{{ns}}.json',
     },
-    
   });
 
 export default i18n;
