@@ -16,6 +16,7 @@ import { useFilters } from 'hooks/useFilters.js';
 import DrinkIngredientsList from '../../components/DrinkId/DrinkIngredientsList.jsx';
 import RecipePreparation from '../../components/DrinkId/RecipePreparation.jsx';
 import DrinkPageHero from '../../components/DrinkId/DrinkPageHero.jsx';
+import ScrollBtn from '../../components/reUseComponents/Buttons/ScrollBtn/ScrollBtn.jsx';
 
 const DrinkPage = () => {
   const currentCocktail = useSelector(selectGetCurrentCocktail);
@@ -60,6 +61,7 @@ const DrinkPage = () => {
           <DrinkPageHero cocktail={currentCocktail} />
           <DrinkIngredientsList ingredients={mergedIngred} />
           <RecipePreparation description={currentCocktail} />
+          <ScrollBtn/>
         </div>
       )}
     </section>
