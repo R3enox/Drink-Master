@@ -11,7 +11,8 @@ import { useTranslation } from 'react-i18next';
 import '../../../i18n';
 
 export const DrinkPageHero = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const currentLang = i18n.language;
 
   const { categories, glasses } = useFilters();
   const [preview, setPreview] = useState();
@@ -110,11 +111,15 @@ export const DrinkPageHero = () => {
             {t('label.DrinkPageHero.Category')}
           </label>
           <Select
+            key={`${currentLang}cat`}
             id="selectCategory"
             classNamePrefix="custom_select"
             options={categoriesOptions}
             name="category"
-            defaultValue={categoriesOptions[0]}
+            defaultValue={{
+              value: categoriesOptions[0].value,
+              label: t(`categories.${categoriesOptions[0].value}`),
+            }}
             isRequired={true}
           />
         </div>
@@ -126,11 +131,15 @@ export const DrinkPageHero = () => {
             {t('label.DrinkPageHero.Glass')}
           </label>
           <Select
+            key={`${currentLang}gls`}
             id="selectGlass"
             classNamePrefix="custom_select"
             options={glassesOptions}
             name="glass"
-            defaultValue={glassesOptions[0]}
+            defaultValue={{
+              value: glassesOptions[0].value,
+              label: t(`GlassType.${glassesOptions[0].value}`),
+            }}
             isRequired={true}
           />
         </div>
