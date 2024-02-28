@@ -1,129 +1,63 @@
-import sprite from '../../../assets/sprite.svg';
-import { useEffect, useState } from 'react';
-import { AddDrinkTitle } from './AddDrinkTitle';
-import Select from 'react-select';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { nanoid } from 'nanoid';
 
-import { useTranslation } from 'react-i18next';
+import { DrinkIngrediendFieldItem } from './DrinkIngrediendFieldItem';
+import { AddDrinkTitle } from './AddDrinkTitle';
+import { setInitialIngredientOptions } from 'helpers/createCollectionOptions';
+import sprite from 'assets/sprite.svg';
 import '../../../i18n';
 
 export const DrinkIngredientsFields = ({ ingredientsOptions }) => {
-  const { t, i18n } = useTranslation();
-  const currentLang = i18n.language;
+  const [selectedIngredientOptions, setSelectedIngredientOptions] = useState(
+    () => setInitialIngredientOptions(ingredientsOptions, 3)
+  );
+  const { t } = useTranslation();
 
-  const [ingredientsCount, setIngredientsCount] = useState(3);
-  const [ingredientInputs, setIngredientInputs] = useState([]);
+  const filteredOptions = ingredientsOptions.filter((option) =>
+    selectedIngredientOptions.every(
+      ({ value, hasPlaceholder }) => hasPlaceholder || option.value !== value
+    )
+  );
 
-  useEffect(() => {
-    if (ingredientInputs.length === 0) {
-      newIngredient(ingredientsCount);
+  const handleIncrement = () => {
+    if (ingredientsOptions.length <= selectedIngredientOptions.length) {
       return;
     }
-  }, []);
 
-  // const ingredientsOptions = useMemo(
-  //   () => createOptionsFromArrOfObj(ingredients ?? [], t, 'ingredients'),
-  //   [ingredients, t]
-  // );
-
-  const newIngredient = (ingredientsCount) => {
-    const newIngredientInputs = [];
-    for (let i = 0; i < ingredientsCount; i++) {
-      const id = nanoid();
-      newIngredientInputs.push(
-        <li key={id} className="flex items-center mb-3.5 gap-x-2">
-          <Select
-            name="ingredientId"
-            options={ingredientsOptions}
-            classNamePrefix="ingredientsSelect"
-            placeholder={ingredientsOptions[i].label}
-            // placeholder={t(`ingredients.${ingredientsOptions[i].label}`)}
-            isRequired={true}
-          />
-          <label>
-            <input
-              type="text"
-              placeholder="1  cl"
-              name="measure"
-              required
-              autoComplete="off"
-              className="text-primary-text-button-color dark:text-primary-text-color placeholder-hover-border-color-search dark:placeholder-grey-text-color hover:placeholder-button-hover-color/70 dark:hover:placeholder-primary-text-color bg-transparent  w-[100px] md:w-[150px]  h-[50px] md:h-[56px] border-border-color-search dark:border-grey-text-color border-[1px] rounded-[200px] pl-[18px] md:pl-[24px] focus:border-border-color-search/100 dark:focus:border-primary-text-color hover:border-border-color-search/100 dark:hover:border-primary-text-color outline-none ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms]  "
-            />
-          </label>
-          <button
-            className="md:ml-auto "
-            type="button"
-            id={id}
-            onClick={() => handleDelete(id)}
-          >
-            <svg className=" stroke-button-hover-color dark:stroke-primary-text-color w-[18px] md:w-[20px] h-[18px] md:h-[20px]  hover:stroke-[#848080] focus:stroke-[#848080] ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms] ">
-              <use href={`${sprite}#icon-cross`} />
-            </svg>
-          </button>
-        </li>
-      );
-    }
-    setIngredientInputs(newIngredientInputs);
+    const randomIndex = Math.floor(Math.random() * filteredOptions.length);
+    setSelectedIngredientOptions((prevOptions) => [
+      ...prevOptions,
+      {
+        ...filteredOptions[randomIndex],
+        id: nanoid(),
+        hasPlaceholder: true,
+      },
+    ]);
   };
 
-  const handleInc = () => {
-    if (ingredientsOptions.length <= ingredientsCount) {
+  const handleDecrement = () => {
+    if (selectedIngredientOptions.length <= 0) {
       return;
     }
-    const newCount = ingredientsCount + 1;
-    setIngredientsCount(newCount);
-    let randomIndex = Math.floor(Math.random() * ingredientsOptions.length);
-    const id = nanoid();
-    ingredientInputs.push(
-      <li key={id} className="flex items-center mb-3.5 gap-x-2">
-        <Select
-          className="flex-initial"
-          name="ingredientId"
-          options={ingredientsOptions}
-          classNamePrefix="ingredientsSelect"
-          placeholder={ingredientsOptions[randomIndex].label}
-          // placeholder={t(
-          //   `ingredients.${ingredientsOptions[randomIndex].label}`
-          // )}
-          isRequired={true}
-        />
-        <label>
-          <input
-            type="text"
-            placeholder="1  cl"
-            name="measure"
-            required
-            className="text-primary-text-button-color dark:text-primary-text-color placeholder-hover-border-color-search dark:placeholder-grey-text-color hover:placeholder-button-hover-color/70 dark:hover:placeholder-primary-text-color bg-transparent w-[100px] md:w-[150px]  h-[50px] md:h-[56px] border-border-color-search dark:border-grey-text-color border-[1px] rounded-[200px] pl-[18px] md:pl-[24px] focus:border-border-color-search/100 dark:focus:border-primary-text-color hover:border-border-color-search/100 dark:hover:border-primary-text-color outline-none ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms] cursor-pointer "
-          />
-        </label>
-        <button
-          className="md:ml-auto cursor-pointer"
-          type="button"
-          id={id}
-          onClick={() => handleDelete(id)}
-        >
-          <svg className=" stroke-button-hover-color dark:stroke-primary-text-color w-[18px] md:w-[20px] h-[18px] md:h-[20px]  hover:stroke-[#848080] focus:stroke-[#848080] ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms] ">
-            <use href={`${sprite}#icon-cross`} />
-          </svg>
-        </button>
-      </li>
+
+    setSelectedIngredientOptions((prevOptions) =>
+      prevOptions.slice(0, prevOptions.length - 1)
     );
-  };
-
-  const handleDec = () => {
-    if (ingredientsCount <= 0) {
-      return;
-    }
-    const newCount = ingredientsCount - 1;
-    setIngredientsCount(newCount);
-    ingredientInputs.pop();
   };
 
   const handleDelete = (id) => {
-    setIngredientInputs((prevInputs) =>
-      prevInputs.filter((input) => input.key !== id)
+    setSelectedIngredientOptions((prevOptions) =>
+      prevOptions.filter((option) => option.value !== id)
     );
-    setIngredientsCount((prevCounter) => prevCounter - 1);
+  };
+
+  const handleSelect = (newOption, id) => {
+    setSelectedIngredientOptions((prevOptions) =>
+      prevOptions.map((option) =>
+        option.id === id ? { ...newOption, id, hasPlaceholder: false } : option
+      )
+    );
   };
 
   return (
@@ -134,7 +68,11 @@ export const DrinkIngredientsFields = ({ ingredientsOptions }) => {
           id="counter"
           className="w-[104px] h-[38px] md:w-[114px] md:h-[44px]  flex justify-around items-center border-solid border-border-color-search dark:border-grey-text-color border-[1px] rounded-3xl"
         >
-          <button type="button" data-action="decrement" onClick={handleDec}>
+          <button
+            type="button"
+            data-action="decrement"
+            onClick={handleDecrement}
+          >
             <svg
               width="16"
               height="16"
@@ -144,9 +82,13 @@ export const DrinkIngredientsFields = ({ ingredientsOptions }) => {
             </svg>
           </button>
           <span id="value" className="flex text-center">
-            {ingredientsCount}
+            {selectedIngredientOptions.length}
           </span>
-          <button type="button" data-action="increment" onClick={handleInc}>
+          <button
+            type="button"
+            data-action="increment"
+            onClick={handleIncrement}
+          >
             <svg
               width="16"
               height="16"
@@ -157,7 +99,23 @@ export const DrinkIngredientsFields = ({ ingredientsOptions }) => {
           </button>
         </div>
       </div>
-      <ul className="mb-20 lg:w-[540px]">{ingredientInputs}</ul>
+      {selectedIngredientOptions?.length > 0 && (
+        <ul className="mb-20 lg:w-[540px]">
+          {selectedIngredientOptions.map(
+            ({ value, enTitle, id, hasPlaceholder }) => (
+              <DrinkIngrediendFieldItem
+                key={value}
+                value={{ value, label: t(`ingredients.${enTitle}`), id }}
+                hasPlaceholder={hasPlaceholder}
+                placeholder={t(`ingredients.${enTitle}`)}
+                options={filteredOptions}
+                onDelete={() => handleDelete(value)}
+                onSelect={(selected) => handleSelect(selected, id)}
+              />
+            )
+          )}
+        </ul>
+      )}
     </>
   );
 };

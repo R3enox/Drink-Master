@@ -32,7 +32,6 @@ export const AddDrinkForm = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    console.log('e.currentTarget: ', e.target);
     e.target.elements.submit.disabled = true;
 
     addedIngredients.length = 0;
@@ -44,7 +43,7 @@ export const AddDrinkForm = () => {
       addedIngredients.push({
         title: ingredientsOptions.find(
           (option) => option.value === ingredientId
-        ).label,
+        ).enTitle,
         measure,
         ingredientId,
       });
