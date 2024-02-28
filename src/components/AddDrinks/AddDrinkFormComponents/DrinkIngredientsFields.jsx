@@ -8,7 +8,8 @@ import { useTranslation } from 'react-i18next';
 import '../../../i18n';
 
 export const DrinkIngredientsFields = ({ ingredientsOptions }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const currentLang = i18n.language;
 
   const [ingredientsCount, setIngredientsCount] = useState(3);
   const [ingredientInputs, setIngredientInputs] = useState([]);
@@ -19,6 +20,11 @@ export const DrinkIngredientsFields = ({ ingredientsOptions }) => {
       return;
     }
   }, []);
+
+  // const ingredientsOptions = useMemo(
+  //   () => createOptionsFromArrOfObj(ingredients ?? [], t, 'ingredients'),
+  //   [ingredients, t]
+  // );
 
   const newIngredient = (ingredientsCount) => {
     const newIngredientInputs = [];
@@ -31,6 +37,7 @@ export const DrinkIngredientsFields = ({ ingredientsOptions }) => {
             options={ingredientsOptions}
             classNamePrefix="ingredientsSelect"
             placeholder={ingredientsOptions[i].label}
+            // placeholder={t(`ingredients.${ingredientsOptions[i].label}`)}
             isRequired={true}
           />
           <label>
@@ -75,6 +82,9 @@ export const DrinkIngredientsFields = ({ ingredientsOptions }) => {
           options={ingredientsOptions}
           classNamePrefix="ingredientsSelect"
           placeholder={ingredientsOptions[randomIndex].label}
+          // placeholder={t(
+          //   `ingredients.${ingredientsOptions[randomIndex].label}`
+          // )}
           isRequired={true}
         />
         <label>
