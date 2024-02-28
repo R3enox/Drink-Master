@@ -107,7 +107,7 @@ export const DrinkPageHero = () => {
             htmlFor="selectCategory"
             className="absolute top-0 left-0 text-hover-border-color-search dark:text-grey-text-color font-normal text-base tracking-[-0.02em] leading-[1.2]  ease-[cubic-bezier(0.4, 0, 0.2, 1)] duration-[250ms]"
           >
-            {t('inputPlaceholder.DrinkPageHero.recipeDescr')}
+            {t('label.DrinkPageHero.Category')}
           </label>
           <Select
             id="selectCategory"
