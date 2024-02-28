@@ -35,7 +35,7 @@ export const PopularDrinks = () => {
                   className="w-[90px] h-[90px] rounded-[8px] object-cover scale-100 ease-in-out duration-300  hover:scale-[1.035] hover:contrast-[0.9"
                 />
                 <div>
-                  <h3>{drink.drink}</h3>
+                  <h3>{drink}</h3>
                   <p className="overflow-hidden h-[63px] text-hover-border-color-search dark:text-grey-text-color text-sm	leading-[143%]">
                     {currentLng === 'uk' ? descriptionUK : description}
                   </p>
