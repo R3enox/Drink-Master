@@ -34,7 +34,7 @@ const UniversalModal = ({ children, isOpen, closeFnc, content }) => {
       className="fixed bg-opacity-0 overflow-x-hidden overflow-y-auto left-0 top-0  w-full h-full pt-20 z-[100]"
       onClick={handleOverlayClick}
     >
-      <div className="absolute bg-primary-text-button-color top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] rounded-[24px] items-center flex flex-col py-[50px] px-[25px] md:p-[50px] ">
+      <div className="absolute bg-primary-text-button-color top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] rounded-[24px]  flex flex-col items-center py-[50px] px-[25px] md:p-[50px] ">
         <button
           className="absolute items-center flex justify-center top-[18px] right-[18px] rounded-[58px]"
           onClick={closeOnClick}

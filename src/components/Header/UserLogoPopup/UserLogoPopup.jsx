@@ -34,7 +34,7 @@ const UserLogoPopup = ({
         className="z-[101] absolute p-[18px] h-[134px] w-[177px] bg-indigo-500  sm:translate-x-[-20%] sm:translate-y-[78%]  md:translate-x-[-10%] md:translate-y-[82%]  lg:translate-x-[-20%] lg:translate-y-[82%] rounded-md bg-primary-text-button-color"
       >
         <div onClick={openModal}>
-          <div className="flex justify-between mb-[28px]">
+          <div className="flex justify-between  items-center mb-[28px]">
             <p>{t('UserLogoPopup.text')}</p>
             <svg className="stroke-primary-text-color  w-[17px] h-[17px]  hover:stroke-primary-text-color/50">
               <use href={sprite + '#icon-pancil'}></use>

@@ -48,6 +48,8 @@ const UserLogo = ({ closeFnc }) => {
         <input
           className="w-[20px] h-[2px] opacity-0"
           type="file"
+          accept="image/*"
+          capture
           {...register('avatar')}
           onChange={handleUploadedFile}
         />

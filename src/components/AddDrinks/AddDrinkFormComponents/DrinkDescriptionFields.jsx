@@ -52,6 +52,8 @@ export const DrinkPageHero = () => {
           id="fileInput"
           type="file"
           name="drinkThumb"
+          accept="image/*"
+          capture
           required
           className="inputFile sr-only mt-[280px] ml-[170px]"
           onChange={handleUploadedFile}
