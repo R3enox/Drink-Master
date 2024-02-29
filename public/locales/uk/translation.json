@@ -104,7 +104,9 @@
       "dateFormat": "дд/мм/рррр"
     },
     "DrinksSearch": {
-      "text": "Введіть текст",
+      "itemTitle": "Пошук коктейлю",
+      "itemPromt": "Введіть назву коктейлю англійською",
+
       "SelectCategory": "Всі категорії",
       "SelectIngredients": "Інгредієнти"
     },
