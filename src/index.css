@@ -155,13 +155,15 @@ html.dark #root {
   @apply flex flex-col gap-[14px] mt-[28px] md:mt-[40px] md:w-[400px];
 }
 .sign-btn {
-  @apply bg-primary-text-color  text-primary-text-button-color font-semibold pr-[64px] rounded-r-[42px] text-[14px] leading-[1.29] w-[285px] md:text-[16px] md:leading-[1.1] md:py-[18px] md:h-[56px] md:w-[335px];
+  @apply relative bg-primary-text-color  text-primary-text-button-color font-semibold rounded-[42px] text-[14px] leading-[1.29] max-w-[335px] py-[18px] md:text-[16px] md:leading-[1.1] md:py-[18px] md:h-[56px] md:max-w-[400px];
 }
-.signup-btn {
-  @apply pr-[54px];
+
+.google-wrapper {
+  @apply flex items-center gap-[50px] text-primary-text-color;
 }
+
 .sign-google {
-  @apply bg-primary-text-color py-[12px] px-[22px] rounded-l-[42px] max-w-[65px] md:py-[12px] md:h-[56px];
+  @apply bg-primary-text-color py-[12px] px-[22px] rounded-[42px] max-w-[335px] md:py-[12px] md:h-[56px] md:max-w-[400px];
 }
 
 .sign-link-btn {
@@ -197,11 +199,11 @@ html.dark #root {
 }
 
 .btn-google {
-  /* border: 1px solid rgb(255, 255, 255); */
-  border-right: none;
+  border: 1px solid rgb(255, 255, 255);
+
   filter: drop-shadow(0px 0px 10px rgb(255, 255, 255));
   animation: flickering 1.5ms linear infinite both;
-  background-color: #f3f3f3;
+  background-color: transparent;
 }
 
 .btn-google:hover {
