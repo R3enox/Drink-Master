@@ -144,12 +144,10 @@ const SignInForm = () => {
             className="btn-google sign-google"
             type="submit"
           >
-            <div className="google-wrapper">
-              <svg className="w-[28px] h-[28px] fill-none stroke-primary-text-color cursor-pointer  rounded-full">
-                <use href={sprite + '#icon-google'}></use>
-              </svg>
-              Continue with Google
-            </div>
+            <svg className="w-[28px] h-[28px] fill-none stroke-primary-text-color cursor-pointer  rounded-full">
+              <use href={sprite + '#icon-google'}></use>
+            </svg>
+            Continue with Google
           </Link>
         </div>
         <Link className="sign-link-btn" to="/signup">
