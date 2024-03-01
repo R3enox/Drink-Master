@@ -10,7 +10,7 @@ import '../../i18n';
 
 export const Footer = () => {
   return (
-    <div className="bg-footer-set bg-button-hover-color md:bg-footer-set-tablet lg:bg-footer-set-desktop bg-contain bg-no-repeat bg-bottom mb-0">
+    <div className="bg-footer-set md:bg-footer-set-tablet lg:bg-footer-set-desktop bg-contain bg-no-repeat bg-bottom mb-0">
       <footer
         className="container mx-auto w-[100vw] pt-[40px] pb-[18px] border-solid border-t-[1px]
      border-border-colorbg-bottom h-full 
