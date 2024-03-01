@@ -4,7 +4,7 @@ import '../../i18n';
 export const PrivacyPolicyDescription = () => {
   const { t } = useTranslation();
   return (
-    <div className=" leading-[1.43]  mb-[32px] md:text-[18px] md:leading-[1.33] md:w-[619px] lg:mb-[40px] lg:w-[500px] text-primary-text-color">
+    <div className=" leading-[1.43] mb-[32px] md:text-[18px] md:leading-[1.33] md:w-[619px] lg:mb-[40px] lg:w-[500px] text-primary-text-color">
       <h3 className=" mb-[12px] text-[18px] md:text-[24px] font-[500] leading-[1.33] text-ellipsis  line-clamp-1">
         {t('FooterModal.PrivacyPolicy.H3')}
       </h3>

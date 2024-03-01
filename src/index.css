@@ -219,6 +219,12 @@ html.dark #root {
   transform: scale(1);
   animation: pulse 1.5s infinite;
 }
+.modal-backdrop {
+  background-color: rgba(10, 10, 17, 0.125);
+}
+html.dark .modal-backdrop {
+  background-color: rgba(243, 243, 243, 0.1);
+}
 
 @keyframes pulse {
   0% {

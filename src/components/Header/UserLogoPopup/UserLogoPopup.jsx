@@ -20,12 +20,22 @@ const UserLogoPopup = ({
   );
 
   useEffect(() => {
+    const handleNoScroll = () => {
+      console.log('open');
+      document.body.style.overflow = openModal ? 'hidden' : 'auto';
+    };
+    if (openModal) {
+      handleNoScroll();
+      window.addEventListener('resize', handleNoScroll);
+    }
     window.addEventListener('click', closePopUp);
 
     return () => {
       window.removeEventListener('click', closePopUp);
+      window.removeEventListener('resize', handleNoScroll);
+      document.body.style.overflow = 'auto';
     };
-  }, [closePopUp]);
+  }, [closePopUp, openModal]);
 
   return (
     <>
