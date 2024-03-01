@@ -41,7 +41,7 @@ export default {
       'border-color-add': 'rgba(64, 112, 205, 0.5)',
       'border-color-search': 'rgba(10, 10, 17, 0.2)',
       'hover-border-color-search': 'rgba(10, 10, 17, 0.5)',
-
+      'header-change-color': 'rgba(10, 10, 17, 0.8)',
       'grey-text-color': 'rgba(243, 243, 243, 0.5)',
       'hover-button-border-color': 'rgba(64, 112, 205, 0.5)',
       'ingredients-card-bg': ' rgba(22, 31, 55, 0.5)',

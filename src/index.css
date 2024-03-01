@@ -54,6 +54,16 @@ html.dark #root {
   color: #f3f3f3;
 }
 
+/* Header */
+
+.header {
+  @apply sticky top-0 z-40 container flex p-5 border-b border-border-color-for-light dark:border-border-color text-primary-text-color justify-between md:pl-[32px] md:pr-[32px] lg:pt-[22px] lg:pb-[23px] lg:pl-[100px] lg:pr-[100px]  lg:items-center;
+}
+
+.header-bg {
+  @apply bg-header-change-color;
+}
+
 /* Welcome-SignIn-SignUp-Pages */
 
 @layer base {
