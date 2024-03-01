@@ -33,6 +33,7 @@ export default {
       'dark-icon-arrow-fill': 'rgba(243, 243, 243, 0.3)',
       'light-icon-arrow-fill': 'rgba(10, 10, 17, 0.3)',
       'light-bg-selected-page': 'rgb(64, 112, 205)',
+      'backdrop-bg-color': 'rgba(21, 21, 21, 0.6)',
       'dark-bg-selected-page': 'rgba(64, 112, 205, 0.5)',
       'filter-scroll-text': '#434D67',
       'hover-text-color': '#253d6f',
