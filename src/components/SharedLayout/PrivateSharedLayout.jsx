@@ -43,13 +43,8 @@ const PrivateSharedLayout = () => {
 
     if (!isLoggedIn) return;
 
-    console.log('USE EFFECT');
     checkAcktivity();
   }, [isLoggedIn, toggleModal]);
-
-  console.log('MOUNTING');
-  console.log('achievement', achievement);
-  console.log('isOpen:', isOpen);
 
   return (
     <>
