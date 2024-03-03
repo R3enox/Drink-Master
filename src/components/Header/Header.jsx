@@ -14,9 +14,10 @@ export const Header = () => {
     const throttledChangeColor = throttle(changeColor, 100);
     window.addEventListener('scroll', throttledChangeColor);
     return () => {
-      window.addEventListener('scroll', throttledChangeColor);
+      window.removeEventListener('scroll', throttledChangeColor);
     };
   }, []);
+
   const changeColor = () => {
     if (window.scrollY >= 84) {
       setChangeHeadColor(true);
