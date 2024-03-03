@@ -31,6 +31,23 @@ const SignInForm = () => {
     dispatch(signInThunk(data));
     navigate('/home');
     reset();
+    // .then((response) => {
+    //   if (response.success) {
+    //     toast.success(`Hi there! Welcome to your digital maker🍸`, {
+    //       theme: 'light',
+    //       transition: Bounce,
+    //     });
+    //     navigate('/home');
+    //     reset();
+    //   } else {
+    //     const message = response.error?.message || 'Something went wrong.';
+    //     toast.error(message);
+    //   }
+    // })
+    // .catch((error) => {
+    //   console.log(error);
+    //   toast.error('An unexpected error occurred. Please try again later.');
+    // });
   };
 
   if (isLoading) {

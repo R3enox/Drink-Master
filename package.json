@@ -21,6 +21,7 @@
     "i18next": "^23.10.0",
     "i18next-browser-languagedetector": "^7.2.0",
     "i18next-http-backend": "^2.5.0",
+    "lodash.throttle": "^4.1.1",
     "modern-normalize": "^2.0.0",
     "nanoid": "^5.0.5",
     "normalize.css": "^8.0.1",

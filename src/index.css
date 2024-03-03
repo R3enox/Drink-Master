@@ -64,6 +64,25 @@ html.dark #root {
   @apply bg-header-change-color;
 }
 
+/* Header Burger Menu */
+@layer base {
+  .bg-desktop-burger-menu {
+    background-size: 100vw;
+    background-image: image-set(
+      url('assets/img/header/desktop-burger-menu.png') 1x,
+      url('assets/img/header/desktop-burger-menu@2x.png') 2x
+    );
+  }
+
+  .bg-mobile-burger-menu {
+    background-size: cover;
+    background-image: image-set(
+      url('assets/img/header/mobile-burger-menu.png') 1x,
+      url('assets/img/header/mobile-burger-menu.@2x.png') 2x
+    );
+  }
+}
+
 /* Welcome-SignIn-SignUp-Pages */
 
 @layer base {
@@ -83,25 +102,6 @@ html.dark #root {
     background-image: image-set(
       url('assets/img/welcomePage/desktop-bg-welcome.png') 1x,
       url('assets/img/welcomePage/desktop-bg-welcome@2x.png') 2x
-    );
-  }
-}
-
-/* Header Burger Menu */
-@layer base {
-  .bg-desktop-burger-menu {
-    background-size: 100vw;
-    background-image: image-set(
-      url('assets/img/header/desktop-burger-menu.png') 1x,
-      url('assets/img/header/desktop-burger-menu@2x.png') 2x
-    );
-  }
-
-  .bg-mobile-burger-menu {
-    background-size: cover;
-    background-image: image-set(
-      url('assets/img/header/mobile-burger-menu.png') 1x,
-      url('assets/img/header/mobile-burger-menu.@2x.png') 2x
     );
   }
 }

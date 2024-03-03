@@ -5,10 +5,21 @@ import ThemeToggler from './ThemeToggler/ThemeToggler';
 import HamburgerMenu from './HamburgerMenu/HamburgerMenu';
 import '../../i18n';
 import LanguageToggler from './LanguageToggler/LanguageToggler';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import throttle from 'lodash.throttle';
 
 export const Header = () => {
   const [changeHeadColor, setChangeHeadColor] = useState(false);
+
+  useEffect(() => {
+    const throttledChangeColor = throttle(changeColor, 100);
+    window.addEventListener('scroll', throttledChangeColor);
+
+    return () => {
+      window.addEventListener('scroll', throttledChangeColor);
+    };
+  }, []);
+
   const changeColor = () => {
     if (window.scrollY >= 84) {
       setChangeHeadColor(true);
@@ -16,8 +27,6 @@ export const Header = () => {
       setChangeHeadColor(false);
     }
   };
-
-  window.addEventListener('scroll', changeColor);
 
   return (
     <>

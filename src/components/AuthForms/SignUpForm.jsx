@@ -7,7 +7,6 @@ import Calendar from '../DatePicker/Calendar';
 import { useState } from 'react';
 import Loader from '../Loader/Loader';
 import sprite from '../../assets/sprite.svg';
-
 import { useTranslation } from 'react-i18next';
 import '../../i18n';
 
@@ -35,6 +34,10 @@ const SignUpForm = () => {
 
   const onSubmit = (data) => {
     data.dateOfBirth = dateOfBirth;
+    // if (!dateOfBirth) {
+    //   alert('Date of birth is required');
+    //   return;
+    // }
     localStorage.setItem(
       'signUp',
       JSON.stringify({
@@ -43,7 +46,6 @@ const SignUpForm = () => {
       })
     );
     dispatch(signUpThunk(data));
-
     navigate('/home');
   };
 
@@ -59,7 +61,7 @@ const SignUpForm = () => {
     >
       <h1 className="form-title">{t('title.SignUpForm')}</h1>
       <div className="input-container">
-        <div>
+        <div className="relative">
           <input
             className={`input-form ${errors?.name && 'error'} ${
               dirtyFields.name && !errors.name && 'correct'
@@ -81,17 +83,24 @@ const SignUpForm = () => {
               },
             })}
           />
-          {errors?.name && <p className="errorMsg">{errors.name.message}</p>}
+          {errors?.name && (
+            <>
+              <svg className="absolute w-[20px] h-[20px] top-[18px] right-[18px] fill-error-color stroke-error-color">
+                <use href={sprite + '#icon-error'}></use>
+              </svg>
+              <p className="errorMsg">{errors.name.message}</p>
+            </>
+          )}
           {dirtyFields.name && !errors.name && (
             <p className="correctMsg">
               {t('inputPlaceholder.SignUpForm.namePatternCorrect')}
             </p>
           )}
         </div>
+
+        <Calendar getDateOfBirth={getDateOfBirth} />
+
         <div>
-          <Calendar getDateOfBirth={getDateOfBirth} />
-        </div>
-        <div className="relative">
           <input
             className={`input-form ${errors?.email && 'error'} ${
               dirtyFields.email && !errors.email && 'correct'
@@ -128,6 +137,7 @@ const SignUpForm = () => {
             </>
           )}
         </div>
+
         <div className="relative">
           <input
             className={`input-form ${errors?.password && 'error'} ${
@@ -181,6 +191,7 @@ const SignUpForm = () => {
           )}
         </div>
       </div>
+
       <div className="btn-container">
         <div className="flex ">
           <Link

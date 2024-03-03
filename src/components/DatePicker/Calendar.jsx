@@ -9,10 +9,17 @@ import { CalendarGlobalStyles } from './Calendar.styled';
 
 import { useTranslation } from 'react-i18next';
 import '../../i18n';
+import { useForm } from 'react-hook-form';
 
 const Calendar = ({ getDateOfBirth }) => {
-  const { t } = useTranslation();
+  const {
+    register,
+    formState: { errors, dirtyFields },
+  } = useForm({
+    mode: 'onChange',
+  });
 
+  const { t } = useTranslation();
   const [startDate, setStartDate] = useState(null);
 
   const handleDateChange = (date) => {
@@ -24,6 +31,7 @@ const Calendar = ({ getDateOfBirth }) => {
   return (
     <>
       <DatePicker
+        className="relative"
         selected={startDate}
         placeholderText={t('inputPlaceholder.DatePicker.dateFormat')}
         showIcon
@@ -35,14 +43,28 @@ const Calendar = ({ getDateOfBirth }) => {
         }
         customInput={
           <MaskedInput
-            className="w-full bg-transparent text-primary-text-color  h-[54px] rounded-[42px] border-[1px] border-border-color  hover:border-grey-text-color hover:placeholder-primary-text-color text-[14px] md:text-[17px] leading-[1.29] placeholder-border-color py-[18px] px-[24px] outline-none"
+            className={`input-form ${errors?.dateOfBirth && 'error'} ${
+              dirtyFields.dateOfBirth && !errors.dateOfBirth && 'correct'
+            }`}
             mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
+            {...register('dateOfBirth', {
+              message: 'Date of birth is required',
+            })}
           />
         }
         onChange={handleDateChange}
         dateFormat={'dd/MM/yyyy'}
         calendarStartDay={1}
+        {...(errors?.dateOfBirth && (
+          <p className="errorMsg">{errors.dateOfBirth.message}</p>
+        ))}
+        {...(dirtyFields.dateOfBirth && !errors.dateOfBirth && (
+          <p className="correctMsg">
+            {t('inputPlaceholder.SignInForm.passwordPatternCorrect')}
+          </p>
+        ))}
       />
+
       <CalendarGlobalStyles className="react-datepicker" />
     </>
   );

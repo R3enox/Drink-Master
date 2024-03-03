@@ -11,7 +11,7 @@ export const signUpThunk = createAsyncThunk(
       setAuthToken(data.accessToken);
       return data;
     } catch (error) {
-      toast.error(`We're sorry, something went wrong`);
+      toast.error(`Incorrect credentials. Please try again.`);
       return thunkApi.rejectWithValue(error.message);
     }
   }
