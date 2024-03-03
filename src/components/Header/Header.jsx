@@ -5,19 +5,36 @@ import ThemeToggler from './ThemeToggler/ThemeToggler';
 import HamburgerMenu from './HamburgerMenu/HamburgerMenu';
 import '../../i18n';
 import LanguageToggler from './LanguageToggler/LanguageToggler';
+import { useEffect, useState } from 'react';
+import { throttle } from 'lodash';
 
 export const Header = () => {
-  
+  const [changeHeadColor, setChangeHeadColor] = useState(false);
+  useEffect(() => {
+    const throttledChangeColor = throttle(changeColor, 100);
+    window.addEventListener('scroll', throttledChangeColor);
+    return () => {
+      window.addEventListener('scroll', throttledChangeColor);
+    };
+  }, []);
+  const changeColor = () => {
+    if (window.scrollY >= 84) {
+      setChangeHeadColor(true);
+    } else {
+      setChangeHeadColor(false);
+    }
+  };
+
   return (
-    <>      
-      <section className="container flex p-5 border-b  border-border-color-for-light dark:border-border-color text-primary-text-color justify-between md:pl-[32px] md:pr-[32px] lg:pt-[22px] lg:pb-[23px] lg:pl-[100px] lg:pr-[100px]  lg: items-center">
+    <>
+      <section className={changeHeadColor ? 'header header-bg' : 'header'}>
         <>
           <Logo />
           <Navigation />
           <div className="flex">
-              <div className=" hidden lg:flex lg:mr-[25px] lg:gap-[10px]">
-               <LanguageToggler/> 
-              </div>
+            <div className=" hidden lg:flex lg:mr-[25px] lg:gap-[10px]">
+              <LanguageToggler />
+            </div>
             <div className="hidden lg:flex lg:items-center">
               <ThemeToggler />
             </div>
@@ -25,7 +42,7 @@ export const Header = () => {
             <HamburgerMenu />
           </div>
         </>
-      </section>    
+      </section>
     </>
   );
 };
