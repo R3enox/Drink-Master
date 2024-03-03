@@ -50,7 +50,7 @@ export default {
       'background-color': '#06060c;',
       'light-theme-bg-color': '#D2D2D2',
       'dark-theme-bg-color': '#0A0A11',
-
+      'header-change-color': 'rgba(10, 10, 17, 0.8)',
       'error-color': '#da1414',
       'correct-color': '#3cbc81',
       'icon-plus': 'rgb(71 85 105)',
