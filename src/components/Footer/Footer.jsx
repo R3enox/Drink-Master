@@ -16,7 +16,7 @@ export const Footer = () => {
      border-border-colorbg-bottom h-full 
      md:pb-[24px] md:pt-[80px]"
       >
-        <div className="flex flex-wrap md:flex-nowrap md:gap-x-[251px]">
+        <div className="flex flex-wrap md:flex-nowrap md:gap-x-[231px] lg:gap-x-[293px]">
           <div className="flex gap-x-[90px] mb-[40px] md:flex-col gap-y-[40px] lg:flex-row lg:gap-x-[411px]">
             <div className="flex flex-col  gap-y-[20px] lg:gap-y-[43px]">
               <Link
