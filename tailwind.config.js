@@ -10,12 +10,15 @@ export default {
     container: {
       center: true,
       padding: {
+        xs: '1.25rem',
         sm: '1.25rem',
         md: '2rem',
         lg: '6.25rem',
       },
     },
     screens: {
+      xs: '320px',
+      // => @media (min-width: 320px) { ... }
       sm: '375px',
       // => @media (min-width: 375px) { ... }
       md: '768px',

@@ -50,7 +50,7 @@ const UserInfo = () => {
               alt="avatar"
               width={44}
               height={44}
-              className="rounded-full sm:w-[32px] sm:h-[32px]  md:w-[44px] md:h-[44px] lg:w-[39px] lg:h-[39px]"
+              className="rounded-full xs:w-[30px] xs:h-[30px]  sm:w-[32px] sm:h-[32px]  md:w-[44px] md:h-[44px] lg:w-[39px] lg:h-[39px]"
             />
           </div>
           <p className="text-primary-text-button-color dark:text-primary-text-color">

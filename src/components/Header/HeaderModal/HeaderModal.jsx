@@ -34,7 +34,7 @@ const HeaderModal = ({ children, isOpen, closeFnc }) => {
       className="fixed bg-opacity-0 overflow-x-hidden overflow-y-auto left-0 top-0  w-full h-full pt-20 z-[100] "
       onClick={handleOverlayClick}
     >
-      <div className="absolute bg-primary-text-button-color top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] rounded-[24px] items-center flex flex-col py-[50px] px-[25px] md:p-[50px] md:pb-[75px]">
+      <div className="absolute bg-primary-text-button-color top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] rounded-[24px] items-center flex flex-col xs:pl-[20px] xs:pr-[20px] xs:pt-[50px] xs:pb-[50px] sm:pl-[25px] sm:pr-[25px] sm:pt-[50px] sm:pb-[50px]  py-[50px] px-[25px] md:p-[50px] md:pb-[75px]">
         <button
           className="absolute items-center flex justify-center top-[18px] right-[18px] rounded-[58px]transition-colors"
           onClick={closeOnClick}
@@ -50,3 +50,8 @@ const HeaderModal = ({ children, isOpen, closeFnc }) => {
   );
 };
 export default HeaderModal;
+
+
+
+
+
