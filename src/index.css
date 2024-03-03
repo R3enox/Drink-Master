@@ -289,6 +289,16 @@ html.dark #root {
     );
   }
 }
+
+.icon-item {
+  @apply hover:border-grey-text-color;
+  .icon {
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
 /* Home-Page */
 @layer base {
   .bg-light {
