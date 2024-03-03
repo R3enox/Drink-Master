@@ -830,6 +830,7 @@ input:checked + .slider:before {
 .light-theme .slider {
   background-color: #161f37;
 }
+
 /* Not Found Page */
 .not-found-page-wrapper {
   @apply bg-no-repeat flex flex-col items-center justify-center min-h-[604px] md:min-h-[571px] lg:min-h-[540px];
@@ -890,3 +891,98 @@ input:checked + .slider:before {
   @apply w-[9px] h-[15px] fill-light-icon-arrow-fill dark:fill-dark-icon-arrow-fill;
 }
 /* Paginator */
+
+/* Motivating Modals */
+.motivating-modal-backdrop {
+  @apply fixed left-0 top-0 w-full h-full z-[100] bg-backdrop-bg-color overflow-auto;
+}
+
+.motivating-modal-modal {
+  @apply absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex flex-col justify-between items-center w-[375px] h-[812px] md:w-[500px] md:h-[500px] pt-[322px] md:pt-[250px] pb-[285px] md:pb-[54px] pr-[68px] md:pr-[134px] pl-[68px] md:pl-[134px] bg-no-repeat md:rounded-[30px];
+}
+
+/* first image */
+@layer base {
+  .bg-motiv-modal-first-mobile {
+    background-size: 375px 812px;
+    background-position: center;
+    background-image: image-set(
+      url('assets/img/motivating-modals/mobile-bg-motiv-modal-first.png') 1x,
+      url('assets/img/motivating-modals/mobile-bg-motiv-modal-first@2x.png') 2x
+    );
+  }
+  .bg-motiv-modal-first-tablet-desktop {
+    background-size: 500px 500px;
+    background-position: center;
+    background-image: image-set(
+      url('assets/img/motivating-modals/tablet-desktop-bg-motiv-modal-first.png')
+        1x,
+      url('assets/img/motivating-modals/tablet-desktop-bg-motiv-modal-first@2x.png')
+        2x
+    );
+  }
+}
+/* first image */
+
+/* second image */
+@layer base {
+  .bg-motiv-modal-second-mobile {
+    background-size: 375px 812px;
+    background-position: center;
+    background-image: image-set(
+      url('assets/img/motivating-modals/mobile-bg-motiv-modal-second.png') 1x,
+      url('assets/img/motivating-modals/mobile-bg-motiv-modal-second@2x.png') 2x
+    );
+  }
+  .bg-motiv-modal-second-tablet-desktop {
+    background-size: 500px 500px;
+    background-position: center;
+    background-image: image-set(
+      url('assets/img/motivating-modals/tablet-desktop-bg-motiv-modal-second.png')
+        1x,
+      url('assets/img/motivating-modals/tablet-desktop-bg-motiv-modal-second@2x.png')
+        2x
+    );
+  }
+}
+/* second image */
+
+/* third image */
+@layer base {
+  .bg-motiv-modal-third-mobile {
+    background-size: 375px 812px;
+    background-position: center;
+    background-image: image-set(
+      url('assets/img/motivating-modals/mobile-bg-motiv-modal-third.png') 1x,
+      url('assets/img/motivating-modals/mobile-bg-motiv-modal-third@2x.png') 2x
+    );
+  }
+  .bg-motiv-modal-third-tablet-desktop {
+    background-size: 500px 500px;
+    background-position: center;
+    background-image: image-set(
+      url('assets/img/motivating-modals/tablet-desktop-bg-motiv-modal-third.png')
+        1x,
+      url('assets/img/motivating-modals/tablet-desktop-bg-motiv-modal-third@2x.png')
+        2x
+    );
+  }
+}
+/* third image */
+
+.motiv-modal-title {
+  @apply font-medium text-center text-[28px] leading-[1.14286] tracking-[-0.02em] text-primary-text-color;
+}
+
+.motiv-modal-close-btn {
+  @apply flex justify-center items-center w-[48px] h-[48px] bg-primary-text-button-color rounded-[58px] hover:bg-primary-text-color transition-colors;
+
+  &:hover svg {
+    stroke: #161f37;
+  }
+}
+
+.motiv-modal-close-btn-icon {
+  @apply stroke-primary-text-color w-[28px] h-[28px]  transition-colors;
+}
+/* Motivating Modals */

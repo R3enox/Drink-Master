@@ -1,23 +1,37 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { selectAuthUser } from '../../redux/auth/authSelectors';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import { addFavorite, deleteFavorite } from '../../redux/favorites/favoriteAPI';
-
 import { useTranslation } from 'react-i18next';
-import '../../i18n';
+
 import { ButtonComponentThemeChange } from '../reUseComponents/Buttons/ButtonThemeChange';
+import { MotivatingModal } from '../reUseComponents/MotivatingModal/MotivatingModal';
+
+import { selectAuthUser } from '../../redux/auth/authSelectors';
+import { addFavorite, deleteFavorite } from '../../redux/favorites/favoriteAPI';
+import { useModal } from '../../hooks/useModal';
+import API from 'services/axios';
+import '../../i18n';
 
 const DrinkPageHero = ({ cocktail }) => {
-  const { t, i18n } = useTranslation();
-  const currentLng = i18n.language; 
-
-  const dispatch = useDispatch();
-  const user = useSelector(selectAuthUser);
   const [isFirstRender, setIsFirstRender] = useState(true);
+  const user = useSelector(selectAuthUser);
+  const dispatch = useDispatch();
+  const { t, i18n } = useTranslation();
+  const { isOpen, toggleModal } = useModal();
+  const [achievement, setAchievement] = useState(null);
 
-  const { _id, drink, category, alcoholic, description,descriptionUK, drinkThumb, favorite } =
-    cocktail;
+  const currentLng = i18n.language;
+
+  const {
+    _id,
+    drink,
+    category,
+    alcoholic,
+    description,
+    descriptionUK,
+    drinkThumb,
+    favorite,
+  } = cocktail;
 
   const isFavoriteFirstRender = favorite?.includes(user.id);
   const [isFavorite, setIsFavorite] = useState(isFavoriteFirstRender);
@@ -31,6 +45,11 @@ const DrinkPageHero = ({ cocktail }) => {
       } else {
         await dispatch(addFavorite(id));
         setIsFavorite(true);
+        const { data } = await API.get('/users/achievements/add-to-favorites');
+        if (data) {
+          setAchievement(data);
+          toggleModal();
+        }
       }
     } catch (error) {
       toast.error(error.message);
@@ -46,11 +65,11 @@ const DrinkPageHero = ({ cocktail }) => {
           {drink}
         </h2>
         <p className="text-[12px] leading-[1.17] text-grey-text-color mb-[20px] md:text-[16px] md:leading-[1.25]">
-         {t(`categories.${category}`)}/{t(`cocktailDiscr.${alcoholic}`)}
+          {t(`categories.${category}`)}/{t(`cocktailDiscr.${alcoholic}`)}
         </p>
         <p className="text-[14px] leading-[1.29] mb-[40px] text-gray-100 md:text-[16px] md:leading-[1.37] md:max-w-[593px]">
           {/* {description} */}
-          {currentLng === "uk" ? descriptionUK : description}
+          {currentLng === 'uk' ? descriptionUK : description}
         </p>
         <div className="pt-10 pb-20">
           {isFav ? (
@@ -83,6 +102,13 @@ const DrinkPageHero = ({ cocktail }) => {
           alt="poster cocktail"
         />
       </div>
+      {achievement && isOpen && (
+        <MotivatingModal
+          achievementText={achievement.message}
+          classNamesKey={achievement.classNamesKey}
+          onClose={toggleModal}
+        />
+      )}
     </div>
   );
 };
