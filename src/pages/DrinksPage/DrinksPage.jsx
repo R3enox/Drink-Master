@@ -7,6 +7,7 @@ import { scrollToTop } from 'helpers/scrollToTop';
 
 import { useTranslation } from 'react-i18next';
 import '../../i18n';
+import ScrollBtn from '../../components/reUseComponents/Buttons/ScrollBtn/ScrollBtn';
 
 const DrinksPage = () => {
   const { t, i18n } = useTranslation();
@@ -23,6 +24,7 @@ const DrinksPage = () => {
         <PageTitle title={t('title.Drinks')} />
         <DrinksSearch />
         <Drinks />
+        <ScrollBtn/>
       </div>
     </div>
   );
