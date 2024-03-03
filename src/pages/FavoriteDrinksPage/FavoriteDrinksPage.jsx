@@ -23,6 +23,7 @@ import ModalButtons from '../../components/DrinksItem/ModalButtons';
 
 import { useTranslation } from 'react-i18next';
 import '../../i18n';
+import ScrollBtn from '../../components/reUseComponents/Buttons/ScrollBtn/ScrollBtn';
 
 const FavoriteDrinksPage = () => {
   const { t, i18n } = useTranslation();
@@ -109,6 +110,7 @@ const FavoriteDrinksPage = () => {
             </UniversalModal>
           )}
         </div>
+        <ScrollBtn/>
       </section>
     </div>
   );

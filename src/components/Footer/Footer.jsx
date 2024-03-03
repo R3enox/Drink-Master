@@ -10,13 +10,13 @@ import '../../i18n';
 
 export const Footer = () => {
   return (
-    <div className="bg-footer-set bg-button-hover-color md:bg-footer-set-tablet lg:bg-footer-set-desktop bg-contain bg-no-repeat bg-bottom mb-0">
+    <div className="bg-footer-set md:bg-footer-set-tablet lg:bg-footer-set-desktop bg-contain bg-no-repeat bg-bottom mb-0">
       <footer
         className="container mx-auto w-[100vw] pt-[40px] pb-[18px] border-solid border-t-[1px]
      border-border-colorbg-bottom h-full 
      md:pb-[24px] md:pt-[80px]"
       >
-        <div className="flex flex-wrap md:flex-nowrap md:gap-x-[251px]">
+        <div className="flex flex-wrap md:flex-nowrap md:gap-x-[231px] lg:gap-x-[293px]">
           <div className="flex gap-x-[90px] mb-[40px] md:flex-col gap-y-[40px] lg:flex-row lg:gap-x-[411px]">
             <div className="flex flex-col  gap-y-[20px] lg:gap-y-[43px]">
               <Link

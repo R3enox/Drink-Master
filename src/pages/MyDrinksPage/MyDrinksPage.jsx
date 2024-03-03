@@ -20,6 +20,7 @@ import { toast } from 'react-toastify';
 
 import { useTranslation } from 'react-i18next';
 import '../../i18n';
+import ScrollBtn from '../../components/reUseComponents/Buttons/ScrollBtn/ScrollBtn';
 
 const MyDrinksPage = () => {
   const { t} = useTranslation();
@@ -109,6 +110,7 @@ const MyDrinksPage = () => {
           </UniversalModal>
         )}
       </div>
+      <ScrollBtn/>
     </section>
   );
 };

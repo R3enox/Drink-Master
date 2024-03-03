@@ -5,6 +5,7 @@ import { PageTitle } from '../../components/reUseComponents/PageTitle';
 
 import { useTranslation } from 'react-i18next';
 import '../../i18n';
+import ScrollBtn from '../../components/reUseComponents/Buttons/ScrollBtn/ScrollBtn';
 
 const AddDrinkPage = () => {
   const { t, i18n } = useTranslation();
@@ -23,6 +24,7 @@ const AddDrinkPage = () => {
           </div>
         </div>
       </div>
+      <ScrollBtn/>
     </div>
   );
 };
