@@ -352,7 +352,7 @@ html.dark .searchName:after {
   background-color: #161f37 !important;
   border: none !important;
   border-radius: 200px !important;
-  width: 335px !important;
+  max-width: 335px !important;
   height: 54px !important;
   box-shadow: none !important;
   color: #f3f3f3;

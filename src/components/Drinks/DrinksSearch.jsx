@@ -46,7 +46,7 @@ export const DrinksSearch = () => {
     t('inputPlaceholder.DrinksSearch.SelectIngredients');
 
   return (
-    <div className="flex flex-col items-center md:flex-row gap-[14px] md:gap-[8px] mt-[40px] md:mt-[60px] lg:mt-[80px]">
+    <div className="flex flex-col items-stretch md:items-center md:flex-row gap-[14px] md:gap-[8px] mt-[40px] md:mt-[60px] lg:mt-[80px]">
       <div
         className="searchName"
         data-title={t('inputPlaceholder.DrinksSearch.itemPromt')}
@@ -80,7 +80,7 @@ export const DrinksSearch = () => {
               )}
             </button>
             <button type="submit">
-              <svg className="stroke-primary-text-button-color fill-none dark:stroke-primary-text-color ml-[10px] sm:w-[22px] h-[22px] md:w-[28px] md:h-[28px]">
+              <svg className="stroke-primary-text-button-color fill-none dark:stroke-primary-text-color ml-[10px] w-[22px] h-[22px] md:w-[28px] md:h-[28px]">
                 <use href={sprite + '#icon-search'}></use>
               </svg>
             </button>
