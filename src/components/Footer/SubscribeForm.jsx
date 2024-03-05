@@ -18,10 +18,17 @@ export const SubscribeForm = () => {
     formState: { errors, dirtyFields },
     reset,
   } = useForm({ mode: 'onChange' });
-  const onSubmit = ({ email }) => {
-    dispatch(subscribeUserThunk({ email }));
-    toast.info(t('toastError.SubscribeForm'), { icon: false });
-    reset();
+  const onSubmit = async ({ email }) => {
+    try {
+      await dispatch(subscribeUserThunk({ email })).unwrap();
+      toast.info(t('toastError.SubscribeForm.200'), { icon: false });
+
+      reset();
+    } catch (error) {
+      toast.error(t(`toastError.SubscribeForm.${error.status}`), {
+        icon: false,
+      });
+    }
   };
   return (
     <div className="md:flex flex-col lg:w-[309px]">

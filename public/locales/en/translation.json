@@ -43,7 +43,7 @@
     "AddDrinkForm": "Cocktail created !",
     "MyDrinksPage": "Cocktail removed!",
     "FavoriteRemove": "Cocktail removed from favorites!",
-    "SubscribeForm": "Thanks for subscribing"
+    "SubscribeForm": {"200":"Thanks for subscribing", "403":"You can use just own Email", "400":"Subscribe has already been passed"}
   },
   "Hero": {
     "text": "Unlock your inner mixologist with Drink Master, your one-stop destination for exploring, crafting, and mastering the world's finest beverages."
