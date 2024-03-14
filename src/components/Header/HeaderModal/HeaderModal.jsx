@@ -15,13 +15,22 @@ const HeaderModal = ({ children, isOpen, closeFnc }) => {
         closeOnClick();
       }
     };
-
+    const handleNoScroll = () => {
+      console.log('open');
+      document.body.style.overflow = isOpen ? 'hidden' : 'auto';
+    };
+    if (isOpen) {
+      handleNoScroll();
+      window.addEventListener('resize', handleNoScroll);
+    }
     window.addEventListener('keydown', handlePressEsc);
 
     return () => {
       window.removeEventListener('keydown', handlePressEsc);
+      window.removeEventListener('resize', handleNoScroll);
+      document.body.style.overflow = 'auto';
     };
-  }, [closeOnClick]);
+  }, [closeOnClick, isOpen]);
 
   const handleOverlayClick = (e) => {
     if (e.target === e.currentTarget) {
@@ -31,7 +40,7 @@ const HeaderModal = ({ children, isOpen, closeFnc }) => {
 
   return (
     <div
-      className="fixed bg-opacity-0 overflow-x-hidden overflow-y-auto left-0 top-0  w-full h-full pt-20 z-[100] "
+      className="fixed bg-opacity-0 overflow-x-hidden overflow-y-auto left-0 top-0  w-full h-full pt-20 z-[100] modal-backdrop"
       onClick={handleOverlayClick}
     >
       <div className="absolute bg-primary-text-button-color top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] rounded-[24px] items-center flex flex-col py-[50px] px-[25px] md:p-[50px] md:pb-[75px]">

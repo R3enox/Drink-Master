@@ -19,7 +19,6 @@ export const DrinksSearch = () => {
   const { search, category, ingredient, setDrinkFilter } = useDrinkFilters();
   const currentLang = i18n.language;
 
-
   const categoriesOptions = useMemo(
     () => createOptionsFromArrOfStr(categories ?? [], t, 'categories'),
     [categories, t]
@@ -39,47 +38,57 @@ export const DrinksSearch = () => {
     setDrinkFilter('search', values.search);
   };
 
-  const defaultCategory = category && t(`categories.${category}`) || t('inputPlaceholder.DrinksSearch.SelectCategory');
-  const defaultIngredient = ingredient && t(`ingredients.${ingredient}`) || t('inputPlaceholder.DrinksSearch.SelectIngredients');
+  const defaultCategory =
+    (category && t(`categories.${category}`)) ||
+    t('inputPlaceholder.DrinksSearch.SelectCategory');
+  const defaultIngredient =
+    (ingredient && t(`ingredients.${ingredient}`)) ||
+    t('inputPlaceholder.DrinksSearch.SelectIngredients');
 
   return (
-    <div className="flex flex-col items-center md:flex-row gap-[14px] md:gap-[8px] mt-[40px] md:mt-[60px] lg:mt-[80px]">
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-row w-full justify-between items-center md:w-[264px] border-border-color-search dark:border-border-color hover:border-hover-border-color-search dark:hover:border-grey-text-color hover:color-transparent bg-transparent h-[54px] rounded-[200px] border-[1px] py-[18px] md:py-[14px] px-[24px]"
+    <div className="flex flex-col items-stretch md:items-center md:flex-row gap-[14px] md:gap-[8px] mt-[40px] md:mt-[60px] lg:mt-[80px]">
+      <div
+        className="searchName"
+        data-title={t('inputPlaceholder.DrinksSearch.itemPromt')}
       >
-        <input
-          className="bg-transparent w-full outline-none text-[14px] md:text-[17px] leading-[1.29] md:leading-[1.56]  placeholder:text-dark-theme-bg-color dark:placeholder:text-primary-text-color"
-          type="text"
-          placeholder={t('inputPlaceholder.DrinksSearch.text')}
-          onChange={(e) => {
-            setValue('search', e.target.value);
-          }}
-          value={watch('search' || '')}
-        />
-        <div className="flex items-center">
-          <button
-            type="reset"
-            onClick={() => {
-              setValue('search', '');
-              setDrinkFilter('search', '');
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex flex-row justify-between items-center border-border-color-search dark:border-border-color hover:border-hover-border-color-search dark:hover:border-grey-text-color hover:color-transparent bg-transparent rounded-[200px] border-[1px] py-[18px] md:py-[14px] px-[24px]"
+        >
+          <input
+            className="bg-transparent w-full outline-none text-[14px] md:text-[17px] leading-[1.29] md:leading-[1.56]  placeholder:text-dark-theme-bg-color dark:placeholder:text-primary-text-color"
+            type="text"
+            placeholder={t('inputPlaceholder.DrinksSearch.itemTitle')}
+            onChange={(e) => {
+              setValue('search', e.target.value);
             }}
-            className="w-[10px] h-[10px] md:w-[15px] md:h-[15px]"
-          >
-            {watch('search') && (
-              <svg className="stroke-primary-text-button-color fill-none dark:stroke-primary-text-color w-[10px] h-[10px] md:w-[15px] md:h-[15px]">
-                <use href={sprite + '#icon-cross'}></use>
+            value={watch('search' || '')}
+          />
+          <div className="flex items-center">
+            <button
+              type="reset"
+              onClick={() => {
+                setValue('search', '');
+                setDrinkFilter('search', '');
+              }}
+              className="w-[10px] h-[10px] md:w-[15px] md:h-[15px]"
+            >
+              {watch('search') && (
+                <svg className="stroke-primary-text-button-color fill-none dark:stroke-primary-text-color w-[10px] h-[10px] md:w-[15px] md:h-[15px]">
+                  <use href={sprite + '#icon-cross'}></use>
+                </svg>
+              )}
+            </button>
+            <button type="submit">
+              <svg className="stroke-primary-text-button-color fill-none dark:stroke-primary-text-color ml-[10px] w-[22px] h-[22px] md:w-[28px] md:h-[28px]">
+                <use href={sprite + '#icon-search'}></use>
               </svg>
-            )}
-          </button>
-          <button type="submit">
-            <svg className="stroke-primary-text-button-color fill-none dark:stroke-primary-text-color ml-[10px] sm:w-[22px] h-[22px] md:w-[28px] md:h-[28px]">
-              <use href={sprite + '#icon-search'}></use>
-            </svg>
-          </button>
-        </div>
-      </form>
-      <Select key={`${currentLang}cat`}
+            </button>
+          </div>
+        </form>
+      </div>
+      <Select
+        key={`${currentLang}cat`}
         options={categoriesOptions}
         placeholder={t('inputPlaceholder.DrinksSearch.SelectCategory')}
         classNamePrefix="searchSelect"
@@ -89,10 +98,11 @@ export const DrinksSearch = () => {
         }
         defaultValue={{
           value: category || '',
-          label:  defaultCategory,
+          label: defaultCategory,
         }}
       />
-      <Select key={`${currentLang}ing`}
+      <Select
+        key={`${currentLang}ing`}
         options={ingredientsOptions}
         placeholder={t('inputPlaceholder.DrinksSearch.SelectIngredients')}
         classNamePrefix="searchSelect"
@@ -102,7 +112,7 @@ export const DrinksSearch = () => {
         }
         defaultValue={{
           value: ingredient || '',
-          label:defaultIngredient,
+          label: defaultIngredient,
         }}
       />
     </div>

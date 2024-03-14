@@ -1,10 +1,7 @@
 import { useEffect, useState } from 'react';
 import {
-  BtnDarkTheme,
   BtnLightTheme,
-  ButtonComponentDarkTheme,
   ButtonComponentLightTheme,
-  LinkDarkTheme,
   LinkLightTheme,
 } from './Buttons';
 
