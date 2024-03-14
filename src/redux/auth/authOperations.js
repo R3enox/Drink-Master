@@ -83,7 +83,10 @@ export const subscribeUserThunk = createAsyncThunk(
       const { data } = await API.post('/users/subscribe', email);
       return data;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      return thunkApi.rejectWithValue({
+        status: error.response.status,
+        message: error.response.data.message,
+      });
     }
   }
 );
