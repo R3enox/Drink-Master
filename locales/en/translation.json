@@ -105,7 +105,9 @@
       "dateFormat": "dd/mm/yyyy"
     },
     "DrinksSearch": {
-      "text": "Enter the text",
+      "itemTitle": "Search cocktail",
+      "itemPromt": "Enter coctail's name in English",
+
       "SelectCategory": "All categories",
       "SelectIngredients": "Ingredients"
     },
