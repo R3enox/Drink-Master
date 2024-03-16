@@ -30,15 +30,7 @@ export const BtnThemeChange = ({ title, name }) => {
     const updatedTheme = localStorage.getItem('theme');
     setTheme(updatedTheme === 'dark');
   }, [theme]);
-  return (
-    <div>
-      {theme ? (
-        <BtnDarkTheme name={name}>{title}</BtnDarkTheme>
-      ) : (
-        <BtnLightTheme name={name}>{title}</BtnLightTheme>
-      )}
-    </div>
-  );
+  return <BtnLightTheme name={name}>{title}</BtnLightTheme>;
 };
 
 export const ButtonComponentThemeChange = ({ descr, btnFunction, id }) => {
@@ -52,19 +44,11 @@ export const ButtonComponentThemeChange = ({ descr, btnFunction, id }) => {
   }, [theme]);
   return (
     <div>
-      {theme ? (
-        <ButtonComponentDarkTheme
-          descr={descr}
-          btnFunction={btnFunction}
-          id={id}
-        />
-      ) : (
-        <ButtonComponentLightTheme
-          descr={descr}
-          btnFunction={btnFunction}
-          id={id}
-        />
-      )}
+      <ButtonComponentLightTheme
+        descr={descr}
+        btnFunction={btnFunction}
+        id={id}
+      />
     </div>
   );
 };

@@ -1,20 +1,24 @@
+import { useMemo, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Navigate, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
+
 import { DrinkPageHero } from './AddDrinkFormComponents/DrinkDescriptionFields';
 import { DrinkIngredientsFields } from './AddDrinkFormComponents/DrinkIngredientsFields';
 import { RecipePreparation } from './AddDrinkFormComponents/RecipePreparation';
-import { useDispatch, useSelector } from 'react-redux';
-import { useMemo } from 'react';
-import { useFilters } from '../../hooks/useFilters';
+import { BtnThemeChange } from '../reUseComponents/Buttons/ButtonThemeChange';
+import { MotivatingModal } from '../reUseComponents/MotivatingModal/MotivatingModal';
+
 import { createOptionsFromArrOfObjUsingId } from '../../helpers/createCollectionOptions';
 import {
   addDrink,
   selectAddDrinkIsLoading,
 } from '../../redux/addDrinks/addDrinkSlice';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-
-import { useTranslation } from 'react-i18next';
+import { useFilters } from '../../hooks/useFilters';
+import { useModal } from '../../hooks/useModal';
+import API from 'services/axios';
 import '../../i18n';
-import { BtnThemeChange } from '../reUseComponents/Buttons/ButtonThemeChange';
 
 export const AddDrinkForm = () => {
   const { t } = useTranslation();
@@ -22,6 +26,9 @@ export const AddDrinkForm = () => {
   const navigate = useNavigate();
   const { ingredients } = useFilters();
   const isloading = useSelector(selectAddDrinkIsLoading);
+  const { isOpen, toggleModal } = useModal();
+  const [achievement, setAchievement] = useState(null);
+
   const addedIngredients = [];
 
   const ingredientsOptions = useMemo(
@@ -31,8 +38,9 @@ export const AddDrinkForm = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+
     e.target.elements.submit.disabled = true;
-    console.log('e.currentTarget: ', e.currentTarget);
+
     addedIngredients.length = 0;
 
     const formData = new FormData(e.currentTarget);
@@ -42,7 +50,7 @@ export const AddDrinkForm = () => {
       addedIngredients.push({
         title: ingredientsOptions.find(
           (option) => option.value === ingredientId
-        ).label,
+        ).enTitle,
         measure,
         ingredientId,
       });
@@ -68,8 +76,14 @@ export const AddDrinkForm = () => {
     e.target.elements.submit.disabled = false;
 
     if (result.meta.requestStatus === 'fulfilled') {
-      toast.success(t('toastError.AddDrinkForm'));
-      navigate('/my');
+      const { data } = await API.get('/users/achievements/create-own');
+      if (data) {
+        setAchievement(data);
+        toggleModal();
+      } else {
+        toast.success(t('toastError.AddDrinkForm'));
+        navigate('/my');
+      }
     }
   };
 
@@ -86,6 +100,14 @@ export const AddDrinkForm = () => {
           }
         ></BtnThemeChange>
       </form>
+      {achievement && isOpen && (
+        <MotivatingModal
+          achievementText={achievement.message}
+          classNamesKey={achievement.classNamesKey}
+          onClose={toggleModal}
+        />
+      )}
+      {achievement && !isOpen && <Navigate to="/my" />}
     </section>
   );
 };

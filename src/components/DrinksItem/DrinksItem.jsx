@@ -6,11 +6,12 @@ import { useTranslation } from 'react-i18next';
 import '../../i18n';
 
 const DrinksItem = ({ myDrink, openMyDrinkModal, onChooseItem }) => {
-  const { t } = useTranslation();
-  
+  const { t, i18n } = useTranslation();
+  const currentLng = i18n.language;
 
-  const { _id, drink, drinkThumb, alcoholic, description } = myDrink;
- 
+  const { _id, drink, drinkThumb, alcoholic, description, descriptionUK } =
+    myDrink;
+
   const openModal = () => {
     openMyDrinkModal();
     onChooseItem(_id);
@@ -37,7 +38,7 @@ const DrinksItem = ({ myDrink, openMyDrinkModal, onChooseItem }) => {
         {alcoholic ? t('cocktailType.alco') : t('cocktailType.non')}
       </p>
       <p className="h-[75px] mb-[18px] md:mb-[24px]  md:h-[110px]  lg:h-[90px] text-ellipsis  line-clamp-4 md:line-clamp-5 lg:line-clamp-4 text-[14px] md:text-[16px] leading-[1.29] md:leading-[1.38]">
-        {description}
+        {currentLng === 'uk' ? descriptionUK : description}
       </p>
       <div className="flex gap-[8px]">
         <LinkSeeMore to={`/drink/${_id}`}>

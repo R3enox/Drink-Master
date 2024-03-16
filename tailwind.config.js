@@ -36,6 +36,7 @@ export default {
       'dark-icon-arrow-fill': 'rgba(243, 243, 243, 0.3)',
       'light-icon-arrow-fill': 'rgba(10, 10, 17, 0.3)',
       'light-bg-selected-page': 'rgb(64, 112, 205)',
+      'backdrop-bg-color': 'rgba(21, 21, 21, 0.6)',
       'dark-bg-selected-page': 'rgba(64, 112, 205, 0.5)',
       'filter-scroll-text': '#434D67',
       'hover-text-color': '#253d6f',
@@ -52,7 +53,7 @@ export default {
       'background-color': '#06060c;',
       'light-theme-bg-color': '#D2D2D2',
       'dark-theme-bg-color': '#0A0A11',
-
+      'header-change-color': 'rgba(10, 10, 17, 0.8)',
       'error-color': '#da1414',
       'correct-color': '#3cbc81',
       'icon-plus': 'rgb(71 85 105)',

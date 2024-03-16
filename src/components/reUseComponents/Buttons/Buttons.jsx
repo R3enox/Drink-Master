@@ -40,13 +40,15 @@ export const ButtonComponentDarkTheme = ({ descr, btnFunction, id }) => {
 export const ButtonComponentLightTheme = ({ descr, btnFunction, id }) => {
   return (
     <button
-      className={`${css.btnTransparent} ${css.button}`}
+      className={`dark:btn-white btn-black ${css.button}`}
       type="button"
       onClick={() => btnFunction(id)}
       disabled={!id}
     >
       <div className={`${css.dotsBorder} ${css.dotsBorderTransparent}`}></div>
-      <span className={`${css.textBtnTransparent} ${css.textButton}`}>
+      <span
+        className={`text-primary-text-color dark:text-primary-text-button-color ${css.textButton}`}
+      >
         {descr}
       </span>
     </button>
@@ -131,15 +133,18 @@ export const LinkLightTheme = ({ children, to }) => {
   );
 };
 
-export const BtnLightTheme = ({ children, to }) => {
+export const BtnLightTheme = ({ children, to, name }) => {
   return (
     <button
+      name={name}
       type="submit"
       to={to}
-      className={`${css.btnTransparent} ${css.button}`}
+      className={`dark:btn-white btn-black ${css.button}`}
     >
       <div className={`${css.dotsBorder} ${css.dotsBorderTransparent}`}></div>
-      <span className={`${css.textBtnTransparent} ${css.textButton}`}>
+      <span
+        className={`text-primary-text-color dark:text-primary-text-button-color ${css.textButton}`}
+      >
         {children}
       </span>
     </button>
