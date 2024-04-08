@@ -28,16 +28,16 @@ const HamburgerMenu = () => {
   const mainNav = useMainNav();
 
   return (
-    <div className=" flex items-center justify-between  border-gray-400 pl-[14px]">
+    <div className="z-50 flex items-center justify-between  border-gray-400 pl-[14px]">
       <nav>
         <section className=" MOBILE-MENU flex lg:hidden ">
           <div
             className="HAMBURGER-ICON space-y-2 animate-pulse animate-infinite "
             onClick={openNav}
           >
-            <span className="block h-0.5 w-8 bg-primary-text-button-color dark:bg-primary-text-color"></span>
-            <span className="block h-0.5 w-8 bg-primary-text-button-color dark:bg-primary-text-color"></span>
-            <span className="block h-0.5 w-8 bg-primary-text-button-color dark:bg-primary-text-color"></span>
+             <svg className=" stroke-primary-text-button-color dark:stroke-primary-text-color xs:w-[32px] xs:h-[32px] sm:w-[32px] sm:h-[32px] md:w-[38px] md:h-[38px] hover:stroke-primary-text-button-color/50 dark:hover:stroke-primary-text-color/50">
+                      <use href={sprite + '#icon-burger'}></use>
+                    </svg>
           </div>
 
           <div
@@ -46,7 +46,7 @@ const HamburgerMenu = () => {
             }`}
           >
             <div className="">
-              <nav className="bg-primary-text-color dark:bg-button-hover-color transition-transform sm:dark:bg-mobile-burger-menu  md:dark:bg-desktop-burger-menu bg-no-repeat  fixed flex flex-col h-[100%] w-full z-[100] ">
+              <nav className="bg-primary-text-color dark:bg-button-hover-color transition-transform xs:bg-mobile-burger-menu  sm:dark:bg-mobile-burger-menu  md:dark:bg-desktop-burger-menu bg-no-repeat  fixed flex flex-col h-[100%] w-full z-[100] ">
                 <div className="relative container flex p-5 border-b  border-border-color text-primary-text-color justify-between md:pl-[32px] md:pr-[32px] lg:pt-[22px] lg:pb-[23px] lg:pl-[100px] lg:pr-[100px]">
                   <Logo />
 
@@ -54,12 +54,12 @@ const HamburgerMenu = () => {
                     <LanguageToggler />
                   </div>
 
-                  <ThemeToggler className="mr-[62px]" />
+                  <ThemeToggler className=" " />
                   <div
-                    className=" absolute sm:top-[-12px] md:top-[-5px] sm:right-[-10px] md:right-[0px] px-8 py-8 animate-pulse animate-infinite "
+                    className=" absolute xs:top-[-7px] xs:right-[-14px] sm:top-[-9px] md:top-[-5px] sm:right-[-15px] md:right-[0px] px-8 py-8 animate-pulse animate-infinite "
                     onClick={openNav}
                   >
-                    <svg className=" stroke-primary-text-button-color dark:stroke-primary-text-color w-[24px] h-[24px] md:w-[32px] md:h-[32px] hover:stroke-primary-text-button-color/50 dark:hover:stroke-primary-text-color/50">
+                    <svg className=" stroke-primary-text-button-color dark:stroke-primary-text-color xs:w-[24px] xs:h-[24px] sm:w-[24px] sm:h-[24px] md:w-[32px] md:h-[32px] hover:stroke-primary-text-button-color/50 dark:hover:stroke-primary-text-color/50">
                       <use href={sprite + '#icon-cross'}></use>
                     </svg>
                   </div>
@@ -81,6 +81,7 @@ const HamburgerMenu = () => {
                       >
                         {t(`Header.${title}`)}
                       </NavLink>
+                     
                     </li>
                   ))}
                 </ul>

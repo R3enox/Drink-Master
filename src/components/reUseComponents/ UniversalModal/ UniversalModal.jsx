@@ -38,6 +38,8 @@ const UniversalModal = ({ children, isOpen, closeFnc, content }) => {
       closeOnClick();
     }
   };
+ 
+
 
   return (
     <div

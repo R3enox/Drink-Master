@@ -8,7 +8,7 @@ export const Navigation = () => {
   const mainNav = useMainNav();
 
   return (
-    <nav className="sm:hidden md:hidden lg:block">
+    <nav className="xs:hidden sm:hidden md:hidden lg:block">
       <ul className="flex gap-x-[16px] ml-auto">
         {mainNav.map(({ id, href, title }) => (
           <li key={id}>

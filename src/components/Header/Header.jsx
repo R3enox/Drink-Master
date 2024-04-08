@@ -29,20 +29,18 @@ export const Header = () => {
   return (
     <>
       <section className={changeHeadColor ? 'header header-bg' : 'header'}>
-        <>
-          <Logo />
-          <Navigation />
-          <div className="flex">
-            <div className=" hidden lg:flex lg:mr-[25px] lg:gap-[10px]">
-              <LanguageToggler />
-            </div>
-            <div className="hidden lg:flex lg:items-center">
-              <ThemeToggler />
-            </div>
-            <UserInfo />
-            <HamburgerMenu />
+        <Logo />
+        <Navigation />
+        <div className="flex">
+          <div className=" hidden lg:flex lg:mr-[25px] lg:gap-[10px]">
+            <LanguageToggler />
           </div>
-        </>
+          <div className="hidden lg:flex lg:items-center">
+            <ThemeToggler />
+          </div>
+          <UserInfo />
+          <HamburgerMenu />
+        </div>
       </section>
     </>
   );
