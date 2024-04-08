@@ -26,7 +26,7 @@ export const PopularDrinks = () => {
           ({ _id: id, drinkThumb, drink, description, descriptionUK }) => (
             <li key={id}>
               <a
-                href={`/frontend-drink-master/drink/${id}`}
+                href={`/drink-master/drink/${id}`}
                 className="flex gap-[14px] w-[336px] h-[90px] lg:w-[336px] "
               >
                 <img

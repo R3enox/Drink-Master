@@ -9,7 +9,7 @@ import './index.css';
 import './i18n.js';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <BrowserRouter basename="/frontend-drink-master">
+  <BrowserRouter basename="/drink-master">
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <App />

@@ -12,8 +12,7 @@ i18n
     whitelist: ['en', 'uk'],
     fallbackLng: 'en',
     backend: {
-      loadPath: '/frontend-drink-master/locales/{{lng}}/{{ns}}.json',
-      // loadPath: '/locales/{{lng}}/{{ns}}.json',
+      loadPath: '/drink-master/locales/{{lng}}/{{ns}}.json',
     },
   });
 

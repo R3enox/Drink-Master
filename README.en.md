@@ -40,15 +40,18 @@ on a variety of devices, including computers, tablets, and smartphones.
 ✔️**Intuitive user interface**: the easy-to-use interface makes it effortless to
 add, create, and find out more information without any extra effort.
 
-✔️**Google authorization**: secure and convenient registration and authorization.
+✔️**Google authorization**: secure and convenient registration and
+authorization.
 
 ✔️**Security**: the refresh + access token scheme is used. A reliable mechanism
 for controlling users' "sensitive data".
 
-✔️**Dark/Light mode**: you can switch the theme from dark by default
-to light and vice versa. Data on the theme selected by the user is saved even after you exit the application.
+✔️**Dark/Light mode**: you can switch the theme from dark by default to light
+and vice versa. Data on the theme selected by the user is saved even after you
+exit the application.
 
-✔️**Two languages**: the ability to change the language in the application, switching the default English language to Ukrainian.
+✔️**Two languages**: the ability to change the language in the application,
+switching the default English language to Ukrainian.
 
 ## 🔧Stack technology
 
@@ -80,9 +83,9 @@ to light and vice versa. Data on the theme selected by the user is saved even af
 
 ## 📥Links
 
-To start using our app, go to the
-[link](https://r3enox.github.io/frontend-drink-master/) and sign up for the
-system. Once you have successfully logged in, enjoy the app's features 😎
+To start using our app, go to the [link](https://r3enox.github.io/drink-master/)
+and sign up for the system. Once you have successfully logged in, enjoy the
+app's features 😎
 
 [Backend Repo](https://github.com/R3enox/backend-drink-master)
 
@@ -94,13 +97,13 @@ system. Once you have successfully logged in, enjoy the app's features 😎
 - **Natalia Mahera** - Scrum Master [Github][2]
 - **Yakiv Hrubskyi** - [Github][3]
 - **Mykola Pavlovych** - [Github][4]
-- **Kateryna Mala** -  [Github][5]
-- **Vadym Bobyrenko** -  [Github][6]
-- **Serhii Lutsenko** -  [Github][7]
-- **Alex Prokopiev** -  [Github][11]
-- **Karina Ahadzhanian** -  [Github][8]
-- **Eduard Sorokolietov** -  [Github][9]
-- **Angelina Smaluch** -  [Github][10]
+- **Kateryna Mala** - [Github][5]
+- **Vadym Bobyrenko** - [Github][6]
+- **Serhii Lutsenko** - [Github][7]
+- **Alex Prokopiev** - [Github][11]
+- **Karina Ahadzhanian** - [Github][8]
+- **Eduard Sorokolietov** - [Github][9]
+- **Angelina Smaluch** - [Github][10]
 
 [1]: https://github.com/R3enox
 [2]: https://github.com/NataliaMahera
@@ -113,5 +116,3 @@ system. Once you have successfully logged in, enjoy the app's features 😎
 [9]: https://github.com/soroked
 [10]: https://github.com/AngelinaCholak
 [11]: https://github.com/AlexProkopev
-
-
