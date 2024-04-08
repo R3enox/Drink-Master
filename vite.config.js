@@ -16,5 +16,5 @@ export default defineConfig({
       services: '/src/services',
     },
   },
-  base: '/drink-master/',
+  base: '/Drink-Master/',
 });
